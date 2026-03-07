@@ -1,0 +1,202 @@
+{
+    "project": "ConceptCraft AI",
+    "description": "3D dataset metadata index used for retrieval pipeline",
+    "total_sources": 11,
+    "datasets": [
+        {
+            "name": "MedShapeNet",
+            "domain": "biology",
+            "category": "anatomy",
+            "source_type": "download",
+            "url": "https://pypi.org/project/MedShapeNet/",
+            "formats": [
+                "STL",
+                "OBJ"
+            ],
+            "tags": [
+                "organs",
+                "medical",
+                "anatomy"
+            ],
+            "license": "research",
+            "embedding_status": "pending"
+        },
+        {
+            "name": "NIH 3D",
+            "domain": "biology",
+            "category": [
+                "anatomy",
+                "molecule",
+                "virus"
+            ],
+            "source_type": "download",
+            "url": "https://3d.nih.gov/",
+            "formats": [
+                "OBJ",
+                "STL"
+            ],
+            "tags": [
+                "organs",
+                "virus",
+                "cells"
+            ],
+            "license": "open",
+            "embedding_status": "pending"
+        },
+        {
+            "name": "RCSB Protein Data Bank",
+            "domain": "biology",
+            "category": "protein",
+            "source_type": "api",
+            "url": "https://www.rcsb.org/",
+            "formats": [
+                "PDB",
+                "CIF"
+            ],
+            "tags": [
+                "protein",
+                "molecular",
+                "biochemistry"
+            ],
+            "license": "open",
+            "embedding_status": "pending"
+        },
+        {
+            "name": "NASA Kepler 3D Models",
+            "domain": "astronomy",
+            "category": "spacecraft",
+            "source_type": "download",
+            "url": "https://catalog.data.gov/dataset/nasa-3d-models-kepler-3eeb6",
+            "formats": [
+                "OBJ",
+                "GLTF"
+            ],
+            "tags": [
+                "spacecraft",
+                "satellite"
+            ],
+            "license": "open",
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Sketchfab Planets Collection",
+            "domain": "astronomy",
+            "category": "planets",
+            "source_type": "api",
+            "url": "https://sketchfab.com/baxterbaxter/collections/planets-82b7abd4e0644304b65fdc5af7d0aa72",
+            "formats": [
+                "GLTF",
+                "OBJ"
+            ],
+            "tags": [
+                "planets",
+                "solar system"
+            ],
+            "license": "varies",
+            "embedding_status": "pending"
+        },
+        {
+            "name": "NASA 3D Resources",
+            "domain": "astronomy",
+            "category": "space",
+            "source_type": "download",
+            "url": "https://science.nasa.gov/3d-resources/",
+            "formats": [
+                "OBJ",
+                "GLTF"
+            ],
+            "tags": [
+                "satellite",
+                "planet",
+                "telescope"
+            ],
+            "license": "NASA open",
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Solar System Scope Textures",
+            "domain": "astronomy",
+            "category": "planet textures",
+            "source_type": "download",
+            "url": "https://www.solarsystemscope.com/textures/",
+            "formats": [
+                "PNG",
+                "JPG"
+            ],
+            "tags": [
+                "planet",
+                "texture"
+            ],
+            "license": "educational",
+            "embedding_status": "pending"
+        },
+        {
+            "name": "SkyBot 3D",
+            "domain": "astronomy",
+            "category": "asteroids",
+            "source_type": "api",
+            "url": "https://ssp.imcce.fr/webservices/skybot3d/",
+            "formats": [
+                "API"
+            ],
+            "tags": [
+                "asteroid",
+                "solar system"
+            ],
+            "license": "research",
+            "embedding_status": "pending"
+        },
+        {
+            "name": "ATOM3D Dataset",
+            "domain": "chemistry",
+            "category": "atoms",
+            "source_type": "download",
+            "url": "https://github.com/drorlab/atom3d",
+            "formats": [
+                "PDB"
+            ],
+            "tags": [
+                "molecular",
+                "atoms",
+                "protein"
+            ],
+            "license": "MIT",
+            "embedding_status": "pending"
+        },
+        {
+            "name": "PubChem",
+            "domain": "chemistry",
+            "category": "molecules",
+            "source_type": "api",
+            "url": "https://pubchem.ncbi.nlm.nih.gov",
+            "formats": [
+                "SDF",
+                "JSON"
+            ],
+            "tags": [
+                "chemical",
+                "compound",
+                "molecule"
+            ],
+            "license": "open",
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Materials Project",
+            "domain": "chemistry",
+            "category": "materials",
+            "source_type": "api",
+            "url": "https://next-gen.materialsproject.org",
+            "formats": [
+                "JSON",
+                "CIF"
+            ],
+            "tags": [
+                "materials",
+                "crystal"
+            ],
+            "license": "research",
+            "embedding_status": "pending"
+        }
+    ]
+}
