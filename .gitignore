@@ -1,0 +1,10 @@
+dataset/
+kaggle.json
+.env
+__pycache__/
+*.pyc
+*.zip
+*.ply
+*.obj
+*.gltf
+*.pcd
