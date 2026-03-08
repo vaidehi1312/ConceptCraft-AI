@@ -1,0 +1,2365 @@
+[
+  {
+    "id": "msn_dataset_aorta",
+    "name": "Aortic Vessel Trees",
+    "search_key": "AORTA",
+    "category": "dataset",
+    "anatomy_types": [
+      "vessel"
+    ],
+    "body_systems": [
+      "cardiovascular"
+    ],
+    "description": "Aortic Vessel Trees — a MedShapeNet sub-dataset containing ~1000 3D medical shapes of type: vessel.",
+    "tags": [
+      "vessel",
+      "cardiovascular",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~1000",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('AORTA', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_brats",
+    "name": "Brain Tumor Segmentation (BraTS)",
+    "search_key": "BraTS",
+    "category": "dataset",
+    "anatomy_types": [
+      "brain",
+      "tumor"
+    ],
+    "body_systems": [
+      "nervous"
+    ],
+    "description": "Brain Tumor Segmentation (BraTS) — a MedShapeNet sub-dataset containing ~2000 3D medical shapes of type: brain, tumor.",
+    "tags": [
+      "brain",
+      "tumor",
+      "nervous",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~2000",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('BraTS', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_calgary_campinas",
+    "name": "Calgary-Campinas Brain Structures",
+    "search_key": "Calgary-Campinas",
+    "category": "dataset",
+    "anatomy_types": [
+      "brain"
+    ],
+    "body_systems": [
+      "nervous"
+    ],
+    "description": "Calgary-Campinas Brain Structures — a MedShapeNet sub-dataset containing ~350 3D medical shapes of type: brain.",
+    "tags": [
+      "brain",
+      "nervous",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~350",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('Calgary-Campinas', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "Research only",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_crossmoda",
+    "name": "Brain Tumor and Cochlea (CrossMoDA)",
+    "search_key": "CrossMoDA",
+    "category": "dataset",
+    "anatomy_types": [
+      "brain",
+      "tumor",
+      "cochlea"
+    ],
+    "body_systems": [
+      "nervous",
+      "sensory"
+    ],
+    "description": "Brain Tumor and Cochlea (CrossMoDA) — a MedShapeNet sub-dataset containing ~300 3D medical shapes of type: brain, tumor, cochlea.",
+    "tags": [
+      "brain",
+      "tumor",
+      "cochlea",
+      "nervous",
+      "sensory",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~300",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('CrossMoDA', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_ct_org",
+    "name": "CT-ORG Multiple Organ Segmentation",
+    "search_key": "CT-ORG",
+    "category": "dataset",
+    "anatomy_types": [
+      "organ"
+    ],
+    "body_systems": [
+      "digestive",
+      "urinary",
+      "respiratory"
+    ],
+    "description": "CT-ORG Multiple Organ Segmentation — a MedShapeNet sub-dataset containing ~140 3D medical shapes of type: organ.",
+    "tags": [
+      "organ",
+      "digestive",
+      "urinary",
+      "respiratory",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~140",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('CT-ORG', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC0 1.0",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_digitalbodypreservation",
+    "name": "Digital Body Preservation",
+    "search_key": "DigitalBodyPreservation",
+    "category": "dataset",
+    "anatomy_types": [
+      "whole_body"
+    ],
+    "body_systems": [
+      "musculoskeletal"
+    ],
+    "description": "Digital Body Preservation — a MedShapeNet sub-dataset containing ~50 3D medical shapes of type: whole_body.",
+    "tags": [
+      "whole_body",
+      "musculoskeletal",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~50",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('DigitalBodyPreservation', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_emidec",
+    "name": "Myocardium Segmentation (EMIDEC)",
+    "search_key": "EMIDEC",
+    "category": "dataset",
+    "anatomy_types": [
+      "heart",
+      "myocardium"
+    ],
+    "body_systems": [
+      "cardiovascular"
+    ],
+    "description": "Myocardium Segmentation (EMIDEC) — a MedShapeNet sub-dataset containing ~150 3D medical shapes of type: heart, myocardium.",
+    "tags": [
+      "heart",
+      "myocardium",
+      "cardiovascular",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~150",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('EMIDEC', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY-NC-SA 4.0",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_facialmodels",
+    "name": "Facial Models for AR",
+    "search_key": "FacialModels",
+    "category": "dataset",
+    "anatomy_types": [
+      "face",
+      "skull"
+    ],
+    "body_systems": [
+      "musculoskeletal"
+    ],
+    "description": "Facial Models for AR — a MedShapeNet sub-dataset containing ~500 3D medical shapes of type: face, skull.",
+    "tags": [
+      "face",
+      "skull",
+      "musculoskeletal",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~500",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('FacialModels', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_flare",
+    "name": "FLARE 13 Abdominal Organs",
+    "search_key": "FLARE",
+    "category": "dataset",
+    "anatomy_types": [
+      "organ"
+    ],
+    "body_systems": [
+      "digestive",
+      "urinary",
+      "endocrine"
+    ],
+    "description": "FLARE 13 Abdominal Organs — a MedShapeNet sub-dataset containing ~2000 3D medical shapes of type: organ.",
+    "tags": [
+      "organ",
+      "digestive",
+      "urinary",
+      "endocrine",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~2000",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('FLARE', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_glisrt",
+    "name": "GLIS-RT Brain Structures",
+    "search_key": "GLISRT",
+    "category": "dataset",
+    "anatomy_types": [
+      "brain"
+    ],
+    "body_systems": [
+      "nervous"
+    ],
+    "description": "GLIS-RT Brain Structures — a MedShapeNet sub-dataset containing ~230 3D medical shapes of type: brain.",
+    "tags": [
+      "brain",
+      "nervous",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~230",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('GLISRT', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "TCIA Restricted",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_hcp",
+    "name": "Human Connectome Project Brain-Skull",
+    "search_key": "HCP",
+    "category": "dataset",
+    "anatomy_types": [
+      "brain",
+      "skull"
+    ],
+    "body_systems": [
+      "nervous",
+      "musculoskeletal"
+    ],
+    "description": "Human Connectome Project Brain-Skull — a MedShapeNet sub-dataset containing ~1100 3D medical shapes of type: brain, skull.",
+    "tags": [
+      "brain",
+      "skull",
+      "nervous",
+      "musculoskeletal",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~1100",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('HCP', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "Data Use Terms",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_hecktor",
+    "name": "Head and Neck Tumor (HECKTOR)",
+    "search_key": "HECKTOR",
+    "category": "dataset",
+    "anatomy_types": [
+      "tumor",
+      "head",
+      "neck"
+    ],
+    "body_systems": [
+      "oncology"
+    ],
+    "description": "Head and Neck Tumor (HECKTOR) — a MedShapeNet sub-dataset containing ~500 3D medical shapes of type: tumor, head, neck.",
+    "tags": [
+      "tumor",
+      "head",
+      "neck",
+      "oncology",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~500",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('HECKTOR', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_isles22",
+    "name": "Ischemic Stroke Lesion (ISLES22)",
+    "search_key": "ISLES22",
+    "category": "dataset",
+    "anatomy_types": [
+      "brain",
+      "lesion"
+    ],
+    "body_systems": [
+      "nervous",
+      "cardiovascular"
+    ],
+    "description": "Ischemic Stroke Lesion (ISLES22) — a MedShapeNet sub-dataset containing ~400 3D medical shapes of type: brain, lesion.",
+    "tags": [
+      "brain",
+      "lesion",
+      "nervous",
+      "cardiovascular",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~400",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('ISLES22', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_kits21",
+    "name": "Kidney and Kidney Tumor (KiTS21)",
+    "search_key": "KiTS21",
+    "category": "dataset",
+    "anatomy_types": [
+      "kidney",
+      "tumor"
+    ],
+    "body_systems": [
+      "urinary",
+      "oncology"
+    ],
+    "description": "Kidney and Kidney Tumor (KiTS21) — a MedShapeNet sub-dataset containing ~600 3D medical shapes of type: kidney, tumor.",
+    "tags": [
+      "kidney",
+      "tumor",
+      "urinary",
+      "oncology",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~600",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('KiTS21', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "MIT",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_lits",
+    "name": "Liver Tumor Segmentation (LiTS)",
+    "search_key": "LiTS",
+    "category": "dataset",
+    "anatomy_types": [
+      "liver",
+      "tumor"
+    ],
+    "body_systems": [
+      "digestive",
+      "oncology"
+    ],
+    "description": "Liver Tumor Segmentation (LiTS) — a MedShapeNet sub-dataset containing ~400 3D medical shapes of type: liver, tumor.",
+    "tags": [
+      "liver",
+      "tumor",
+      "digestive",
+      "oncology",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~400",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('LiTS', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_msd",
+    "name": "Medical Segmentation Decathlon (MSD)",
+    "search_key": "MSD",
+    "category": "dataset",
+    "anatomy_types": [
+      "organ",
+      "tumor"
+    ],
+    "body_systems": [
+      "digestive",
+      "nervous",
+      "respiratory",
+      "oncology"
+    ],
+    "description": "Medical Segmentation Decathlon (MSD) — a MedShapeNet sub-dataset containing ~5000 3D medical shapes of type: organ, tumor.",
+    "tags": [
+      "organ",
+      "tumor",
+      "digestive",
+      "nervous",
+      "respiratory",
+      "oncology",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~5000",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('MSD', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY-SA 4.0",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_segthor",
+    "name": "SegTHOR Thoracic Organs",
+    "search_key": "SegTHOR",
+    "category": "dataset",
+    "anatomy_types": [
+      "heart",
+      "aorta",
+      "trachea",
+      "esophagus"
+    ],
+    "body_systems": [
+      "cardiovascular",
+      "respiratory",
+      "digestive"
+    ],
+    "description": "SegTHOR Thoracic Organs — a MedShapeNet sub-dataset containing ~240 3D medical shapes of type: heart, aorta, trachea, esophagus.",
+    "tags": [
+      "heart",
+      "aorta",
+      "trachea",
+      "esophagus",
+      "cardiovascular",
+      "respiratory",
+      "digestive",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~240",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('SegTHOR', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_sudmex",
+    "name": "SUDMEX CONN Brain Connectivity",
+    "search_key": "SUDMEX",
+    "category": "dataset",
+    "anatomy_types": [
+      "brain"
+    ],
+    "body_systems": [
+      "nervous"
+    ],
+    "description": "SUDMEX CONN Brain Connectivity — a MedShapeNet sub-dataset containing ~200 3D medical shapes of type: brain.",
+    "tags": [
+      "brain",
+      "nervous",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~200",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('SUDMEX', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_totalsegmentator",
+    "name": "TotalSegmentator Whole Body",
+    "search_key": "TotalSegmentator",
+    "category": "dataset",
+    "anatomy_types": [
+      "whole_body",
+      "organ",
+      "bone",
+      "muscle",
+      "vessel"
+    ],
+    "body_systems": [
+      "musculoskeletal",
+      "digestive",
+      "cardiovascular",
+      "respiratory",
+      "urinary"
+    ],
+    "description": "TotalSegmentator Whole Body — a MedShapeNet sub-dataset containing ~50000 3D medical shapes of type: whole_body, organ, bone, muscle, vessel.",
+    "tags": [
+      "whole_body",
+      "organ",
+      "bone",
+      "muscle",
+      "vessel",
+      "musculoskeletal",
+      "digestive",
+      "cardiovascular",
+      "respiratory",
+      "urinary",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~50000",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('TotalSegmentator', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_verse",
+    "name": "VerSe Vertebrae Segmentation",
+    "search_key": "VerSe",
+    "category": "dataset",
+    "anatomy_types": [
+      "vertebra",
+      "spine"
+    ],
+    "body_systems": [
+      "musculoskeletal"
+    ],
+    "description": "VerSe Vertebrae Segmentation — a MedShapeNet sub-dataset containing ~3000 3D medical shapes of type: vertebra, spine.",
+    "tags": [
+      "vertebra",
+      "spine",
+      "musculoskeletal",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~3000",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('VerSe', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_surgicalinstruments",
+    "name": "Surgical Instruments 3D Models",
+    "search_key": "SurgicalInstruments",
+    "category": "dataset",
+    "anatomy_types": [
+      "surgical_instrument"
+    ],
+    "body_systems": [
+      "medical_device"
+    ],
+    "description": "Surgical Instruments 3D Models — a MedShapeNet sub-dataset containing ~200 3D medical shapes of type: surgical_instrument.",
+    "tags": [
+      "surgical_instrument",
+      "medical_device",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~200",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('SurgicalInstruments', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_luna16",
+    "name": "LUNA16 Lung Nodules",
+    "search_key": "LUNA16",
+    "category": "dataset",
+    "anatomy_types": [
+      "lung",
+      "nodule",
+      "tumor"
+    ],
+    "body_systems": [
+      "respiratory",
+      "oncology"
+    ],
+    "description": "LUNA16 Lung Nodules — a MedShapeNet sub-dataset containing ~1000 3D medical shapes of type: lung, nodule, tumor.",
+    "tags": [
+      "lung",
+      "nodule",
+      "tumor",
+      "respiratory",
+      "oncology",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~1000",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('LUNA16', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_dataset_chaos",
+    "name": "CHAOS Abdominal Organs",
+    "search_key": "CHAOS",
+    "category": "dataset",
+    "anatomy_types": [
+      "liver",
+      "kidney",
+      "spleen"
+    ],
+    "body_systems": [
+      "digestive",
+      "urinary"
+    ],
+    "description": "CHAOS Abdominal Organs — a MedShapeNet sub-dataset containing ~120 3D medical shapes of type: liver, kidney, spleen.",
+    "tags": [
+      "liver",
+      "kidney",
+      "spleen",
+      "digestive",
+      "urinary",
+      "MedShapeNet",
+      "3D shape",
+      "medical",
+      "anatomy"
+    ],
+    "shape_count": "~120",
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('CHAOS', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0",
+    "pathological_variants": []
+  },
+  {
+    "id": "msn_anatomy_brain",
+    "name": "Brain",
+    "search_key": "brain",
+    "category": "anatomy",
+    "anatomy_type": "organ",
+    "body_system": "nervous",
+    "description": "Whole brain 3D shape extracted from MRI scans. Includes cortical surface, white matter, and subcortical structures. Used for brain morphology analysis, tumor classification, and neurological condition studies.",
+    "tags": [
+      "brain",
+      "organ",
+      "nervous system",
+      "MRI",
+      "cortex",
+      "white matter",
+      "neurology",
+      "3D shape",
+      "anatomy"
+    ],
+    "datasets": [
+      "BraTS",
+      "Calgary-Campinas",
+      "HCP",
+      "GLISRT",
+      "SUDMEX"
+    ],
+    "pathological_variants": [
+      "brain tumor",
+      "glioma",
+      "stroke lesion"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('brain', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_brain_tumor",
+    "name": "Brain Tumor (Glioma)",
+    "search_key": "brain tumor",
+    "category": "anatomy",
+    "anatomy_type": "tumor",
+    "body_system": "nervous",
+    "description": "3D shapes of brain tumors including glioblastoma, meningioma, and metastatic lesions extracted from BraTS MRI dataset. Includes both tumorous and healthy brain shapes for classification benchmarks.",
+    "tags": [
+      "brain tumor",
+      "glioma",
+      "glioblastoma",
+      "tumor",
+      "cancer",
+      "MRI",
+      "oncology",
+      "segmentation",
+      "3D shape"
+    ],
+    "datasets": [
+      "BraTS",
+      "HECKTOR"
+    ],
+    "pathological_variants": [
+      "glioblastoma",
+      "meningioma",
+      "metastasis"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('brain tumor', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_cochlea",
+    "name": "Cochlea",
+    "search_key": "cochlea",
+    "category": "anatomy",
+    "anatomy_type": "organ",
+    "body_system": "sensory",
+    "description": "3D shape of the cochlea — the spiral-shaped hearing organ of the inner ear. Extracted from CT scans, used for cochlear implant planning and auditory research.",
+    "tags": [
+      "cochlea",
+      "ear",
+      "inner ear",
+      "hearing",
+      "sensory",
+      "CT",
+      "implant planning",
+      "3D shape",
+      "anatomy"
+    ],
+    "datasets": [
+      "CrossMoDA"
+    ],
+    "pathological_variants": [],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('cochlea', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_stroke_lesion",
+    "name": "Ischemic Stroke Lesion",
+    "search_key": "stroke lesion",
+    "category": "anatomy",
+    "anatomy_type": "lesion",
+    "body_system": "nervous",
+    "description": "3D shapes of ischemic stroke lesions in the brain from ISLES22 dataset. Used for stroke outcome prediction, rehabilitation planning, and understanding infarct patterns.",
+    "tags": [
+      "stroke",
+      "ischemic",
+      "lesion",
+      "brain",
+      "infarct",
+      "MRI",
+      "neurology",
+      "3D shape",
+      "pathology"
+    ],
+    "datasets": [
+      "ISLES22"
+    ],
+    "pathological_variants": [
+      "acute stroke",
+      "chronic infarct"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('stroke lesion', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_skull",
+    "name": "Skull",
+    "search_key": "skull",
+    "category": "anatomy",
+    "anatomy_type": "bone",
+    "body_system": "musculoskeletal",
+    "description": "Complete 3D skull model from CT scans. Includes cranium and mandible. Used for forensic facial reconstruction, surgical planning, and cranial implant design.",
+    "tags": [
+      "skull",
+      "bone",
+      "cranium",
+      "mandible",
+      "CT",
+      "forensic",
+      "surgical planning",
+      "3D shape",
+      "anatomy"
+    ],
+    "datasets": [
+      "HCP",
+      "FacialModels"
+    ],
+    "pathological_variants": [
+      "skull fracture",
+      "cranial defect"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('skull', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_face",
+    "name": "Face / Facial Surface",
+    "search_key": "face",
+    "category": "anatomy",
+    "anatomy_type": "surface",
+    "body_system": "musculoskeletal",
+    "description": "3D facial surface models for augmented reality applications and forensic reconstruction. Paired with skull shapes for skull-to-face reconstruction tasks.",
+    "tags": [
+      "face",
+      "facial",
+      "surface",
+      "skin",
+      "augmented reality",
+      "XR",
+      "forensic",
+      "reconstruction",
+      "3D shape"
+    ],
+    "datasets": [
+      "FacialModels",
+      "HCP"
+    ],
+    "pathological_variants": [],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('face', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_head_neck_tumor",
+    "name": "Head and Neck Tumor",
+    "search_key": "head neck tumor",
+    "category": "anatomy",
+    "anatomy_type": "tumor",
+    "body_system": "oncology",
+    "description": "3D tumor shapes in the head and neck region from HECKTOR dataset. Includes oropharyngeal tumors from PET-CT scans, used for radiotherapy planning.",
+    "tags": [
+      "head",
+      "neck",
+      "tumor",
+      "cancer",
+      "PET-CT",
+      "oropharynx",
+      "radiotherapy",
+      "oncology",
+      "3D shape"
+    ],
+    "datasets": [
+      "HECKTOR"
+    ],
+    "pathological_variants": [
+      "oropharyngeal cancer",
+      "lymph node metastasis"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('head neck tumor', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_heart",
+    "name": "Heart",
+    "search_key": "heart",
+    "category": "anatomy",
+    "anatomy_type": "organ",
+    "body_system": "cardiovascular",
+    "description": "Whole heart 3D shape from cardiac MRI or CT. Includes all four chambers (left/right ventricle, left/right atrium). Used for cardiac function analysis, surgical planning, and 3D printing of heart models.",
+    "tags": [
+      "heart",
+      "cardiac",
+      "organ",
+      "ventricle",
+      "atrium",
+      "MRI",
+      "CT",
+      "cardiovascular",
+      "3D shape",
+      "anatomy"
+    ],
+    "datasets": [
+      "EMIDEC",
+      "SegTHOR",
+      "TotalSegmentator"
+    ],
+    "pathological_variants": [
+      "myocardial infarction",
+      "cardiomyopathy"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('heart', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_myocardium",
+    "name": "Myocardium",
+    "search_key": "myocardium",
+    "category": "anatomy",
+    "anatomy_type": "tissue",
+    "body_system": "cardiovascular",
+    "description": "3D shape of the myocardium (heart muscle) from EMIDEC dataset. Includes normal and pathological (infarction) myocardium shapes for cardiac ML benchmarks.",
+    "tags": [
+      "myocardium",
+      "heart muscle",
+      "cardiac",
+      "infarction",
+      "pathology",
+      "MRI",
+      "3D shape",
+      "cardiovascular"
+    ],
+    "datasets": [
+      "EMIDEC"
+    ],
+    "pathological_variants": [
+      "myocardial infarction"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('myocardium', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_aorta",
+    "name": "Aorta",
+    "search_key": "aorta",
+    "category": "anatomy",
+    "anatomy_type": "vessel",
+    "body_system": "cardiovascular",
+    "description": "Complete aortic vessel tree 3D shape including ascending aorta, aortic arch, descending thoracic, and abdominal aorta. Used for aneurysm detection, stent planning, and cardiovascular research.",
+    "tags": [
+      "aorta",
+      "vessel",
+      "cardiovascular",
+      "aneurysm",
+      "CT",
+      "vascular",
+      "aortic arch",
+      "3D shape",
+      "anatomy"
+    ],
+    "datasets": [
+      "AORTA",
+      "SegTHOR",
+      "TotalSegmentator"
+    ],
+    "pathological_variants": [
+      "aortic aneurysm",
+      "aortic dissection"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('aorta', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_pulmonary_artery",
+    "name": "Pulmonary Artery",
+    "search_key": "pulmonary artery",
+    "category": "anatomy",
+    "anatomy_type": "vessel",
+    "body_system": "cardiovascular",
+    "description": "3D shape of the pulmonary artery tree extracted from CT pulmonary angiography. Used for pulmonary embolism analysis and cardiac hemodynamics modeling.",
+    "tags": [
+      "pulmonary artery",
+      "vessel",
+      "lung",
+      "cardiovascular",
+      "CT",
+      "embolism",
+      "3D shape",
+      "anatomy"
+    ],
+    "datasets": [
+      "TotalSegmentator"
+    ],
+    "pathological_variants": [
+      "pulmonary embolism"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('pulmonary artery', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_coronary_artery",
+    "name": "Coronary Arteries",
+    "search_key": "coronary artery",
+    "category": "anatomy",
+    "anatomy_type": "vessel",
+    "body_system": "cardiovascular",
+    "description": "3D shapes of coronary arteries from coronary CT angiography. Diseased coronary arteries with stenosis and calcification from patients with coronary artery disease.",
+    "tags": [
+      "coronary",
+      "artery",
+      "vessel",
+      "heart",
+      "stenosis",
+      "calcification",
+      "CT",
+      "cardiovascular",
+      "3D shape"
+    ],
+    "datasets": [
+      "TotalSegmentator"
+    ],
+    "pathological_variants": [
+      "coronary artery disease",
+      "stenosis"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('coronary artery', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_lung",
+    "name": "Lung",
+    "search_key": "lung",
+    "category": "anatomy",
+    "anatomy_type": "organ",
+    "body_system": "respiratory",
+    "description": "3D shape of the lungs (left and right) from CT scans. Used for lung cancer screening, COPD analysis, COVID-19 lesion assessment, and surgical planning for lung resection.",
+    "tags": [
+      "lung",
+      "organ",
+      "respiratory",
+      "CT",
+      "cancer",
+      "COPD",
+      "COVID-19",
+      "nodule",
+      "3D shape",
+      "anatomy"
+    ],
+    "datasets": [
+      "LUNA16",
+      "CT-ORG",
+      "TotalSegmentator",
+      "MSD"
+    ],
+    "pathological_variants": [
+      "lung nodule",
+      "lung cancer",
+      "pneumonia"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('lung', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_lung_nodule",
+    "name": "Lung Nodule",
+    "search_key": "lung nodule",
+    "category": "anatomy",
+    "anatomy_type": "nodule",
+    "body_system": "respiratory",
+    "description": "3D shapes of pulmonary nodules from LUNA16 dataset. Includes benign and potentially malignant nodules for lung cancer screening and CAD system development.",
+    "tags": [
+      "lung nodule",
+      "nodule",
+      "lung",
+      "cancer screening",
+      "CT",
+      "LUNA16",
+      "pulmonary",
+      "3D shape",
+      "oncology"
+    ],
+    "datasets": [
+      "LUNA16"
+    ],
+    "pathological_variants": [
+      "malignant nodule",
+      "benign nodule"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('lung nodule', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_trachea",
+    "name": "Trachea",
+    "search_key": "trachea",
+    "category": "anatomy",
+    "anatomy_type": "organ",
+    "body_system": "respiratory",
+    "description": "3D shape of the trachea (windpipe) and main bronchi from CT. Part of the SegTHOR thoracic dataset. Used for airway stent planning and ventilation modeling.",
+    "tags": [
+      "trachea",
+      "airway",
+      "bronchi",
+      "respiratory",
+      "CT",
+      "windpipe",
+      "3D shape",
+      "thorax",
+      "anatomy"
+    ],
+    "datasets": [
+      "SegTHOR",
+      "TotalSegmentator"
+    ],
+    "pathological_variants": [
+      "tracheal stenosis"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('trachea', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_liver",
+    "name": "Liver",
+    "search_key": "liver",
+    "category": "anatomy",
+    "anatomy_type": "organ",
+    "body_system": "digestive",
+    "description": "3D shape of the liver from abdominal CT. The largest internal organ. Includes both healthy and tumor-bearing livers from LiTS and FLARE datasets.",
+    "tags": [
+      "liver",
+      "organ",
+      "digestive",
+      "CT",
+      "abdomen",
+      "tumor",
+      "hepatic",
+      "3D shape",
+      "anatomy"
+    ],
+    "datasets": [
+      "LiTS",
+      "FLARE",
+      "CT-ORG",
+      "CHAOS",
+      "TotalSegmentator",
+      "MSD"
+    ],
+    "pathological_variants": [
+      "liver tumor",
+      "hepatocellular carcinoma",
+      "liver metastasis"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('liver', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_liver_tumor",
+    "name": "Liver Tumor",
+    "search_key": "liver tumor",
+    "category": "anatomy",
+    "anatomy_type": "tumor",
+    "body_system": "oncology",
+    "description": "3D shapes of liver tumors from LiTS dataset. Includes hepatocellular carcinoma and liver metastases from CT scans with manual expert segmentations.",
+    "tags": [
+      "liver tumor",
+      "hepatocellular carcinoma",
+      "metastasis",
+      "cancer",
+      "CT",
+      "oncology",
+      "3D shape",
+      "LiTS"
+    ],
+    "datasets": [
+      "LiTS",
+      "MSD"
+    ],
+    "pathological_variants": [
+      "hepatocellular carcinoma",
+      "cholangiocarcinoma",
+      "liver metastasis"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('liver tumor', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_spleen",
+    "name": "Spleen",
+    "search_key": "spleen",
+    "category": "anatomy",
+    "anatomy_type": "organ",
+    "body_system": "immune",
+    "description": "3D shape of the spleen from abdominal CT. Important lymphoid organ involved in blood filtration and immune response. Used in trauma surgery planning and splenomegaly assessment.",
+    "tags": [
+      "spleen",
+      "organ",
+      "immune",
+      "lymphoid",
+      "CT",
+      "abdomen",
+      "trauma",
+      "3D shape",
+      "anatomy"
+    ],
+    "datasets": [
+      "FLARE",
+      "CT-ORG",
+      "CHAOS",
+      "TotalSegmentator"
+    ],
+    "pathological_variants": [
+      "splenomegaly",
+      "splenic cyst"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('spleen', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_pancreas",
+    "name": "Pancreas",
+    "search_key": "pancreas",
+    "category": "anatomy",
+    "anatomy_type": "organ",
+    "body_system": "digestive",
+    "description": "3D shape of the pancreas from abdominal CT. Challenging organ to segment due to its irregular shape and low CT contrast. Used for pancreatitis and pancreatic cancer analysis.",
+    "tags": [
+      "pancreas",
+      "organ",
+      "digestive",
+      "CT",
+      "abdomen",
+      "cancer",
+      "diabetes",
+      "3D shape",
+      "anatomy"
+    ],
+    "datasets": [
+      "FLARE",
+      "MSD",
+      "TotalSegmentator"
+    ],
+    "pathological_variants": [
+      "pancreatic cancer",
+      "pancreatitis"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('pancreas', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_kidney",
+    "name": "Kidney",
+    "search_key": "kidney",
+    "category": "anatomy",
+    "anatomy_type": "organ",
+    "body_system": "urinary",
+    "description": "3D shape of the kidneys (left and right) from CT. Includes healthy kidneys and kidneys with tumors (KiTS21 dataset). Used for surgical planning, transplant evaluation, and cancer detection.",
+    "tags": [
+      "kidney",
+      "organ",
+      "urinary",
+      "CT",
+      "abdomen",
+      "transplant",
+      "tumor",
+      "renal",
+      "3D shape",
+      "anatomy"
+    ],
+    "datasets": [
+      "KiTS21",
+      "FLARE",
+      "CT-ORG",
+      "CHAOS",
+      "TotalSegmentator"
+    ],
+    "pathological_variants": [
+      "kidney tumor",
+      "renal cell carcinoma",
+      "kidney cyst"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('kidney', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_kidney_tumor",
+    "name": "Kidney Tumor",
+    "search_key": "kidney tumor",
+    "category": "anatomy",
+    "anatomy_type": "tumor",
+    "body_system": "oncology",
+    "description": "3D shapes of kidney tumors from KiTS21 dataset. Includes renal cell carcinoma and kidney cysts with expert segmentations. Used for automated tumor staging.",
+    "tags": [
+      "kidney tumor",
+      "renal cell carcinoma",
+      "tumor",
+      "cancer",
+      "CT",
+      "KiTS21",
+      "oncology",
+      "3D shape"
+    ],
+    "datasets": [
+      "KiTS21"
+    ],
+    "pathological_variants": [
+      "clear cell RCC",
+      "papillary RCC",
+      "oncocytoma"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('kidney tumor', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_gallbladder",
+    "name": "Gallbladder",
+    "search_key": "gallbladder",
+    "category": "anatomy",
+    "anatomy_type": "organ",
+    "body_system": "digestive",
+    "description": "3D shape of the gallbladder from abdominal CT. Small pear-shaped organ that stores bile. Used in cholecystectomy planning and gallstone analysis.",
+    "tags": [
+      "gallbladder",
+      "organ",
+      "digestive",
+      "CT",
+      "bile",
+      "gallstone",
+      "cholecystectomy",
+      "3D shape",
+      "anatomy"
+    ],
+    "datasets": [
+      "FLARE",
+      "TotalSegmentator"
+    ],
+    "pathological_variants": [
+      "gallstone",
+      "cholecystitis"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('gallbladder', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_esophagus",
+    "name": "Esophagus",
+    "search_key": "esophagus",
+    "category": "anatomy",
+    "anatomy_type": "organ",
+    "body_system": "digestive",
+    "description": "3D shape of the esophagus from CT. Muscular tube connecting throat to stomach. Used in esophageal cancer detection and radiotherapy planning.",
+    "tags": [
+      "esophagus",
+      "organ",
+      "digestive",
+      "CT",
+      "cancer",
+      "radiotherapy",
+      "thorax",
+      "3D shape",
+      "anatomy"
+    ],
+    "datasets": [
+      "SegTHOR",
+      "FLARE",
+      "TotalSegmentator"
+    ],
+    "pathological_variants": [
+      "esophageal cancer",
+      "achalasia"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('esophagus', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_stomach",
+    "name": "Stomach",
+    "search_key": "stomach",
+    "category": "anatomy",
+    "anatomy_type": "organ",
+    "body_system": "digestive",
+    "description": "3D shape of the stomach from abdominal CT. Highly variable shape organ used for gastric cancer analysis and surgical planning.",
+    "tags": [
+      "stomach",
+      "organ",
+      "digestive",
+      "CT",
+      "abdomen",
+      "gastric cancer",
+      "surgery",
+      "3D shape",
+      "anatomy"
+    ],
+    "datasets": [
+      "FLARE",
+      "TotalSegmentator"
+    ],
+    "pathological_variants": [
+      "gastric cancer",
+      "gastric ulcer"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('stomach', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_duodenum",
+    "name": "Duodenum",
+    "search_key": "duodenum",
+    "category": "anatomy",
+    "anatomy_type": "organ",
+    "body_system": "digestive",
+    "description": "3D shape of the duodenum — the first section of the small intestine. Used in pancreatic surgery planning and digestive system modeling.",
+    "tags": [
+      "duodenum",
+      "intestine",
+      "digestive",
+      "CT",
+      "abdomen",
+      "pancreas",
+      "3D shape",
+      "anatomy"
+    ],
+    "datasets": [
+      "FLARE",
+      "TotalSegmentator"
+    ],
+    "pathological_variants": [
+      "duodenal ulcer"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('duodenum', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_adrenal_gland",
+    "name": "Adrenal Gland",
+    "search_key": "adrenal gland",
+    "category": "anatomy",
+    "anatomy_type": "organ",
+    "body_system": "endocrine",
+    "description": "3D shapes of left and right adrenal glands from CT. Small endocrine glands sitting atop the kidneys, producing adrenaline and cortisol.",
+    "tags": [
+      "adrenal gland",
+      "endocrine",
+      "hormone",
+      "CT",
+      "kidney",
+      "cortisol",
+      "adrenaline",
+      "3D shape",
+      "anatomy"
+    ],
+    "datasets": [
+      "FLARE",
+      "TotalSegmentator"
+    ],
+    "pathological_variants": [
+      "adrenal adenoma",
+      "pheochromocytoma"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('adrenal gland', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_inferior_vena_cava",
+    "name": "Inferior Vena Cava",
+    "search_key": "inferior vena cava",
+    "category": "anatomy",
+    "anatomy_type": "vessel",
+    "body_system": "cardiovascular",
+    "description": "3D shape of the inferior vena cava (IVC) — the large vein returning blood from the lower body to the heart. Used in vascular surgery and interventional radiology planning.",
+    "tags": [
+      "inferior vena cava",
+      "IVC",
+      "vein",
+      "vessel",
+      "cardiovascular",
+      "CT",
+      "vascular surgery",
+      "3D shape"
+    ],
+    "datasets": [
+      "FLARE",
+      "TotalSegmentator"
+    ],
+    "pathological_variants": [
+      "IVC thrombosis",
+      "IVC filter"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('inferior vena cava', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_vertebra",
+    "name": "Vertebrae / Spine",
+    "search_key": "vertebra",
+    "category": "anatomy",
+    "anatomy_type": "bone",
+    "body_system": "musculoskeletal",
+    "description": "3D shapes of individual vertebrae (C1–L5, sacrum) from VerSe dataset. Over 3000 annotated vertebrae from CT scans. Used for spine surgery planning, fracture detection, and scoliosis analysis.",
+    "tags": [
+      "vertebra",
+      "spine",
+      "bone",
+      "CT",
+      "fracture",
+      "scoliosis",
+      "lumbar",
+      "cervical",
+      "thoracic",
+      "3D shape"
+    ],
+    "datasets": [
+      "VerSe",
+      "TotalSegmentator"
+    ],
+    "pathological_variants": [
+      "vertebral fracture",
+      "scoliosis",
+      "spinal stenosis"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('vertebra', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_rib",
+    "name": "Rib",
+    "search_key": "rib",
+    "category": "anatomy",
+    "anatomy_type": "bone",
+    "body_system": "musculoskeletal",
+    "description": "3D shapes of individual ribs (1–12, left and right) from CT. Used for rib fracture detection, chest wall reconstruction, and thoracic surgery planning.",
+    "tags": [
+      "rib",
+      "bone",
+      "chest",
+      "CT",
+      "fracture",
+      "thorax",
+      "surgery",
+      "3D shape",
+      "anatomy"
+    ],
+    "datasets": [
+      "TotalSegmentator"
+    ],
+    "pathological_variants": [
+      "rib fracture"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('rib', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_hip",
+    "name": "Hip / Pelvis",
+    "search_key": "hip",
+    "category": "anatomy",
+    "anatomy_type": "bone",
+    "body_system": "musculoskeletal",
+    "description": "3D shape of the hip and pelvis bones including ilium, ischium, and pubis. Used for hip replacement planning, pelvic fracture analysis, and biomechanical modeling.",
+    "tags": [
+      "hip",
+      "pelvis",
+      "bone",
+      "CT",
+      "replacement",
+      "fracture",
+      "biomechanics",
+      "orthopedics",
+      "3D shape"
+    ],
+    "datasets": [
+      "TotalSegmentator"
+    ],
+    "pathological_variants": [
+      "hip fracture",
+      "osteoarthritis",
+      "dysplasia"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('hip', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_femur",
+    "name": "Femur",
+    "search_key": "femur",
+    "category": "anatomy",
+    "anatomy_type": "bone",
+    "body_system": "musculoskeletal",
+    "description": "3D shape of the femur (thigh bone) — the longest and strongest bone in the body. Used for knee/hip implant design, fracture fixation planning, and gait analysis.",
+    "tags": [
+      "femur",
+      "thigh bone",
+      "bone",
+      "CT",
+      "knee",
+      "hip",
+      "implant",
+      "fracture",
+      "orthopedics",
+      "3D shape"
+    ],
+    "datasets": [
+      "TotalSegmentator"
+    ],
+    "pathological_variants": [
+      "femoral fracture",
+      "avascular necrosis"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('femur', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_muscle",
+    "name": "Muscle (Whole Body)",
+    "search_key": "muscle",
+    "category": "anatomy",
+    "anatomy_type": "muscle",
+    "body_system": "musculoskeletal",
+    "description": "3D shapes of major muscle groups from whole-body CT/PET-CT segmentations including psoas, quadriceps, gluteus, and paraspinal muscles. Used for body composition analysis and sarcopenia assessment.",
+    "tags": [
+      "muscle",
+      "musculoskeletal",
+      "CT",
+      "body composition",
+      "sarcopenia",
+      "psoas",
+      "quadriceps",
+      "3D shape"
+    ],
+    "datasets": [
+      "TotalSegmentator",
+      "DigitalBodyPreservation"
+    ],
+    "pathological_variants": [
+      "sarcopenia",
+      "muscle atrophy"
+    ],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('muscle', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_surgical_instrument",
+    "name": "Surgical Instrument",
+    "search_key": "surgical instrument",
+    "category": "anatomy",
+    "anatomy_type": "surgical_instrument",
+    "body_system": "medical_device",
+    "description": "3D models of surgical instruments including forceps, scissors, needles, and endoscopic tools. Used for robot-assisted surgery simulation, AR surgical training, and instrument tracking.",
+    "tags": [
+      "surgical instrument",
+      "forceps",
+      "scissors",
+      "endoscope",
+      "robot surgery",
+      "laparoscopy",
+      "AR",
+      "3D model",
+      "medical device"
+    ],
+    "datasets": [
+      "SurgicalInstruments"
+    ],
+    "pathological_variants": [],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('surgical instrument', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  },
+  {
+    "id": "msn_anatomy_whole_body",
+    "name": "Whole Body Anatomy",
+    "search_key": "whole body",
+    "category": "anatomy",
+    "anatomy_type": "whole_body",
+    "body_system": "musculoskeletal",
+    "description": "Complete whole-body 3D anatomical models from TotalSegmentator and DigitalBodyPreservation datasets, including all major organs, bones, muscles, and vessels dissembled and labeled. Used for medical education, XR anatomy visualization, and body composition analysis.",
+    "tags": [
+      "whole body",
+      "anatomy",
+      "CT",
+      "total segmentator",
+      "education",
+      "XR",
+      "VR",
+      "3D shape",
+      "body composition"
+    ],
+    "datasets": [
+      "TotalSegmentator",
+      "DigitalBodyPreservation"
+    ],
+    "pathological_variants": [],
+    "source": "MedShapeNet",
+    "source_type": "medical_shape_database",
+    "render_type": "mesh_viewer",
+    "shape_formats": [
+      "STL",
+      "NIfTI",
+      "PLY"
+    ],
+    "embed_url": "https://medshapenet.ikim.nrw/",
+    "fetch_method": "msn_api",
+    "fetch_code": "from MedShapeNet import MedShapeNet; msn = MedShapeNet(); msn.search_and_download_by_name('whole body', output_dir='./cache/')",
+    "local_file": null,
+    "runtime_fetch": true,
+    "license": "CC BY 4.0 (varies by sub-dataset)"
+  }
+]
