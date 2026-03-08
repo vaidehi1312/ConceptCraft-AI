@@ -1,0 +1,622 @@
+{
+    "source": "https://openheritage3d.org/data",
+    "total": 28,
+    "models": [
+        {
+            "name": "Ushaiger Tower Center",
+            "country": "Saudi Arabia",
+            "project_id": "00cc-vk33",
+            "url": "https://openheritage3d.org/project.php?id=00cc-vk33",
+            "doi": "10.26301/00cc-vk33",
+            "keywords": "Ushaiger, Saudi Arabia, KACST, hajj",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Santa Cruz Mission Adobe",
+            "country": "United States",
+            "project_id": "07af-c325",
+            "url": "https://openheritage3d.org/project.php?id=07af-c325",
+            "doi": "10.26301/07af-c325",
+            "keywords": "adobe, santa cruz, california, missions",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Fuvahmulah Havitta 3",
+            "country": "Maldives",
+            "project_id": "0bab-t430",
+            "url": "https://openheritage3d.org/project.php?id=0bab-t430",
+            "doi": "10.26301/0bab-t430",
+            "keywords": "Maldives, Buddhist sites, Indian Ocean",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Gampong Pande",
+            "country": "Indonesia",
+            "project_id": "0fpr-b340",
+            "url": "https://openheritage3d.org/project.php?id=0fpr-b340",
+            "doi": "10.26301/0fpr-b340",
+            "keywords": "Southeast Asia, Indonesia, Islamic heritage",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Cossacks artifacts Khortytsia",
+            "country": "Ukraine",
+            "project_id": "0gs4-dc04",
+            "url": "https://openheritage3d.org/project.php?id=0gs4-dc04",
+            "doi": "10.26301/0gs4-dc04",
+            "keywords": "Cossacks, Ukraine, Steppe",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Heart of Neolithic Orkney - Maeshowe",
+            "country": "Scotland",
+            "project_id": "0qce-vj74",
+            "url": "https://openheritage3d.org/project.php?id=0qce-vj74",
+            "doi": "10.26301/0qce-vj74",
+            "keywords": "cairn, stone circle, archaeology, prehistory",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "John Muir National Historic Site",
+            "country": "United States",
+            "project_id": "0scs-yy66",
+            "url": "https://openheritage3d.org/project.php?id=0scs-yy66",
+            "doi": "10.26301/0scs-yy66",
+            "keywords": "muir, nps, nationalparkservice",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Shukhov Tower",
+            "country": "Russia",
+            "project_id": "0skp-z245",
+            "url": "https://openheritage3d.org/project.php?id=0skp-z245",
+            "doi": "10.26301/0skp-z245",
+            "keywords": "moscow, russia, constructivism, tower",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Battistero di San Giovanni Florence",
+            "country": "Italy",
+            "project_id": "0x6p-vk89",
+            "url": "https://openheritage3d.org/project.php?id=0x6p-vk89",
+            "doi": "10.26301/0x6p-vk89",
+            "keywords": "CISA3, Florence, Baptistery",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Catalhoyuk East Mound North Area 2017",
+            "country": "Turkey",
+            "project_id": "0xe0-7v64",
+            "url": "https://openheritage3d.org/project.php?id=0xe0-7v64",
+            "doi": "10.26301/0xe0-7v64",
+            "keywords": "Neolithic, Turkey, UNESCO",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Heart of Neolithic Orkney - Stones of Stenness",
+            "country": "Scotland",
+            "project_id": "2tka-0y25",
+            "url": "https://openheritage3d.org/project.php?id=2tka-0y25",
+            "doi": "10.26301/2tka-0y25",
+            "keywords": "cairn, stone circle, archaeology",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Chichen Itza",
+            "country": "Mexico",
+            "project_id": "2atk-cq42",
+            "url": "https://openheritage3d.org/project.php?id=2atk-cq42",
+            "doi": "10.26301/2atk-cq42",
+            "keywords": "maya, pyramid, mesoamerica, archaeology",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Fort York National Historic Site",
+            "country": "Canada",
+            "project_id": "2pys-t414",
+            "url": "https://openheritage3d.org/project.php?id=2pys-t414",
+            "doi": "10.26301/2pys-t414",
+            "keywords": "war of 1812, canada, military",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Ancient Merv Sultan Kala",
+            "country": "Turkmenistan",
+            "project_id": "2ryx-nq44",
+            "url": "https://openheritage3d.org/project.php?id=2ryx-nq44",
+            "doi": "10.26301/2ryx-nq44",
+            "keywords": "ancientmerv, silk road, UNESCO",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Temple of Apollo Portara",
+            "country": "Greece",
+            "project_id": "3axe-1f63",
+            "url": "https://openheritage3d.org/project.php?id=3axe-1f63",
+            "doi": "10.26301/3axe-1f63",
+            "keywords": "Naxos, Greece, temple, greek, apollo",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Ebenezer Baptist Church",
+            "country": "United States",
+            "project_id": "3xna-wf61",
+            "url": "https://openheritage3d.org/project.php?id=3xna-wf61",
+            "doi": "10.26301/3xna-wf61",
+            "keywords": "martin luther king, civil rights, georgia",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Mount Titano",
+            "country": "San Marino",
+            "project_id": "296p-dn53",
+            "url": "https://openheritage3d.org/project.php?id=296p-dn53",
+            "doi": "10.26301/296p-dn53",
+            "keywords": "UNESCO, mountain, medieval, tower",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "La Cesta",
+            "country": "San Marino",
+            "project_id": "2h6g-jz80",
+            "url": "https://openheritage3d.org/project.php?id=2h6g-jz80",
+            "doi": "10.26301/2h6g-jz80",
+            "keywords": "UNESCO, mountain, medieval, tower",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Luxor Temple Chapel",
+            "country": "Egypt",
+            "project_id": "2164-0932",
+            "url": "https://openheritage3d.org/project.php?id=2164-0932",
+            "doi": "10.26301/2164-0932",
+            "keywords": "Egypt, Luxor, Temple",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Corbelled Houses of Karoo - Slingersfontein",
+            "country": "South Africa",
+            "project_id": "1y51-6f21",
+            "url": "https://openheritage3d.org/project.php?id=1y51-6f21",
+            "doi": "10.26301/1y51-6f21",
+            "keywords": "corbel, karoo, south africa",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Fort Lytton",
+            "country": "Australia",
+            "project_id": "1g63-yq03",
+            "url": "https://openheritage3d.org/project.php?id=1g63-yq03",
+            "doi": "10.26301/1g63-yq03",
+            "keywords": "lytton, queensland, australia, military",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Zinda Peer Mosque",
+            "country": "Bangladesh",
+            "project_id": "1hxv-e981",
+            "url": "https://openheritage3d.org/project.php?id=1hxv-e981",
+            "doi": "10.26301/1hxv-e981",
+            "keywords": "Bagerhat, bangladesh, mosque",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Komainu Kobe Ikuta-jinja",
+            "country": "Japan",
+            "project_id": "1wv3-9775",
+            "url": "https://openheritage3d.org/project.php?id=1wv3-9775",
+            "doi": "10.26301/1wv3-9775",
+            "keywords": "Komainu, japan, shrine",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Manzanar National Historic Site",
+            "country": "United States",
+            "project_id": "36b2-mp38",
+            "url": "https://openheritage3d.org/project.php?id=36b2-mp38",
+            "doi": "10.26301/36b2-mp38",
+            "keywords": "japanese american, ww2, incarceration",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Ceremonial Plaza Huaca Cao Viejo",
+            "country": "Peru",
+            "project_id": "3bev-wa81",
+            "url": "https://openheritage3d.org/project.php?id=3bev-wa81",
+            "doi": "10.26301/3bev-wa81",
+            "keywords": "peru, pyramid, archaeology",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "New York State Pavilion",
+            "country": "United States",
+            "project_id": "3e9p-t207",
+            "url": "https://openheritage3d.org/project.php?id=3e9p-t207",
+            "doi": "10.26301/3e9p-t207",
+            "keywords": "world's fair, Philip Johnson, queens",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Folger Shakespeare Library",
+            "country": "United States",
+            "project_id": "3tpx-nd97",
+            "url": "https://openheritage3d.org/project.php?id=3tpx-nd97",
+            "doi": "10.26301/3tpx-nd97",
+            "keywords": "folger, shakespeare, library, washington",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Jack London Wolf House",
+            "country": "United States",
+            "project_id": "403p-tb11",
+            "url": "https://openheritage3d.org/project.php?id=403p-tb11",
+            "doi": "10.26301/403p-tb11",
+            "keywords": "jack london, california, author",
+            "source": "openheritage3d.org",
+            "domain": "cultural_heritage",
+            "category": "heritage_scans",
+            "formats": [
+                "LiDAR",
+                "OBJ",
+                "pointcloud"
+            ],
+            "tags": [
+                "archaeology",
+                "historic sites",
+                "heritage"
+            ],
+            "embedding_status": "pending"
+        }
+    ]
+}

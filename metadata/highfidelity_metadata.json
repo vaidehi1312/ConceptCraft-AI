@@ -1,0 +1,21 @@
+{
+    "source": "https://www.kaggle.com/datasets/programmer3/high-fidelity-cultural-heritage-3d-dataset",
+    "total": 1,
+    "models": [
+        {
+            "name": "cultural_heritage_dataset.csv",
+            "file_path": "dataset/high_fidelity_heritage\\cultural_heritage_dataset.csv",
+            "format": "CSV",
+            "source": "kaggle",
+            "url": "https://www.kaggle.com/datasets/programmer3/high-fidelity-cultural-heritage-3d-dataset",
+            "domain": "cultural_heritage",
+            "category": "historical_sites",
+            "tags": [
+                "heritage",
+                "monuments",
+                "architecture"
+            ],
+            "embedding_status": "pending"
+        }
+    ]
+}

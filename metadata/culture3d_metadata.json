@@ -1,0 +1,252 @@
+{
+    "source": "https://github.com/X-Intelligence-Labs/CULTURE3D",
+    "google_drive": "https://drive.google.com/drive/folders/1LaxcwUI1R1trs6lmHGU_3odBo6B8xiob",
+    "total": 11,
+    "models": [
+        {
+            "name": "Buckingham Palace",
+            "sketchfab_short_url": "https://skfb.ly/ptsFD",
+            "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/Buckingham.png",
+            "tags": [
+                "palace",
+                "architecture",
+                "UK",
+                "london"
+            ],
+            "source": "sketchfab",
+            "domain": "cultural_heritage",
+            "category": "3d_reconstruction",
+            "formats": [
+                "PLY",
+                "PCD",
+                "COLMAP"
+            ],
+            "license": "open",
+            "embedding_status": "pending",
+            "view_url": "https://skfb.ly/ptsFD"
+        },
+        {
+            "name": "Cambridge Campus",
+            "sketchfab_short_url": "https://skfb.ly/ptsFK",
+            "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/one_page.png",
+            "tags": [
+                "campus",
+                "urban",
+                "architecture",
+                "VR"
+            ],
+            "source": "sketchfab",
+            "domain": "cultural_heritage",
+            "category": "3d_reconstruction",
+            "formats": [
+                "PLY",
+                "PCD",
+                "COLMAP"
+            ],
+            "license": "open",
+            "embedding_status": "pending",
+            "view_url": "https://skfb.ly/ptsFK"
+        },
+        {
+            "name": "Egyptian Pyramids and Sphinx",
+            "sketchfab_short_url": "https://skfb.ly/ptsFL",
+            "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/pyramid.png",
+            "tags": [
+                "egypt",
+                "pyramid",
+                "ancient",
+                "archaeology"
+            ],
+            "source": "sketchfab",
+            "domain": "cultural_heritage",
+            "category": "3d_reconstruction",
+            "formats": [
+                "PLY",
+                "PCD",
+                "COLMAP"
+            ],
+            "license": "open",
+            "embedding_status": "pending",
+            "view_url": "https://skfb.ly/ptsFL"
+        },
+        {
+            "name": "Louvre Museum",
+            "sketchfab_short_url": "https://skfb.ly/ptsFM",
+            "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/louvre.png",
+            "tags": [
+                "museum",
+                "paris",
+                "architecture",
+                "france"
+            ],
+            "source": "sketchfab",
+            "domain": "cultural_heritage",
+            "category": "3d_reconstruction",
+            "formats": [
+                "PLY",
+                "PCD",
+                "COLMAP"
+            ],
+            "license": "open",
+            "embedding_status": "pending",
+            "view_url": "https://skfb.ly/ptsFM"
+        },
+        {
+            "name": "Leaning Tower of Pisa",
+            "sketchfab_short_url": "https://skfb.ly/ptsFN",
+            "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/Italy.png",
+            "tags": [
+                "italy",
+                "tower",
+                "monument",
+                "VR"
+            ],
+            "source": "sketchfab",
+            "domain": "cultural_heritage",
+            "category": "3d_reconstruction",
+            "formats": [
+                "PLY",
+                "PCD",
+                "COLMAP"
+            ],
+            "license": "open",
+            "embedding_status": "pending",
+            "view_url": "https://skfb.ly/ptsFN"
+        },
+        {
+            "name": "Stonehenge",
+            "sketchfab_short_url": "https://skfb.ly/ptsFP",
+            "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/stonehenge.png",
+            "tags": [
+                "stonehenge",
+                "prehistoric",
+                "UK",
+                "archaeology"
+            ],
+            "source": "sketchfab",
+            "domain": "cultural_heritage",
+            "category": "3d_reconstruction",
+            "formats": [
+                "PLY",
+                "PCD",
+                "COLMAP"
+            ],
+            "license": "open",
+            "embedding_status": "pending",
+            "view_url": "https://skfb.ly/ptsFP"
+        },
+        {
+            "name": "Petra",
+            "sketchfab_short_url": "https://skfb.ly/pt9ro",
+            "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/petra.png",
+            "tags": [
+                "petra",
+                "jordan",
+                "ancient",
+                "archaeology",
+                "VR"
+            ],
+            "source": "sketchfab",
+            "domain": "cultural_heritage",
+            "category": "3d_reconstruction",
+            "formats": [
+                "PLY",
+                "PCD",
+                "COLMAP"
+            ],
+            "license": "open",
+            "embedding_status": "pending",
+            "view_url": "https://skfb.ly/pt9ro"
+        },
+        {
+            "name": "Trafalgar Square",
+            "sketchfab_short_url": "https://skfb.ly/pt9rF",
+            "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/trafalgar.png",
+            "tags": [
+                "london",
+                "square",
+                "statues",
+                "architecture"
+            ],
+            "source": "sketchfab",
+            "domain": "cultural_heritage",
+            "category": "3d_reconstruction",
+            "formats": [
+                "PLY",
+                "PCD",
+                "COLMAP"
+            ],
+            "license": "open",
+            "embedding_status": "pending",
+            "view_url": "https://skfb.ly/pt9rF"
+        },
+        {
+            "name": "National Art Gallery",
+            "sketchfab_short_url": "https://skfb.ly/pt9sF",
+            "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/gallery2.png",
+            "tags": [
+                "gallery",
+                "museum",
+                "interior",
+                "art",
+                "VR"
+            ],
+            "source": "sketchfab",
+            "domain": "cultural_heritage",
+            "category": "3d_reconstruction",
+            "formats": [
+                "PLY",
+                "PCD",
+                "COLMAP"
+            ],
+            "license": "open",
+            "embedding_status": "pending",
+            "view_url": "https://skfb.ly/pt9sF"
+        },
+        {
+            "name": "Forbidden City",
+            "sketchfab_short_url": "https://skfb.ly/pt9sR",
+            "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/gugong.png",
+            "tags": [
+                "china",
+                "forbidden city",
+                "heritage",
+                "architecture"
+            ],
+            "source": "sketchfab",
+            "domain": "cultural_heritage",
+            "category": "3d_reconstruction",
+            "formats": [
+                "PLY",
+                "PCD",
+                "COLMAP"
+            ],
+            "license": "open",
+            "embedding_status": "pending",
+            "view_url": "https://skfb.ly/pt9sR"
+        },
+        {
+            "name": "Longmen Grottoes",
+            "sketchfab_short_url": "https://skfb.ly/pt9tr",
+            "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/longmen_all.png",
+            "tags": [
+                "china",
+                "grottoes",
+                "carvings",
+                "buddhist",
+                "VR"
+            ],
+            "source": "sketchfab",
+            "domain": "cultural_heritage",
+            "category": "3d_reconstruction",
+            "formats": [
+                "PLY",
+                "PCD",
+                "COLMAP"
+            ],
+            "license": "open",
+            "embedding_status": "pending",
+            "view_url": "https://skfb.ly/pt9tr"
+        }
+    ]
+}

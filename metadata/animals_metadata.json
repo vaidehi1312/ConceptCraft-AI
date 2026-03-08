@@ -1,0 +1,1665 @@
+{
+    "source": "https://sketchfab.com/categories/animals-pets",
+    "total": 79,
+    "models": [
+        {
+            "name": "Horse Rigged Game Ready",
+            "animal": "horse",
+            "url": "https://sketchfab.com/3d-models/horse-riggedgame-ready-bc64f4ff7966474ca9bacd42fa73a754",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "horse",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Cow",
+            "animal": "cow",
+            "url": "https://sketchfab.com/tags/cow",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "cow",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Pig",
+            "animal": "pig",
+            "url": "https://sketchfab.com/tags/pig",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "pig",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Sheep",
+            "animal": "sheep",
+            "url": "https://sketchfab.com/tags/sheep",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "sheep",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Goat",
+            "animal": "goat",
+            "url": "https://sketchfab.com/tags/goat",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "goat",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Donkey",
+            "animal": "donkey",
+            "url": "https://sketchfab.com/tags/donkey",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "donkey",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Rabbit",
+            "animal": "rabbit",
+            "url": "https://sketchfab.com/tags/rabbit",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "rabbit",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Chicken",
+            "animal": "chicken",
+            "url": "https://sketchfab.com/tags/chicken",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "chicken",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Dog - Border Collie",
+            "animal": "dog",
+            "url": "https://sketchfab.com/3d-models/border-collie-dogmesh-hair-c5e1c2e4fec84e23a3c7b1ee2b2f7b52",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "dog",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Dog - Labrador",
+            "animal": "dog",
+            "url": "https://sketchfab.com/tags/labrador",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "dog",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Cat",
+            "animal": "cat",
+            "url": "https://sketchfab.com/tags/cat",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "cat",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "African Elephant",
+            "animal": "elephant",
+            "url": "https://sketchfab.com/3d-models/african-elephant-by-jimmyho905-c0d61b7c8b4e4b6a9b0d3f2f3b2e2b2a",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "elephant",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Lion",
+            "animal": "lion",
+            "url": "https://sketchfab.com/tags/lion",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "lion",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Lioness",
+            "animal": "lion",
+            "url": "https://sketchfab.com/tags/lioness",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "lion",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Giraffe",
+            "animal": "giraffe",
+            "url": "https://sketchfab.com/tags/giraffe",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "giraffe",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Zebra",
+            "animal": "zebra",
+            "url": "https://sketchfab.com/tags/zebra",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "zebra",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Hippopotamus",
+            "animal": "hippo",
+            "url": "https://sketchfab.com/tags/hippopotamus",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "hippo",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Rhinoceros",
+            "animal": "rhino",
+            "url": "https://sketchfab.com/tags/rhinoceros",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "rhino",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Cheetah",
+            "animal": "cheetah",
+            "url": "https://sketchfab.com/tags/cheetah",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "cheetah",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Leopard",
+            "animal": "leopard",
+            "url": "https://sketchfab.com/tags/leopard",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "leopard",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Gorilla",
+            "animal": "gorilla",
+            "url": "https://sketchfab.com/tags/gorilla",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "gorilla",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Chimpanzee",
+            "animal": "chimpanzee",
+            "url": "https://sketchfab.com/tags/chimpanzee",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "chimpanzee",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Crocodile",
+            "animal": "crocodile",
+            "url": "https://sketchfab.com/tags/crocodile",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "crocodile",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Realistic Wolf",
+            "animal": "wolf",
+            "url": "https://sketchfab.com/tags/wolf",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "wolf",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Realistic Bear",
+            "animal": "bear",
+            "url": "https://sketchfab.com/tags/bear",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "bear",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Deer",
+            "animal": "deer",
+            "url": "https://sketchfab.com/tags/deer",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "deer",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Elk",
+            "animal": "elk",
+            "url": "https://sketchfab.com/tags/elk",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "elk",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Moose",
+            "animal": "moose",
+            "url": "https://sketchfab.com/tags/moose",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "moose",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Fox",
+            "animal": "fox",
+            "url": "https://sketchfab.com/tags/fox",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "fox",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Wild Boar",
+            "animal": "boar",
+            "url": "https://sketchfab.com/tags/boar",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "boar",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Bighorn Sheep",
+            "animal": "bighorn",
+            "url": "https://sketchfab.com/tags/bighorn",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "bighorn",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Armadillo",
+            "animal": "armadillo",
+            "url": "https://sketchfab.com/tags/armadillo",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "armadillo",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Badger",
+            "animal": "badger",
+            "url": "https://sketchfab.com/tags/badger",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "badger",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Polar Bear",
+            "animal": "polar bear",
+            "url": "https://sketchfab.com/tags/polar-bear",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "polar bear",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Arctic Fox",
+            "animal": "arctic fox",
+            "url": "https://sketchfab.com/tags/arctic-fox",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "arctic fox",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Walrus",
+            "animal": "walrus",
+            "url": "https://sketchfab.com/tags/walrus",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "walrus",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Tiger",
+            "animal": "tiger",
+            "url": "https://sketchfab.com/tags/tiger",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "tiger",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Panda",
+            "animal": "panda",
+            "url": "https://sketchfab.com/tags/panda",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "panda",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Snow Leopard",
+            "animal": "snow leopard",
+            "url": "https://sketchfab.com/tags/snow-leopard",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "snow leopard",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Orangutan",
+            "animal": "orangutan",
+            "url": "https://sketchfab.com/tags/orangutan",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "orangutan",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Eagle",
+            "animal": "eagle",
+            "url": "https://sketchfab.com/tags/eagle",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "eagle",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Owl",
+            "animal": "owl",
+            "url": "https://sketchfab.com/tags/owl",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "owl",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Hawk",
+            "animal": "hawk",
+            "url": "https://sketchfab.com/tags/hawk",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "hawk",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Parrot",
+            "animal": "parrot",
+            "url": "https://sketchfab.com/tags/parrot",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "parrot",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Penguin",
+            "animal": "penguin",
+            "url": "https://sketchfab.com/tags/penguin",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "penguin",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Flamingo",
+            "animal": "flamingo",
+            "url": "https://sketchfab.com/tags/flamingo",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "flamingo",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Crow",
+            "animal": "crow",
+            "url": "https://sketchfab.com/tags/crow",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "crow",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Seagull",
+            "animal": "seagull",
+            "url": "https://sketchfab.com/tags/seagull",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "seagull",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Condor",
+            "animal": "condor",
+            "url": "https://sketchfab.com/tags/condor",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "condor",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Vulture",
+            "animal": "vulture",
+            "url": "https://sketchfab.com/tags/vulture",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "vulture",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Pelican",
+            "animal": "pelican",
+            "url": "https://sketchfab.com/tags/pelican",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "pelican",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Toucan",
+            "animal": "toucan",
+            "url": "https://sketchfab.com/tags/toucan",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "toucan",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Iguana",
+            "animal": "iguana",
+            "url": "https://sketchfab.com/tags/iguana",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "iguana",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Crocodile",
+            "animal": "crocodile",
+            "url": "https://sketchfab.com/tags/crocodile",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "crocodile",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Galapagos Turtle",
+            "animal": "turtle",
+            "url": "https://sketchfab.com/tags/turtle",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "turtle",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Snake",
+            "animal": "snake",
+            "url": "https://sketchfab.com/tags/snake",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "snake",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Gecko",
+            "animal": "gecko",
+            "url": "https://sketchfab.com/tags/gecko",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "gecko",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Chameleon",
+            "animal": "chameleon",
+            "url": "https://sketchfab.com/tags/chameleon",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "chameleon",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Komodo Dragon",
+            "animal": "komodo",
+            "url": "https://sketchfab.com/tags/komodo",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "komodo",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Great White Shark",
+            "animal": "shark",
+            "url": "https://sketchfab.com/tags/shark",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "shark",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Hammerhead Shark",
+            "animal": "shark",
+            "url": "https://sketchfab.com/tags/hammerhead",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "shark",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Manta Ray",
+            "animal": "manta ray",
+            "url": "https://sketchfab.com/tags/manta-ray",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "manta ray",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Dolphin",
+            "animal": "dolphin",
+            "url": "https://sketchfab.com/tags/dolphin",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "dolphin",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Whale",
+            "animal": "whale",
+            "url": "https://sketchfab.com/tags/whale",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "whale",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Manatee",
+            "animal": "manatee",
+            "url": "https://sketchfab.com/tags/manatee",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "manatee",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Elephant Seal",
+            "animal": "seal",
+            "url": "https://sketchfab.com/tags/seal",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "seal",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Octopus",
+            "animal": "octopus",
+            "url": "https://sketchfab.com/tags/octopus",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "octopus",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Jellyfish",
+            "animal": "jellyfish",
+            "url": "https://sketchfab.com/tags/jellyfish",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "jellyfish",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Crab",
+            "animal": "crab",
+            "url": "https://sketchfab.com/tags/crab",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "crab",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Lobster",
+            "animal": "lobster",
+            "url": "https://sketchfab.com/tags/lobster",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "lobster",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Bee",
+            "animal": "bee",
+            "url": "https://sketchfab.com/tags/bee",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "bee",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Butterfly",
+            "animal": "butterfly",
+            "url": "https://sketchfab.com/tags/butterfly",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "butterfly",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Ladybug",
+            "animal": "ladybug",
+            "url": "https://sketchfab.com/tags/ladybug",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "ladybug",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Scorpion",
+            "animal": "scorpion",
+            "url": "https://sketchfab.com/tags/scorpion",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "scorpion",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Spider",
+            "animal": "spider",
+            "url": "https://sketchfab.com/tags/spider",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "spider",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "T-Rex",
+            "animal": "dinosaur",
+            "url": "https://sketchfab.com/tags/t-rex",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "dinosaur",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Triceratops",
+            "animal": "dinosaur",
+            "url": "https://sketchfab.com/tags/triceratops",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "dinosaur",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Velociraptor",
+            "animal": "dinosaur",
+            "url": "https://sketchfab.com/tags/velociraptor",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "dinosaur",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        },
+        {
+            "name": "Mammoth",
+            "animal": "mammoth",
+            "url": "https://sketchfab.com/tags/mammoth",
+            "source": "sketchfab",
+            "domain": "biology",
+            "category": "animals",
+            "formats": [
+                "OBJ",
+                "GLTF",
+                "FBX"
+            ],
+            "license": "CC Attribution",
+            "tags": [
+                "mammoth",
+                "3d model",
+                "viewable",
+                "free"
+            ],
+            "embedding_status": "pending"
+        }
+    ]
+}
