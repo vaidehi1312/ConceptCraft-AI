@@ -1,0 +1,1216 @@
+[
+  {
+    "name": "Ushaiger Tower Center",
+    "country": "Saudi Arabia",
+    "project_id": "00cc-vk33",
+    "url": "https://openheritage3d.org/project.php?id=00cc-vk33",
+    "doi": "10.26301/00cc-vk33",
+    "keywords": "Ushaiger, Saudi Arabia, KACST, hajj",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Ushaiger Tower Center. . archaeology historic sites heritage Ushaiger  Saudi Arabia  KACST  hajj Saudi Arabia heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 0
+  },
+  {
+    "name": "Santa Cruz Mission Adobe",
+    "country": "United States",
+    "project_id": "07af-c325",
+    "url": "https://openheritage3d.org/project.php?id=07af-c325",
+    "doi": "10.26301/07af-c325",
+    "keywords": "adobe, santa cruz, california, missions",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Santa Cruz Mission Adobe. . archaeology historic sites heritage adobe  santa cruz  california  missions United States heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 1
+  },
+  {
+    "name": "Fuvahmulah Havitta 3",
+    "country": "Maldives",
+    "project_id": "0bab-t430",
+    "url": "https://openheritage3d.org/project.php?id=0bab-t430",
+    "doi": "10.26301/0bab-t430",
+    "keywords": "Maldives, Buddhist sites, Indian Ocean",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Fuvahmulah Havitta 3. . archaeology historic sites heritage Maldives  Buddhist sites  Indian Ocean Maldives heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 2
+  },
+  {
+    "name": "Gampong Pande",
+    "country": "Indonesia",
+    "project_id": "0fpr-b340",
+    "url": "https://openheritage3d.org/project.php?id=0fpr-b340",
+    "doi": "10.26301/0fpr-b340",
+    "keywords": "Southeast Asia, Indonesia, Islamic heritage",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Gampong Pande. . archaeology historic sites heritage Southeast Asia  Indonesia  Islamic heritage Indonesia heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 3
+  },
+  {
+    "name": "Cossacks artifacts Khortytsia",
+    "country": "Ukraine",
+    "project_id": "0gs4-dc04",
+    "url": "https://openheritage3d.org/project.php?id=0gs4-dc04",
+    "doi": "10.26301/0gs4-dc04",
+    "keywords": "Cossacks, Ukraine, Steppe",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Cossacks artifacts Khortytsia. . archaeology historic sites heritage Cossacks  Ukraine  Steppe Ukraine heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 4
+  },
+  {
+    "name": "Heart of Neolithic Orkney - Maeshowe",
+    "country": "Scotland",
+    "project_id": "0qce-vj74",
+    "url": "https://openheritage3d.org/project.php?id=0qce-vj74",
+    "doi": "10.26301/0qce-vj74",
+    "keywords": "cairn, stone circle, archaeology, prehistory",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Heart of Neolithic Orkney - Maeshowe. . archaeology historic sites heritage cairn  stone circle  archaeology  prehistory Scotland heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 5
+  },
+  {
+    "name": "John Muir National Historic Site",
+    "country": "United States",
+    "project_id": "0scs-yy66",
+    "url": "https://openheritage3d.org/project.php?id=0scs-yy66",
+    "doi": "10.26301/0scs-yy66",
+    "keywords": "muir, nps, nationalparkservice",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "John Muir National Historic Site. . archaeology historic sites heritage muir  nps  nationalparkservice United States heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 6
+  },
+  {
+    "name": "Shukhov Tower",
+    "country": "Russia",
+    "project_id": "0skp-z245",
+    "url": "https://openheritage3d.org/project.php?id=0skp-z245",
+    "doi": "10.26301/0skp-z245",
+    "keywords": "moscow, russia, constructivism, tower",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Shukhov Tower. . archaeology historic sites heritage moscow  russia  constructivism  tower Russia heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 7
+  },
+  {
+    "name": "Battistero di San Giovanni Florence",
+    "country": "Italy",
+    "project_id": "0x6p-vk89",
+    "url": "https://openheritage3d.org/project.php?id=0x6p-vk89",
+    "doi": "10.26301/0x6p-vk89",
+    "keywords": "CISA3, Florence, Baptistery",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Battistero di San Giovanni Florence. . archaeology historic sites heritage CISA3  Florence  Baptistery Italy heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 8
+  },
+  {
+    "name": "Catalhoyuk East Mound North Area 2017",
+    "country": "Turkey",
+    "project_id": "0xe0-7v64",
+    "url": "https://openheritage3d.org/project.php?id=0xe0-7v64",
+    "doi": "10.26301/0xe0-7v64",
+    "keywords": "Neolithic, Turkey, UNESCO",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Catalhoyuk East Mound North Area 2017. . archaeology historic sites heritage Neolithic  Turkey  UNESCO Turkey heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 9
+  },
+  {
+    "name": "Heart of Neolithic Orkney - Stones of Stenness",
+    "country": "Scotland",
+    "project_id": "2tka-0y25",
+    "url": "https://openheritage3d.org/project.php?id=2tka-0y25",
+    "doi": "10.26301/2tka-0y25",
+    "keywords": "cairn, stone circle, archaeology",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Heart of Neolithic Orkney - Stones of Stenness. . archaeology historic sites heritage cairn  stone circle  archaeology Scotland heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 10
+  },
+  {
+    "name": "Chichen Itza",
+    "country": "Mexico",
+    "project_id": "2atk-cq42",
+    "url": "https://openheritage3d.org/project.php?id=2atk-cq42",
+    "doi": "10.26301/2atk-cq42",
+    "keywords": "maya, pyramid, mesoamerica, archaeology",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Chichen Itza. . archaeology historic sites heritage maya  pyramid  mesoamerica  archaeology Mexico heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 11
+  },
+  {
+    "name": "Fort York National Historic Site",
+    "country": "Canada",
+    "project_id": "2pys-t414",
+    "url": "https://openheritage3d.org/project.php?id=2pys-t414",
+    "doi": "10.26301/2pys-t414",
+    "keywords": "war of 1812, canada, military",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Fort York National Historic Site. . archaeology historic sites heritage war of 1812  canada  military Canada heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 12
+  },
+  {
+    "name": "Ancient Merv Sultan Kala",
+    "country": "Turkmenistan",
+    "project_id": "2ryx-nq44",
+    "url": "https://openheritage3d.org/project.php?id=2ryx-nq44",
+    "doi": "10.26301/2ryx-nq44",
+    "keywords": "ancientmerv, silk road, UNESCO",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Ancient Merv Sultan Kala. . archaeology historic sites heritage ancientmerv  silk road  UNESCO Turkmenistan heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 13
+  },
+  {
+    "name": "Temple of Apollo Portara",
+    "country": "Greece",
+    "project_id": "3axe-1f63",
+    "url": "https://openheritage3d.org/project.php?id=3axe-1f63",
+    "doi": "10.26301/3axe-1f63",
+    "keywords": "Naxos, Greece, temple, greek, apollo",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Temple of Apollo Portara. . archaeology historic sites heritage Naxos  Greece  temple  greek  apollo Greece heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 14
+  },
+  {
+    "name": "Ebenezer Baptist Church",
+    "country": "United States",
+    "project_id": "3xna-wf61",
+    "url": "https://openheritage3d.org/project.php?id=3xna-wf61",
+    "doi": "10.26301/3xna-wf61",
+    "keywords": "martin luther king, civil rights, georgia",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Ebenezer Baptist Church. . archaeology historic sites heritage martin luther king  civil rights  georgia United States heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 15
+  },
+  {
+    "name": "Mount Titano",
+    "country": "San Marino",
+    "project_id": "296p-dn53",
+    "url": "https://openheritage3d.org/project.php?id=296p-dn53",
+    "doi": "10.26301/296p-dn53",
+    "keywords": "UNESCO, mountain, medieval, tower",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Mount Titano. . archaeology historic sites heritage UNESCO  mountain  medieval  tower San Marino heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 16
+  },
+  {
+    "name": "La Cesta",
+    "country": "San Marino",
+    "project_id": "2h6g-jz80",
+    "url": "https://openheritage3d.org/project.php?id=2h6g-jz80",
+    "doi": "10.26301/2h6g-jz80",
+    "keywords": "UNESCO, mountain, medieval, tower",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "La Cesta. . archaeology historic sites heritage UNESCO  mountain  medieval  tower San Marino heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 17
+  },
+  {
+    "name": "Luxor Temple Chapel",
+    "country": "Egypt",
+    "project_id": "2164-0932",
+    "url": "https://openheritage3d.org/project.php?id=2164-0932",
+    "doi": "10.26301/2164-0932",
+    "keywords": "Egypt, Luxor, Temple",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Luxor Temple Chapel. . archaeology historic sites heritage Egypt  Luxor  Temple Egypt heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 18
+  },
+  {
+    "name": "Corbelled Houses of Karoo - Slingersfontein",
+    "country": "South Africa",
+    "project_id": "1y51-6f21",
+    "url": "https://openheritage3d.org/project.php?id=1y51-6f21",
+    "doi": "10.26301/1y51-6f21",
+    "keywords": "corbel, karoo, south africa",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Corbelled Houses of Karoo - Slingersfontein. . archaeology historic sites heritage corbel  karoo  south africa South Africa heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 19
+  },
+  {
+    "name": "Fort Lytton",
+    "country": "Australia",
+    "project_id": "1g63-yq03",
+    "url": "https://openheritage3d.org/project.php?id=1g63-yq03",
+    "doi": "10.26301/1g63-yq03",
+    "keywords": "lytton, queensland, australia, military",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Fort Lytton. . archaeology historic sites heritage lytton  queensland  australia  military Australia heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 20
+  },
+  {
+    "name": "Zinda Peer Mosque",
+    "country": "Bangladesh",
+    "project_id": "1hxv-e981",
+    "url": "https://openheritage3d.org/project.php?id=1hxv-e981",
+    "doi": "10.26301/1hxv-e981",
+    "keywords": "Bagerhat, bangladesh, mosque",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Zinda Peer Mosque. . archaeology historic sites heritage Bagerhat  bangladesh  mosque Bangladesh heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 21
+  },
+  {
+    "name": "Komainu Kobe Ikuta-jinja",
+    "country": "Japan",
+    "project_id": "1wv3-9775",
+    "url": "https://openheritage3d.org/project.php?id=1wv3-9775",
+    "doi": "10.26301/1wv3-9775",
+    "keywords": "Komainu, japan, shrine",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Komainu Kobe Ikuta-jinja. . archaeology historic sites heritage Komainu  japan  shrine Japan heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 22
+  },
+  {
+    "name": "Manzanar National Historic Site",
+    "country": "United States",
+    "project_id": "36b2-mp38",
+    "url": "https://openheritage3d.org/project.php?id=36b2-mp38",
+    "doi": "10.26301/36b2-mp38",
+    "keywords": "japanese american, ww2, incarceration",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Manzanar National Historic Site. . archaeology historic sites heritage japanese american  ww2  incarceration United States heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 23
+  },
+  {
+    "name": "Ceremonial Plaza Huaca Cao Viejo",
+    "country": "Peru",
+    "project_id": "3bev-wa81",
+    "url": "https://openheritage3d.org/project.php?id=3bev-wa81",
+    "doi": "10.26301/3bev-wa81",
+    "keywords": "peru, pyramid, archaeology",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Ceremonial Plaza Huaca Cao Viejo. . archaeology historic sites heritage peru  pyramid  archaeology Peru heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 24
+  },
+  {
+    "name": "New York State Pavilion",
+    "country": "United States",
+    "project_id": "3e9p-t207",
+    "url": "https://openheritage3d.org/project.php?id=3e9p-t207",
+    "doi": "10.26301/3e9p-t207",
+    "keywords": "world's fair, Philip Johnson, queens",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "New York State Pavilion. . archaeology historic sites heritage world's fair  Philip Johnson  queens United States heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 25
+  },
+  {
+    "name": "Folger Shakespeare Library",
+    "country": "United States",
+    "project_id": "3tpx-nd97",
+    "url": "https://openheritage3d.org/project.php?id=3tpx-nd97",
+    "doi": "10.26301/3tpx-nd97",
+    "keywords": "folger, shakespeare, library, washington",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Folger Shakespeare Library. . archaeology historic sites heritage folger  shakespeare  library  washington United States heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 26
+  },
+  {
+    "name": "Jack London Wolf House",
+    "country": "United States",
+    "project_id": "403p-tb11",
+    "url": "https://openheritage3d.org/project.php?id=403p-tb11",
+    "doi": "10.26301/403p-tb11",
+    "keywords": "jack london, california, author",
+    "source": "openheritage3d.org",
+    "domain": "cultural_heritage",
+    "category": "heritage_scans",
+    "formats": [
+      "LiDAR",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "archaeology",
+      "historic sites",
+      "heritage"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "Jack London Wolf House. . archaeology historic sites heritage jack london  california  author United States heritage_scans",
+    "source_file": "metadata/openheritage_metadata.json",
+    "original_index": 27
+  },
+  {
+    "name": "Buckingham Palace",
+    "sketchfab_short_url": "https://skfb.ly/ptsFD",
+    "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/Buckingham.png",
+    "tags": [
+      "palace",
+      "architecture",
+      "UK",
+      "london"
+    ],
+    "source": "sketchfab",
+    "domain": "cultural_heritage",
+    "category": "3d_reconstruction",
+    "formats": [
+      "PLY",
+      "PCD",
+      "COLMAP"
+    ],
+    "license": "open",
+    "embedding_status": "pending",
+    "view_url": "https://skfb.ly/ptsFD",
+    "embed_text": "Buckingham Palace. . palace architecture UK london   3d_reconstruction",
+    "source_file": "metadata/culture3d_metadata.json",
+    "original_index": 0
+  },
+  {
+    "name": "Cambridge Campus",
+    "sketchfab_short_url": "https://skfb.ly/ptsFK",
+    "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/one_page.png",
+    "tags": [
+      "campus",
+      "urban",
+      "architecture",
+      "VR"
+    ],
+    "source": "sketchfab",
+    "domain": "cultural_heritage",
+    "category": "3d_reconstruction",
+    "formats": [
+      "PLY",
+      "PCD",
+      "COLMAP"
+    ],
+    "license": "open",
+    "embedding_status": "pending",
+    "view_url": "https://skfb.ly/ptsFK",
+    "embed_text": "Cambridge Campus. . campus urban architecture VR   3d_reconstruction",
+    "source_file": "metadata/culture3d_metadata.json",
+    "original_index": 1
+  },
+  {
+    "name": "Egyptian Pyramids and Sphinx",
+    "sketchfab_short_url": "https://skfb.ly/ptsFL",
+    "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/pyramid.png",
+    "tags": [
+      "egypt",
+      "pyramid",
+      "ancient",
+      "archaeology"
+    ],
+    "source": "sketchfab",
+    "domain": "cultural_heritage",
+    "category": "3d_reconstruction",
+    "formats": [
+      "PLY",
+      "PCD",
+      "COLMAP"
+    ],
+    "license": "open",
+    "embedding_status": "pending",
+    "view_url": "https://skfb.ly/ptsFL",
+    "embed_text": "Egyptian Pyramids and Sphinx. . egypt pyramid ancient archaeology   3d_reconstruction",
+    "source_file": "metadata/culture3d_metadata.json",
+    "original_index": 2
+  },
+  {
+    "name": "Louvre Museum",
+    "sketchfab_short_url": "https://skfb.ly/ptsFM",
+    "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/louvre.png",
+    "tags": [
+      "museum",
+      "paris",
+      "architecture",
+      "france"
+    ],
+    "source": "sketchfab",
+    "domain": "cultural_heritage",
+    "category": "3d_reconstruction",
+    "formats": [
+      "PLY",
+      "PCD",
+      "COLMAP"
+    ],
+    "license": "open",
+    "embedding_status": "pending",
+    "view_url": "https://skfb.ly/ptsFM",
+    "embed_text": "Louvre Museum. . museum paris architecture france   3d_reconstruction",
+    "source_file": "metadata/culture3d_metadata.json",
+    "original_index": 3
+  },
+  {
+    "name": "Leaning Tower of Pisa",
+    "sketchfab_short_url": "https://skfb.ly/ptsFN",
+    "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/Italy.png",
+    "tags": [
+      "italy",
+      "tower",
+      "monument",
+      "VR"
+    ],
+    "source": "sketchfab",
+    "domain": "cultural_heritage",
+    "category": "3d_reconstruction",
+    "formats": [
+      "PLY",
+      "PCD",
+      "COLMAP"
+    ],
+    "license": "open",
+    "embedding_status": "pending",
+    "view_url": "https://skfb.ly/ptsFN",
+    "embed_text": "Leaning Tower of Pisa. . italy tower monument VR   3d_reconstruction",
+    "source_file": "metadata/culture3d_metadata.json",
+    "original_index": 4
+  },
+  {
+    "name": "Stonehenge",
+    "sketchfab_short_url": "https://skfb.ly/ptsFP",
+    "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/stonehenge.png",
+    "tags": [
+      "stonehenge",
+      "prehistoric",
+      "UK",
+      "archaeology"
+    ],
+    "source": "sketchfab",
+    "domain": "cultural_heritage",
+    "category": "3d_reconstruction",
+    "formats": [
+      "PLY",
+      "PCD",
+      "COLMAP"
+    ],
+    "license": "open",
+    "embedding_status": "pending",
+    "view_url": "https://skfb.ly/ptsFP",
+    "embed_text": "Stonehenge. . stonehenge prehistoric UK archaeology   3d_reconstruction",
+    "source_file": "metadata/culture3d_metadata.json",
+    "original_index": 5
+  },
+  {
+    "name": "Petra",
+    "sketchfab_short_url": "https://skfb.ly/pt9ro",
+    "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/petra.png",
+    "tags": [
+      "petra",
+      "jordan",
+      "ancient",
+      "archaeology",
+      "VR"
+    ],
+    "source": "sketchfab",
+    "domain": "cultural_heritage",
+    "category": "3d_reconstruction",
+    "formats": [
+      "PLY",
+      "PCD",
+      "COLMAP"
+    ],
+    "license": "open",
+    "embedding_status": "pending",
+    "view_url": "https://skfb.ly/pt9ro",
+    "embed_text": "Petra. . petra jordan ancient archaeology VR   3d_reconstruction",
+    "source_file": "metadata/culture3d_metadata.json",
+    "original_index": 6
+  },
+  {
+    "name": "Trafalgar Square",
+    "sketchfab_short_url": "https://skfb.ly/pt9rF",
+    "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/trafalgar.png",
+    "tags": [
+      "london",
+      "square",
+      "statues",
+      "architecture"
+    ],
+    "source": "sketchfab",
+    "domain": "cultural_heritage",
+    "category": "3d_reconstruction",
+    "formats": [
+      "PLY",
+      "PCD",
+      "COLMAP"
+    ],
+    "license": "open",
+    "embedding_status": "pending",
+    "view_url": "https://skfb.ly/pt9rF",
+    "embed_text": "Trafalgar Square. . london square statues architecture   3d_reconstruction",
+    "source_file": "metadata/culture3d_metadata.json",
+    "original_index": 7
+  },
+  {
+    "name": "National Art Gallery",
+    "sketchfab_short_url": "https://skfb.ly/pt9sF",
+    "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/gallery2.png",
+    "tags": [
+      "gallery",
+      "museum",
+      "interior",
+      "art",
+      "VR"
+    ],
+    "source": "sketchfab",
+    "domain": "cultural_heritage",
+    "category": "3d_reconstruction",
+    "formats": [
+      "PLY",
+      "PCD",
+      "COLMAP"
+    ],
+    "license": "open",
+    "embedding_status": "pending",
+    "view_url": "https://skfb.ly/pt9sF",
+    "embed_text": "National Art Gallery. . gallery museum interior art VR   3d_reconstruction",
+    "source_file": "metadata/culture3d_metadata.json",
+    "original_index": 8
+  },
+  {
+    "name": "Forbidden City",
+    "sketchfab_short_url": "https://skfb.ly/pt9sR",
+    "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/gugong.png",
+    "tags": [
+      "china",
+      "forbidden city",
+      "heritage",
+      "architecture"
+    ],
+    "source": "sketchfab",
+    "domain": "cultural_heritage",
+    "category": "3d_reconstruction",
+    "formats": [
+      "PLY",
+      "PCD",
+      "COLMAP"
+    ],
+    "license": "open",
+    "embedding_status": "pending",
+    "view_url": "https://skfb.ly/pt9sR",
+    "embed_text": "Forbidden City. . china forbidden city heritage architecture   3d_reconstruction",
+    "source_file": "metadata/culture3d_metadata.json",
+    "original_index": 9
+  },
+  {
+    "name": "Longmen Grottoes",
+    "sketchfab_short_url": "https://skfb.ly/pt9tr",
+    "thumbnail": "https://github.com/X-Intelligence-Labs/CULTURE3D/raw/main/images/longmen_all.png",
+    "tags": [
+      "china",
+      "grottoes",
+      "carvings",
+      "buddhist",
+      "VR"
+    ],
+    "source": "sketchfab",
+    "domain": "cultural_heritage",
+    "category": "3d_reconstruction",
+    "formats": [
+      "PLY",
+      "PCD",
+      "COLMAP"
+    ],
+    "license": "open",
+    "embedding_status": "pending",
+    "view_url": "https://skfb.ly/pt9tr",
+    "embed_text": "Longmen Grottoes. . china grottoes carvings buddhist VR   3d_reconstruction",
+    "source_file": "metadata/culture3d_metadata.json",
+    "original_index": 10
+  },
+  {
+    "name": "cultural_heritage_dataset.csv",
+    "file_path": "dataset/high_fidelity_heritage\\cultural_heritage_dataset.csv",
+    "format": "CSV",
+    "source": "kaggle",
+    "url": "https://www.kaggle.com/datasets/programmer3/high-fidelity-cultural-heritage-3d-dataset",
+    "domain": "cultural_heritage",
+    "category": "historical_sites",
+    "tags": [
+      "heritage",
+      "monuments",
+      "architecture"
+    ],
+    "embedding_status": "pending",
+    "embed_text": "cultural_heritage_dataset.csv. . heritage monuments architecture   historical_sites",
+    "source_file": "metadata/highfidelity_metadata.json",
+    "original_index": 0
+  },
+  {
+    "name": "Crops3D - Cabbage, Cotton, Maize, Potato, Rapeseed, Rice, Tomato, Wheat",
+    "url": "https://www.nature.com/articles/s41597-024-04290-0",
+    "download_url": "https://doi.org/10.1038/s41597-024-04290-0",
+    "description": "Point cloud dataset of 8 crops: cabbage, cotton, maize, potato, rapeseed, rice, tomato, wheat in PLY format",
+    "formats": [
+      "PLY",
+      "pointcloud"
+    ],
+    "tags": [
+      "crops",
+      "pointcloud",
+      "wheat",
+      "maize",
+      "tomato",
+      "rice"
+    ],
+    "source": "research",
+    "domain": "agriculture",
+    "category": "crop_3d_models",
+    "license": "open",
+    "embedding_status": "pending",
+    "embed_text": "Crops3D - Cabbage, Cotton, Maize, Potato, Rapeseed, Rice, Tomato, Wheat. Point cloud dataset of 8 crops: cabbage, cotton, maize, potato, rapeseed, rice, tomato, wheat in PLY format. crops pointcloud wheat maize tomato rice   crop_3d_models",
+    "source_file": "metadata/agirculrture_metadata.json",
+    "original_index": 0
+  },
+  {
+    "name": "Pheno4D - Maize and Tomato Plant Point Clouds",
+    "url": "https://www.ipb.uni-bonn.de/data/pheno4d/",
+    "description": "244 point clouds of 7 maize and 7 tomato plants scanned at different growth stages with semantic labels",
+    "formats": [
+      "PLY",
+      "pointcloud"
+    ],
+    "tags": [
+      "maize",
+      "tomato",
+      "phenotyping",
+      "pointcloud",
+      "growth stages"
+    ],
+    "source": "research",
+    "domain": "agriculture",
+    "category": "crop_3d_models",
+    "license": "open",
+    "embedding_status": "pending",
+    "embed_text": "Pheno4D - Maize and Tomato Plant Point Clouds. 244 point clouds of 7 maize and 7 tomato plants scanned at different growth stages with semantic labels. maize tomato phenotyping pointcloud growth stages   crop_3d_models",
+    "source_file": "metadata/agirculrture_metadata.json",
+    "original_index": 1
+  },
+  {
+    "name": "PLANesT-3D - Plant Point Cloud Segmentation Dataset",
+    "url": "https://arxiv.org/abs/2407.21150",
+    "description": "34 real plant RGB point clouds from 3 species with semantic and instance labels",
+    "formats": [
+      "PLY",
+      "pointcloud"
+    ],
+    "tags": [
+      "plant segmentation",
+      "pointcloud",
+      "RGB",
+      "semantic labels"
+    ],
+    "source": "research",
+    "domain": "agriculture",
+    "category": "crop_3d_models",
+    "license": "open",
+    "embedding_status": "pending",
+    "embed_text": "PLANesT-3D - Plant Point Cloud Segmentation Dataset. 34 real plant RGB point clouds from 3 species with semantic and instance labels. plant segmentation pointcloud RGB semantic labels   crop_3d_models",
+    "source_file": "metadata/agirculrture_metadata.json",
+    "original_index": 2
+  },
+  {
+    "name": "Soybean-MVS - 3D Soybean Plant Models",
+    "url": "https://www.mdpi.com/2077-0472/13/7/1321",
+    "description": "102 soybean 3D plant models from multi-view stereo across 13 growth stages",
+    "formats": [
+      "PLY",
+      "pointcloud"
+    ],
+    "tags": [
+      "soybean",
+      "3D reconstruction",
+      "growth stages",
+      "MVS"
+    ],
+    "source": "research",
+    "domain": "agriculture",
+    "category": "crop_3d_models",
+    "license": "open",
+    "embedding_status": "pending",
+    "embed_text": "Soybean-MVS - 3D Soybean Plant Models. 102 soybean 3D plant models from multi-view stereo across 13 growth stages. soybean 3D reconstruction growth stages MVS   crop_3d_models",
+    "source_file": "metadata/agirculrture_metadata.json",
+    "original_index": 3
+  },
+  {
+    "name": "Wheat Plant 3D Dataset - Nottingham",
+    "url": "https://plantimages.nottingham.ac.uk/",
+    "download_url": "https://doi.org/10.5524/102661",
+    "description": "High-fidelity wheat plant 3D reconstructions using 3D Gaussian Splatting and NeRF with point clouds",
+    "formats": [
+      "PLY",
+      "pointcloud",
+      "NeRF"
+    ],
+    "tags": [
+      "wheat",
+      "3DGS",
+      "NeRF",
+      "pointcloud",
+      "high fidelity"
+    ],
+    "source": "research",
+    "domain": "agriculture",
+    "category": "crop_3d_models",
+    "license": "open",
+    "embedding_status": "pending",
+    "embed_text": "Wheat Plant 3D Dataset - Nottingham. High-fidelity wheat plant 3D reconstructions using 3D Gaussian Splatting and NeRF with point clouds. wheat 3DGS NeRF pointcloud high fidelity   crop_3d_models",
+    "source_file": "metadata/agirculrture_metadata.json",
+    "original_index": 4
+  },
+  {
+    "name": "Sketchfab Agriculture 3D Models",
+    "url": "https://sketchfab.com/tags/agriculture",
+    "description": "Free viewable 3D agriculture models including crops, farm equipment and plants",
+    "formats": [
+      "OBJ",
+      "GLTF",
+      "FBX"
+    ],
+    "tags": [
+      "crops",
+      "farm",
+      "agriculture",
+      "viewable",
+      "free"
+    ],
+    "source": "research",
+    "domain": "agriculture",
+    "category": "crop_3d_models",
+    "license": "open",
+    "embedding_status": "pending",
+    "embed_text": "Sketchfab Agriculture 3D Models. Free viewable 3D agriculture models including crops, farm equipment and plants. crops farm agriculture viewable free   crop_3d_models",
+    "source_file": "metadata/agirculrture_metadata.json",
+    "original_index": 5
+  },
+  {
+    "name": "Sketchfab Crops 3D Models",
+    "url": "https://sketchfab.com/tags/crops",
+    "description": "Free viewable 3D crop models including tomatoes, potatoes, carrots and wheat",
+    "formats": [
+      "OBJ",
+      "GLTF"
+    ],
+    "tags": [
+      "crops",
+      "tomato",
+      "wheat",
+      "potato",
+      "viewable"
+    ],
+    "source": "research",
+    "domain": "agriculture",
+    "category": "crop_3d_models",
+    "license": "open",
+    "embedding_status": "pending",
+    "embed_text": "Sketchfab Crops 3D Models. Free viewable 3D crop models including tomatoes, potatoes, carrots and wheat. crops tomato wheat potato viewable   crop_3d_models",
+    "source_file": "metadata/agirculrture_metadata.json",
+    "original_index": 6
+  },
+  {
+    "name": "Sketchfab Farm 3D Models",
+    "url": "https://sketchfab.com/tags/farm",
+    "description": "Free viewable 3D farm environment models",
+    "formats": [
+      "OBJ",
+      "GLTF"
+    ],
+    "tags": [
+      "farm",
+      "environment",
+      "agriculture",
+      "viewable"
+    ],
+    "source": "research",
+    "domain": "agriculture",
+    "category": "crop_3d_models",
+    "license": "open",
+    "embedding_status": "pending",
+    "embed_text": "Sketchfab Farm 3D Models. Free viewable 3D farm environment models. farm environment agriculture viewable   crop_3d_models",
+    "source_file": "metadata/agirculrture_metadata.json",
+    "original_index": 7
+  },
+  {
+    "name": "P3D - Plant 3D Point Cloud Toolkit",
+    "url": "https://github.com/iziamtso/P3D",
+    "description": "Plant point cloud dataset with tomato and other plant scans in PCD format with phenotyping labels",
+    "formats": [
+      "PCD",
+      "OBJ",
+      "pointcloud"
+    ],
+    "tags": [
+      "tomato",
+      "phenotyping",
+      "pointcloud",
+      "segmentation"
+    ],
+    "source": "research",
+    "domain": "agriculture",
+    "category": "crop_3d_models",
+    "license": "open",
+    "embedding_status": "pending",
+    "embed_text": "P3D - Plant 3D Point Cloud Toolkit. Plant point cloud dataset with tomato and other plant scans in PCD format with phenotyping labels. tomato phenotyping pointcloud segmentation   crop_3d_models",
+    "source_file": "metadata/agirculrture_metadata.json",
+    "original_index": 8
+  }
+]
