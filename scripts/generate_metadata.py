@@ -1,0 +1,88 @@
+import json
+
+datasets = [
+
+    # -------- ENVIRONMENT --------
+    {
+        "name": "VLA-3D",
+        "domain": "environment",
+        "source_type": "download",
+        "url": "https://github.com/HaochenZ11/VLA-3D"
+    },
+    {
+        "name": "Three-Geo",
+        "domain": "environment",
+        "source_type": "api",
+        "url": "https://github.com/w3reality/three-geo"
+    },
+    {
+        "name": "Boreal3D Forest Dataset",
+        "domain": "environment",
+        "source_type": "download",
+        "url": "https://boreal3d.github.io/"
+    },
+    {
+        "name": "3D Spatial Data",
+        "domain": "environment",
+        "source_type": "download",
+        "url": "https://github.com/wonder-sk/3d-spatial-data"
+    },
+    {
+        "name": "EarthCrafter",
+        "domain": "environment",
+        "source_type": "download",
+        "url": "https://github.com/whiteinblue/EarthCrafter"
+    },
+
+    # -------- MATERIALS --------
+    {
+        "name": "OpenMaterial Dataset",
+        "domain": "materials",
+        "source_type": "download",
+        "url": "https://huggingface.co/datasets/EPFL-CVLab/OpenMaterial"
+    },
+    {
+        "name": "Digital Porous Media",
+        "domain": "materials",
+        "source_type": "download",
+        "url": "https://digitalporousmedia.org/published-datasets/drp.project.published.DRP-372"
+    },
+    {
+        "name": "ABC CAD Dataset",
+        "domain": "materials",
+        "source_type": "download",
+        "url": "https://deep-geometry.github.io/abc-dataset/"
+    },
+
+    # -------- GENERAL DATASETS --------
+    {
+        "name": "Objaverse",
+        "domain": "general",
+        "source_type": "download",
+        "url": "https://objaverse.allenai.org/"
+    },
+    {
+        "name": "ShapeNet",
+        "domain": "general",
+        "source_type": "download",
+        "url": "https://shapenet.org/"
+    },
+    {
+        "name": "ModelNet40",
+        "domain": "general",
+        "source_type": "download",
+        "url": "https://www.kaggle.com/datasets/balraj98/modelnet40-princeton-3d-object-dataset"
+    }
+
+]
+
+metadata = {
+    "project": "ConceptCraft AI",
+    "total_sources": len(datasets),
+    "datasets": datasets
+}
+
+with open("conceptcraft_metadata.json", "w") as f:
+    json.dump(metadata, f, indent=4)
+
+print("Metadata JSON created successfully!")

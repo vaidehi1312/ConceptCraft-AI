@@ -1,0 +1,17 @@
+[
+    {
+        "id": "object_1",
+        "model_file": "chair.glb",
+        "dataset": "Objaverse"
+    },
+    {
+        "id": "object_2",
+        "model_file": "table.glb",
+        "dataset": "Objaverse"
+    },
+    {
+        "id": "object_3",
+        "model_file": "lamp.glb",
+        "dataset": "Objaverse"
+    }
+]

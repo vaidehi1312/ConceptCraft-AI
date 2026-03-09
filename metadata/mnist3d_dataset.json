@@ -1,0 +1,34 @@
+[
+    {
+        "file": "archive.zip",
+        "path": "mnist3d_dataset\\archive.zip"
+    },
+    {
+        "file": "extract_mnist3d.py",
+        "path": "mnist3d_dataset\\extract_mnist3d.py"
+    },
+    {
+        "file": "full_dataset_vectors.h5",
+        "path": "mnist3d_dataset\\full_dataset_vectors.h5"
+    },
+    {
+        "file": "plot3D.py",
+        "path": "mnist3d_dataset\\plot3D.py"
+    },
+    {
+        "file": "process_mnist3d.py",
+        "path": "mnist3d_dataset\\process_mnist3d.py"
+    },
+    {
+        "file": "test_point_clouds.h5",
+        "path": "mnist3d_dataset\\test_point_clouds.h5"
+    },
+    {
+        "file": "train_point_clouds.h5",
+        "path": "mnist3d_dataset\\train_point_clouds.h5"
+    },
+    {
+        "file": "voxelgrid.py",
+        "path": "mnist3d_dataset\\voxelgrid.py"
+    }
+]

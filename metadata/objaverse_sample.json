@@ -1,0 +1,14 @@
+[
+    {
+        "id": "object_1",
+        "file": "chair.glb"
+    },
+    {
+        "id": "object_2",
+        "file": "table.glb"
+    },
+    {
+        "id": "object_3",
+        "file": "lamp.glb"
+    }
+]
