@@ -1,0 +1,192 @@
+{
+  "components": [
+    {
+      "id": "nucleus",
+      "position": [
+        0.12353421422258881,
+        4.290086280530215,
+        0.47794024941847724
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        3.0,
+        3.0,
+        3.0
+      ],
+      "resolved_shape": "sphere",
+      "color_hint": "parent_dominant",
+      "label": "nucleus",
+      "morphology_family": "nested_membrane"
+    },
+    {
+      "id": "cell_membrane",
+      "position": [
+        6.062372435695794,
+        2.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        4.0,
+        4.0,
+        4.0
+      ],
+      "resolved_shape": "box",
+      "color_hint": null,
+      "label": "cell_membrane",
+      "morphology_family": "nested_membrane"
+    },
+    {
+      "id": "mitochondrion_0",
+      "position": [
+        3.7798273887258187,
+        0.5,
+        4.7397536286733635
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "resolved_shape": "sphere",
+      "color_hint": "parent_dominant",
+      "label": "mitochondrion",
+      "morphology_family": "nested_membrane"
+    },
+    {
+      "id": "mitochondrion_1",
+      "position": [
+        -1.3490047763820443,
+        0.5,
+        5.910376101601537
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "resolved_shape": "sphere",
+      "color_hint": "parent_dominant",
+      "label": "mitochondrion",
+      "morphology_family": "nested_membrane"
+    },
+    {
+      "id": "mitochondrion_2",
+      "position": [
+        0.5015185088958658,
+        4.8152523772129445,
+        -0.7736737597098684
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "resolved_shape": "sphere",
+      "color_hint": "parent_dominant",
+      "label": "mitochondrion",
+      "morphology_family": "nested_membrane"
+    },
+    {
+      "id": "endoplasmic_reticulum",
+      "position": [
+        0.8497040014555295,
+        4.021151106754713,
+        0.06551844203814616
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "resolved_shape": "sphere",
+      "color_hint": "parent_dominant",
+      "label": "endoplasmic_reticulum",
+      "morphology_family": "nested_membrane"
+    },
+    {
+      "id": "golgi_apparatus",
+      "position": [
+        -0.20487595208144693,
+        3.6270450430813055,
+        0.7788381920623642
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "resolved_shape": "sphere",
+      "color_hint": "parent_dominant",
+      "label": "golgi_apparatus",
+      "morphology_family": "nested_membrane"
+    },
+    {
+      "id": "cytoplasm",
+      "position": [
+        0.0,
+        4.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        14.0,
+        14.0,
+        14.0
+      ],
+      "resolved_shape": "capsule",
+      "color_hint": "parent_dominant",
+      "label": "cytoplasm",
+      "morphology_family": "nested_membrane"
+    }
+  ],
+  "connectors": [],
+  "scene_bounds": [
+    7.411377212077838,
+    4.3152523772129445,
+    6.684049861311406
+  ],
+  "morphology_family": "nested_membrane",
+  "scenario": "animal cell",
+  "pattern": "central_peripheral",
+  "intro": "",
+  "layout_logic": "",
+  "tube_path": null
+}
