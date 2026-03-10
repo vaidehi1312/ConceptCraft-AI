@@ -303,14 +303,24 @@ class BlueprintGate:
                 status = "repair"
                 issues.append(f"Repaired missing count to 1 for {cid}")
             
+            resolved_shape = c.get("resolved_shape", "").lower().strip()
+            if not resolved_shape or resolved_shape not in VALID_SHAPES:
+                    resolved_shape = shape  # fall back to shape if missing/invalid
+
+            color_hint = c.get("color_hint", "neutral")
+            layout_hint = c.get("layout_hint", "none")
+
             normalized_components.append(ComponentInput(
-                id=cid, semantic_type=sem_type, label=label, shape=shape, 
-                role=role, count=count, size_hint=size, 
-                vertical_relation=rel, importance=importance
+                id=cid, semantic_type=sem_type, label=label, shape=shape,
+                resolved_shape=resolved_shape,
+                role=role, count=count, size_hint=size,
+                vertical_relation=rel, importance=importance,
+                color_hint=color_hint, layout_hint=layout_hint
             ))
             
         # Context Component Pruning for Physical Objects
-        if data.get("category", "physical_object") == "physical_object":
+        category = semantic_context.get("category") if semantic_context else None
+        if category == "physical_object":
             has_core = any(c.role == "central" or c.importance == "high" for c in normalized_components)
             if has_core:
                 context_kws = ["garden", "flanking", "surrounding", "context", "background", "plaza", "yard", "tree", "boundary", "wall"]

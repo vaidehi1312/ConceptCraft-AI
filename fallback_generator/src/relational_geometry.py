@@ -211,101 +211,133 @@ def apply_relational_geometry(blueprint: dict) -> dict:
     components = out_bp.get("geometric_components", [])
     comp_map = {c["id"]: c for c in components}
     
-    # Tracking accumulators for conflict resolution
     scale_mods = {c["id"]: [] for c in components}
     layout_hints = {c["id"]: [] for c in components}
     color_hints = {c["id"]: None for c in components}
     
     relations = out_bp.get("semantic_relations", [])
     
+    WIDTH_MAP = {
+        "thin": 0.05,
+        "medium": 0.1,
+        "thick": 0.2
+    }
+
     for rel in relations:
         r_type = rel.get("relation_type")
         r_strength = parse_strength(rel.get("strength", "medium"))
         
         rule = RELATION_RULES.get(r_type)
-        if not rule: continue
+        if not rule:
+            continue
         
-        from_id, to_id = rel.get("from_id"), rel.get("to_id")
+        from_id = rel.get("from_id")
+        to_id = rel.get("to_id")
         
-        # 1. Handle Connectors
+        if from_id not in comp_map or to_id not in comp_map:
+            continue
+
+        compA = comp_map[from_id]
+        compB = comp_map[to_id]
+
+        # ----------------------------------------------------
+        # 1. CONNECTOR CREATION (FIXED FORMAT)
+        # ----------------------------------------------------
         connector_type = rule.get("connector", "none")
         base_spec = CONNECTOR_SPECS.get(connector_type)
+
         if base_spec:
             scaled_spec = apply_strength_scaling(base_spec, r_strength)
+            width_label = scaled_spec.get("width", "medium")
+            width_value = WIDTH_MAP.get(width_label, 0.1)
+
             out_bp["connectors"].append({
-                "from_id": from_id,
-                "to_id": to_id,
-                "geometry": scaled_spec
+                "start": compA.get("position", [0,0,0]),
+                "end": compB.get("position", [0,0,0]),
+                "type": connector_type,
+                "width": width_value,
+                "color_hint": rule.get("color_hint")
             })
-            
-        # 2. Handle Color Hints
+
+        # ----------------------------------------------------
+        # 2. COLOR HINT
+        # ----------------------------------------------------
         if rule.get("color_hint"):
-            if from_id in color_hints: color_hints[from_id] = rule["color_hint"]
-            if to_id in color_hints: color_hints[to_id] = rule["color_hint"]
-            
-        # 3. Handle Layout Hints
+            if from_id in color_hints:
+                color_hints[from_id] = rule["color_hint"]
+            if to_id in color_hints:
+                color_hints[to_id] = rule["color_hint"]
+
+        # ----------------------------------------------------
+        # 3. LAYOUT HINT
+        # ----------------------------------------------------
         if rule.get("layout_hint"):
-            if from_id in layout_hints: layout_hints[from_id].append(rule["layout_hint"])
-            if to_id in layout_hints: layout_hints[to_id].append(rule["layout_hint"])
-            
-        # Special logic for "enclosure" (contains)
+            layout_hints[from_id].append(rule["layout_hint"])
+            layout_hints[to_id].append(rule["layout_hint"])
+
         if rule.get("enclosure"):
-            if from_id in layout_hints: layout_hints[from_id].append("contains")
-            if to_id in layout_hints: layout_hints[to_id].append("contained_within")
-            
-        # 4. Handle Scale Effects / Size Ratios
+            layout_hints[from_id].append("contains")
+            layout_hints[to_id].append("contained_within")
+
+        # ----------------------------------------------------
+        # 4. SCALE EFFECTS
+        # ----------------------------------------------------
         if "size_ratio" in rule:
             ratio = rule["size_ratio"]
+
             if r_type == "contains":
-                # Outer is ratio times bigger than inner
-                if from_id in scale_mods: scale_mods[from_id].append(ratio)
-                if to_id in scale_mods: scale_mods[to_id].append(1.0)
+                scale_mods[from_id].append(ratio)
+                scale_mods[to_id].append(1.0)
+
             elif r_type == "part_of":
-                # Child (from) is smaller, Parent (to) is larger
-                # Rule says 0.5 (parent * 2.0 vs child)
-                if from_id in scale_mods: scale_mods[from_id].append(ratio)
-                if to_id in scale_mods: scale_mods[to_id].append(1.0 / ratio)
-                
+                scale_mods[from_id].append(ratio)
+                scale_mods[to_id].append(1.0 / ratio)
+
         if "scale_effect" in rule:
             effect = rule["scale_effect"]
-            if effect == "equalize":
-                if from_id in scale_mods: scale_mods[from_id].append(1.0)
-                if to_id in scale_mods: scale_mods[to_id].append(1.0)
-            else:
-                # effect hits target (e.g. activates = target grows by 1.2)
-                if to_id in scale_mods:
-                    # Modify effect by strength
-                    mod = effect
-                    if r_strength < 0.4: mod = 1.0 + ((effect - 1.0) * 0.5)
-                    elif r_strength > 0.8: mod = 1.0 + ((effect - 1.0) * 1.3)
-                    scale_mods[to_id].append(mod)
 
-    # 5. Commit tracked accumulators and resolve conflicts
+            if effect == "equalize":
+                scale_mods[from_id].append(1.0)
+                scale_mods[to_id].append(1.0)
+
+            else:
+                mod = effect
+                if r_strength < 0.4:
+                    mod = 1.0 + ((effect - 1.0) * 0.5)
+                elif r_strength > 0.8:
+                    mod = 1.0 + ((effect - 1.0) * 1.3)
+
+                scale_mods[to_id].append(mod)
+
+    # --------------------------------------------------------
+    # 5. APPLY ACCUMULATED MODIFIERS
+    # --------------------------------------------------------
     for c in components:
         cid = c["id"]
-        
-        # Color Hint
+
         if color_hints[cid]:
             c["color_hint"] = color_hints[cid]
-            
-        # Layout Hint Conflict Resolution
+
         lh = layout_hints[cid]
         if lh:
-            if "contains" in lh: c["layout_hint"] = "contains"
-            elif "contained_within" in lh: c["layout_hint"] = "contained_within"
-            else: c["layout_hint"] = lh[0] # Just take first if no severe conflicts
-            
-        # Scale Modifiers Averaging
+            if "contains" in lh:
+                c["layout_hint"] = "contains"
+            elif "contained_within" in lh:
+                c["layout_hint"] = "contained_within"
+            else:
+                c["layout_hint"] = lh[0]
+
         sm = scale_mods[cid]
         if sm:
-            # Average all scale modifiers acting on this component
             avg_mod = sum(sm) / len(sm)
-            current_scale = c.get("scale_hint", (1.0, 1.0, 1.0))
-            if isinstance(current_scale, (list, tuple)) and len(current_scale) == 3:
-                c["scale_hint"] = (current_scale[0] * avg_mod, current_scale[1] * avg_mod, current_scale[2] * avg_mod)
+            current_scale = c.get("scale_hint", (1.0,1.0,1.0))
+            c["scale_hint"] = (
+                current_scale[0] * avg_mod,
+                current_scale[1] * avg_mod,
+                current_scale[2] * avg_mod
+            )
 
     return out_bp
-
 # ============================================================================
 # 5. TESTS
 # ============================================================================

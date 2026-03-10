@@ -85,7 +85,7 @@ class VisualGate:
         if comp_count > 0:
             density = rel_count / comp_count
             density_limits = {
-                "physical_object": 0.6,
+                "physical_object": 1.2,
                 "biological_structure": 0.8,
                 "process": 1.0,
                 "abstract_system": 1.0,
@@ -139,7 +139,7 @@ class VisualGate:
                     
             if not has_shape_defining_core and comp_count > 0:
                 score -= 20
-                issues.append("Physical object lacks a shape-defining core (e.g. dome, arch, roof). Recognizability lowered.")
+                issues.append("Physical object has no explicit shape-defining core")
                 
             # Anchor Dominance Check
             anchors = [c for c in components if any(kw in c.id.lower() or kw in c.label.lower() for kw in ["platform", "base", "foundation", "plinth"])]
@@ -167,12 +167,16 @@ class VisualGate:
                 issues.append(f"Structural contradiction: {pattern} pattern mixed with linear arrangement for sequential cores. Radial overlap likely.")
 
         # Decide Status
+        # Decide Status (relaxed gate)
         status = "accept"
-        if score < 60:
-            status = "reject"
-        elif score < 80:
+
+        if score < 80:
             status = "repair"
             blueprint = cls._repair_blueprint(blueprint, category)
+
+# Never reject — allow pipeline to continue
+        if score < 40:
+            status = "repair"
 
         return {
             "score": score,

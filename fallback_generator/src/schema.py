@@ -28,10 +28,10 @@ class ComponentInput:
     size_hint: str = "medium" # small | medium | large
     vertical_relation: str = "none" # above | below | none | same_level
     importance: str = "medium" # high | medium | low
-    resolved_shape: Optional[str] = None
+    resolved_shape: str = ""
+    color_hint: str = "neutral"
+    layout_hint: str = "none"
     scale_hint: Any = None
-    color_hint: Optional[str] = None
-    layout_hint: Optional[str] = None
 
 @dataclass
 class RelationInput:

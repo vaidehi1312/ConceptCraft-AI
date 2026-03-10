@@ -167,9 +167,13 @@ class SemanticGate:
                 issues.append(f"Pruned specific optional entity: {entity.get('id')}")
                 
         cleaned_entities = final_entities
-            
         data["entities"] = cleaned_entities
         entities_count = len(cleaned_entities)
+        if entities_count == 1 and len(entities) > 1:
+            cleaned_entities = [e for e in entities[:2] if isinstance(e, dict)]
+            data["entities"] = cleaned_entities
+            status = "repair"
+            issues.append("Prevented entity collapse: kept minimum two entities.")
         
         # Step 7: Hybrid validation
         if data.get("hybrid_needed", False):
@@ -206,7 +210,11 @@ class SemanticGate:
                 source = r.get("source", r.get("from", r.get("from_id", "")))
                 target = r.get("target", r.get("to", r.get("to_id", "")))
                 rtype = r.get("type", r.get("relation_type", "flows_to"))
-                
+                if rtype not in cls.ALLOWED_RELATIONS:
+                    rtype = "flows_to"
+                    status = "repair"
+                    issues.append(f"Repaired unknown relation type to flows_to for {source}->{target}")
+                                
                 if rtype in cls.FORBIDDEN_RELATIONS:
                     continue
                 

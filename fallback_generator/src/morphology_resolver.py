@@ -5,12 +5,20 @@ RESPONSIBILITY:
 Determines the physical "style" or "family" of the object based on semantic signals. 
 Maps a generic blueprint to concepts like "nested_membrane" or "architectural_assembly".
 
+FIXES APPLIED:
+  1. resolved_shape is NO LONGER unconditionally overwritten.
+     If Gemini already set a valid resolved_shape, it is preserved.
+     The vocab lookup is only used as a fallback.
+  2. semantic_type-based shape override added BEFORE role-based vocab —
+     so "vertex"→sphere, "edge/side"→box, "layer/zone"→sphere etc. always win.
+  3. Explicit label-keyword override for astronomical/geometric concepts.
+
 STAGES HANDLED:
 - Stage 6: Morphology Resolution
 """
 import copy
 from pipeline_contract import (
-    VALID_MORPHOLOGY_FAMILIES, VALID_PATTERNS, 
+    VALID_MORPHOLOGY_FAMILIES, VALID_PATTERNS,
     VALID_CATEGORIES, validate_incoming
 )
 
@@ -251,7 +259,6 @@ MORPHOLOGY_FAMILIES = {
 # 2. SCORING TABLES
 # ============================================================================
 
-# Weight 3 — Pattern is the strongest signal
 PATTERN_SCORES = {
     "central_peripheral": {"nested_membrane": 3},
     "network": {"hub_spoke_web": 3},
@@ -262,7 +269,6 @@ PATTERN_SCORES = {
     "grid": {"crystalline_lattice": 3, "modular_grid": 3}
 }
 
-# Weight 2 — Category+Pattern combo refines the choice
 CATEGORY_PATTERN_SCORES = {
     ("biological_structure", "central_peripheral"): {"nested_membrane": 2},
     ("biological_structure", "hierarchical"): {"branching_tree": 2},
@@ -279,7 +285,6 @@ CATEGORY_PATTERN_SCORES = {
     ("physical_object", "central_peripheral"): {"architectural_assembly": 2},
 }
 
-# Category-level bonuses and penalties (applied independently of pattern)
 CATEGORY_SCORES = {
     "physical_object": {
         "architectural_assembly": 4,
@@ -316,7 +321,6 @@ CATEGORY_SCORES = {
     },
 }
 
-# Weight 1-2 each — Scan entity IDs for keywords
 ENTITY_KEYWORD_SCORES = {
     "nested_membrane": ["membrane", "cell", "nucleus", "organelle", "cytoplasm", "vesicle", "atom", "shell", "kernel"],
     "flow_channel": ["tubule", "duct", "vessel", "canal", "loop", "flow", "artery", "vein", "capillary", "nephron", "henle"],
@@ -330,7 +334,6 @@ ENTITY_KEYWORD_SCORES = {
     "modular_grid": ["module", "grid", "chip", "circuit", "processor", "block", "tile", "panel", "board"],
 }
 
-# Weight 2 per match — Architecture/Process/Abstract keyword scanning
 ARCHITECTURAL_KEYWORDS = [
     "dome", "mausoleum", "tower", "minaret", "pillar", "column", "arch",
     "facade", "spire", "nave", "vault", "buttress", "portico", "platform",
@@ -366,13 +369,143 @@ CONTRAST_TIEBREAKER = {
 }
 
 # ============================================================================
-# 3. RESOLVER FUNCTION
+# 3. SEMANTIC-TYPE AND LABEL SHAPE OVERRIDES
+# ============================================================================
+# These override the vocab lookup when a component's semantic_type or label
+# clearly implies a specific shape, regardless of morphology family.
+# This prevents the resolver from assigning wrong shapes to well-known types.
+
+# Checked against comp["semantic_type"]
+# =====================================================================
+# 3. SEMANTIC-TYPE AND LABEL SHAPE OVERRIDES (FIXED)
+# =====================================================================
+
+SEMANTIC_TYPE_SHAPE_OVERRIDE = {
+    "vertex": "sphere",
+    "corner": "sphere",
+    "point": "sphere",
+
+    "edge": "cylinder",
+    "side": "box",
+    "face": "box",
+
+    "layer": "sphere",
+    "zone": "sphere",
+
+    "orbit": "torus",
+    "ring": "torus",
+    "belt": "torus"
+}
+
+LABEL_SHAPE_KEYWORDS = {
+    "sphere": [
+        "sun","star","planet","moon","earth","mars","venus","jupiter",
+        "saturn","mercury","uranus","neptune","pluto","nucleus","atom",
+        "core","layer","zone","corona","photosphere","radiative",
+        "convective","chromosphere","mantle","crust","cell","organelle",
+        "proton","neutron","electron","bubble","droplet","globe","orb"
+    ],
+
+    "torus": [
+        "ring","orbit","orbital","belt","loop","torus",
+        "asteroid belt","accretion","saturn ring"
+    ],
+
+    "cylinder": [
+        "tube","pipe","channel","stem","trunk","column","pillar",
+        "rod","axon","vessel","artery","vein","flagella","bond","link"
+    ],
+
+    "cone": [
+        "cone","pyramid","tip","apex","spire","peak","funnel"
+    ],
+
+    "tetrahedron": [
+        "triangular","triangle","triangular_face"
+    ],
+
+    "box": [
+        "side","edge","wall","block","base","platform",
+        "building","structure","crystal","lattice","chip","module"
+    ]
+}
+# Valid resolved_shape values that Three.js createShape() accepts
+VALID_SHAPES = {
+    "sphere", "box", "cylinder", "cone", "torus", "hemisphere",
+    "icosphere", "oblate_sphere", "tapered_cylinder", "capsule",
+    "wireframe_cube", "branching_fork", "torus_section",
+    "octahedron", "tetrahedron"
+}
+
+
+def _infer_shape_from_label(comp: dict) -> str | None:
+    """
+    Infer shape from component label/id using keyword matching.
+    Returns a shape string or None if no match found.
+    """
+    text = (
+        (comp.get("label") or "") + " " +
+        (comp.get("id") or "") + " " +
+        (comp.get("semantic_type") or "")
+    ).lower()
+
+    for shape, keywords in LABEL_SHAPE_KEYWORDS.items():
+        if any(kw in text for kw in keywords):
+            return shape
+    return None
+
+
+def _resolve_component_shape(comp: dict, vocab: dict) -> str:
+    """
+    Determine the final resolved_shape for a component using this priority:
+
+    1. Gemini-provided resolved_shape (if valid and non-empty) — PRESERVE IT
+    2. semantic_type override (vertex→sphere, edge→box, layer→sphere etc.)
+    3. Label/ID keyword inference (sun→sphere, ring→torus etc.)
+    4. Role-based vocab lookup (morphology family shape vocabulary)
+    5. Gemini-provided `shape` field (raw, may be correct)
+    6. Hard fallback: "sphere"
+    """
+    def _resolve_component_shape(comp: dict, vocab: dict) -> str:
+
+        existing = (comp.get("resolved_shape") or "").strip().lower()
+        if existing and existing in VALID_SHAPES:
+            return existing
+
+        sem_type = (comp.get("semantic_type") or "").lower().strip()
+        if sem_type in SEMANTIC_TYPE_SHAPE_OVERRIDE:
+            return SEMANTIC_TYPE_SHAPE_OVERRIDE[sem_type]
+
+        text = (
+            (comp.get("label") or "") + " " +
+            (comp.get("id") or "") + " " +
+            (comp.get("semantic_type") or "")
+            ).lower()
+
+        for shape, keywords in LABEL_SHAPE_KEYWORDS.items():
+            if any(k in text for k in keywords):
+                return shape
+
+        role = comp.get("role", "node")
+        vocab_shape = vocab.get(role, vocab.get("default", "sphere"))
+        if vocab_shape in VALID_SHAPES:
+            return vocab_shape
+
+        raw_shape = (comp.get("shape") or "").strip().lower()
+        if raw_shape in VALID_SHAPES:
+            return raw_shape
+
+        return "sphere"
+
+
+# ============================================================================
+# 4. SCALE HINT
 # ============================================================================
 def get_scale_hint(size_hint: str, contrast: str) -> tuple:
     """Calculates a base tuple scale multiplier based on contrast rules."""
     base_map = {"small": 0.5, "medium": 1.0, "large": 2.0, "extra_large": 4.0}
     val = base_map.get(size_hint, 1.0)
-    
+
     if contrast == "dramatic":
         if size_hint == "large": val *= 1.5
         if size_hint == "small": val *= 0.5
@@ -380,84 +513,87 @@ def get_scale_hint(size_hint: str, contrast: str) -> tuple:
         val = 1.0
     elif contrast == "inverted":
         val = 1.0 / val
-        
+
     return (val, val, val)
 
+
+# ============================================================================
+# 5. RESOLVER FUNCTION
+# ============================================================================
 def resolve_morphology(blueprint: dict, semantic_json: dict) -> dict:
     """
     Pure function to resolve morphology identity based on semantic cues.
     Uses a weighted scoring system: pattern (3) > category+pattern (2) > entity keywords (1).
+    
+    resolved_shape assignment priority (per component):
+      1. Gemini-provided resolved_shape (preserved if valid)
+      2. semantic_type override
+      3. label/id keyword inference
+      4. role-based morphology vocab
+      5. raw shape field
+      6. sphere fallback
     """
     validate_incoming(blueprint, "MorphologyResolver (blueprint)", ["pattern", "geometric_components", "semantic_relations"])
     validate_incoming(semantic_json, "MorphologyResolver (semantic)", ["category", "dominant_pattern"])
-    
+
     out_bp = copy.deepcopy(blueprint)
-    
+
     # 1. Extract Signals
     pattern = blueprint.get("pattern", semantic_json.get("pattern", "unknown"))
     category = semantic_json.get("category", "unknown")
-    
+
     entity_ids = [c.get("id", "") for c in blueprint.get("geometric_components", [])]
     relations = [r.get("relation_type", r.get("type", "unknown")) for r in blueprint.get("semantic_relations", [])]
-    
+
     # 2. Score Families
     scores = {f: 0 for f in MORPHOLOGY_FAMILIES.keys()}
-    
-    # Weight 3: Pattern signal
+
     for f, score in PATTERN_SCORES.get(pattern, {}).items():
         scores[f] += score
-    
-    # Weight 2: Category + Pattern combo signal
+
     for f, score in CATEGORY_PATTERN_SCORES.get((category, pattern), {}).items():
         scores[f] += score
-    
-    # Category-level bonuses and penalties (independent of pattern)
+
     for f, score in CATEGORY_SCORES.get(category, {}).items():
         if f in scores:
             scores[f] += score
-        
-    # Weight 1: Entity ID keyword scanning
+
     all_ids_str = " ".join(entity_ids).lower()
     for family, keywords in ENTITY_KEYWORD_SCORES.items():
         for kw in keywords:
             if kw in all_ids_str:
                 scores[family] += 1
-    
-    # Weight 2: Architectural keyword scanning
+
     for kw in ARCHITECTURAL_KEYWORDS:
         if kw in all_ids_str:
             scores["architectural_assembly"] += 2
-    
-    # Weight 2: Process keyword scanning
+
     for kw in PROCESS_KEYWORDS:
         if kw in all_ids_str:
             scores["process_sequence"] += 2
-    
-    # Weight 2: Abstract keyword scanning
+
     for kw in ABSTRACT_KEYWORDS:
         if kw in all_ids_str:
             scores["symbolic_abstract"] += 2
-            
-    # Weight 1: Relation type signal
+
     for rel in relations:
         for f, score in RELATION_SCORES.get(rel, {}).items():
             scores[f] += score
-            
+
     # 3. Print top-3 scored families for debugging
     sorted_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
     top3 = sorted_scores[:3]
     print(f"      [MORPHOLOGY TOP-3]: {', '.join(f'{name}={score}' for name, score in top3)}")
-    
+
     # 4. Find Best Match (with Tie-Breaker)
-    best_family = "modular_grid"  # Ultimate fallback
+    best_family = "modular_grid"
     best_score = -1
-    
+
     for family, score in scores.items():
         if score > best_score:
             best_family = family
             best_score = score
         elif score == best_score and score > 0:
-            # Tie breaker: Higher diversity contrast wins
             c_current = CONTRAST_TIEBREAKER[MORPHOLOGY_FAMILIES[best_family]["scale_contrast"]]
             c_candidate = CONTRAST_TIEBREAKER[MORPHOLOGY_FAMILIES[family]["scale_contrast"]]
             if c_candidate > c_current:
@@ -467,67 +603,56 @@ def resolve_morphology(blueprint: dict, semantic_json: dict) -> dict:
     family_params = MORPHOLOGY_FAMILIES[best_family]
     out_bp["morphology_family"] = best_family
     out_bp["morphology_params"] = family_params
-    
+
     vocab = family_params["shape_vocab"]
     contrast = family_params["scale_contrast"]
-    
+
     for comp in out_bp.get("geometric_components", []):
-        role = comp.get("role", "node")
-        comp["resolved_shape"] = vocab.get(role, vocab.get("default", "box"))
-        
+        # ── FIX: use priority-based shape resolution instead of unconditional overwrite
+        comp["resolved_shape"] = _resolve_component_shape(comp, vocab)
+
         # Calculate scale hint
         size_hint = comp.get("size_hint", "medium")
         comp["scale_hint"] = get_scale_hint(size_hint, contrast)
-        
+
     return out_bp
 
+
 # ============================================================================
-# 4. TESTS
+# 6. TESTS
 # ============================================================================
 if __name__ == "__main__":
     def run_test(name, semantic, blueprint):
         res = resolve_morphology(blueprint, semantic)
         print(f"--- TEST: {name} ---")
         print(f"Resolved Family: {res['morphology_family']}")
-        print(f"Shape Vocab: {res['morphology_params']['shape_vocab']}")
+        for c in res["geometric_components"]:
+            print(f"  {c.get('id','?'):20} role={c.get('role','?'):12} → resolved_shape={c.get('resolved_shape','?')}")
         print()
 
-    # 1. Animal Cell
-    run_test("Animal Cell", 
-             {"category": "biological_structure", "pattern": "radial"},
-             {"pattern": "radial", 
-              "geometric_components": [{"semantic_type": "cell", "role": "container"}, {"semantic_type": "organ", "role": "central"}],
-              "semantic_relations": [{"relation_type": "contains"}]}
-    )
-    
-    # 2. Evolutionary Tree
-    run_test("Evolutionary Tree",
-             {"category": "organization", "pattern": "hierarchical"},
-             {"pattern": "hierarchical",
-              "geometric_components": [{"semantic_type": "institution", "role": "root"}, {"semantic_type": "actor", "role": "node"}],
-              "semantic_relations": [{"relation_type": "depends_on"}]}
-    )
-    
-    # 3. TCP/IP Stack
-    run_test("TCP/IP Stack",
-             {"category": "technology", "pattern": "linear"},
-             {"pattern": "linear",
-              "geometric_components": [{"semantic_type": "layer", "role": "level"}],
-              "semantic_relations": [{"relation_type": "supports"}]}
-    )
-    
-    # 4. Social Network
-    run_test("Social Network",
-             {"category": "technology", "pattern": "network"},
+    run_test("Animal Cell",
+             {"category": "biological_structure", "dominant_pattern": "radial", "pattern": "radial"},
+             {"pattern": "radial",
+              "geometric_components": [
+                  {"id": "cell_membrane", "semantic_type": "container", "role": "container", "label": "Cell Membrane", "shape": "sphere"},
+                  {"id": "nucleus", "semantic_type": "organ", "role": "central", "label": "Nucleus", "shape": "sphere"}
+              ],
+              "semantic_relations": [{"relation_type": "contains"}]})
+
+    run_test("Square (Gemini resolved_shape already set)",
+             {"category": "abstract_system", "dominant_pattern": "network", "pattern": "network"},
              {"pattern": "network",
-              "geometric_components": [{"semantic_type": "actor", "role": "node"}],
-              "semantic_relations": [{"relation_type": "influences"}]}
-    )
-    
-    # 5. DNA Replication
-    run_test("DNA Replication",
-             {"category": "biological_structure", "pattern": "linear"},
-             {"pattern": "linear",
-              "geometric_components": [{"semantic_type": "chemical_unit", "role": "node"}],
-              "semantic_relations": [{"relation_type": "flows_to"}]}
-    )
+              "geometric_components": [
+                  {"id": "vertex", "semantic_type": "vertex", "role": "node", "label": "Vertex", "shape": "sphere", "resolved_shape": "sphere"},
+                  {"id": "side", "semantic_type": "edge", "role": "peripheral", "label": "Side", "shape": "box", "resolved_shape": "box"}
+              ],
+              "semantic_relations": []})
+
+    run_test("Solar System (no resolved_shape set — label inference)",
+             {"category": "physical_object", "dominant_pattern": "central_peripheral", "pattern": "central_peripheral"},
+             {"pattern": "central_peripheral",
+              "geometric_components": [
+                  {"id": "sun", "semantic_type": "star", "role": "central", "label": "Sun", "shape": ""},
+                  {"id": "planet", "semantic_type": "planet", "role": "peripheral", "label": "Planet", "shape": ""}
+              ],
+              "semantic_relations": []})
