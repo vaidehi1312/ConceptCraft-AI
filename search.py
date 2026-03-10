@@ -1,11 +1,9 @@
 """
 search.py — ConceptCraftAI
 Stage 1: MiniLM (all-MiniLM-L6-v2) → FAISS → top 10 candidates
-Stage 2: CLIP (clip-vit-base-patch32) → text vs image rerank → top 1
+Stage 2: CrossEncoder (ms-marco-MiniLM-L-6-v2) → text relevance rerank → top 1
 Stage 3: Structural comparison → weighted confidence score
-Stage 4: Confidence check → accept (≥0.75) or fallback
-
-CLIP is lazy-loaded on first use to keep startup fast.
+Stage 4: Confidence check → accept (≥0.54) or fallback
 """
 
 import json
@@ -14,28 +12,39 @@ import numpy as np
 import faiss
 from pathlib import Path
 from sentence_transformers import SentenceTransformer
+from sentence_transformers.cross_encoder import CrossEncoder
 
 # ── Config ────────────────────────────────────────────────────────────────────
 INDEXES_DIR          = Path("indexes")
 MINILM_MODEL         = "all-MiniLM-L6-v2"
-CLIP_MODEL_NAME      = "openai/clip-vit-base-patch32"  # disabled on 4GB RAM
+CROSS_ENCODER_MODEL  = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 TOP_K                = 10
-CONFIDENCE_THRESHOLD = 0.54
+CONFIDENCE_THRESHOLD = 0.40
 DOMAINS              = ["biological", "physical", "chemical", "astronomical"]
 
-# ── Structural comparison weights ─────────────────────────────────────────────
-# Final score = CLIP * 0.6 + structural * 0.4
-CLIP_WEIGHT       = 0.6
+# ── Final score weights ───────────────────────────────────────────────────────
+# Final score = cross_encoder_norm * 0.6 + structural * 0.4
+CLIP_WEIGHT       = 0.6   # kept as CLIP_WEIGHT for API compatibility
 STRUCTURAL_WEIGHT = 0.4
+
+# Cross-encoder score normalization range (logits, empirically observed)
+# Scores below CE_MIN are clamped to 0, above CE_MAX clamped to 1
+CE_MIN = -10.0
+CE_MAX =  10.0
+
+def _normalize_ce_score(raw: float) -> float:
+    """Normalize cross-encoder logit to 0.0–1.0 range."""
+    return float(np.clip((raw - CE_MIN) / (CE_MAX - CE_MIN), 0.0, 1.0))
 
 # ── Load MiniLM (always loaded at startup) ────────────────────────────────────
 print(f"Loading MiniLM: {MINILM_MODEL}")
 minilm = SentenceTransformer(MINILM_MODEL)
 print(f"  MiniLM ready ✅")
 
-# ── CLIP disabled — insufficient RAM on this machine (4GB) ───────────────────
-# Stage 2 reranking falls back to FAISS score. Re-enable on 16GB+ machines.
-CLIP_ENABLED = False
+# ── Load CrossEncoder ─────────────────────────────────────────────────────────
+print(f"Loading CrossEncoder: {CROSS_ENCODER_MODEL}")
+cross_encoder = CrossEncoder(CROSS_ENCODER_MODEL)
+print(f"  CrossEncoder ready ✅")
 
 
 # ── Load all 4 FAISS indexes + JSON catalogs ─────────────────────────────────
@@ -148,7 +157,7 @@ def stage1_faiss_search(query: str, domain: str, top_k: int = TOP_K) -> list[dic
         model_entry = _fetch_entry(domain, i) if use_offset else catalogs[domain][i]
         results.append({
             "faiss_score":      float(score),
-            "clip_score":       float(score),
+            "clip_score":       float(score),   # will be overwritten in stage 2
             "structural_score": 0.0,
             "final_score":      float(score),
             "model":            model_entry
@@ -158,15 +167,34 @@ def stage1_faiss_search(query: str, domain: str, top_k: int = TOP_K) -> list[dic
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# STAGE 2 — CLIP reranking (text vs image)
+# STAGE 2 — CrossEncoder reranking (replaces CLIP)
 # ══════════════════════════════════════════════════════════════════════════════
-def stage2_clip_rerank(query: str, candidates: list[dict]) -> list[dict]:
+def stage2_cross_encoder_rerank(query: str, candidates: list[dict]) -> list[dict]:
     """
-    CLIP disabled on this machine (4GB RAM insufficient).
-    Candidates already sorted by FAISS score — returned as-is.
-    clip_score = faiss_score as fallback.
+    CrossEncoder reranking: scores (query, embed_text) pairs directly.
+    No images needed — pure text relevance matching.
+    clip_score key is reused for API response compatibility.
+
+    Returns candidates sorted by cross-encoder score descending.
     """
-    return candidates
+    if not candidates:
+        return candidates
+
+    # Build (query, document_text) pairs
+    pairs = [
+        (query, c["model"].get("embed_text") or c["model"].get("name") or "")
+        for c in candidates
+    ]
+
+    # Get raw logit scores from cross-encoder
+    raw_scores = cross_encoder.predict(pairs)
+
+    # Normalize to 0.0–1.0 and store as clip_score for API compatibility
+    for c, raw in zip(candidates, raw_scores):
+        c["clip_score"] = _normalize_ce_score(float(raw))
+
+    # Sort best first
+    return sorted(candidates, key=lambda x: x["clip_score"], reverse=True)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -285,24 +313,24 @@ def stage3_structural_score(query: str, model: dict) -> float:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# STAGE 4 — Confidence check  (CLIP + structural → final score)
+# STAGE 4 — Confidence check  (cross-encoder + structural → final score)
 # ══════════════════════════════════════════════════════════════════════════════
 def search_with_confidence(query: str, domain: str, top_k: int = TOP_K) -> dict:
     """
     Full pipeline:
-      Stage 1 → FAISS (MiniLM)      → top 10
-      Stage 2 → CLIP rerank         → top 1
-      Stage 3 → structural compare  → metadata score
-      Stage 4 → weighted confidence → accept or fallback
+      Stage 1 → FAISS (MiniLM)                → top 10
+      Stage 2 → CrossEncoder rerank           → top 1
+      Stage 3 → structural compare            → metadata score
+      Stage 4 → weighted confidence           → accept or fallback
 
-    Final score = clip_score * 0.6 + structural_score * 0.4
+    Final score = clip_score (cross-encoder norm) * 0.6 + structural_score * 0.4
 
     Returns:
         {
             accepted:          bool,
             best_match:        dict,
             best_score:        float,   ← weighted final score
-            clip_score:        float,
+            clip_score:        float,   ← cross-encoder normalized score
             structural_score:  float,
             faiss_score:       float,
             all_results:       list,
@@ -323,8 +351,8 @@ def search_with_confidence(query: str, domain: str, top_k: int = TOP_K) -> dict:
             "fallback":         True
         }
 
-    # Stage 2
-    reranked = stage2_clip_rerank(query, candidates)
+    # Stage 2 — CrossEncoder rerank
+    reranked = stage2_cross_encoder_rerank(query, candidates)
 
     # Stage 3 — structural score on best candidate only
     best             = reranked[0]
@@ -369,7 +397,7 @@ if __name__ == "__main__":
         print("-" * 55)
         r = search_with_confidence(query, domain)
         print(f"FAISS score      : {r['faiss_score']:.4f}")
-        print(f"CLIP score       : {r['clip_score']:.4f}")
+        print(f"CE score (norm)  : {r['clip_score']:.4f}")
         print(f"Structural score : {r['structural_score']:.4f}")
         print(f"Final score      : {r['best_score']:.4f}  (threshold={CONFIDENCE_THRESHOLD})")
         print(f"Accepted         : {r['accepted']}")
