@@ -20,7 +20,7 @@ from search import search_with_confidence, indexes, CONFIDENCE_THRESHOLD
 app = FastAPI(
     title="ConceptCraftAI API",
     description="Type anything — we find the 3D model.",
-    version="4.1.0"
+    version="4.3.0"
 )
 
 app.add_middleware(
@@ -58,10 +58,12 @@ class QueryResponse(BaseModel):
     domain:           str
     accepted:         bool
     fallback:         bool
-    best_score:       float   # weighted final score
+    best_score:       float
     clip_score:       float
     structural_score: float
     faiss_score:      float
+    confidence_tier:  str        # "high" | "medium" | "low" | "fallback"
+    source_domain:    str        # which FAISS domain the best match came from
     results:          list[ModelResult]
 
 
@@ -133,7 +135,7 @@ def health():
         "domains_loaded": list(indexes.keys()),
         "model_counts":   {d: indexes[d].ntotal for d in indexes},
         "faiss_model":    "all-MiniLM-L6-v2 (384-dim)",
-        "clip_model":     "openai/clip-vit-base-patch32 (512-dim, lazy-loaded)",
+        "reranker":       "cross-encoder/ms-marco-MiniLM-L-6-v2",
         "threshold":      CONFIDENCE_THRESHOLD
     }
 
@@ -168,6 +170,8 @@ def query(req: QueryRequest):
         clip_score       = result["clip_score"],
         structural_score = result["structural_score"],
         faiss_score      = result["faiss_score"],
+        confidence_tier  = result.get("confidence_tier", "medium"),
+        source_domain    = result.get("source_domain", domain),
         results          = [format_result(r) for r in result["all_results"]]
     )
 
@@ -195,6 +199,8 @@ def debug_search(req: DebugSearchRequest):
         clip_score       = result["clip_score"],
         structural_score = result["structural_score"],
         faiss_score      = result["faiss_score"],
+        confidence_tier  = result.get("confidence_tier", "medium"),
+        source_domain    = result.get("source_domain", domain),
         results          = [format_result(r) for r in result["all_results"]]
     )
 
