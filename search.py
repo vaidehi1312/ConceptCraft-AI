@@ -421,6 +421,10 @@ def search_with_confidence(query: str, domain: str = "all", top_k: int = TOP_K) 
         )
 
     # Stage 4 — confidence tier on best result
+    # Re-sort by final_score after structural scoring
+    reranked.sort(key=lambda x: x["final_score"], reverse=True)
+
+    # Stage 4 — confidence tier on best result
     best = reranked[0]
     tier = get_confidence_tier(best["final_score"])
 
