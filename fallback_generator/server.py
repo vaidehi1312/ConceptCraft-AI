@@ -6,7 +6,7 @@ can send a concept and receive 3D coordinates.
 """
 import sys, os, json, dataclasses
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "src"))
-os.environ["GOOGLE_API_KEY"] = "AIzaSyB0xGMDfIa5BFfFL-CNoO0FOs-oyBop3jE"
+os.environ["GOOGLE_API_KEY"] = "AIzaSyCz8oA06Yiev-eueP0jgRGZ0V5eHK0lY_s"
 
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
@@ -37,6 +37,7 @@ def static_files(filename):
 def generate():
     data = request.get_json()
     concept = data.get("concept", "").strip()
+    print(f"[SERVER] Received concept: {concept}")
     if not concept:
         return jsonify({"error": "No concept provided"}), 400
 

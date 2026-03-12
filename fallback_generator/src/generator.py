@@ -32,16 +32,8 @@ class BlueprintGenerator:
     """Answers the question: What geometry represents this Concept?"""
 
     def __init__(self, provider: str = "auto"):
-        self.provider = provider
-        if provider == "auto":
-            if os.getenv("GOOGLE_API_KEY"):
-                self.provider = "gemini"
-                print("[BlueprintGenerator] Gemini API key found.")
-            elif os.getenv("OPENAI_API_KEY"):
-                self.provider = "openai"
-            else:
-                print("[BlueprintGenerator] No API keys found, defaulting to Ollama local instance.")
-                self.provider = "ollama"
+        self.provider = "ollama"  # force ollama, skip auto-detect
+        print("[BlueprintGenerator] Provider forced to Ollama.")
 
     def generate_stage_1(self, concept: str) -> str:
         """Generates the Semantic Decomposition."""
@@ -63,7 +55,8 @@ class BlueprintGenerator:
             except Exception as e:
                 is_quota_error = ("429" in str(e) or "quota" in str(e).lower())
                 if current_provider in ["gemini", "openai"] and is_quota_error:
-                    raise RuntimeError(f"Gemini quota exceeded. Please wait or use a different API key.")
+                    current_provider = "ollama"
+                    continue
                 if attempt == max_retries:
                     raise e
         return ""
@@ -151,7 +144,8 @@ class BlueprintGenerator:
             except Exception as e:
                 is_quota_error = ("429" in str(e) or "quota" in str(e).lower())
                 if current_provider in ["gemini", "openai"] and is_quota_error:
-                    raise RuntimeError(f"Gemini quota exceeded. Please wait or use a different API key.")   
+                    current_provider = "ollama"
+                    continue
                 if attempt == max_retries:
                     raise e
         return ""
@@ -208,7 +202,7 @@ class BlueprintGenerator:
         user_prompt = generate_stage_1_user_prompt(content) if stage == 1 else generate_stage_2_user_prompt(content)
         try:
             response = requests.post("http://localhost:11434/api/chat", json={
-                "model": "llama3.2",
+                "model": "tinyllama",
                 "messages": [
                     {"role": "system", "content": sys_prompt},
                     {"role": "user", "content": user_prompt}

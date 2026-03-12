@@ -210,7 +210,7 @@ async function submitConcept() {
     setStatus('Generating 3D visualization...', false, true);
 
     try {
-        const response = await fetch('http://localhost:5000/generate', {
+        const response = await fetch('/generate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ concept })
