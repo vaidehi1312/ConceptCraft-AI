@@ -1,10 +1,10 @@
 {
   "components": [
     {
-      "id": "core",
+      "id": "base",
       "position": [
         0.0,
-        1.0,
+        0.75,
         0.0
       ],
       "rotation": [
@@ -13,43 +13,21 @@
         0.0
       ],
       "scale": [
-        3.0,
-        3.0,
-        3.0
+        3.5,
+        3.5,
+        3.5
       ],
-      "resolved_shape": "sphere",
-      "color_hint": "gradient_source_to_target",
-      "label": "Core",
+      "resolved_shape": "box",
+      "color_hint": "parent_dominant",
+      "label": "base",
       "morphology_family": "architectural_assembly"
     },
     {
-      "id": "photosphere",
+      "id": "triangular_face_0",
       "position": [
-        2.15,
-        0.25,
-        0.0
-      ],
-      "rotation": [
         0.0,
-        0.0,
+        2.25,
         0.0
-      ],
-      "scale": [
-        0.25,
-        0.25,
-        0.25
-      ],
-      "resolved_shape": "sphere",
-      "color_hint": "gradient_source_to_target",
-      "label": "Photosphere",
-      "morphology_family": "architectural_assembly"
-    },
-    {
-      "id": "radiative_zone",
-      "position": [
-        -2.149999999999999,
-        0.5,
-        3.7239092362730863
       ],
       "rotation": [
         0.0,
@@ -61,17 +39,17 @@
         1.0,
         1.0
       ],
-      "resolved_shape": "sphere",
-      "color_hint": "gradient_source_to_target",
-      "label": "Radiative Zone",
+      "resolved_shape": "tetrahedron",
+      "color_hint": "parent_dominant",
+      "label": "triangular face",
       "morphology_family": "architectural_assembly"
     },
     {
-      "id": "convective_zone",
+      "id": "triangular_face_1",
       "position": [
-        -2.1500000000000017,
-        0.5,
-        -3.7239092362730855
+        0.0,
+        3.75,
+        0.0
       ],
       "rotation": [
         0.0,
@@ -83,22 +61,67 @@
         1.0,
         1.0
       ],
-      "resolved_shape": "sphere",
-      "color_hint": "gradient_source_to_target",
-      "label": "Convective Zone",
+      "resolved_shape": "tetrahedron",
+      "color_hint": "parent_dominant",
+      "label": "triangular face",
+      "morphology_family": "architectural_assembly"
+    },
+    {
+      "id": "triangular_face_2",
+      "position": [
+        0.0,
+        5.25,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "resolved_shape": "tetrahedron",
+      "color_hint": "parent_dominant",
+      "label": "triangular face",
+      "morphology_family": "architectural_assembly"
+    },
+    {
+      "id": "triangular_face_3",
+      "position": [
+        -0.7300488367702105,
+        0.8272347477982165,
+        -0.5655338110204621
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "resolved_shape": "tetrahedron",
+      "color_hint": "parent_dominant",
+      "label": "triangular face",
       "morphology_family": "architectural_assembly"
     }
   ],
   "connectors": [],
   "scene_bounds": [
-    4.300000000000002,
-    0.75,
-    7.447818472546172
+    0.7300488367702105,
+    4.5,
+    0.5655338110204621
   ],
   "morphology_family": "architectural_assembly",
-  "scenario": "sun",
-  "pattern": "radial",
+  "scenario": "pyramid",
+  "pattern": "hierarchical",
   "tube_path": null,
-  "intro": "A star, like our Sun, is a massive celestial body composed of hot plasma, generating energy through nuclear fusion in its core and radiating it outwards through distinct layers.",
-  "layout_logic": "The layers of the star are arranged concentrically, with the densest core at the center and progressively less dense layers extending outwards."
+  "intro": "A pyramid is a broad, pyramid-shaped ancient monument with a square base and triangular sides. It was used as a tomb for pharaohs in ancient Egypt.",
+  "layout_logic": "A pyramid consists of a base, surrounded by four triangular faces meeting at a common point, and a capstone at the top.",
+  "_spatial_repair_applied": true
 }

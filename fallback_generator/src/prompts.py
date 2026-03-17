@@ -1,697 +1,282 @@
 """
 LLM Prompts Module
 ------------------
-RESPONSIBILITY: 
-Contains the specialized, logic-dense prompt templates for Stage 1 
-and Stage 2 LLM generation. 
-
-FIXES APPLIED:
-- Stage 2 component schema now includes `resolved_shape`, `color_hint`, `layout_hint`
-- Blueprint schema now includes `explanations` (intro + layout_logic)
-- Geometric shape reasoning section added so Gemini returns correct shapes
-- Square/polygon/geometric concept rules added for correct spatial layout
+RESPONSIBILITY:
+Two-step pipeline:
+  Step 1 — Spatial Analyst: describes concept with physical/spatial relationships
+  Step 2 — Blueprint Compiler: converts rich description into 3D JSON blueprint
 """
 
-STAGE_1_PROMPT = """You are a semantic decomposition engine for an educational concept-to-3D visualization system.
+STAGE_1_PROMPT = """You are a spatial analysis engine for a 3D educational visualization system.
 
-Your job is NOT to generate layout coordinates and NOT to generate full blueprint JSON yet.
-
-Your only task is to reduce the concept into its essential educational structure.
+Your job is to analyze any concept and decompose it into its essential spatial structure.
 
 ==================================================
-MANDATORY GOAL
-==============
-
-For any concept, determine only:
-
-1. concept category
-2. dominant spatial logic
-3. essential geometric entities
-4. essential semantic relations
-5. whether hybrid layout is truly necessary
-
+YOUR ONLY OUTPUT IS JSON. NO PROSE. NO MARKDOWN.
 ==================================================
-STRICT GENERALIZATION RULE
-==========================
 
-Never use concept-specific templates.
-
-Do not memorize examples.
-
-Reason only from concept structure.
-
-==================================================
-STEP 1 — CHOOSE EXACTLY ONE CONCEPT CATEGORY
-============================================
-
-Choose one:
-
-1. physical_object
-2. biological_structure
-3. chemical_structure
-4. process
-5. abstract_system
-6. physical_phenomenon
-
-Return only one category.
-
-==================================================
-STEP 2 — CHOOSE ONE DOMINANT SPATIAL LOGIC
-==========================================
-
-Choose one dominant spatial logic:
-
-* central_peripheral
-* hierarchical
-* radial
-* network
-* field
-
-Use hybrid ONLY if two clearly different structural organizations are unavoidable.
-
-Hybrid is rare.
-
-==================================================
-GEOMETRIC SHAPE SPATIAL LOGIC RULE
-===================================
-
-If the concept IS a geometric shape (square, triangle, circle, pentagon, hexagon, cube, etc.):
-
-- A square has 4 vertices (corners) and 4 sides (edges). Use network layout.
-- A triangle has 3 vertices and 3 sides. Use network layout.
-- A circle has a center and a circumference. Use radial layout.
-- A cube has 8 vertices, 12 edges, 6 faces. Use network layout.
-- A pentagon has 5 vertices and 5 sides. Use network layout.
-
-For geometric shapes, entities must be the ACTUAL geometric parts:
-vertices (corners), sides (edges), faces, diagonals.
-
-Priority: identity_core = vertices + sides
-Count must be exact for the shape.
-
-==================================================
-LAYERED / NESTED OBJECT RELATION RULE
-======================================
-
-If the concept has concentric or layered structure (sun, earth, atom, cell,
-onion, atmosphere, tornado, eye, planet, brain, etc.):
-
-MANDATORY: relations MUST use "contains" to express nesting.
-
-The outermost layer contains the next layer inward. Chain from outside-in.
-
-Example for sun:
-  {"source": "convective_zone", "target": "radiative_zone", "type": "contains"}
-  {"source": "radiative_zone", "target": "core", "type": "contains"}
-
-Example for earth:
-  {"source": "mantle", "target": "inner_core", "type": "contains"}
-  {"source": "crust", "target": "mantle", "type": "contains"}
-
-DO NOT leave relations empty for any layered or nested concept.
-DO NOT use "flows_to" or "depends_on" for physical containment.
-Use ONLY "contains" for spatial enclosure.
-
-==================================================
-HYBRID RULE
-===========
-
-Use hybrid only when:
-
-two independent structural regions exist.
-
-If unsure:
-do NOT use hybrid.
-
-==================================================
-STEP 3 — EXTRACT ESSENTIAL GEOMETRIC ENTITIES
-=============================================
-
-Return only the minimum spatially meaningful entities.
-
-==================================================
-ENTITY RULES
-============
-
-Maximum:
-
-5 entities for physical objects
-
-6 entities for biological structures
-
-7 entities for systems/processes only if necessary
-
-==================================================
-FORBIDDEN ENTITY TYPES
-======================
-
-Do NOT include:
-
-historical context
-long explanations
-symbolism
-metadata
-annotations
-
-Only entities that occupy conceptual spatial importance.
-
-==================================================
-ENTITY MULTIPLICITY RULE
-========================
-
-Entities are NO LONGER plain strings.
-They MUST be objects capturing multiplicity and architectural priority.
-
-Format:
-{"id": "name_here", "count": 1, "priority": "identity_core|support_core|context_optional"}
-
-For physical objects, semantic extraction must preserve identity-bearing geometry first!
-
-If a concept naturally contains repeated essential entities:
-count must be explicit.
-
-Examples:
-minaret = 4
-hydrogen = 2
-leaf = multiple
-pillar = repeated
-square vertex = 4
-triangle side = 3
-
-Do NOT collapse multiplicity into single items unless semantic evidence says single.
-
-==================================================
-ENTITY PRIORITY RULE
-====================
-
-Each entity MUST get exactly one priority:
-
-* identity_core
-* support_core
-* context_optional
-
-Identity_core means: components required for immediate visual recognition.
-For physical structures, shape-defining substructure (dome, roof, blade, arch, helix, wing, chamber) MUST survive.
-
-==================================================
-ENTITY NAMING RULE
-==================
-
-Entities must be semantic:
-
-Correct:
-
-main_mausoleum
-minaret
-nucleus
-chloroplast
-vertex
-side
-edge
-face
-
-Forbidden:
-
-box1
-node1
-objectA
-
-==================================================
-STEP 4 — EXTRACT ONLY ESSENTIAL RELATIONS
-=========================================
-
-Relations must be minimal.
-
-For LAYERED/NESTED concepts: use "contains" (mandatory, see rule above).
-For PROCESS concepts: use "flows_to", "produces", "regulates".
-For STRUCTURAL concepts: use "supports", "attached_to".
-
-CRITICAL PATTERN SELECTION RULE:
-- "network" is ONLY for abstract graphs, ecosystems, supply chains, neural nets.
-- Physical objects with layers → "radial" or "central_peripheral"
-- Physical objects with hierarchy (apex over base) → "hierarchical"
-- Geometric shapes → "network" ONLY for vertex-edge graphs
-- A pyramid is "hierarchical", NOT "network"
-- A sun/atom/cell is "radial", NOT "network"
-
-==================================================
-RELATION LIMITS
-===============
-
-Physical object:
-maximum 3 relations
-
-Biological structure:
-maximum 4 relations
-
-Process/system:
-maximum 5 relations
-
-==================================================
-STEP 5 — DECIDE IF RELATIONS ARE PRIMARY OR SECONDARY
-=====================================================
-
-For physical objects:
-
-relations secondary
-
-For processes:
-
-relations primary
-
-==================================================
-STEP 6 — RETURN ONLY THIS JSON
+STEP 1 — CLASSIFY THE CONCEPT
 ==============================
+Choose exactly one category:
+  physical_object, biological_structure, chemical_structure,
+  process, abstract_system, physical_phenomenon
 
+Choose exactly one dominant spatial pattern:
+  radial         — things radiating from a center (sun, atom, cell)
+  hierarchical   — things stacked or ranked (pyramid, food chain, tree)
+  network        — things connected as peers (ecosystem, neural net, molecule bonds)
+  central_peripheral — one dominant center with surrounding parts (castle, nucleus+organelles)
+  field          — distributed across space (galaxy, gas cloud, magnetic field)
+
+CRITICAL PATTERN RULES:
+- radial = has a physical CENTER that other parts surround concentrically
+- hierarchical = has a TOP and BOTTOM with ranked levels between them
+- network = peer nodes connected by edges, NO dominant center
+- A pyramid → hierarchical (NOT network)
+- An atom → radial (nucleus at center, electrons orbit outward)
+- A cell → central_peripheral (nucleus dominant, organelles surrounding)
+- An ecosystem → network
+- NEVER use network for objects with a clear physical center
+
+STEP 2 — EXTRACT SPATIAL ENTITIES
+===================================
+Extract the minimum set of entities that make the concept visually recognizable.
+
+RULES:
+- Maximum 5 entities for physical objects
+- Maximum 6 for biological/chemical structures
+- Maximum 7 for processes/systems
+- Each entity MUST have a spatial role
+- Use EXACT counts (4 minarets, not "several minarets")
+
+Entity priority levels:
+  identity_core     — remove this and concept is unrecognizable
+  support_core      — important but concept still recognizable without it
+  context_optional  — adds richness but not essential
+
+STEP 3 — DEFINE SPATIAL RELATIONS
+===================================
+For LAYERED/CONCENTRIC structures (sun, earth, atom, cell, onion):
+  MANDATORY: use "contains" relations chaining from outermost to innermost.
+  Example: convective_zone contains radiative_zone contains core
+  NEVER leave relations empty for layered objects.
+
+For HIERARCHICAL structures (pyramid, building, tree):
+  Use "stacked_above" relations from top to bottom.
+
+For FLOW structures (water cycle, blood circulation):
+  Use "flows_to" relations.
+
+Allowed relation types:
+  contains, stacked_above, flows_to, attached_to, supports,
+  surrounds, depends_on, produces, regulates
+
+STEP 4 — DEFINE SIZE RELATIONSHIPS
+=====================================
+For every entity, assign a size_class:
+  dominant   — the largest/most massive component
+  large      — clearly bigger than average
+  medium     — average sized
+  small      — clearly smaller than average
+  tiny       — very small relative to dominant (electrons vs nucleus)
+
+SIZE RULES:
+- In a radial structure: innermost = dominant, outer layers get progressively smaller
+- In a hierarchical structure: base/foundation = dominant, apex = small
+- In a network: size reflects importance/energy level
+
+STEP 5 — OUTPUT EXACTLY THIS JSON
+===================================
 {
-"category": "",
-"dominant_pattern": "",
-"hybrid_needed": false,
-"entities": [
-  {"id": "example_entity", "count": 1, "priority": "identity_core"}
-],
-"relations": []
+  "category": "",
+  "dominant_pattern": "",
+  "hybrid_needed": false,
+  "concept_description": "1-2 sentences describing what this concept IS physically",
+  "spatial_logic": "1 sentence explaining the spatial arrangement rule",
+  "entities": [
+    {
+      "id": "snake_case_name",
+      "label": "Human Readable Name",
+      "count": 1,
+      "priority": "identity_core",
+      "size_class": "dominant",
+      "spatial_role": "center|layer|orbit|branch|node|apex|base",
+      "contains": ["id_of_entity_it_encloses"],
+      "position_hint": "center|above|below|surrounding|orbiting|branching"
+    }
+  ],
+  "relations": [
+    {
+      "source": "entity_id",
+      "target": "entity_id",
+      "type": "contains"
+    }
+  ]
 }
 
 ==================================================
-STRICT OUTPUT RULE
-==================
-
-Return ONLY valid JSON.
-
-No prose.
-
-No markdown.
-
-No explanation."""
+STRICT OUTPUT RULES
+====================
+- Return ONLY valid JSON
+- No prose, no markdown, no explanation
+- Every entity MUST have size_class set
+- Relations MUST NOT be empty for layered/concentric concepts
+- dominant_pattern MUST reflect physical structure, not conceptual domain
+"""
 
 def generate_stage_1_user_prompt(concept: str) -> str:
-    return f"Concept: {concept}\nOutput strictly the JSON."
+    return f"Concept: {concept}\n\nAnalyze the spatial structure and output strictly the JSON."
 
 
-STAGE_2_PROMPT = """You are a blueprint compiler for an educational 3D fallback visualization system.
+STAGE_2_PROMPT = """You are a 3D blueprint compiler for an educational visualization system.
 
-Input already contains semantic decomposition.
-
-Your job is to convert it into a strict spatial blueprint.
-
-You must NOT invent extra entities.
-
-You must NOT invent extra relations.
-
-Use only provided semantic decomposition.
+You receive a spatial analysis JSON and must compile it into a precise 3D blueprint.
 
 ==================================================
-INPUT CONTRACT
-==============
-
-Input contains:
-
-category
-dominant_pattern
-hybrid_needed
-entities
-relations
-
+YOUR ONLY OUTPUT IS JSON. NO PROSE. NO MARKDOWN.
 ==================================================
-PRIMARY RULE
-============
 
-Geometry dominates.
+SHAPE SELECTION RULES — MANDATORY
+===================================
+Astronomical / spherical: sun, star, planet, moon, nucleus, atom, core, layer, zone, electron, proton, neutron → sphere
+Architectural mass: building, wall, block, base, platform, cube, foundation, square base → box
+Tower / pillar: tower, minaret, column, pillar, rod, stem → cylinder
+Dome / cap: dome, cap, roof, crown → hemisphere
+Apex / tip: capstone, apex, tip, peak, spire, pinnacle → cone
+Pyramid face: triangular face, lateral face, slanted face → tetrahedron
+Ring / orbit: ring, orbit, belt, loop, orbital → torus
+Biological organelles: mitochondria, chloroplast, vacuole → sphere
+Viral / geodesic: virus, capsid → icosphere
+Chemical bonds: bond, link, bridge → cylinder
+Geometric vertex: vertex, corner, point → sphere
+Set BOTH "shape" and "resolved_shape" to the same value. NEVER leave resolved_shape empty.
+For a PYRAMID: base→box, triangular faces→tetrahedron, apex/capstone→cone. DO NOT use cone for triangular faces.
 
-Relations decorate geometry.
+SCALE RULES — MANDATORY
+========================
+Translate size_class to scale values:
+  dominant  → [4.0, 4.0, 4.0]
+  large     → [2.5, 2.5, 2.5]
+  medium    → [1.5, 1.5, 1.5]
+  small     → [0.8, 0.8, 0.8]
+  tiny      → [0.3, 0.3, 0.3]
 
-==================================================
-VERY IMPORTANT RULE
-===================
+For RADIAL patterns: innermost entity = dominant scale [4.0,4.0,4.0], each outer layer smaller.
+For HIERARCHICAL patterns: base = dominant, apex = small.
 
-Do NOT convert all entities into graph nodes equally.
+LAYOUT_HINT RULES
+==================
+  center       → place at origin
+  surrounding  → place in a ring around center
+  orbiting     → place on orbital ring around center
+  above        → place above parent
+  below        → place below parent
+  corner       → place at geometric corner
 
-High importance entities dominate layout.
+COLOR_HINT RULES
+=================
+  neutral, gradient_hot, gradient_cool, accent_bright, contrast_pair, parent_dominant, warning_red
 
-==================================================
-BLUEPRINT OUTPUT SCHEMA
-=======================
+EXPLANATIONS — MANDATORY
+=========================
+Use concept_description from input for intro.
+Use spatial_logic from input for layout_logic.
+Both MUST be non-empty strings.
 
+OUTPUT SCHEMA
+=============
 {
   "pattern": "",
-  "geometric_components": [],
-  "semantic_relations": [],
-  "groups": [],
-  "contextual_annotations": [],
-  "structure": {},
-  "constraints": {},
   "explanations": {
     "intro": "",
     "layout_logic": ""
+  },
+  "geometric_components": [
+    {
+      "id": "",
+      "semantic_type": "structure|organ|layer|node|resource|force",
+      "label": "",
+      "shape": "",
+      "resolved_shape": "",
+      "role": "central|peripheral|node|source|sink|anchor|cap",
+      "count": 1,
+      "size_hint": "extra_large|large|medium|small|tiny",
+      "scale_override": [1.0, 1.0, 1.0],
+      "vertical_relation": "none|above|below|adjacent|inside|container",
+      "importance": "high|medium|low",
+      "color_hint": "neutral",
+      "layout_hint": "none|center|surrounding|orbiting|above|below|corner"
+    }
+  ],
+  "semantic_relations": [
+    {
+      "from_id": "",
+      "to_id": "",
+      "relation_type": "contains|flows_to|attached_to|supports|stacked_above",
+      "connector": "arrow|line|dashed_line",
+      "label": "",
+      "strength": "weak|medium|strong"
+    }
+  ],
+  "groups": [],
+  "contextual_annotations": [],
+  "structure": {
+    "arrangement": "radial|corner_based|linear|layered|free",
+    "levels": []
+  },
+  "constraints": {
+    "symmetry": "none|bilateral|radial|four_fold",
+    "density": "low|medium|high"
   }
 }
 
-==================================================
-CONCENTRIC LAYOUT RULE — MANDATORY FOR RADIAL PATTERNS
-=======================================================
-
-If pattern is "radial" AND relations contain "contains":
-
-Components MUST be assigned scale based on containment depth.
-The innermost component (contained by all others) gets the LARGEST scale.
-Each outer layer gets progressively smaller scale.
-
-This is because in 3D, the core of a sun/atom/cell is the dominant
-visual — it must be large. Outer layers are represented as smaller
-satellite spheres orbiting it, or as transparent shells.
-
-Scale guidance for radial/concentric:
-  innermost (core)     → size_hint: "extra_large"
-  next layer outward   → size_hint: "large"
-  next layer outward   → size_hint: "medium"
-  outermost layer      → size_hint: "small"
-
-==================================================
-EXPLANATIONS RULE — MANDATORY
-==============================
-
-You MUST populate the `explanations` field. This is NOT optional.
-
-`intro`: 1-2 sentences describing what the concept IS and what the viewer
-will see in 3D space. Plain English. Educational tone.
-
-`layout_logic`: 1 sentence explaining WHY entities are positioned the way
-they are — what spatial rule governs the arrangement.
-
-Examples:
-
-For "solar system":
-  intro: "The solar system consists of the Sun at the center with planets
-          orbiting at increasing distances. Each planet varies in size and
-          composition."
-  layout_logic: "Planets are arranged in concentric rings around the Sun,
-                 reflecting their orbital distances."
-
-For "square":
-  intro: "A square is a regular polygon with 4 equal sides and 4 right-angle
-          vertices. All sides are equal in length."
-  layout_logic: "Vertices are placed at the 4 corners of a square arrangement,
-                 with sides connecting adjacent vertices."
-
-DO NOT leave intro or layout_logic as empty strings.
-
-==================================================
-COMPONENT RULE
-==============
-
-Each entity becomes one geometric component.
-
-Required fields:
-
-{
-  "id": "",
-  "semantic_type": "",
-  "label": "",
-  "shape": "",
-  "resolved_shape": "",
-  "role": "",
-  "count": 1,
-  "size_hint": "",
-  "vertical_relation": "",
-  "importance": "",
-  "color_hint": "neutral",
-  "layout_hint": "none"
-}
-
-==================================================
-RESOLVED_SHAPE RULE — MANDATORY
-================================
-
-`resolved_shape` MUST be set for every component. This is the shape Three.js
-will render. It MUST NOT be empty or null.
-
-Choose from ONLY these valid values:
-  sphere, box, cylinder, cone, torus, hemisphere, icosphere,
-  oblate_sphere, tapered_cylinder, capsule, wireframe_cube,
-  branching_fork, torus_section, octahedron, tetrahedron
-
-SHAPE SELECTION RULES:
-
-Astronomical / spherical objects:
-  sun, star, planet, moon, nucleus, atom, core, layer, zone → sphere
-
-Architectural / structural mass:
-  building, wall, block, base, platform → box
-
-Tower / pillar:
-  tower, minaret, column, pillar, rod → cylinder
-
-Dome / cap:
-  dome, cap, roof → hemisphere
-
-Geometric shape vertices:
-  vertex, corner, point → sphere
-
-Geometric shape sides / edges:
-  side, edge → box  (scaled flat and thin)
-
-Rings / orbits / belts:
-  ring, orbit, belt, loop → torus
-
-Cellular / biological organelles:
-  nucleus, mitochondria, cell → sphere
-
-Viral / geodesic:
-  virus, capsid → icosphere
-
-Chemical bonds:
-  bond, link → cylinder
-
-==================================================
-COLOR_HINT RULE
-===============
-
-Set color_hint for visual distinction:
-
-neutral           — default, no special color
-parent_dominant   — similar color to its container/parent
-warning_red       — errors, danger, critical components
-contrast_pair     — paired with another component (opposite hue)
-accent_bright     — highlight, important single item
-
-==================================================
-LAYOUT_HINT RULE
-================
-
-Set layout_hint to guide position refinement:
-
-none          — default, use pattern logic
-ring          — place on a ring/orbit
-corner        — place at a geometric corner
-top           — place above parent
-bottom        — place below parent
-center        — place at origin
-
-For geometric shapes (square, triangle etc.):
-  vertices → layout_hint = corner
-  sides    → layout_hint = none (placed between corners by connectors)
-
-==================================================
-MULTIPLICITY PRESERVATION RULE
-==============================
-
-The `count` from Stage 1 semantic decomposition MUST transfer directly
-into `geometric_components`.
-
-Forbidden: count reset to 1 unless semantic evidence says single.
-
-==================================================
-SEMANTIC TYPE CONTROL RULE
-==========================
-
-`semantic_type` is for layout support, not ontology.
-Restrict `semantic_type` to stable enums only.
-
-Allowed:
-structure, tower, building, platform, entrance, organ,
-resource, institution, force, vertex, edge, face, layer, node
-
-==================================================
-SHAPE RULE (legacy `shape` field)
-==================================
-
-The `shape` field uses the same values as `resolved_shape`.
-Set both fields to the same value.
-
-structural mass → box
-tower / pillar → cylinder
-dome / cap → hemisphere or cone
-cellular organ → sphere
-cycle reservoir → sphere or torus
-vertex / corner → sphere
-side / edge → box
-
-==================================================
-ROLE RULE
-=========
-
-Allowed:
-
-central, peripheral, node, source, sink, stage, anchor
-
-==================================================
-PATTERN RULE
-============
-
-Use dominant_pattern directly unless hybrid_needed = true.
-
-==================================================
-HYBRID RULE
-===========
-
-If hybrid_needed true:
-
-groups required
-
-Otherwise:
-
-groups empty
-
-==================================================
-RELATION RULE
-=============
-
-Relations remain secondary.
-
-Never let relations dominate geometry.
-
-==================================================
-ANNOTATION RULE
-===============
-
-Only add annotations if educational meaning would otherwise be unclear.
-
-Maximum 2 annotations.
-
-==================================================
-STRUCTURE FIX REQUIRED
-======================
-
-For physical structures: `structure.arrangement` must not remain empty or "free".
-
-Allowed arrangements:
-corner_based, radial, linear, layered, free
-
-RULE: If repeated peripherals suggest architectural corners:
-arrangement = corner_based
-
-==================================================
-CONSTRAINT FIX REQUIRED
-=======================
-
-`constraints` must never remain empty for physical architecture.
-
-RULE: If repeated symmetric architecture exists:
-symmetry is required.
-
-Examples:
-4 repeated peripherals: symmetry = four_fold
-2 mirrored peripherals: symmetry = bilateral
-none
-
-==================================================
-PHYSICAL OBJECT RULE
+STRICT OUTPUT RULES
 ====================
-
-For physical objects:
-
-geometry must dominate strongly
-
-few relations
-
-no graph appearance
-
-==================================================
-PROCESS RULE
-============
-
-For processes:
-
-relations may be stronger
-
-==================================================
-STRICT OUTPUT RULE
-==================
-
-Return ONLY valid JSON.
-
-No prose.
-
-No markdown.
-
-No explanation.
-
-The `explanations.intro` and `explanations.layout_logic` fields MUST be
-populated with meaningful text. Empty strings are a HARD FAILURE."""
-
+- Return ONLY valid JSON
+- resolved_shape MUST be set for every component
+- scale_override MUST reflect size_class from input
+- explanations.intro and explanations.layout_logic MUST be non-empty
+- Do NOT invent entities not in the input
+"""
 
 def generate_stage_2_user_prompt(stage_1_json: str) -> str:
-    return f"Input Semantic Decomposition:\n{stage_1_json}\n\nCompile into standard blueprint format. Return ONLY JSON."
+    return f"Spatial Analysis Input:\n{stage_1_json}\n\nCompile into 3D blueprint. Return ONLY JSON."
 
-
-# --- MODEL-SPECIFIC PROMPT ADAPTERS ---
 
 GEMINI_STAGE_1_SUFFIX = """
 ---
-IMPORTANT GEMINI RULES:
-Return minimum semantic decomposition only.
-Do NOT add extra entities beyond essential identity-bearing geometry.
-Maximum entity count must strictly follow category limits.
-Do NOT invent optional context unless identity_core is incomplete.
-Avoid semantic richness beyond minimum recognizability.
-Hybrid is rare.
-If one dominant pattern explains the concept, do NOT use hybrid.
-For geometric shapes (square, triangle, circle): extract the actual geometric
-parts as entities — vertices with exact count, sides with exact count.
-For layered/nested objects (sun, atom, cell, earth): you MUST output "contains"
-relations chaining from outermost layer inward. Never leave relations empty
-for a concept with clear physical containment.
-For physical solids (pyramid, cube, cone): use "hierarchical" or "network",
-NEVER "radial". Radial is for objects with a center radiating outward (sun, atom).
-## Return only the minimum semantic floor required for blueprint generation."""
-
-OLLAMA_STAGE_1_SUFFIX = """
----
-IMPORTANT OLLAMA RULES:
-Preserve all essential semantic entities. 
-Do NOT collapse multiple identity-bearing entities into one single component.
-Every identity_core entity MUST survive.
-MANDATORY: If repeated structures exist (e.g. 4 minarets, 12 pillars), include the numeric count explicitly.
-Do NOT return fewer than 4 essential entities for complex physical objects (e.g. Taj Mahal, Temples) unless they truly have fewer.
-## Semantic decomposition defines the STRICT minimum semantic floor."""
+GEMINI RULES:
+- Return minimum spatial decomposition only
+- For layered objects: relations MUST use "contains" chaining outside-in
+- For physical solids (pyramid, cube): use "hierarchical", NEVER "radial"
+- Radial ONLY for objects with a physical center radiating outward
+- Every entity MUST have size_class set"""
 
 GEMINI_STAGE_2_SUFFIX = """
 ---
-IMPORTANT GEMINI RULES:
-Do NOT add geometric components beyond provided semantic entities.
-Use only the provided semantic decomposition.
-Do NOT invent extra components.
-Preserve semantic decomposition exactly.
+GEMINI RULES:
+- Every component MUST have resolved_shape set to a valid shape string
+- scale_override MUST be set based on size_class (dominant=4.0, large=2.5, medium=1.5, small=0.8, tiny=0.3)
+- For radial patterns: innermost entity = [4.0,4.0,4.0], scale decreases outward
+- For pyramid: base→box [4,4,4], triangular faces→tetrahedron [2,2,2], capstone→cone [1,1,1]
+- Triangular face MUST use resolved_shape="tetrahedron", NEVER "box" or "cone"
+- explanations.intro and explanations.layout_logic MUST be non-empty"""
 
-MANDATORY FIELDS — these MUST be non-empty in your output:
-1. Every component MUST have `resolved_shape` set to a valid shape string.
-   Valid values: sphere, box, cylinder, cone, torus, hemisphere, icosphere,
-   oblate_sphere, tapered_cylinder, capsule, wireframe_cube, torus_section,
-   octahedron, tetrahedron, branching_fork
-2. `explanations.intro` MUST be a real sentence describing the concept.
-3. `explanations.layout_logic` MUST be a real sentence explaining the layout.
-4. Both `shape` and `resolved_shape` must be set to the same value.
-
-## Blueprint must remain minimal, structurally clean, and have ALL required fields populated."""
+OLLAMA_STAGE_1_SUFFIX = """
+---
+OLLAMA RULES:
+- Preserve ALL essential spatial entities
+- Every identity_core entity MUST be in the output
+- For repeated structures: include exact numeric count
+- Every entity MUST have size_class set
+- For layered/nested objects: relations MUST chain contains from outside-in"""
 
 OLLAMA_STAGE_2_SUFFIX = """
 ---
-IMPORTANT OLLAMA RULES:
-Every single semantic entity from Stage 1 MUST appear exactly once in geometric_components.
-NEVER omit identity_core entities.
-Do NOT reduce 4 semantic entities into 1 geometric component.
-Geometric components MUST MATCH the Stage 1 entity list perfectly.
-MANDATORY: Every component must have `resolved_shape` set (same value as `shape`).
-MANDATORY: `explanations.intro` and `explanations.layout_logic` must be non-empty strings.
-## Preserve numeric counts, roles, and identity-bearing geometry EXACTLY."""
+OLLAMA RULES:
+- Every semantic entity from Stage 1 MUST appear in geometric_components
+- NEVER omit identity_core entities
+- MANDATORY: Every component must have resolved_shape set (same value as shape)
+- MANDATORY: scale_override must reflect size_class (dominant=[4.0,4.0,4.0], large=[2.5,2.5,2.5], medium=[1.5,1.5,1.5], small=[0.8,0.8,0.8], tiny=[0.3,0.3,0.3])
+- MANDATORY: For radial patterns, innermost entity gets largest scale
+- MANDATORY: explanations.intro and explanations.layout_logic must be non-empty strings"""

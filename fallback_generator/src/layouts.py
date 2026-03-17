@@ -22,6 +22,20 @@ SIZE_MAP = {
 }
 
 def get_base_scale(component: ComponentInput) -> Scale:
+    # ── FIX: Respect scale_override from blueprint if set ─────────────────
+    # scale_override comes from the LLM blueprint (e.g. [4.0, 4.0, 4.0] for
+    # dominant components). This is the PRIMARY source of scale truth.
+    if hasattr(component, 'scale_override') and component.scale_override:
+        so = component.scale_override
+        if isinstance(so, (list, tuple)) and len(so) == 3:
+            sx, sy, sz = float(so[0]), float(so[1]), float(so[2])
+            if sx > 0 and sy > 0 and sz > 0:
+                # For cylinders, preserve the taller y ratio
+                if component.shape == "cylinder":
+                    return Scale(x=sx, y=sy * 2, z=sz)
+                return Scale(x=sx, y=sy, z=sz)
+
+    # Fallback: use size_hint
     s = SIZE_MAP.get(component.size_hint, 1.0)
     if component.shape == "cylinder":
         return Scale(x=s, y=s * 2, z=s)
@@ -237,69 +251,61 @@ class CentralPeripheralLayout(BaseLayoutEngine):
 class HierarchicalLayout(BaseLayoutEngine):
     def process(self, blueprint: Blueprint) -> List[OutputComponent]:
         out_comps = []
-        levels = blueprint.structure.levels or [c.id for c in blueprint.geometric_components]
+
+        # ── FIX: Sort components by scale descending so base is at bottom ───
+        # Without this, pyramid base appears floating and apex is at wrong level.
+        def _comp_scale(c):
+            so = getattr(c, 'scale_override', None)
+            if so and isinstance(so, (list, tuple)) and len(so) == 3:
+                return float(so[0])
+            return SIZE_MAP.get(c.size_hint, 1.0)
+
+        # Use structure.levels if provided, otherwise sort by scale desc
+        if blueprint.structure.levels:
+            level_ids = blueprint.structure.levels
+            sorted_comps = []
+            for lid in level_ids:
+                match = next((c for c in blueprint.geometric_components if c.id == lid), None)
+                if match:
+                    sorted_comps.append(match)
+            # Add any remaining not in levels list
+            for c in blueprint.geometric_components:
+                if c not in sorted_comps:
+                    sorted_comps.append(c)
+        else:
+            # Sort largest scale first (base at bottom), smallest last (apex at top)
+            sorted_comps = sorted(blueprint.geometric_components, key=_comp_scale, reverse=True)
 
         has_lateral = any(r.relation_type in ["exchanges_with", "supports", "regulates"] for r in blueprint.semantic_relations)
         variant = "lateral_links" if has_lateral else "strict_tree"
-        if len(levels) > 0 and len(blueprint.geometric_components) > 5 and not blueprint.structure.levels:
-            variant = "branching_tree"
 
-        y_depth_step = calculate_dynamic_spacing(blueprint.geometric_components, blueprint.semantic_relations, base_spacing=5.0)
+        y_current = 0.0  # Start at ground level, build upward
 
-        placed_components = set()
-        prev_level_bottom_y = float(len(levels) * y_depth_step) + y_depth_step
+        for idx, c in enumerate(sorted_comps):
+            scale = get_base_scale(c)
+            total_width = sum(get_base_scale(sc).x * sc.count for sc in sorted_comps)
+            level_width = scale.x * c.count
 
-        for lvl_name in levels:
-            level_comps = [c for c in blueprint.geometric_components if c.id == lvl_name and c.id not in placed_components]
-            if not level_comps:
-                level_comps = [c for c in blueprint.geometric_components if c.id not in placed_components]
-                if not level_comps:
-                    break
-                level_comps = [level_comps[0]]
+            # Center each level horizontally, narrowing as we go up (pyramid shape)
+            taper = 1.0 - (idx / max(1, len(sorted_comps) - 1)) * 0.6
+            x_spread = level_width * taper
 
-            is_snapped = False
-            for c in level_comps:
-                for rel in blueprint.semantic_relations:
-                    if rel.relation_type in ["attached_to", "supports", "contains"]:
-                        if (rel.from_id == c.id and rel.to_id in placed_components) or \
-                           (rel.to_id == c.id and rel.from_id in placed_components):
-                            is_snapped = True
-                            break
-                if is_snapped:
-                    break
+            for j in range(c.count):
+                comp_id = f"{c.id}_{j}" if c.count > 1 else c.id
+                if c.count > 1:
+                    x = -x_spread / 2.0 + (j + 0.5) * (x_spread / c.count)
+                else:
+                    x = 0.0
 
-            level_max_y_scale = max((get_base_scale(c).y for c in level_comps), default=1.0)
+                y = y_current + scale.y / 2.0
+                out_comps.append(OutputComponent(
+                    id=comp_id, original_id=c.id, semantic_type=c.semantic_type,
+                    label=c.label, shape=c.shape,
+                    position=Position(x=x, y=y, z=0.0),
+                    scale=scale, metadata={"variant": variant}
+                ))
 
-            if is_snapped and placed_components:
-                y_current = prev_level_bottom_y - (level_max_y_scale / 2.0)
-            else:
-                y_current = prev_level_bottom_y - y_depth_step
-
-            prev_level_bottom_y = y_current - (level_max_y_scale / 2.0)
-
-            total_weight = sum(get_importance_weight(c.importance) * c.count for c in level_comps)
-            x_spacing_base = calculate_dynamic_spacing(level_comps, [], base_spacing=3.0)
-            start_x = -(total_weight * x_spacing_base) / 2.0
-            current_x = start_x
-
-            for c in level_comps:
-                scale = get_base_scale(c)
-                weight = get_importance_weight(c.importance)
-                for j in range(c.count):
-                    step = x_spacing_base * weight
-                    current_x += step / 2.0
-                    x = current_x
-                    y_jitter = 0.0
-                    if variant == "lateral_links" and j % 2 == 1:
-                        y_jitter = 1.5
-
-                    comp_id = f"{c.id}_{j}" if c.count > 1 else c.id
-                    out_comps.append(OutputComponent(
-                        id=comp_id, original_id=c.id, semantic_type=c.semantic_type, label=c.label, shape=c.shape,
-                        position=Position(x=x, y=y_current + y_jitter, z=0.0), scale=scale, metadata={"variant": variant}
-                    ))
-                    current_x += step / 2.0
-                placed_components.add(c.id)
+            y_current += scale.y + 0.3  # Stack upward with small gap
 
         return out_comps
 
@@ -308,7 +314,18 @@ class RadialLayout(BaseLayoutEngine):
     def process(self, blueprint: Blueprint) -> List[OutputComponent]:
         out_comps = []
 
-        central = [c for c in blueprint.geometric_components if c.role in ["center", "source"]]
+        # ── FIX: Detect center by layout_hint, role, id keywords, or largest scale ─
+        central = [c for c in blueprint.geometric_components if
+                   c.role in ["central", "center", "source"] or
+                   getattr(c, 'layout_hint', '') == 'center' or
+                   any(kw in c.id.lower() for kw in ["nucleus", "core", "center", "sun", "star", "seed", "heart", "inner"])]
+        if not central and blueprint.geometric_components:
+            def _scale_val(c):
+                so = getattr(c, 'scale_override', None)
+                if so and isinstance(so, (list, tuple)) and len(so) == 3:
+                    return float(so[0])
+                return SIZE_MAP.get(c.size_hint, 1.0)
+            central = [max(blueprint.geometric_components, key=_scale_val)]
         ring = [c for c in blueprint.geometric_components if c not in central]
 
         is_sequence = any(r.relation_type in ["transforms_into", "flows_to"] for r in blueprint.semantic_relations)
@@ -335,8 +352,9 @@ class RadialLayout(BaseLayoutEngine):
         if total_items == 0:
             return out_comps
 
-        # ── FIX: tighter base radius (was 5.0 + spacing + count*0.3 → huge)
-        base_radius = max(2.2, 2.0 + (total_items * 0.5))
+        # ── FIX: base radius accounts for center component size ──────────────
+        center_max_scale = max([get_base_scale(c).x for c in central], default=1.0) if central else 1.0
+        base_radius = max(center_max_scale + 2.0, center_max_scale + (total_items * 0.8))
 
         if variant == "uneven_sector":
             total_weight = sum(get_importance_weight(c.importance) * c.count for c in ring)

@@ -376,59 +376,77 @@ CONTRAST_TIEBREAKER = {
 # This prevents the resolver from assigning wrong shapes to well-known types.
 
 # Checked against comp["semantic_type"]
-# =====================================================================
-# 3. SEMANTIC-TYPE AND LABEL SHAPE OVERRIDES (FIXED)
-# =====================================================================
-
 SEMANTIC_TYPE_SHAPE_OVERRIDE = {
-    "vertex": "sphere",
-    "corner": "sphere",
-    "point": "sphere",
-
-    "edge": "cylinder",
-    "side": "box",
-    "face": "box",
-
-    "layer": "sphere",
-    "zone": "sphere",
-
-    "orbit": "torus",
-    "ring": "torus",
-    "belt": "torus"
+    # Geometric primitives
+    "vertex":           "sphere",
+    "corner":           "sphere",
+    "point":            "sphere",
+    "edge":             "box",
+    "side":             "box",
+    "face":             "tetrahedron",   # triangular face → tetrahedron
+    "triangular_face":  "tetrahedron",
+    "triangle":         "tetrahedron",
+    # Astronomical / layered
+    "layer":            "sphere",
+    "zone":             "sphere",
+    "orbit":            "torus",
+    "ring":             "torus",
+    "belt":             "torus",
+    # Architectural parts
+    "base":             "box",
+    "platform":         "box",
+    "foundation":       "box",
+    "capstone":         "cone",
+    "apex":             "cone",
+    "dome":             "hemisphere",
+    "tower":            "cylinder",
+    "minaret":          "cylinder",
+    "pillar":           "cylinder",
+    "column":           "cylinder",
+    "spire":            "cone",
+    "roof":             "cone",
 }
 
+# Checked against comp["id"] and comp["label"] (lowercased, substring match)
+# ORDER MATTERS — more specific entries first (triangular face before face/box)
 LABEL_SHAPE_KEYWORDS = {
-    "sphere": [
-        "sun","star","planet","moon","earth","mars","venus","jupiter",
-        "saturn","mercury","uranus","neptune","pluto","nucleus","atom",
-        "core","layer","zone","corona","photosphere","radiative",
-        "convective","chromosphere","mantle","crust","cell","organelle",
-        "proton","neutron","electron","bubble","droplet","globe","orb"
-    ],
-
-    "torus": [
-        "ring","orbit","orbital","belt","loop","torus",
-        "asteroid belt","accretion","saturn ring"
-    ],
-
-    "cylinder": [
-        "tube","pipe","channel","stem","trunk","column","pillar",
-        "rod","axon","vessel","artery","vein","flagella","bond","link"
-    ],
-
-    "cone": [
-        "cone","pyramid","tip","apex","spire","peak","funnel"
-    ],
-
     "tetrahedron": [
-        "triangular","triangle","triangular_face"
+        "triangular face", "triangular_face", "triangle face",
+        "slanted face", "sloping face", "lateral face", "pyramidal face",
     ],
-
+    "cone": [
+        "capstone", "apex", "tip", "peak", "spire", "pinnacle",
+        "roof", "funnel", "volcano", "cap stone",
+    ],
+    "hemisphere": [
+        "dome", "half sphere", "cupola",
+    ],
+    "sphere": [
+        "sun", "star", "planet", "moon", "earth", "mars", "venus", "jupiter",
+        "saturn", "mercury", "uranus", "neptune", "pluto", "nucleus", "atom",
+        "core", "layer", "zone", "corona", "photosphere", "radiative",
+        "convective", "chromosphere", "mantle", "crust", "cell", "organelle",
+        "proton", "neutron", "electron", "bubble", "droplet", "globe", "orb",
+    ],
+    "torus": [
+        "ring", "orbit", "orbital", "belt", "loop", "torus",
+        "asteroid belt", "accretion", "saturn ring",
+    ],
+    "cylinder": [
+        "tube", "pipe", "channel", "stem", "trunk", "column", "pillar",
+        "rod", "axon", "vessel", "artery", "vein", "flagella", "bond",
+        "minaret", "tower", "obelisk",
+    ],
     "box": [
-        "side","edge","wall","block","base","platform",
-        "building","structure","crystal","lattice","chip","module"
-    ]
+        "square base", "foundation", "platform", "floor",
+        "base", "side", "edge", "wall", "block", "building",
+        "structure", "crystal", "lattice", "chip", "module",
+    ],
+    "icosphere": [
+        "virus", "capsid", "geodesic", "fullerene", "bacteriophage",
+    ],
 }
+
 # Valid resolved_shape values that Three.js createShape() accepts
 VALID_SHAPES = {
     "sphere", "box", "cylinder", "cone", "torus", "hemisphere",
@@ -466,36 +484,34 @@ def _resolve_component_shape(comp: dict, vocab: dict) -> str:
     5. Gemini-provided `shape` field (raw, may be correct)
     6. Hard fallback: "sphere"
     """
-    def _resolve_component_shape(comp: dict, vocab: dict) -> str:
+    # Priority 1: Preserve Gemini's resolved_shape if it's a known valid shape
+    existing = (comp.get("resolved_shape") or "").strip().lower()
+    if existing and existing in VALID_SHAPES:
+        return existing
 
-        existing = (comp.get("resolved_shape") or "").strip().lower()
-        if existing and existing in VALID_SHAPES:
-            return existing
+    # Priority 2: semantic_type override
+    sem_type = (comp.get("semantic_type") or "").lower().strip()
+    if sem_type in SEMANTIC_TYPE_SHAPE_OVERRIDE:
+        return SEMANTIC_TYPE_SHAPE_OVERRIDE[sem_type]
 
-        sem_type = (comp.get("semantic_type") or "").lower().strip()
-        if sem_type in SEMANTIC_TYPE_SHAPE_OVERRIDE:
-            return SEMANTIC_TYPE_SHAPE_OVERRIDE[sem_type]
+    # Priority 3: Label/ID keyword inference
+    label_shape = _infer_shape_from_label(comp)
+    if label_shape:
+        return label_shape
 
-        text = (
-            (comp.get("label") or "") + " " +
-            (comp.get("id") or "") + " " +
-            (comp.get("semantic_type") or "")
-            ).lower()
+    # Priority 4: Role-based vocab from morphology family
+    role = comp.get("role", "node")
+    vocab_shape = vocab.get(role, vocab.get("default", "sphere"))
+    if vocab_shape and vocab_shape in VALID_SHAPES:
+        return vocab_shape
 
-        for shape, keywords in LABEL_SHAPE_KEYWORDS.items():
-            if any(k in text for k in keywords):
-                return shape
+    # Priority 5: Raw `shape` field from Gemini
+    raw_shape = (comp.get("shape") or "").strip().lower()
+    if raw_shape and raw_shape in VALID_SHAPES:
+        return raw_shape
 
-        role = comp.get("role", "node")
-        vocab_shape = vocab.get(role, vocab.get("default", "sphere"))
-        if vocab_shape in VALID_SHAPES:
-            return vocab_shape
-
-        raw_shape = (comp.get("shape") or "").strip().lower()
-        if raw_shape in VALID_SHAPES:
-            return raw_shape
-
-        return "sphere"
+    # Priority 6: Final fallback
+    return "sphere"
 
 
 # ============================================================================

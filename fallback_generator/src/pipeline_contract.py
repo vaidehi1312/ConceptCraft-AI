@@ -92,7 +92,7 @@ STAGE_CONTRACTS = {
 VALID_CATEGORIES = [
     "biological_structure", "physical_object", "abstract_system",
     "process", "abstract_concept", "social_system", "chemical_structure",
-    "information_system", "ecological_system", "astronomical_object"
+    "information_system", "ecological_system", "astronomical_object","physical_phenomenon"
 ]
 
 VALID_PATTERNS = [

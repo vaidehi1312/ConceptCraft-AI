@@ -10,7 +10,7 @@ The pipeline follows a data-driven sequence where each stage operates under a st
 2.  **Semantic Gate:** Validation and automated repair of initial semantic proposals.
 3.  **Blueprint Compilation:** Translation of semantic structures into geometric blueprints including shapes, roles, and importance metrics.
 4.  **Blueprint Gate:** Normalization of spatial relations and enforcement of geometric attribute requirements.
-5.  **Visual Gate:** Topological scoring and verification of blueprint viability.
+5.  **Visual Gate:** Topological scoring, Cross-Encoder validation, and verification of blueprint viability. A `confidence_score ∈ [0, 1]` is produced — retrieval is accepted if `confidence_score ≥ 0.3`, otherwise fallback is triggered.
 6.  **Morphology Resolution:** Classification of the concept into specific morphological families for specialized rendering logic.
 7.  **Relational Geometry Pass:** Calculation of visual properties for semantic connections and scale ratios.
 8.  **Layout Engine Selector:** Selection of mathematical algorithms (Radial, Hierarchical, Network, etc.) based on blueprint logic.
@@ -23,26 +23,34 @@ The pipeline follows a data-driven sequence where each stage operates under a st
 - **Data Contract Enforcement:** Centralized schema definition via `pipeline_contract.py` to prevent structural regressions.
 - **Spatial Logic Resolution:** Deterministic handling of hierarchical containment and vertical structural stacking.
 - **Weighted Geometric Scaling:** Calculation of proportions based on semantically assigned importance and size hints.
+- **Cross-Encoder Validation:** Query text is jointly processed with candidate descriptions using a Cross-Encoder model for high-accuracy relevance scoring. Unlike bi-encoders, both inputs are evaluated together, producing a `confidence_score` used to accept or trigger fallback.
+
+## Validation & Fallback
+
+ConceptCraftAI uses a Cross-Encoder model for semantic validation during 3D retrieval. Unlike bi-encoder approaches that compare embeddings independently, the Cross-Encoder jointly processes the query and candidate text for more accurate relevance scoring.
+
+- **Model:** `cross-encoder/ms-marco-MiniLM-L-6-v2`
+- **Produces:** `confidence_score ∈ [0, 1]`
+- **Threshold:** If `confidence_score < 0.3`, retrieval is rejected and the fallback generator is triggered.
 
 ## Installation and Execution
 
 ### Environment Setup
 
 1. Create a Python virtual environment:
-   ```bash
+```bash
    python3 -m venv .venv
    source .venv/bin/activate
-   ```
+```
 
 2. Install required dependencies:
-   ```bash
+```bash
    pip install -r requirements.txt
-   ```
+```
 
 ### Running the Pipeline
 
 To execute the pipeline via the command-line interface:
-
 ```bash
 PYTHONPATH=src python3 src/main.py
 ```
@@ -56,3 +64,4 @@ Concepts provided to the interface are processed through all ten stages, and the
 - `src/engine.py`: Coordination of layout engines and spatial processing passes.
 - `src/validators/`: Integrity enforcement gates for each stage transition.
 - `src/documentation/architecture_flow.md`: Technical documentation of internal pipeline logic and data flow.
+- `fallback_generator/`: Fallback logic triggered when `confidence_score < 0.3`.

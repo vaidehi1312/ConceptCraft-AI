@@ -6,12 +6,13 @@ can send a concept and receive 3D coordinates.
 """
 import sys, os, json, dataclasses
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "src"))
+os.environ["KAGGLE_LLM_URL"] = "https://impressional-kristy-nonalined.ngrok-free.dev"
 os.environ["GOOGLE_API_KEY"] = "AIzaSyCz8oA06Yiev-eueP0jgRGZ0V5eHK0lY_s"
 
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 
-from generator import BlueprintGenerator
+from generator import BlueprintGenerator    
 from validators.semantic_gate import SemanticGate
 from validators.blueprint_gate import BlueprintGate
 from validators.visual_gate import VisualGate
