@@ -8,5 +8,7 @@ __pycache__/
 *.obj
 *.gltf
 *.pcd
+*.glb
+*.mtl
 datasets/
 indexes/git

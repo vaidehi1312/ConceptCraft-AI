@@ -1,8 +1,7 @@
 {
     "project": "ConceptCraft AI",
     "description": "3D dataset metadata index used for retrieval pipeline",
-<<<<<<< HEAD
-    "total_sources": 12,
+    "total_sources": 16,
     "datasets": [
         {
             "name": "High Fidelity Cultural Heritage 3D Dataset",
@@ -36,9 +35,10 @@
             "tags": [
                 "drone imagery",
                 "3d reconstruction"
-=======
-    "total_sources": 11,
-    "datasets": [
+            ],
+            "license": "research",
+            "embedding_status": "pending"
+        },
         {
             "name": "MedShapeNet",
             "domain": "biology",
@@ -53,13 +53,11 @@
                 "organs",
                 "medical",
                 "anatomy"
->>>>>>> 950ddc7071e60f0e2f676bdd7fef60f897f55db5
             ],
             "license": "research",
             "embedding_status": "pending"
         },
         {
-<<<<<<< HEAD
             "name": "OpenHeritage3D",
             "domain": "cultural_heritage",
             "category": "heritage_scans",
@@ -73,7 +71,11 @@
             "tags": [
                 "archaeology",
                 "historic sites"
-=======
+            ],
+            "license": "open",
+            "embedding_status": "pending"
+        },
+        {
             "name": "NIH 3D",
             "domain": "biology",
             "category": [
@@ -143,26 +145,11 @@
             "tags": [
                 "planets",
                 "solar system"
->>>>>>> 950ddc7071e60f0e2f676bdd7fef60f897f55db5
             ],
             "license": "varies",
             "embedding_status": "pending"
         },
         {
-<<<<<<< HEAD
-            "name": "Digital Agriculture Datasets",
-            "domain": "agriculture",
-            "category": "crop_research",
-            "source_type": "github",
-            "url": "https://github.com/ricber/digital-agriculture-datasets",
-            "formats": [
-                "images",
-                "csv"
-            ],
-            "tags": [
-                "farming",
-                "plant monitoring"
-=======
             "name": "NASA 3D Resources",
             "domain": "astronomy",
             "category": "space",
@@ -244,13 +231,28 @@
                 "chemical",
                 "compound",
                 "molecule"
->>>>>>> 950ddc7071e60f0e2f676bdd7fef60f897f55db5
             ],
             "license": "open",
             "embedding_status": "pending"
         },
         {
-<<<<<<< HEAD
+            "name": "Digital Agriculture Datasets",
+            "domain": "agriculture",
+            "category": "crop_research",
+            "source_type": "github",
+            "url": "https://github.com/ricber/digital-agriculture-datasets",
+            "formats": [
+                "images",
+                "csv"
+            ],
+            "tags": [
+                "farming",
+                "plant monitoring"
+            ],
+            "license": "research",
+            "embedding_status": "pending"
+        },
+        {
             "name": "Agroscope Agricultural Datasets",
             "domain": "agriculture",
             "category": "crop_science",
@@ -379,7 +381,11 @@
             "tags": [
                 "animal modeling",
                 "pose estimation"
-=======
+            ],
+            "license": "research",
+            "embedding_status": "pending"
+        },
+        {
             "name": "Materials Project",
             "domain": "chemistry",
             "category": "materials",
@@ -392,7 +398,6 @@
             "tags": [
                 "materials",
                 "crystal"
->>>>>>> 950ddc7071e60f0e2f676bdd7fef60f897f55db5
             ],
             "license": "research",
             "embedding_status": "pending"

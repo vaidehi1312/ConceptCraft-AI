@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ConceptCraftAI</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<!-- Include Three.js libraries -->
+<script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+
 <style>
   :root {
     --bg: #080c10;
@@ -22,6 +27,12 @@
     --medium: #00c8ff;
     --low: #ffb347;
     --fallback: #ff6b6b;
+  }
+
+  body.high-contrast {
+    --text-dim: #ffffff;
+    --border: #ffffff;
+    --muted: #cccccc;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -63,6 +74,8 @@
   .hero h1 em { font-style: normal; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .hero p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.7; max-width: 480px; margin: 0 auto; opacity: 0; animation: fadeUp 0.6s ease 0.3s forwards; }
 
+  .header-actions { display: flex; align-items: center; }
+
   .api-config { margin-bottom: 28px; opacity: 0; animation: fadeUp 0.6s ease 0.4s forwards; }
   .api-toggle { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); background: none; border: none; cursor: pointer; font-family: 'DM Mono', monospace; padding: 0; display: flex; align-items: center; gap: 6px; transition: color 0.15s; }
   .api-toggle:hover { color: var(--accent); }
@@ -81,6 +94,7 @@
   .search-btn:hover { opacity: 0.85; transform: translateY(-1px); }
   .search-btn:active { transform: translateY(0); }
   .search-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+  .keyboard-shortcuts { text-align: center; font-size: 0.65rem; color: var(--muted); margin-top: 10px; }
 
   .examples { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 14px; }
   .ex-chip { font-size: 0.72rem; color: var(--text-dim); border: 1px solid var(--border); border-radius: 2px; padding: 4px 12px; cursor: pointer; transition: all 0.15s; background: none; font-family: 'DM Mono', monospace; }
@@ -93,14 +107,14 @@
   .status-domain { margin-left: auto; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
   .domain-tag { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; background: rgba(79,255,176,0.08); color: var(--accent); border: 1px solid rgba(79,255,176,0.2); }
 
-  /* ── Confidence tier badge ── */
+  /* Confidence tier badge */
   .tier-badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 2px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; }
   .tier-badge.high     { background: rgba(79,255,176,0.1);  color: var(--high);     border: 1px solid rgba(79,255,176,0.3); }
   .tier-badge.medium   { background: rgba(0,200,255,0.1);   color: var(--medium);   border: 1px solid rgba(0,200,255,0.3); }
   .tier-badge.low      { background: rgba(255,179,71,0.1);  color: var(--low);      border: 1px solid rgba(255,179,71,0.3); }
   .tier-badge.fallback { background: rgba(255,107,107,0.1); color: var(--fallback); border: 1px solid rgba(255,107,107,0.3); }
 
-  /* ── Explainability box ── */
+  /* Explainability box */
   .explain-box { display: none; padding: 16px 20px; border-radius: 6px; margin-bottom: 28px; font-size: 0.78rem; line-height: 1.65; border: 1px solid; gap: 14px; align-items: flex-start; }
   .explain-box.show { display: flex; }
   .explain-box.high     { background: rgba(79,255,176,0.04);  border-color: rgba(79,255,176,0.2); }
@@ -115,82 +129,68 @@
   .explain-box .ex-body strong.fallback { color: var(--fallback); }
   .explain-box .ex-body span { color: var(--text-dim); }
 
-  .score-row { display: flex; gap: 6px; align-items: center; margin-bottom: 24px; flex-wrap: wrap; }
-  .score-pill { font-size: 0.65rem; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 2px; border: 1px solid var(--border); color: var(--text-dim); }
-
   .best-match-section { display: none; margin-bottom: 40px; }
   .best-match-section.show { display: block; }
   .section-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 14px; }
 
-  /* FIX: fallback card gets red border instead of green */
   .best-match-card { background: var(--card-bg); border: 1px solid rgba(79,255,176,0.3); border-radius: 8px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; }
   .best-match-card.is-fallback { border-color: rgba(255,107,107,0.35); }
   @media (max-width: 640px) { .best-match-card { grid-template-columns: 1fr; } }
 
-  .viewer-pane { position: relative; background: #060a0e; min-height: 340px; }
-  .viewer-pane iframe { width: 100%; height: 100%; min-height: 340px; border: none; display: block; }
+  .viewer-pane { position: relative; background: #060a0e; min-height: 340px; display: flex; align-items: center; justify-content: center; }
+  .viewer-pane iframe, .viewer-pane canvas { width: 100%; height: 100%; min-height: 340px; border: none; display: block; }
   .viewer-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: var(--text-dim); }
-  .viewer-placeholder img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; opacity: 0.6; }
+  
   .viewer-placeholder .no-viewer-text { position: relative; z-index: 1; text-align: center; font-size: 0.75rem; background: rgba(8,12,16,0.8); padding: 10px 16px; border-radius: 4px; border: 1px solid var(--border); }
   .viewer-open-btn { position: absolute; bottom: 12px; right: 12px; z-index: 10; background: var(--accent); color: #080c10; border: none; border-radius: 3px; padding: 7px 14px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; transition: opacity 0.15s; }
   .viewer-open-btn:hover { opacity: 0.85; }
-  /* FIX: fallback open button is red-tinted */
   .viewer-open-btn.fallback-btn { background: var(--fallback); }
 
   .best-badge { position: absolute; top: 10px; left: 10px; z-index: 10; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; background: var(--accent); color: #080c10; padding: 3px 8px; border-radius: 2px; font-family: 'Syne', sans-serif; font-weight: 700; }
-  /* FIX: fallback badge styling */
   .best-badge.fallback-badge { background: var(--fallback); color: #fff; }
 
   .info-pane { padding: 28px 28px 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; }
   .info-source { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px; }
   .info-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; line-height: 1.25; margin-bottom: 10px; color: var(--text); }
-  .info-desc { font-size: 0.78rem; color: var(--text-dim); line-height: 1.7; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 14px; }
+  .info-desc { font-size: 0.78rem; color: var(--text-dim); line-height: 1.7; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 14px; }
 
-  /* NEW: Live indicator for fallback results */
   .live-indicator { display: inline-flex; align-items: center; gap: 6px; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fallback); margin-bottom: 10px; font-family: 'Syne', sans-serif; font-weight: 700; }
   .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--fallback); animation: pulse 1.2s ease infinite; flex-shrink: 0; }
 
-  /* NEW: Sketchfab social stats row */
-  .sketchfab-stats { display: flex; gap: 14px; margin-top: 8px; font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.06em; }
-  .sketchfab-stats span { display: flex; align-items: center; gap: 4px; }
+  .info-scores { display: flex; flex-direction: column; gap: 8px; font-size: 0.75rem; color: var(--text-dim); }
 
-  .info-scores { display: flex; flex-direction: column; gap: 8px; }
-  .score-bar-row { display: flex; align-items: center; gap: 10px; font-size: 0.68rem; color: var(--text-dim); }
-  .score-bar-label { width: 60px; flex-shrink: 0; letter-spacing: 0.06em; }
-  .score-bar-track { flex: 1; height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
-  .score-bar-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.6s ease; }
-  .score-bar-fill.blue { background: var(--accent2); }
-  .score-bar-fill.muted { background: var(--muted); }
-  .score-bar-fill.red { background: var(--fallback); }
-  .score-bar-val { width: 36px; text-align: right; color: var(--text); flex-shrink: 0; }
+  /* Accessibility & Explainability */
+  .speech-btn { background: transparent; border: 1px solid var(--border); border-radius: 50%; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; color: var(--text-dim); cursor: pointer; transition: 0.15s; font-size: 0.8rem; flex-shrink: 0; outline: none; }
+  .speech-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .speech-btn.playing { background: var(--accent); color: var(--bg); border-color: var(--accent); animation: pulse 1s infinite; }
 
-  .results-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 14px; }
-  .results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-bottom: 60px; }
+  .wireframe-btn { position: absolute; top: 12px; right: 12px; z-index: 10; background: rgba(8,12,16,0.8); border: 1px solid var(--border); color: var(--text); padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.65rem; font-family: 'Syne', sans-serif; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; outline: none; }
+  .wireframe-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .wireframe-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
 
-  .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; transition: border-color 0.2s, transform 0.2s; opacity: 0; animation: fadeUp 0.4s ease forwards; cursor: pointer; text-decoration: none; display: block; color: inherit; }
-  .card:hover { border-color: rgba(79,255,176,0.4); transform: translateY(-3px); }
-  /* FIX: fallback cards get red hover */
-  .card.sketchfab-card:hover { border-color: rgba(255,107,107,0.4); }
-  .card.sketchfab-card { border-color: rgba(255,107,107,0.15); }
-  .card-thumb { aspect-ratio: 4/3; background: var(--surface); overflow: hidden; display: flex; align-items: center; justify-content: center; }
-  .card-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s; }
-  .card-thumb img.loaded { opacity: 1; }
-  .thumb-placeholder { font-size: 2rem; opacity: 0.15; }
-  .card-body { padding: 14px 16px 16px; }
-  .card-source { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 5px; }
-  /* NEW: sketchfab source tag */
-  .card-source.live-source { color: var(--fallback); }
-  .card-name { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.88rem; line-height: 1.3; margin-bottom: 8px; color: var(--text); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-  .card-desc { font-size: 0.72rem; color: var(--text-dim); line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 10px; }
-  .card-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-  .card-score { font-size: 0.63rem; color: var(--text-dim); }
-  .card-score strong { color: var(--accent); font-weight: 400; }
-  /* NEW: live result label in card footer */
-  .card-score .live-tag { color: var(--fallback); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; display: flex; align-items: center; gap: 4px; }
-  .live-tag-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--fallback); animation: pulse 1.2s ease infinite; display: inline-block; }
-  .card-link { font-size: 0.63rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent2); border-bottom: 1px solid rgba(0,200,255,0.3); padding-bottom: 1px; }
-  /* NEW: sketchfab card link is red-tinted */
-  .card-link.sketchfab-link { color: var(--fallback); border-bottom-color: rgba(255,107,107,0.3); }
+  .score-breakdown { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; border-top: 1px solid var(--border); padding-top: 14px; }
+  .breakdown-row { display: flex; align-items: center; gap: 8px; font-size: 0.7rem; color: var(--text-dim); }
+  .bd-label { width: 65px; font-weight: 500; cursor: help; text-decoration: underline dotted rgba(255,255,255,0.2); }
+  .bd-track { flex: 1; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .bd-fill { height: 100%; border-radius: 2px; transition: width 0.4s ease; }
+  .bd-val { width: 35px; text-align: right; }
+
+  .results-list { margin-top: 40px; }
+  .list-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px; padding: 16px; margin-bottom: 10px; cursor: pointer; transition: border-color 0.2s; }
+  .list-item:hover { border-color: var(--accent); }
+  .list-item-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .list-rank { font-size: 0.8rem; color: var(--accent); font-weight: 700; width: 24px; }
+  .list-name { flex: 1; font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; gap: 10px; }
+  .list-source { font-size: 0.65rem; padding: 2px 6px; border-radius: 2px; background: rgba(255,255,255,0.05); color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
+  .list-source.faiss { color: var(--accent2); background: rgba(0,200,255,0.1); }
+  .list-source.sketchfab { color: var(--fallback); background: rgba(255,107,107,0.1); }
+  
+  .list-expanded { display: none; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+  .list-item.expanded .list-expanded { display: block; }
+  .list-item.expanded { border-color: rgba(79,255,176,0.3); }
+
+  .expanded-iframe { width: 100%; height: 280px; border: none; border-radius: 4px; background: #000; }
+  .expanded-desc { font-size: 0.8rem; line-height: 1.6; color: var(--text-dim); margin-bottom: 12px; }
 
   .empty-state { text-align: center; padding: 60px 0; color: var(--text-dim); display: none; }
   .empty-state.show { display: block; }
@@ -200,11 +200,26 @@
   @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-  .card:nth-child(1){animation-delay:0.03s} .card:nth-child(2){animation-delay:0.06s}
-  .card:nth-child(3){animation-delay:0.09s} .card:nth-child(4){animation-delay:0.12s}
-  .card:nth-child(5){animation-delay:0.15s} .card:nth-child(6){animation-delay:0.18s}
-  .card:nth-child(7){animation-delay:0.21s} .card:nth-child(8){animation-delay:0.24s}
-  .card:nth-child(9){animation-delay:0.27s} .card:nth-child(10){animation-delay:0.30s}
+  .letter-avatar { 
+    width: 100px; 
+    height: 100px; 
+    background: linear-gradient(135deg, var(--surface), #1a2235); 
+    border: 1px solid var(--accent); 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 48px; 
+    font-family: 'Syne', sans-serif; 
+    font-weight: 800; 
+    color: var(--accent); 
+    text-shadow: 0 0 15px rgba(79,255,176,0.3);
+    user-select: none;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .viewer-pane .letter-avatar { margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+  .viewer-pane.info-mode { background: var(--surface) !important; }
 </style>
 </head>
 <body>
@@ -216,7 +231,10 @@
 
   <header>
     <div class="logo">Concept<span>Craft</span>AI</div>
-    <div class="badge">Beta · v4.3</div>
+    <div class="header-actions">
+      <button class="api-toggle" style="margin-right: 14px;" onclick="document.body.classList.toggle('high-contrast')">◑ Contrast</button>
+      <div class="badge">Beta · v4.3</div>
+    </div>
   </header>
 
   <div class="hero">
@@ -238,6 +256,7 @@
       <input type="text" id="searchInput" placeholder="mitochondria, black hole, glucose, DNA..." autocomplete="off" spellcheck="false" />
       <button class="search-btn" id="searchBtn" onclick="doSearch()">Search</button>
     </div>
+    <div class="keyboard-shortcuts">Press Enter to search, Tab to navigate results</div>
     <div class="examples">
       <button class="ex-chip" onclick="setQuery('mitochondria')">mitochondria</button>
       <button class="ex-chip" onclick="setQuery('black hole')">black hole</button>
@@ -254,8 +273,6 @@
     <div class="status-domain" id="statusDomain"></div>
   </div>
 
-  <div class="score-row" id="scoreRow" style="display:none"></div>
-
   <!-- Explainability box -->
   <div class="explain-box" id="explainBox">
     <div class="ex-icon" id="explainIcon"></div>
@@ -266,16 +283,18 @@
   </div>
 
   <div class="best-match-section" id="bestMatchSection">
-    <div class="section-label" id="bestMatchLabel">// best match</div>
+    <div class="section-label" id="bestMatchLabel">// Model Output</div>
     <div class="best-match-card" id="bestMatchCard"></div>
   </div>
 
-  <div id="resultsLabel" class="results-label" style="display:none"></div>
-  <div class="results-grid" id="resultsGrid"></div>
-
   <div class="empty-state" id="emptyState">
     <div class="icon">◎</div>
-    <p>No results found.<br>Try a different query or check your API endpoint.</p>
+    <p>No results found or generation failed.<br>Try a different query or check your API endpoint.</p>
+  </div>
+
+  <div class="results-list" id="resultsList" style="display:none; margin-bottom: 50px;">
+     <div class="section-label" id="resultsListLabel">// Top 5 Candidates</div>
+     <div id="resultsListContainer"></div>
   </div>
 
 </div>
@@ -283,30 +302,11 @@
 <script>
   const DOMAIN_ICONS = { biological:'🧬', physical:'⚙️', chemical:'⚗️', astronomical:'🔭' };
 
-  // ── Confidence tier definitions ────────────────────────────────────────────
-  // Mirrors the tiers in search.py: high ≥0.65, medium ≥0.45, low ≥0.30, fallback <0.30
   const TIER_CONFIG = {
-    high: {
-      icon: '✦',
-      label: 'High Confidence',
-      message: 'Strong semantic and structural match. This model closely represents the concept you searched for.',
-    },
-    medium: {
-      icon: '◈',
-      label: 'Medium Confidence — Closest Match',
-      message: 'Decent match. The model is related to your query but may not be an exact representation. Review the description before use.',
-    },
-    low: {
-      icon: '⚠',
-      label: 'Low Confidence — Nearest Available',
-      message: 'Weak match. No strong result was found. This is the nearest available model in the dataset — try a more specific search term for better results.',
-    },
-    // FIXED: fallback now reflects live Sketchfab search, not a dead-end
-    fallback: {
-      icon: '⟳',
-      label: 'Live Sketchfab Search — No Local Match',
-      message: 'No local index match found. These results were fetched live from the Sketchfab API. Quality may vary — try a more specific query for stronger local results.',
-    },
+    high: { icon: '✦', label: 'High Confidence', message: 'Strong semantic and structural match.' },
+    medium: { icon: '◈', label: 'Medium Confidence', message: 'Decent match. The model is related to your query.' },
+    low: { icon: '⚠', label: 'Low Confidence', message: 'Weak match. This is the nearest available model in the dataset.' },
+    fallback: { icon: '⟳', label: 'Fallback Generative AI', message: 'No local index match found. Generating an AI model representing the concept.' }
   };
 
   function getApiUrl() {
@@ -315,50 +315,82 @@
   function toggleApi() { document.getElementById('apiPanel').classList.toggle('open'); }
   function setQuery(q) { document.getElementById('searchInput').value = q; doSearch(); }
 
-  // Helper: detect if a result came from the live Sketchfab fallback
-  function isSketchfabLive(r) {
-    return r.source === 'sketchfab' || r.source === 'sketchfab_live' ||
-           (r.embed_url && r.embed_url.includes('sketchfab.com/models') && (r.faiss_score === 0 || r.faiss_score === 0.0));
-  }
-
   document.getElementById('searchInput').addEventListener('keydown', e => {
     if (e.key === 'Enter') doSearch();
   });
 
+  let loadTimeout;
+  let activeRenderer = null; 
+  let activeScene = null;
+  let isWireframe = false;
+
+  function toggleWireframe(btn) {
+    isWireframe = !isWireframe;
+    if (isWireframe) btn.classList.add('active');
+    else btn.classList.remove('active');
+    
+    if (activeScene) {
+      activeScene.traverse((o) => { 
+        if (o.isMesh && o.material) {
+          o.material.wireframe = isWireframe; 
+        }
+      });
+    }
+  }
+
+  function toggleSpeech(btn, name, desc, tier, score) {
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+      const wasPlaying = btn.classList.contains('playing');
+      document.querySelectorAll('.speech-btn').forEach(b => b.classList.remove('playing'));
+      if (wasPlaying) return;
+    }
+    
+    document.querySelectorAll('.speech-btn').forEach(b => b.classList.remove('playing'));
+    btn.classList.add('playing');
+    
+    const text = `3D model of ${name}. ${desc || 'No description available.'} Confidence: ${tier}. Score: ${(score||0).toFixed(2)}.`;
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.onend = () => { btn.classList.remove('playing'); };
+    window.speechSynthesis.speak(utterance);
+  }
+
   async function doSearch() {
     const query = document.getElementById('searchInput').value.trim();
     if (!query) return;
+
+    window.speechSynthesis.cancel();
 
     const btn          = document.getElementById('searchBtn');
     const statusBar    = document.getElementById('statusBar');
     const statusDot    = document.getElementById('statusDot');
     const statusText   = document.getElementById('statusText');
     const statusDomain = document.getElementById('statusDomain');
-    const scoreRow     = document.getElementById('scoreRow');
     const explainBox   = document.getElementById('explainBox');
     const bestSection  = document.getElementById('bestMatchSection');
     const bestLabel    = document.getElementById('bestMatchLabel');
-    const resultsLabel = document.getElementById('resultsLabel');
-    const resultsGrid  = document.getElementById('resultsGrid');
     const emptyState   = document.getElementById('emptyState');
 
-    // Reset
+    // Reset UI
     btn.disabled = true;
     btn.textContent = '...';
-    resultsGrid.innerHTML = '';
     document.getElementById('bestMatchCard').innerHTML = '';
     document.getElementById('bestMatchCard').className = 'best-match-card';
-    scoreRow.style.display = 'none';
-    resultsLabel.style.display = 'none';
     bestSection.classList.remove('show');
-    bestLabel.textContent = '// best match';
+    bestLabel.textContent = '// Model Output';
     explainBox.className = 'explain-box';
     emptyState.classList.remove('show');
     statusDomain.innerHTML = '';
     statusDot.style.background = 'var(--accent)';
     statusDot.classList.add('loading');
-    statusText.textContent = 'Expanding query & searching all domains...';
+    statusText.textContent = 'Searching vector database...';
     statusBar.classList.add('show');
+
+    clearTimeout(loadTimeout);
+    loadTimeout = setTimeout(() => {
+        statusText.textContent = 'Generating fallback model via TripoSR... (Approx 30-60s)';
+        statusDot.style.background = 'var(--fallback)';
+    }, 7000);
 
     try {
       const res = await fetch(`${getApiUrl()}/query`, {
@@ -367,240 +399,352 @@
         body: JSON.stringify({ query, top_k: 10 })
       });
 
+      clearTimeout(loadTimeout);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
 
-      // Use confidence_tier field; fall back gracefully for older API versions
-      const tier   = data.confidence_tier || (data.accepted ? 'medium' : 'fallback');
-      const domain = data.source_domain   || data.domain || 'unknown';
-      const isFallback = tier === 'fallback';
+      const tier   = data.confidence_tier || 'medium';
+      const isFallback = data.mode === 'fallback';
 
-      // Status bar — FIXED: different message for fallback
       statusDot.classList.remove('loading');
       statusDot.style.background = isFallback ? 'var(--fallback)' : 'var(--accent)';
-
+      
       if (isFallback) {
-        statusText.textContent = `No local match — fetched ${data.results.length} live result${data.results.length !== 1 ? 's' : ''} from Sketchfab`;
+        statusText.textContent = `Generated TripoSR model successfully across domains in ${data.latency_ms || 0}ms`;
       } else {
-        statusText.textContent = `Found ${data.results.length} result${data.results.length !== 1 ? 's' : ''} · ${domain}`;
+        statusText.textContent = `Returned best match after checking 4 domains in ${data.latency_ms || 0}ms`;
       }
 
       statusDomain.innerHTML = `
-        ${!isFallback ? `<span class="domain-tag">${DOMAIN_ICONS[domain] || ''} ${domain}</span>` : ''}
         <span class="tier-badge ${tier}">${TIER_CONFIG[tier]?.icon || ''} ${tier}</span>
       `;
 
-      // Score row — FIXED: hide scores for fallback (they're all 0.000 and meaningless)
-      if (!isFallback) {
-        scoreRow.style.display = 'flex';
-        scoreRow.innerHTML = `
-          <span class="score-pill">score&nbsp;${data.best_score.toFixed(3)}</span>
-          <span class="score-pill">ce&nbsp;${data.clip_score.toFixed(3)}</span>
-          <span class="score-pill">struct&nbsp;${data.structural_score.toFixed(3)}</span>
-          <span class="score-pill">faiss&nbsp;${data.faiss_score.toFixed(3)}</span>
-        `;
-      }
-
       // Explainability box
-      const tc = TIER_CONFIG[tier];
-      if (tc) {
-        document.getElementById('explainIcon').textContent  = tc.icon;
-        document.getElementById('explainTitle').textContent = tc.label;
-        document.getElementById('explainTitle').className   = tier;
-        document.getElementById('explainMsg').textContent   = tc.message;
-        explainBox.className = `explain-box ${tier} show`;
-      }
+      const tc = TIER_CONFIG[tier] || TIER_CONFIG.medium;
+      document.getElementById('explainIcon').textContent  = tc.icon;
+      document.getElementById('explainTitle').textContent = tc.label;
+      document.getElementById('explainTitle').className   = tier;
+      document.getElementById('explainMsg').textContent   = data.explanation || tc.message;
+      explainBox.className = `explain-box ${tier} show`;
 
-      if (!data.results || data.results.length === 0) {
+      if (!data.name || (data.mode === 'fallback' && !data.model_url)) {
         emptyState.classList.add('show');
         return;
       }
 
-      // FIXED: section label changes for fallback
       if (isFallback) {
-        bestLabel.textContent = '// live sketchfab result';
+        bestLabel.textContent = '// triposr generated result';
         document.getElementById('bestMatchCard').classList.add('is-fallback');
+      } else {
+        bestLabel.textContent = '// best match database result';
       }
 
-      // Best match card with inline 3D viewer
-      renderBestMatch(data.results[0], domain, tier);
+      renderBestMatch(data);
       bestSection.classList.add('show');
-
-      // Remaining results as cards
-      const rest = data.results.slice(1, 5);
-      if (rest.length > 0) {
-        resultsLabel.style.display = 'block';
-        resultsLabel.textContent = isFallback
-          ? `// ${rest.length} more sketchfab result${rest.length !== 1 ? 's' : ''}`
-          : `// ${rest.length} other candidate${rest.length !== 1 ? 's' : ''}`;
-        renderCards(rest, isFallback);
-      }
+      
+      // Render candidate list below
+      renderResults(data.all_results || [], tier);
 
     } catch (err) {
+      clearTimeout(loadTimeout);
       statusDot.classList.remove('loading');
       statusDot.style.background = 'var(--danger)';
-      statusText.textContent = `Error: ${err.message} — check API endpoint above`;
+      statusText.textContent = `Error: ${err.message}`;
     } finally {
       btn.disabled = false;
       btn.textContent = 'Search';
     }
   }
 
-  function renderBestMatch(r, domain, tier) {
-    const card       = document.getElementById('bestMatchCard');
-    const source     = cleanSource(r.source);
-    const tc         = TIER_CONFIG[tier] || TIER_CONFIG.medium;
-    const isFallback = tier === 'fallback';
-    const isLive     = isSketchfabLive(r);
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.toString().replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+  }
 
-    // FIXED: badge text and style changes for fallback
+  function getThumbnailHtml(name, thumbnailUrl, isSmall = false) {
+    const firstChar = (name || '?').charAt(0).toUpperCase();
+    const avatarStyle = isSmall ? 'width:32px; height:32px; font-size:18px;' : '';
+    
+    if (!thumbnailUrl) {
+      return `<div class="letter-avatar" style="${avatarStyle}">${firstChar}</div>`;
+    }
+    
+    return `
+      <div style="display:flex; justify-content:center; align-items:center; width:100%;">
+        <img src="${thumbnailUrl}" 
+             style="${isSmall ? 'width:32px; height:32px; object-fit:cover; border-radius:3px;' : 'max-height:180px; max-width:100%; object-fit:contain; border-radius:4px; margin-bottom:12px;'}" 
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="letter-avatar" style="display:none; ${avatarStyle}">${firstChar}</div>
+      </div>`;
+  }
+
+  function renderBestMatch(data) {
+    const card       = document.getElementById('bestMatchCard');
+    const tier       = data.confidence_tier || 'medium';
+    const isFallback = data.mode === 'fallback';
+    const tc         = TIER_CONFIG[tier] || TIER_CONFIG.medium;
+
     const badgeClass = isFallback ? 'best-badge fallback-badge' : 'best-badge';
-    const badgeText  = isFallback ? '⟳ Sketchfab live' : 'Best match';
+    const badgeText  = isFallback ? '⟳ TripoSR Live' : 'Best match';
     const openBtnClass = isFallback ? 'viewer-open-btn fallback-btn' : 'viewer-open-btn';
 
+    const m = data.all_results && data.all_results.length > 0 ? data.all_results[0] : {};
     let viewerHtml = '';
-    if (r.embed_url) {
+    
+    if (data.render_type === 'glb' && data.model_url) {
       viewerHtml = `
-        <div class="viewer-pane">
+        <div class="viewer-pane" id="threejs-container">
           <span class="${badgeClass}">${badgeText}</span>
-          <iframe src="${r.embed_url}?autostart=0&ui_theme=dark" allowfullscreen loading="lazy"></iframe>
-          <a class="${openBtnClass}" href="${r.embed_url}" target="_blank" rel="noopener">↗ Open on Sketchfab</a>
-        </div>`;
-    } else if (r.thumbnail) {
-      viewerHtml = `
-        <div class="viewer-pane">
-          <span class="${badgeClass}">${badgeText}</span>
-          <div class="viewer-placeholder">
-            <img src="${r.thumbnail}" alt="${r.name}" />
-            <div class="no-viewer-text">No 3D viewer — thumbnail only</div>
+          <button class="wireframe-btn" onclick="toggleWireframe(this)">Wireframe</button>
+          <div class="viewer-placeholder" id="threejs-loading" style="z-index: 5;">
+            <div class="no-viewer-text">Loading GLB geometry and textures...</div>
           </div>
+          ${data.model_url ? `<a class="${openBtnClass}" href="${data.model_url.startsWith('http') ? data.model_url : getApiUrl() + data.model_url}" target="_blank" rel="noopener">↗ Download GLB</a>` : ''}
+        </div>`;
+    } else if ((data.render_type === 'sketchfab_embed' || data.render_type === 'molecule_viewer') && data.embed_url) {
+      viewerHtml = `
+        <div class="viewer-pane">
+          <span class="${badgeClass}">${badgeText}</span>
+          <iframe src="${data.embed_url}?autostart=0&ui_theme=dark" allowfullscreen loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"></iframe>
+          <div class="viewer-placeholder" style="display:none; position:static;">
+             <div class="no-viewer-text">Iframe failed to load. Use the link below.</div>
+          </div>
+          <a class="${openBtnClass}" href="${data.embed_url}" target="_blank" rel="noopener">↗ Open in new tab</a>
         </div>`;
     } else {
+      const thumbUrl = m.thumbnail || m.thumbnail_url || '';
+      const thumbHtml = getThumbnailHtml(data.name, thumbUrl);
+      const fallbackUrl = data.model_page_url || data.embed_url || data.model_url || '';
+      const actionBtn = fallbackUrl ? `<a class="${openBtnClass}" style="position:relative; right:auto; bottom:auto; margin-top:12px;" href="${fallbackUrl.startsWith('http') ? fallbackUrl : getApiUrl() + fallbackUrl}" target="_blank" rel="noopener">↗ View source/link</a>` : '';
       viewerHtml = `
-        <div class="viewer-pane">
-          <span class="${badgeClass}">${badgeText}</span>
-          <div class="viewer-placeholder">
-            <div class="no-viewer-text">${DOMAIN_ICONS[domain] || '◎'}<br>No preview available</div>
-          </div>
+        <div class="viewer-pane info-mode" style="flex-direction:column; padding:30px; justify-content:center;">
+          <span class="${badgeClass}">Reference Card</span>
+          ${thumbHtml}
+          ${actionBtn}
         </div>`;
     }
 
-    // FIXED: score bars for fallback show Sketchfab social signals instead of zeroed FAISS scores
     let infoPaneBottom = '';
     if (isFallback) {
-      const likes = r.metadata?.likeCount || 0;
-      const views = r.metadata?.viewCount || 0;
-      const likesPct  = Math.min((likes / 1000) * 100, 100).toFixed(1);
-      const viewsPct  = Math.min((views / 50000) * 100, 100).toFixed(1);
       infoPaneBottom = `
         <div class="info-scores">
-          <div class="score-bar-row">
-            <span class="score-bar-label">Likes</span>
-            <div class="score-bar-track"><div class="score-bar-fill red" style="width:${likesPct}%"></div></div>
-            <span class="score-bar-val">${likes.toLocaleString()}</span>
-          </div>
-          <div class="score-bar-row">
-            <span class="score-bar-label">Views</span>
-            <div class="score-bar-track"><div class="score-bar-fill muted" style="width:${viewsPct}%"></div></div>
-            <span class="score-bar-val">${views >= 1000 ? (views/1000).toFixed(1)+'k' : views}</span>
-          </div>
+          <div>Mode: <strong>Fallback Generation</strong></div>
+          <div>Render Type: <strong>${data.render_type || 'unknown'}</strong></div>
         </div>`;
     } else {
-      const scores = [
-        { label: 'Final',  val: r.final_score,      cls: '' },
-        { label: 'CE',     val: r.clip_score,        cls: 'blue' },
-        { label: 'Struct', val: r.structural_score,  cls: 'muted' },
-        { label: 'FAISS',  val: r.faiss_score,       cls: 'muted' },
-      ];
       infoPaneBottom = `
-        <div class="info-scores">
-          ${scores.map(s => `
-            <div class="score-bar-row">
-              <span class="score-bar-label">${s.label}</span>
-              <div class="score-bar-track">
-                <div class="score-bar-fill ${s.cls}" style="width:${Math.min(((s.val||0)*100),100).toFixed(1)}%"></div>
-              </div>
-              <span class="score-bar-val">${(s.val||0).toFixed(3)}</span>
-            </div>`).join('')}
+        <div class="info-scores" style="margin-bottom:10px;">
+          <div>Render Type: <strong>${data.render_type || 'unknown'}</strong></div>
+        </div>
+        <div class="score-breakdown">
+          <div class="breakdown-row" title="Semantic match score">
+            <div class="bd-label">Semantic</div>
+            <div class="bd-track"><div class="bd-fill" style="width:${Math.min((m.faiss_score||0)*100,100)}%; background:var(--accent)"></div></div>
+            <div class="bd-val">${(m.faiss_score||0).toFixed(2)}</div>
+          </div>
+          <div class="breakdown-row" title="Relevance match score">
+            <div class="bd-label">Relevance</div>
+            <div class="bd-track"><div class="bd-fill" style="width:${Math.min((m.clip_score||0)*100,100)}%; background:var(--accent2)"></div></div>
+            <div class="bd-val">${(m.clip_score||0).toFixed(2)}</div>
+          </div>
+          <div class="breakdown-row" title="Structural metadata score">
+            <div class="bd-label">Structural</div>
+            <div class="bd-track"><div class="bd-fill" style="width:${Math.min((m.structural_score||0)*100,100)}%; background:var(--low)"></div></div>
+            <div class="bd-val">${(m.structural_score||0).toFixed(2)}</div>
+          </div>
         </div>`;
     }
 
-    // FIXED: live indicator shown for fallback results, source line updated
-    const liveIndicator = isLive
-      ? `<div class="live-indicator"><div class="live-dot"></div>Live from Sketchfab</div>`
+    const liveIndicator = isFallback
+      ? `<div class="live-indicator"><div class="live-dot"></div>TripoSR GPU Gen Process</div>`
       : '';
-
-    const sourceText = isLive
-      ? `sketchfab · live api`
-      : `${source} · ${DOMAIN_ICONS[domain] || ''} ${domain}`;
 
     card.innerHTML = `
       ${viewerHtml}
       <div class="info-pane">
         <div>
           ${liveIndicator}
-          <div class="info-source">${sourceText}</div>
-          <div class="info-name">${r.name || 'Untitled'}</div>
-          ${r.description ? `<div class="info-desc">${r.description}</div>` : ''}
-          <span class="tier-badge ${tier}" style="margin-bottom:4px">${tc.icon} ${isFallback ? 'live fallback' : tier + ' confidence'}</span>
+          <div class="info-source">${isFallback ? 'TripoSR Output' : `${escapeHtml(m.source || 'unknown')} · _source: ${escapeHtml(m.api_source || 'faiss')}`}</div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+            <div class="info-name" style="margin-bottom:0;">${escapeHtml(data.name || 'Untitled')}</div>
+            <button class="speech-btn" title="Listen to description" data-name="${escapeHtml(data.name || 'Untitled')}" data-desc="${escapeHtml(data.explanation || '')}" onclick="toggleSpeech(this, this.dataset.name, this.dataset.desc, '${tier}', ${data.best_score || 0})">🔊</button>
+          </div>
+          ${data.explanation ? `<div class="info-desc">${escapeHtml(data.explanation)}</div>` : ''}
+          <span class="tier-badge ${tier}" style="margin-bottom:4px">${tc.icon} ${tier} confidence</span>
         </div>
         ${infoPaneBottom}
       </div>`;
+
+    if (data.render_type === 'glb' && data.model_url) {
+      const mu = String(data.model_url);
+      const urlToLoad = mu.startsWith('http') ? mu : getApiUrl() + mu;
+      console.log("Initializing ThreeJS for:", urlToLoad);
+      initThreeJS(urlToLoad, 'threejs-container', 'threejs-loading');
+    }
   }
 
-  // FIXED: renderCards now accepts isFallback param and styles live results differently
-  function renderCards(results, isFallback) {
-    const grid = document.getElementById('resultsGrid');
-    grid.innerHTML = '';
-    results.forEach(r => {
-      const live = isSketchfabLive(r);
-      const card = document.createElement(r.embed_url ? 'a' : 'div');
-      if (r.embed_url) { card.href = r.embed_url; card.target = '_blank'; card.rel = 'noopener'; }
-      card.className = live ? 'card sketchfab-card' : 'card';
+  function initThreeJS(glbUrl, containerId, loadingId) {
+    if (!window.THREE || !window.THREE.GLTFLoader) {
+      document.getElementById(loadingId).innerHTML = '<div class="no-viewer-text">Error: Three.js libraries not loaded.</div>';
+      return;
+    }
 
-      const thumb = r.thumbnail || '';
-      const thumbHtml = thumb
-        ? `<img src="${thumb}" alt="${r.name}" onload="this.classList.add('loaded')" onerror="this.style.display='none'">`
-        : `<div class="thumb-placeholder">◎</div>`;
+    const container = document.getElementById(containerId);
+    const loading = document.getElementById(loadingId);
 
-      // FIXED: source label is red for live results
-      const sourceClass = live ? 'card-source live-source' : 'card-source';
-      const sourceText  = live ? '⟳ sketchfab live' : cleanSource(r.source);
+    const scene = new THREE.Scene();
+    activeScene = scene;
+    isWireframe = false;
+    scene.background = new THREE.Color(0x1a1a2e);
 
-      // FIXED: footer shows live tag + social stats instead of meaningless 0.000 score
-      let footerHtml = '';
-      if (live) {
-        const likes = r.metadata?.likeCount || 0;
-        footerHtml = `
-          <div class="card-footer">
-            <span class="card-score">
-              <span class="live-tag"><span class="live-tag-dot"></span>live</span>
-            </span>
-            <span style="font-size:0.6rem;color:var(--text-dim)">♥ ${likes.toLocaleString()}</span>
-            ${r.embed_url ? `<span class="card-link sketchfab-link">View →</span>` : ''}
-          </div>`;
-      } else {
-        footerHtml = `
-          <div class="card-footer">
-            <span class="card-score">score <strong>${(r.final_score||0).toFixed(3)}</strong></span>
-            ${r.embed_url ? `<span class="card-link">View 3D →</span>` : ''}
-          </div>`;
-      }
+    scene.add(new THREE.AmbientLight(0xffffff, 2.5));
 
-      card.innerHTML = `
-        <div class="card-thumb">${thumbHtml}</div>
-        <div class="card-body">
-          <div class="${sourceClass}">${sourceText}</div>
-          <div class="card-name">${r.name || 'Untitled'}</div>
-          ${r.description ? `<div class="card-desc">${r.description}</div>` : ''}
-          ${footerHtml}
-        </div>`;
-      grid.appendChild(card);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 3.0);
+    dirLight.position.set(5, 5, 5);
+    scene.add(dirLight);
+
+    const dirLight2 = new THREE.DirectionalLight(0xffffff, 1.5);
+    dirLight2.position.set(-5, -3, -5);
+    scene.add(dirLight2);
+
+    const frontLight = new THREE.DirectionalLight(0xffffff, 2.0);
+    frontLight.position.set(0, 0, 10);
+    scene.add(frontLight);
+
+    const width = container.clientWidth || 400;
+    const height = container.clientHeight || 340;
+
+    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+    camera.position.set(0, 1.5, 3); // initial position
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.domElement.style.width = '100%';
+    renderer.domElement.style.height = '100%';
+    renderer.domElement.style.display = 'block';
+    renderer.domElement.style.borderTopLeftRadius = '8px';
+    renderer.domElement.style.borderBottomLeftRadius = '8px';
+    container.appendChild(renderer.domElement);
+
+    const controls = window.THREE.OrbitControls ? new window.THREE.OrbitControls(camera, renderer.domElement) : null;
+    if (controls) {
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      controls.autoRotate = true;
+      controls.autoRotateSpeed = 2.0;
+    }
+
+    const loader = new window.THREE.GLTFLoader();
+    loader.load(glbUrl, function(gltf) {
+      const model = gltf.scene;
+
+      // Auto center and scale model gracefully
+      const box = new THREE.Box3().setFromObject(model);
+      const center = box.getCenter(new THREE.Vector3());
+      const size = box.getSize(new THREE.Vector3());
+      const maxDim = Math.max(size.x, size.y, size.z);
+      const scale = 2.0 / (maxDim || 1);
+
+      model.scale.set(scale, scale, scale);
+      model.position.sub(center.multiplyScalar(scale));
+
+      scene.add(model);
+      if (loading) loading.style.display = 'none';
+      
+    }, undefined, function(error) {
+      console.error(error);
+      if (loading) loading.innerHTML = '<div class="no-viewer-text" style="color:var(--danger)">Error loading GLB format.</div>';
     });
+
+    let animationId;
+    function animate() {
+      animationId = requestAnimationFrame(animate);
+      if (controls) controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Responsive viewer resizing
+    const resizeObserver = new ResizeObserver(() => {
+        const newWidth = container.clientWidth;
+        const newHeight = container.clientHeight;
+        if(newWidth && newHeight) {
+            camera.aspect = newWidth / newHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(newWidth, newHeight);
+        }
+    });
+    resizeObserver.observe(container);
   }
 
-  function cleanSource(s) {
-    return (s || 'unknown').replace('metadata/', '').replace('_metadata.json', '').replace('.json', '');
+  function renderResults(results, tierContext) {
+    const listSection = document.getElementById('resultsList');
+    const container = document.getElementById('resultsListContainer');
+    container.innerHTML = '';
+    
+    if (!results || results.length === 0) {
+      listSection.style.display = 'none';
+      return;
+    }
+    
+    listSection.style.display = 'block';
+    
+    const top5 = results.slice(0, 5);
+    
+    top5.forEach((r, idx) => {
+      const isSketchfab = r.api_source === 'sketchfab' || r.source === 'sketchfab' || (r.metadata && r.metadata.source === 'sketchfab');
+      const sourceClass = isSketchfab ? 'sketchfab' : 'faiss';
+      
+      const thumbHtml = getThumbnailHtml(r.name, r.thumbnail, true);
+      const openBtnClass = 'viewer-open-btn';
+      const pageUrl = r.model_page_url || r.embed_url || '';
+      
+      const el = document.createElement('div');
+      el.className = 'list-item';
+      
+      el.innerHTML = `
+        <div class="list-item-header">
+          <div class="list-rank">#${idx + 1}</div>
+          <div style="margin-right:12px;">${thumbHtml}</div>
+          <div class="list-name">
+            ${escapeHtml(r.name || 'Untitled')}
+            <button class="speech-btn" title="Listen to description" data-name="${escapeHtml(r.name || 'Untitled')}" data-desc="${escapeHtml((r.description || '').substring(0, 150))}" onclick="event.stopPropagation(); toggleSpeech(this, this.dataset.name, this.dataset.desc, '${tierContext}', ${r.final_score||0})">🔊</button>
+          </div>
+          <div class="list-source ${sourceClass}">_source: ${escapeHtml(r.api_source || 'faiss')}</div>
+        </div>
+        <div class="score-breakdown" style="border:none; padding-top:0; margin-top:8px;">
+          <div class="breakdown-row" title="Semantic match score">
+            <div class="bd-label">Semantic</div>
+            <div class="bd-track"><div class="bd-fill" style="width:${Math.min((r.faiss_score||0)*100,100)}%; background:var(--accent)"></div></div>
+            <div class="bd-val">${(r.faiss_score||0).toFixed(2)}</div>
+          </div>
+          <div class="breakdown-row" title="Relevance match score">
+            <div class="bd-label">Relevance</div>
+            <div class="bd-track"><div class="bd-fill" style="width:${Math.min((r.clip_score||0)*100,100)}%; background:var(--accent2)"></div></div>
+            <div class="bd-val">${(r.clip_score||0).toFixed(2)}</div>
+          </div>
+          <div class="breakdown-row" title="Structural metadata score">
+            <div class="bd-label">Structural</div>
+            <div class="bd-track"><div class="bd-fill" style="width:${Math.min((r.structural_score||0)*100,100)}%; background:var(--low)"></div></div>
+            <div class="bd-val">${(r.structural_score||0).toFixed(2)}</div>
+          </div>
+        </div>
+        <div class="list-expanded">
+          ${r.description ? `<div class="expanded-desc">${escapeHtml(r.description)}</div>` : ''}
+          ${r.embed_url ? `<iframe class="expanded-iframe" src="${r.embed_url}?autostart=0&ui_theme=dark" allowfullscreen loading="lazy"></iframe>` : '<div style="font-size:0.75rem; color:var(--text-dim)">Native viewer restricted for this source.</div>'}
+          <div style="margin-top:10px; display:flex; justify-content:flex-end;">
+             ${pageUrl ? `<a class="${openBtnClass}" style="position:static; padding:5px 10px; font-size:0.6rem;" href="${pageUrl}" target="_blank" rel="noopener">↗ Open details</a>` : ''}
+          </div>
+        </div>
+      `;
+      
+      el.addEventListener('click', () => {
+        el.classList.toggle('expanded');
+      });
+      
+      container.appendChild(el);
+    });
   }
 </script>
 </body>

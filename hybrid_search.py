@@ -334,6 +334,12 @@ def hybrid_search(
 
     # ── Stage 2: CrossEncoder rerank (original query) ─────────────────────────
     reranked = stage2_cross_encoder_rerank(query, candidates)
+    
+    filtered = [c for c in reranked if c.get("clip_score", 0) >= 0.15]
+    if not filtered:
+        reranked = candidates[:3]  # Fallback to top 3 semantic matches
+    else:
+        reranked = filtered
 
     # ── Stage 3: Structural score ─────────────────────────────────────────────
     for candidate in reranked:
