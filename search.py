@@ -80,103 +80,76 @@ def get_confidence_tier(score: float) -> str:
 
 # Alias map: common shorthand → richer descriptive query
 # Add more as you discover gaps in your dataset coverage
-CONCEPT_ALIASES = {
+CONCEPT_EXPANSIONS = {
     # Biological
-    "dna":                  "DNA double helix nucleotide base pairs",
-    "rna":                  "RNA ribonucleic acid strand",
-    "cell":                 "animal cell organelles membrane nucleus",
-    "animal cell":          "animal cell organelles nucleus mitochondria membrane",
-    "plant cell":           "plant cell chloroplast cell wall vacuole",
-    "heart":                "human heart cardiac anatomy ventricle atrium",
-    "brain":                "human brain anatomy cerebral cortex neurons",
-    "eye":                  "human eye anatomy retina cornea iris",
-    "mitochondria":         "mitochondria organelle ATP energy cell powerhouse",
-    "neuron":               "neuron nerve cell axon dendrite synapse",
-    "virus":                "virus capsid protein coat structure",
-    "bacteria":             "bacteria cell wall flagella prokaryote",
-    "muscle":               "muscle fiber sarcomere myosin actin",
-    "kidney":               "kidney nephron cortex medulla anatomy",
-    "lung":                 "lung alveoli bronchi respiratory anatomy",
-    "liver":                "liver hepatocyte lobule bile anatomy",
-    "spine":                "vertebral column spine vertebra disc anatomy",
-    "skull":                "skull cranium bone anatomy",
-    "protein":              "protein molecule amino acid folding structure",
-    "enzyme":               "enzyme protein active site substrate",
-    "antibody":             "antibody immunoglobulin Y-shaped protein",
-
-    # Chemical
-    "glucose":              "glucose molecule sugar C6H12O6 monosaccharide",
-    "water":                "water molecule H2O hydrogen oxygen",
-    "co2":                  "carbon dioxide molecule CO2",
-    "atp":                  "ATP adenosine triphosphate energy molecule",
-    "caffeine":             "caffeine molecule alkaloid crystal structure",
-    "aspirin":              "aspirin acetylsalicylic acid molecule",
-    "salt":                 "sodium chloride NaCl crystal lattice",
-    "diamond":              "diamond carbon crystal lattice structure",
-    "graphene":             "graphene carbon hexagonal lattice 2D",
-
-    # Physical / Mechanical
-    "newton's cradle":      "Newton cradle pendulum steel balls momentum",
-    "newtons cradle":       "Newton cradle pendulum steel balls momentum",
-    "pendulum":             "pendulum bob string oscillation physics",
-    "gear":                 "gear mechanical teeth rotation transmission",
-    "engine":               "engine mechanical piston cylinder combustion",
-    "turbine":              "turbine blades rotation energy generator",
-    "bridge":               "bridge suspension structural engineering",
-    "lever":                "lever fulcrum mechanical advantage simple machine",
-    "pulley":               "pulley rope wheel mechanical system",
-    "spring":               "spring coil elastic mechanical compression",
-    "magnet":               "magnet magnetic field poles north south",
+    "heart": "human heart anatomy",
+    "brain": "human brain anatomy neuroscience",
+    "cell": "animal cell biology organelle",
+    "dna": "DNA double helix genetics",
+    "lung": "human lung respiratory anatomy",
+    "eye": "human eye optical anatomy",
+    "kidney": "human kidney renal anatomy",
+    "liver": "human liver organ anatomy",
+    "blood": "blood cell biology anatomy",
+    "bone": "human bone skeleton anatomy",
+    "muscle": "human muscle tissue anatomy",
+    "virus": "virus biology structure",
+    "bacteria": "bacteria biology microorganism",
+    "protein": "protein molecule biology",
+    "neuron": "neuron brain cell nervous system",
 
     # Astronomical
-    "black hole":           "black hole event horizon singularity spacetime",
-    "solar system":         "solar system planets sun orbit",
-    "galaxy":               "galaxy spiral arms stars milky way",
-    "nebula":               "nebula gas cloud star formation",
-    "supernova":            "supernova stellar explosion remnant",
-    "planet":               "planet sphere orbit rocky gas giant",
-    "moon":                 "moon lunar surface craters",
-    "comet":                "comet nucleus tail orbit",
-    "asteroid":             "asteroid rocky body orbit solar system",
-    "telescope":            "telescope optical mirror lens astronomy",
+    "earth": "planet earth",
+    "moon": "lunar moon satellite",
+    "sun": "solar sun star",
+    "mars": "planet mars astronomy",
+    "jupiter": "planet jupiter",
+    "saturn": "planet saturn",
+    "galaxy": "galaxy milky way cosmos",
+    "asteroid": "asteroid space rock",
+    "nebula": "nebula gas cloud space",
 
-    # Structures / Man-made
-    "taj mahal":            "Taj Mahal dome minarets marble India monument",
-    "eiffel tower":         "Eiffel Tower iron lattice Paris France",
-    "pyramid":              "pyramid ancient Egypt stone structure",
-    "colosseum":            "Colosseum Roman amphitheater arches",
-    "parthenon":            "Parthenon Greek temple Athens columns",
-    "castle":               "medieval castle tower walls fortification",
-    "bridge":               "bridge suspension arch structural engineering",
+    # Chemical
+    "water": "water molecule H2O chemistry",
+    "glucose": "glucose sugar molecule",
+    "salt": "sodium chloride crystal",
+    "diamond": "diamond carbon crystal",
+    "oxygen": "oxygen molecule chemistry",
+
+    # Physical
+    "atom": "atom nuclear structure electron",
+    "gear": "mechanical gear engineering",
+    "engine": "engine mechanical motor",
+    "crystal": "crystal structure lattice",
+    "circuit": "electronic circuit physics",
+
+    # Structures
+    "pyramid": "pyramid ancient egypt monument",
+    "castle": "castle medieval architecture",
+    "temple": "temple ancient monument",
 }
 
 def expand_query(query: str) -> str:
     """
-    Enrich a short or vague query with descriptive context.
-
-    Strategy:
-      1. Check alias map for exact or partial matches (case-insensitive)
-      2. If no alias found, return original query unchanged
-
-    The expanded query is only used for FAISS embedding — the original
-    query is still used for the cross-encoder pairs (more precise).
+    Expand short or ambiguous queries with domain context.
+    Uses lookup table first, then falls back to existing logic.
     """
-    q_lower = query.lower().strip()
-
-    # Exact match
-    if q_lower in CONCEPT_ALIASES:
-        expanded = CONCEPT_ALIASES[q_lower]
-        print(f"  [Query Expansion] '{query}' → '{expanded}'")
+    cleaned = query.lower().strip()
+    
+    # Direct lookup first
+    if cleaned in CONCEPT_EXPANSIONS:
+        expanded = CONCEPT_EXPANSIONS[cleaned]
+        print(f"  [QueryExpansion] '{query}' → '{expanded}'")
         return expanded
-
-    # Partial match — query contains a known alias key
-    for key, expansion in CONCEPT_ALIASES.items():
-        if key in q_lower:
-            expanded = query + " " + expansion
-            print(f"  [Query Expansion] '{query}' → '{expanded}'")
+    
+    # Check if any key is contained in the query
+    for key, expansion in CONCEPT_EXPANSIONS.items():
+        if key in cleaned and len(cleaned.split()) <= 2:
+            expanded = f"{query} {expansion}"
+            print(f"  [QueryExpansion] '{query}' → '{expanded}'")
             return expanded
-
-    # No expansion found — use original
+    
+    # Fall back to existing expand_query logic
     return query
 
 
@@ -409,8 +382,8 @@ def search_with_confidence(query: str, domain: str = "all", top_k: int = TOP_K) 
             "fallback":          True,
         }
 
-    # Stage 2 — cross-encoder with ORIGINAL query
-    reranked = stage2_cross_encoder_rerank(query, candidates)
+    # Stage 2 — cross-encoder with EXPANDED query
+    reranked = stage2_cross_encoder_rerank(expanded_query, candidates)
 
     # Stage 3 — score all candidates
     for candidate in reranked:

@@ -325,20 +325,22 @@
   let isWireframe = false;
 
   function toggleWireframe(btn) {
+    if (!activeScene) {
+      alert('Wireframe only available for GLB models');
+      return;
+    }
     isWireframe = !isWireframe;
     if (isWireframe) btn.classList.add('active');
     else btn.classList.remove('active');
     
-    if (activeScene) {
-      activeScene.traverse((o) => { 
-        if (o.isMesh && o.material) {
-          o.material.wireframe = isWireframe; 
-        }
-      });
-    }
+    activeScene.traverse((o) => { 
+      if (o.isMesh && o.material) {
+        o.material.wireframe = isWireframe; 
+      }
+    });
   }
 
-  function toggleSpeech(btn, name, desc, tier, score) {
+  function toggleSpeech(btn, name, desc, tier, score, source) {
     if (window.speechSynthesis.speaking) {
       window.speechSynthesis.cancel();
       const wasPlaying = btn.classList.contains('playing');
@@ -349,7 +351,11 @@
     document.querySelectorAll('.speech-btn').forEach(b => b.classList.remove('playing'));
     btn.classList.add('playing');
     
-    const text = `3D model of ${name}. ${desc || 'No description available.'} Confidence: ${tier}. Score: ${(score||0).toFixed(2)}.`;
+    // Strip HTML tags from description
+    const cleanDesc = (desc || 'No description available.').replace(/<[^>]*>/g, '');
+    const scorePct = Math.round((score || 0) * 100);
+    const text = `3D model of ${name}. ${cleanDesc}. Source: ${source || 'Unknown'}. Confidence: ${tier}. Match score: ${scorePct}%.`;
+    
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.onend = () => { btn.classList.remove('playing'); };
     window.speechSynthesis.speak(utterance);
@@ -489,6 +495,10 @@
     const openBtnClass = isFallback ? 'viewer-open-btn fallback-btn' : 'viewer-open-btn';
 
     const m = data.all_results && data.all_results.length > 0 ? data.all_results[0] : {};
+    const bestModel = data.all_results && data.all_results[0];
+    const description = bestModel?.description || data.explanation || '';
+    const source = bestModel?.source || 'unknown';
+
     let viewerHtml = '';
     
     if (data.render_type === 'glb' && data.model_url) {
@@ -567,9 +577,9 @@
           <div class="info-source">${isFallback ? 'TripoSR Output' : `${escapeHtml(m.source || 'unknown')} · _source: ${escapeHtml(m.api_source || 'faiss')}`}</div>
           <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
             <div class="info-name" style="margin-bottom:0;">${escapeHtml(data.name || 'Untitled')}</div>
-            <button class="speech-btn" title="Listen to description" data-name="${escapeHtml(data.name || 'Untitled')}" data-desc="${escapeHtml(data.explanation || '')}" onclick="toggleSpeech(this, this.dataset.name, this.dataset.desc, '${tier}', ${data.best_score || 0})">🔊</button>
+            <button class="speech-btn" title="Listen to description" data-name="${escapeHtml(data.name || 'Untitled')}" data-desc="${escapeHtml(description)}" data-source="${escapeHtml(source)}" onclick="toggleSpeech(this, this.dataset.name, this.dataset.desc, '${tier}', ${data.best_score || 0}, this.dataset.source)">🔊</button>
           </div>
-          ${data.explanation ? `<div class="info-desc">${escapeHtml(data.explanation)}</div>` : ''}
+          <div class="info-desc">${escapeHtml(description)}</div>
           <span class="tier-badge ${tier}" style="margin-bottom:4px">${tc.icon} ${tier} confidence</span>
         </div>
         ${infoPaneBottom}
@@ -593,6 +603,7 @@
     const loading = document.getElementById(loadingId);
 
     const scene = new THREE.Scene();
+    window.currentScene = scene;
     activeScene = scene;
     isWireframe = false;
     scene.background = new THREE.Color(0x1a1a2e);
@@ -628,6 +639,7 @@
     container.appendChild(renderer.domElement);
 
     const controls = window.THREE.OrbitControls ? new window.THREE.OrbitControls(camera, renderer.domElement) : null;
+    window.currentControls = controls;
     if (controls) {
       controls.enableDamping = true;
       controls.dampingFactor = 0.05;
@@ -709,7 +721,7 @@
           <div style="margin-right:12px;">${thumbHtml}</div>
           <div class="list-name">
             ${escapeHtml(r.name || 'Untitled')}
-            <button class="speech-btn" title="Listen to description" data-name="${escapeHtml(r.name || 'Untitled')}" data-desc="${escapeHtml((r.description || '').substring(0, 150))}" onclick="event.stopPropagation(); toggleSpeech(this, this.dataset.name, this.dataset.desc, '${tierContext}', ${r.final_score||0})">🔊</button>
+            <button class="speech-btn" title="Listen to description" data-name="${escapeHtml(r.name || 'Untitled')}" data-desc="${escapeHtml(r.description || '')}" data-source="${escapeHtml(r.source || 'unknown')}" onclick="event.stopPropagation(); toggleSpeech(this, this.dataset.name, this.dataset.desc, '${tierContext}', ${r.final_score||0}, this.dataset.source)">🔊</button>
           </div>
           <div class="list-source ${sourceClass}">_source: ${escapeHtml(r.api_source || 'faiss')}</div>
         </div>

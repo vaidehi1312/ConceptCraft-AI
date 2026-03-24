@@ -6796,13 +6796,13 @@
   },
   {
     "id": 24,
-    "uid": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+    "uid": "e7a4eecf7c114d06828a044c1c4f15ae",
     "name": "Saturn",
     "dataset": "Sketchfab Planets",
     "collection": "baxterbaxter/planets",
     "collection_url": "https://sketchfab.com/baxterbaxter/collections/planets-82b7abd4e0644304b65fdc5af7d0aa72",
-    "model_page_url": "https://sketchfab.com/3d-models/a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
-    "embed_url": "https://sketchfab.com/models/a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6/embed",
+    "model_page_url": "https://sketchfab.com/3d-models/e7a4eecf7c114d06828a044c1c4f15ae",
+    "embed_url": "https://sketchfab.com/models/e7a4eecf7c114d06828a044c1c4f15ae/embed",
     "local_path": "",
     "file_format": "GLB/GLTF",
     "description": "Saturn with iconic ring system",
@@ -6821,17 +6821,18 @@
     "embedding_status": "pending",
     "embed_text": "Saturn. Saturn with iconic ring system. saturn planet rings gas giant solar system planet/moon/celestial",
     "source_file": "metadata/sketchfab_planets_metadata.json",
-    "original_index": 24
+    "original_index": 24,
+    "render_type": "sketchfab_embed"
   },
   {
     "id": 25,
-    "uid": "b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7",
+    "uid": "73dd3283bf6d45a3a62d4806f3044633",
     "name": "Earth",
     "dataset": "Sketchfab Planets",
     "collection": "baxterbaxter/planets",
     "collection_url": "https://sketchfab.com/baxterbaxter/collections/planets-82b7abd4e0644304b65fdc5af7d0aa72",
-    "model_page_url": "https://sketchfab.com/3d-models/b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7",
-    "embed_url": "https://sketchfab.com/models/b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7/embed",
+    "model_page_url": "https://sketchfab.com/3d-models/73dd3283bf6d45a3a62d4806f3044633",
+    "embed_url": "https://sketchfab.com/models/73dd3283bf6d45a3a62d4806f3044633/embed",
     "local_path": "",
     "file_format": "GLB/GLTF",
     "description": "Earth - our home planet with continents and oceans",
@@ -6850,7 +6851,8 @@
     "embedding_status": "pending",
     "embed_text": "Earth. Earth - our home planet with continents and oceans. earth planet blue marble home continents planet/moon/celestial",
     "source_file": "metadata/sketchfab_planets_metadata.json",
-    "original_index": 25
+    "original_index": 25,
+    "render_type": "sketchfab_embed"
   },
   {
     "id": 26,
@@ -6913,13 +6915,13 @@
   },
   {
     "id": 28,
-    "uid": "e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0",
+    "uid": "7021e376ecb04b89b11fcbe017e48e8c",
     "name": "Ganymede",
     "dataset": "Sketchfab Planets",
     "collection": "baxterbaxter/planets",
     "collection_url": "https://sketchfab.com/baxterbaxter/collections/planets-82b7abd4e0644304b65fdc5af7d0aa72",
-    "model_page_url": "https://sketchfab.com/3d-models/e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0",
-    "embed_url": "https://sketchfab.com/models/e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0/embed",
+    "model_page_url": "https://sketchfab.com/3d-models/7021e376ecb04b89b11fcbe017e48e8c",
+    "embed_url": "https://sketchfab.com/models/7021e376ecb04b89b11fcbe017e48e8c/embed",
     "local_path": "",
     "file_format": "GLB/GLTF",
     "description": "Ganymede - largest moon in the solar system",
@@ -6937,17 +6939,18 @@
     "embedding_status": "pending",
     "embed_text": "Ganymede. Ganymede - largest moon in the solar system. ganymede moon jupiter largest moon planet/moon/celestial",
     "source_file": "metadata/sketchfab_planets_metadata.json",
-    "original_index": 28
+    "original_index": 28,
+    "render_type": "sketchfab_embed"
   },
   {
     "id": 29,
-    "uid": "f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1",
+    "uid": "459125fd885f4539ac423b6c3795a297",
     "name": "Callisto",
     "dataset": "Sketchfab Planets",
     "collection": "baxterbaxter/planets",
     "collection_url": "https://sketchfab.com/baxterbaxter/collections/planets-82b7abd4e0644304b65fdc5af7d0aa72",
-    "model_page_url": "https://sketchfab.com/3d-models/f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1",
-    "embed_url": "https://sketchfab.com/models/f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1/embed",
+    "model_page_url": "https://sketchfab.com/3d-models/459125fd885f4539ac423b6c3795a297",
+    "embed_url": "https://sketchfab.com/models/459125fd885f4539ac423b6c3795a297/embed",
     "local_path": "",
     "file_format": "GLB/GLTF",
     "description": "Callisto - heavily cratered moon of Jupiter",
@@ -6966,7 +6969,8 @@
     "embedding_status": "pending",
     "embed_text": "Callisto. Callisto - heavily cratered moon of Jupiter. callisto moon jupiter cratered old surface planet/moon/celestial",
     "source_file": "metadata/sketchfab_planets_metadata.json",
-    "original_index": 29
+    "original_index": 29,
+    "render_type": "sketchfab_embed"
   },
   {
     "id": 30,
@@ -7115,13 +7119,13 @@
   },
   {
     "id": 35,
-    "uid": "f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7",
+    "uid": "c33586da940845d99426f6e0c55c72f3",
     "name": "Oberon",
     "dataset": "Sketchfab Planets",
     "collection": "baxterbaxter/planets",
     "collection_url": "https://sketchfab.com/baxterbaxter/collections/planets-82b7abd4e0644304b65fdc5af7d0aa72",
-    "model_page_url": "https://sketchfab.com/3d-models/f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7",
-    "embed_url": "https://sketchfab.com/models/f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7/embed",
+    "model_page_url": "https://sketchfab.com/3d-models/c33586da940845d99426f6e0c55c72f3",
+    "embed_url": "https://sketchfab.com/models/c33586da940845d99426f6e0c55c72f3/embed",
     "local_path": "",
     "file_format": "GLB/GLTF",
     "description": "Oberon - outermost large moon of Uranus",
@@ -7140,7 +7144,8 @@
     "embedding_status": "pending",
     "embed_text": "Oberon. Oberon - outermost large moon of Uranus. oberon moon uranus icy outer planet/moon/celestial",
     "source_file": "metadata/sketchfab_planets_metadata.json",
-    "original_index": 35
+    "original_index": 35,
+    "render_type": "sketchfab_embed"
   },
   {
     "id": 36,
@@ -7202,13 +7207,13 @@
   },
   {
     "id": 38,
-    "uid": "c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0",
+    "uid": "97fef0282e7d400da2cf1377d21d123c",
     "name": "Eris",
     "dataset": "Sketchfab Planets",
     "collection": "baxterbaxter/planets",
     "collection_url": "https://sketchfab.com/baxterbaxter/collections/planets-82b7abd4e0644304b65fdc5af7d0aa72",
-    "model_page_url": "https://sketchfab.com/3d-models/c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0",
-    "embed_url": "https://sketchfab.com/models/c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0/embed",
+    "model_page_url": "https://sketchfab.com/3d-models/97fef0282e7d400da2cf1377d21d123c",
+    "embed_url": "https://sketchfab.com/models/97fef0282e7d400da2cf1377d21d123c/embed",
     "local_path": "",
     "file_format": "GLB/GLTF",
     "description": "Eris - second largest dwarf planet beyond Neptune",
@@ -7226,7 +7231,8 @@
     "embedding_status": "pending",
     "embed_text": "Eris. Eris - second largest dwarf planet beyond Neptune. eris dwarf planet scattered disc trans-neptunian planet/moon/celestial",
     "source_file": "metadata/sketchfab_planets_metadata.json",
-    "original_index": 38
+    "original_index": 38,
+    "render_type": "sketchfab_embed"
   },
   {
     "id": 39,
@@ -7315,13 +7321,13 @@
   },
   {
     "id": 42,
-    "uid": "a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4",
+    "uid": "11390438ac254a37914f5cd1efdf78f1",
     "name": "Bennu",
     "dataset": "Sketchfab Planets",
     "collection": "baxterbaxter/planets",
     "collection_url": "https://sketchfab.com/baxterbaxter/collections/planets-82b7abd4e0644304b65fdc5af7d0aa72",
-    "model_page_url": "https://sketchfab.com/3d-models/a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4",
-    "embed_url": "https://sketchfab.com/models/a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4/embed",
+    "model_page_url": "https://sketchfab.com/3d-models/11390438ac254a37914f5cd1efdf78f1",
+    "embed_url": "https://sketchfab.com/models/11390438ac254a37914f5cd1efdf78f1/embed",
     "local_path": "",
     "file_format": "GLB/GLTF",
     "description": "Bennu - carbonaceous near-Earth asteroid, OSIRIS-REx target",
@@ -7340,7 +7346,8 @@
     "embedding_status": "pending",
     "embed_text": "Bennu. Bennu - carbonaceous near-Earth asteroid, OSIRIS-REx target. bennu asteroid OSIRIS-REx near-Earth carbon planet/moon/celestial",
     "source_file": "metadata/sketchfab_planets_metadata.json",
-    "original_index": 42
+    "original_index": 42,
+    "render_type": "sketchfab_embed"
   },
   {
     "id": 43,
@@ -8586,11 +8593,11 @@
   },
   {
     "uid": "7d07bdc17ac247dc8421c2449dcf425b",
-    "name": "［旧横浜正金銀行本店本館］屋上ドームのドルフィン装飾",
+    "name": "\uff3b\u65e7\u6a2a\u6d5c\u6b63\u91d1\u9280\u884c\u672c\u5e97\u672c\u9928\uff3d\u5c4b\u4e0a\u30c9\u30fc\u30e0\u306e\u30c9\u30eb\u30d5\u30a3\u30f3\u88c5\u98fe",
     "embed_url": "https://sketchfab.com/models/7d07bdc17ac247dc8421c2449dcf425b/embed",
     "page_url": "https://sketchfab.com/3d-models/7d07bdc17ac247dc8421c2449dcf425b",
     "thumbnail_url": "https://media.sketchfab.com/models/7d07bdc17ac247dc8421c2449dcf425b/thumbnails/a0d0ab494bf445f780975f157edc9036/9a5fcd81e038429aae8030d80f1aab20.jpeg",
-    "description": "**旧横浜正金銀行本店本館 the Yokohama Specie Bank main branch building**\n\n屋上ドームに施されたドルフィン装飾。 1904年竣工。設計は妻木頼黄（つまき・よりなか）。重要文化財。\n\n現在は神奈川県立歴史博物館として利用。\n\n神奈川県立歴史博物館 http://ch.kanagawa-museum.jp/cultural-properties/gallery\n\non Googlemap https://goo.gl/maps/vtJV2tjUS4RYeaXD7\n\n2020年8月撮影\n\n処理枚数：11枚\n\n撮影機材：Canon EOS 70D + Canon EF 70-300mm\n\n撮影状況：屋外・自然光\n\n使用ソフト：Agisoft Metashape Professional\n\n撮影・処理：千葉 毅",
+    "description": "**\u65e7\u6a2a\u6d5c\u6b63\u91d1\u9280\u884c\u672c\u5e97\u672c\u9928 the Yokohama Specie Bank main branch building**\n\n\u5c4b\u4e0a\u30c9\u30fc\u30e0\u306b\u65bd\u3055\u308c\u305f\u30c9\u30eb\u30d5\u30a3\u30f3\u88c5\u98fe\u3002 1904\u5e74\u7ae3\u5de5\u3002\u8a2d\u8a08\u306f\u59bb\u6728\u983c\u9ec4\uff08\u3064\u307e\u304d\u30fb\u3088\u308a\u306a\u304b\uff09\u3002\u91cd\u8981\u6587\u5316\u8ca1\u3002\n\n\u73fe\u5728\u306f\u795e\u5948\u5ddd\u770c\u7acb\u6b74\u53f2\u535a\u7269\u9928\u3068\u3057\u3066\u5229\u7528\u3002\n\n\u795e\u5948\u5ddd\u770c\u7acb\u6b74\u53f2\u535a\u7269\u9928 http://ch.kanagawa-museum.jp/cultural-properties/gallery\n\non Googlemap https://goo.gl/maps/vtJV2tjUS4RYeaXD7\n\n2020\u5e748\u6708\u64ae\u5f71\n\n\u51e6\u7406\u679a\u6570\uff1a11\u679a\n\n\u64ae\u5f71\u6a5f\u6750\uff1aCanon EOS 70D + Canon EF 70-300mm\n\n\u64ae\u5f71\u72b6\u6cc1\uff1a\u5c4b\u5916\u30fb\u81ea\u7136\u5149\n\n\u4f7f\u7528\u30bd\u30d5\u30c8\uff1aAgisoft Metashape Professional\n\n\u64ae\u5f71\u30fb\u51e6\u7406\uff1a\u5343\u8449 \u6bc5",
     "tags": [
       "modern",
       "japan",
@@ -8615,8 +8622,8 @@
       "architecture"
     ],
     "primary_domain": "water",
-    "faiss_text": "［旧横浜正金銀行本店本館］屋上ドームのドルフィン装飾 | **旧横浜正金銀行本店本館 the Yokohama Specie Bank main branch building**\n\n屋上ドームに施されたドルフィン装飾。 1904年竣工。設計は妻木頼黄（つまき・よりなか）。重要文化財。\n\n現在は神奈川県立歴史博物館として利用。\n\n神奈川県立歴史博物館 http://ch.kanagawa-museum.jp/cultural-properties/gallery\n\non Googlemap https://goo.gl/maps/vtJV2tjUS4RYeaXD7\n\n2020年8月撮影\n\n処理枚数：11枚\n\n撮影機材：Canon EOS 70D + Canon EF 70-300mm\n\n撮影状況：屋外・自然光\n\n使用ソフト：Agisoft Metashape Professional\n\n撮影・処理：千葉 毅 | modern japan dolphin bank museum yokohama japanese-culture modernarchitecture metashape japanesearchitecture yokohamaspeciebank kanagawaprefecturalmuseum | architecture cultural-heritage-history | water architecture",
-    "author": "the Yokohama Specie Bank on Sketchfab／横浜正金銀行",
+    "faiss_text": "\uff3b\u65e7\u6a2a\u6d5c\u6b63\u91d1\u9280\u884c\u672c\u5e97\u672c\u9928\uff3d\u5c4b\u4e0a\u30c9\u30fc\u30e0\u306e\u30c9\u30eb\u30d5\u30a3\u30f3\u88c5\u98fe | **\u65e7\u6a2a\u6d5c\u6b63\u91d1\u9280\u884c\u672c\u5e97\u672c\u9928 the Yokohama Specie Bank main branch building**\n\n\u5c4b\u4e0a\u30c9\u30fc\u30e0\u306b\u65bd\u3055\u308c\u305f\u30c9\u30eb\u30d5\u30a3\u30f3\u88c5\u98fe\u3002 1904\u5e74\u7ae3\u5de5\u3002\u8a2d\u8a08\u306f\u59bb\u6728\u983c\u9ec4\uff08\u3064\u307e\u304d\u30fb\u3088\u308a\u306a\u304b\uff09\u3002\u91cd\u8981\u6587\u5316\u8ca1\u3002\n\n\u73fe\u5728\u306f\u795e\u5948\u5ddd\u770c\u7acb\u6b74\u53f2\u535a\u7269\u9928\u3068\u3057\u3066\u5229\u7528\u3002\n\n\u795e\u5948\u5ddd\u770c\u7acb\u6b74\u53f2\u535a\u7269\u9928 http://ch.kanagawa-museum.jp/cultural-properties/gallery\n\non Googlemap https://goo.gl/maps/vtJV2tjUS4RYeaXD7\n\n2020\u5e748\u6708\u64ae\u5f71\n\n\u51e6\u7406\u679a\u6570\uff1a11\u679a\n\n\u64ae\u5f71\u6a5f\u6750\uff1aCanon EOS 70D + Canon EF 70-300mm\n\n\u64ae\u5f71\u72b6\u6cc1\uff1a\u5c4b\u5916\u30fb\u81ea\u7136\u5149\n\n\u4f7f\u7528\u30bd\u30d5\u30c8\uff1aAgisoft Metashape Professional\n\n\u64ae\u5f71\u30fb\u51e6\u7406\uff1a\u5343\u8449 \u6bc5 | modern japan dolphin bank museum yokohama japanese-culture modernarchitecture metashape japanesearchitecture yokohamaspeciebank kanagawaprefecturalmuseum | architecture cultural-heritage-history | water architecture",
+    "author": "the Yokohama Specie Bank on Sketchfab\uff0f\u6a2a\u6d5c\u6b63\u91d1\u9280\u884c",
     "license": "by",
     "view_count": 63,
     "like_count": 4,
@@ -8629,7 +8636,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:41.733853Z",
-    "embed_text": "［旧横浜正金銀行本店本館］屋上ドームのドルフィン装飾. **旧横浜正金銀行本店本館 the Yokohama Specie Bank main branch building**\n\n屋上ドームに施されたドルフィン装飾。 1904年竣工。設計は妻木頼黄（つまき・よりなか）。重要文化財。\n\n現在は神奈川県立歴史博物館として利用。\n\n神奈川県立歴史博物館 http://ch.kanagawa-museum.jp/cultural-properties/gallery\n\non Googlemap https://goo.gl/maps/vtJV2tjUS4RYeaXD7\n\n2020年8月撮影\n\n処理枚",
+    "embed_text": "\uff3b\u65e7\u6a2a\u6d5c\u6b63\u91d1\u9280\u884c\u672c\u5e97\u672c\u9928\uff3d\u5c4b\u4e0a\u30c9\u30fc\u30e0\u306e\u30c9\u30eb\u30d5\u30a3\u30f3\u88c5\u98fe. **\u65e7\u6a2a\u6d5c\u6b63\u91d1\u9280\u884c\u672c\u5e97\u672c\u9928 the Yokohama Specie Bank main branch building**\n\n\u5c4b\u4e0a\u30c9\u30fc\u30e0\u306b\u65bd\u3055\u308c\u305f\u30c9\u30eb\u30d5\u30a3\u30f3\u88c5\u98fe\u3002 1904\u5e74\u7ae3\u5de5\u3002\u8a2d\u8a08\u306f\u59bb\u6728\u983c\u9ec4\uff08\u3064\u307e\u304d\u30fb\u3088\u308a\u306a\u304b\uff09\u3002\u91cd\u8981\u6587\u5316\u8ca1\u3002\n\n\u73fe\u5728\u306f\u795e\u5948\u5ddd\u770c\u7acb\u6b74\u53f2\u535a\u7269\u9928\u3068\u3057\u3066\u5229\u7528\u3002\n\n\u795e\u5948\u5ddd\u770c\u7acb\u6b74\u53f2\u535a\u7269\u9928 http://ch.kanagawa-museum.jp/cultural-properties/gallery\n\non Googlemap https://goo.gl/maps/vtJV2tjUS4RYeaXD7\n\n2020\u5e748\u6708\u64ae\u5f71\n\n\u51e6\u7406\u679a",
     "source_file": "objaverse_astro",
     "original_index": 3
   },
@@ -9295,7 +9302,7 @@
     "embed_url": "https://sketchfab.com/models/ce53df6c36024a8ea12ccbf79a0a34a0/embed",
     "page_url": "https://sketchfab.com/3d-models/ce53df6c36024a8ea12ccbf79a0a34a0",
     "thumbnail_url": "https://media.sketchfab.com/models/ce53df6c36024a8ea12ccbf79a0a34a0/thumbnails/07379170d6bb4f12848a0b2282bc03c7/c5cb0b92b5644cc8bf79803c243ef28d.jpeg",
-    "description": "A room in one of the 19th century bastions of Fortress Monostor (located in Komárom, Hungary, at the south side of the river Danube) repurposed between the interwar period for an infantry training room with training information, silhouettes and sectional drawings painted on it's brickwalls. The north facing windows got overgrown with ivy creating an old castle like atmosphere in person. Some orange led lights were built inside the ledge of the walls. Too my surprise the room wasn't simmetrical t",
+    "description": "A room in one of the 19th century bastions of Fortress Monostor (located in Kom\u00e1rom, Hungary, at the south side of the river Danube) repurposed between the interwar period for an infantry training room with training information, silhouettes and sectional drawings painted on it's brickwalls. The north facing windows got overgrown with ivy creating an old castle like atmosphere in person. Some orange led lights were built inside the ledge of the walls. Too my surprise the room wasn't simmetrical t",
     "tags": [
       "fortress",
       "19th-century",
@@ -9313,7 +9320,7 @@
       "vehicle_land"
     ],
     "primary_domain": "sky_weather",
-    "faiss_text": "Fortress Bastion Training Room | A room in one of the 19th century bastions of Fortress Monostor (located in Komárom, Hungary, at the south side of the river Danube) repurposed between the interwar period for an infantry training room with training information, silhouettes and sectional drawings painted on it's brickwalls. The north facing windows got overgrown with ivy creating an old castle like atmosphere in person. Some orange led lights were built inside the ledge of the walls. Too my surprise the room wasn't simmetrical t | fortress 19th-century 19th-century-architecture 19th-century-bastion | architecture cultural-heritage-history | sky_weather architecture vehicle_land",
+    "faiss_text": "Fortress Bastion Training Room | A room in one of the 19th century bastions of Fortress Monostor (located in Kom\u00e1rom, Hungary, at the south side of the river Danube) repurposed between the interwar period for an infantry training room with training information, silhouettes and sectional drawings painted on it's brickwalls. The north facing windows got overgrown with ivy creating an old castle like atmosphere in person. Some orange led lights were built inside the ledge of the walls. Too my surprise the room wasn't simmetrical t | fortress 19th-century 19th-century-architecture 19th-century-bastion | architecture cultural-heritage-history | sky_weather architecture vehicle_land",
     "author": "laszlog",
     "license": "by",
     "view_count": 984,
@@ -9327,7 +9334,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:41.751898Z",
-    "embed_text": "Fortress Bastion Training Room. A room in one of the 19th century bastions of Fortress Monostor (located in Komárom, Hungary, at the south side of the river Danube) repurposed between the interwar period for an infantry training room with training information, silhouettes and sectional drawings pain",
+    "embed_text": "Fortress Bastion Training Room. A room in one of the 19th century bastions of Fortress Monostor (located in Kom\u00e1rom, Hungary, at the south side of the river Danube) repurposed between the interwar period for an infantry training room with training information, silhouettes and sectional drawings pain",
     "source_file": "objaverse_astro",
     "original_index": 21
   },
@@ -9385,7 +9392,7 @@
     ],
     "primary_domain": "terrain",
     "faiss_text": "Stones pedestal | scanned_by_huawei_vog-l29 3dlivescannerpro | architecture places-travel | terrain architecture",
-    "author": "Jésahel",
+    "author": "J\u00e9sahel",
     "license": "by-sa",
     "view_count": 34,
     "like_count": 1,
@@ -9747,11 +9754,11 @@
   },
   {
     "uid": "289861b2e0384c18a4054287f065285a",
-    "name": "Kudļu pilskalns",
+    "name": "Kud\u013cu pilskalns",
     "embed_url": "https://sketchfab.com/models/289861b2e0384c18a4054287f065285a/embed",
     "page_url": "https://sketchfab.com/3d-models/289861b2e0384c18a4054287f065285a",
     "thumbnail_url": "https://media.sketchfab.com/models/289861b2e0384c18a4054287f065285a/thumbnails/7686795b426142afb27974f43be02cd7/ec9ec706f888425ea444984caf670d0c.jpeg",
-    "description": "Kudļu pilskalna 3D modelis. Koordinātas: 56.51579, 27.15240\n\nhttps://www.latvijas-pilskalni.lv/kudlu-pilskalns/",
+    "description": "Kud\u013cu pilskalna 3D modelis. Koordin\u0101tas: 56.51579, 27.15240\n\nhttps://www.latvijas-pilskalni.lv/kudlu-pilskalns/",
     "tags": [
       "lidar",
       "hillfort",
@@ -9768,7 +9775,7 @@
       "terrain"
     ],
     "primary_domain": "terrain",
-    "faiss_text": "Kudļu pilskalns | Kudļu pilskalna 3D modelis. Koordinātas: 56.51579, 27.15240\n\nhttps://www.latvijas-pilskalni.lv/kudlu-pilskalns/ | lidar hillfort hillforts pilskalns latgale | cultural-heritage-history places-travel | terrain",
+    "faiss_text": "Kud\u013cu pilskalns | Kud\u013cu pilskalna 3D modelis. Koordin\u0101tas: 56.51579, 27.15240\n\nhttps://www.latvijas-pilskalni.lv/kudlu-pilskalns/ | lidar hillfort hillforts pilskalns latgale | cultural-heritage-history places-travel | terrain",
     "author": "Hillforts and ancient sites | hillforts.eu",
     "license": "by",
     "view_count": 48,
@@ -9782,7 +9789,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:41.783942Z",
-    "embed_text": "Kudļu pilskalns. Kudļu pilskalna 3D modelis. Koordinātas: 56.51579, 27.15240\n\nhttps://www.latvijas-pilskalni.lv/kudlu-pilskalns/. lidar hillfort hillforts pilskalns latgale",
+    "embed_text": "Kud\u013cu pilskalns. Kud\u013cu pilskalna 3D modelis. Koordin\u0101tas: 56.51579, 27.15240\n\nhttps://www.latvijas-pilskalni.lv/kudlu-pilskalns/. lidar hillfort hillforts pilskalns latgale",
     "source_file": "objaverse_astro",
     "original_index": 32
   },
@@ -9826,11 +9833,11 @@
   },
   {
     "uid": "e264f44a803846e3ad04eed3a5bf921a",
-    "name": "Sandał",
+    "name": "Sanda\u0142",
     "embed_url": "https://sketchfab.com/models/e264f44a803846e3ad04eed3a5bf921a/embed",
     "page_url": "https://sketchfab.com/3d-models/e264f44a803846e3ad04eed3a5bf921a",
     "thumbnail_url": "https://media.sketchfab.com/models/e264f44a803846e3ad04eed3a5bf921a/thumbnails/697d0bfe2e0447f8a4c957111e355ba7/b9ee250fb4554625ab9d65d675a9b12e.jpeg",
-    "description": "Sandał stworzony do tematu \"Byle co Byle Gdzie\"\n\nSandał powstał by załadować go w programie AR na urządzeniu mobilnym z możliwością postawienia go sobie byle gdzie",
+    "description": "Sanda\u0142 stworzony do tematu \"Byle co Byle Gdzie\"\n\nSanda\u0142 powsta\u0142 by za\u0142adowa\u0107 go w programie AR na urz\u0105dzeniu mobilnym z mo\u017cliwo\u015bci\u0105 postawienia go sobie byle gdzie",
     "tags": [
       "sandal"
     ],
@@ -9842,7 +9849,7 @@
       "terrain"
     ],
     "primary_domain": "terrain",
-    "faiss_text": "Sandał | Sandał stworzony do tematu \"Byle co Byle Gdzie\"\n\nSandał powstał by załadować go w programie AR na urządzeniu mobilnym z możliwością postawienia go sobie byle gdzie | sandal | fashion-style | terrain",
+    "faiss_text": "Sanda\u0142 | Sanda\u0142 stworzony do tematu \"Byle co Byle Gdzie\"\n\nSanda\u0142 powsta\u0142 by za\u0142adowa\u0107 go w programie AR na urz\u0105dzeniu mobilnym z mo\u017cliwo\u015bci\u0105 postawienia go sobie byle gdzie | sandal | fashion-style | terrain",
     "author": "Jakub Bortnik",
     "license": "by",
     "view_count": 314,
@@ -9856,7 +9863,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:41.783942Z",
-    "embed_text": "Sandał. Sandał stworzony do tematu \"Byle co Byle Gdzie\"\n\nSandał powstał by załadować go w programie AR na urządzeniu mobilnym z możliwością postawienia go sobie byle gdzie. sandal",
+    "embed_text": "Sanda\u0142. Sanda\u0142 stworzony do tematu \"Byle co Byle Gdzie\"\n\nSanda\u0142 powsta\u0142 by za\u0142adowa\u0107 go w programie AR na urz\u0105dzeniu mobilnym z mo\u017cliwo\u015bci\u0105 postawienia go sobie byle gdzie. sandal",
     "source_file": "objaverse_astro",
     "original_index": 34
   },
@@ -9902,7 +9909,7 @@
     "embed_url": "https://sketchfab.com/models/8f86294e03f94fd4b6e9703f6ee59b57/embed",
     "page_url": "https://sketchfab.com/3d-models/8f86294e03f94fd4b6e9703f6ee59b57",
     "thumbnail_url": "https://media.sketchfab.com/models/8f86294e03f94fd4b6e9703f6ee59b57/thumbnails/15cc4fc40a6346f9945c5c3cd149acd6/d2cbf984a20142dcaf3f02580e8cd608.jpeg",
-    "description": "20 meters in length\n2.05 meters in height\nModelled 20200618 on client's demand.\nKrasnodar city, Russia\n® Valdimir Ostrogotsky",
+    "description": "20 meters in length\n2.05 meters in height\nModelled 20200618 on client's demand.\nKrasnodar city, Russia\n\u00ae Valdimir Ostrogotsky",
     "tags": [
       "fence",
       "fencing",
@@ -9929,7 +9936,7 @@
       "architecture"
     ],
     "primary_domain": "water",
-    "faiss_text": "Wave-shaped metal sheet fence version 1 | 20 meters in length\n2.05 meters in height\nModelled 20200618 on client's demand.\nKrasnodar city, Russia\n® Valdimir Ostrogotsky | fence fencing metal krasnodar metal-sheet free-to-use free krasnodar-region metalsheet metal-sheet-fence metal-sheet-fencing pergula pergularu free-to-download | architecture furniture-home | water architecture",
+    "faiss_text": "Wave-shaped metal sheet fence version 1 | 20 meters in length\n2.05 meters in height\nModelled 20200618 on client's demand.\nKrasnodar city, Russia\n\u00ae Valdimir Ostrogotsky | fence fencing metal krasnodar metal-sheet free-to-use free krasnodar-region metalsheet metal-sheet-fence metal-sheet-fencing pergula pergularu free-to-download | architecture furniture-home | water architecture",
     "author": "ostrogotsky",
     "license": "by",
     "view_count": 143,
@@ -9943,7 +9950,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:41.799705Z",
-    "embed_text": "Wave-shaped metal sheet fence version 1. 20 meters in length\n2.05 meters in height\nModelled 20200618 on client's demand.\nKrasnodar city, Russia\n® Valdimir Ostrogotsky. fence fencing metal krasnodar metal-sheet free-to-use free krasnodar-region metalsheet metal-sheet-fence metal-sheet-fencing pergula",
+    "embed_text": "Wave-shaped metal sheet fence version 1. 20 meters in length\n2.05 meters in height\nModelled 20200618 on client's demand.\nKrasnodar city, Russia\n\u00ae Valdimir Ostrogotsky. fence fencing metal krasnodar metal-sheet free-to-use free krasnodar-region metalsheet metal-sheet-fence metal-sheet-fencing pergula",
     "source_file": "objaverse_astro",
     "original_index": 36
   },
@@ -9985,7 +9992,7 @@
     "embed_url": "https://sketchfab.com/models/bbffe990cd4b421faf7d1917e827b611/embed",
     "page_url": "https://sketchfab.com/3d-models/bbffe990cd4b421faf7d1917e827b611",
     "thumbnail_url": "https://media.sketchfab.com/models/bbffe990cd4b421faf7d1917e827b611/thumbnails/ab3da09db0a0482bb2106a2ce09cf5b9/4a315e7ae5894054ba19dd5a744c0c36.jpeg",
-    "description": "Done by first year student Ray Peña (me) of AIE in Lafayette, Louisana. Model was created for my 3D Modeling/Texuring assessment. Programs used are as listed:\n\nAdobe Photoshop 2021\nMaya\nSubstance Painter\nZBrush\n\nSource of \"Old Brass\" and \"Greek Stone\" smart materials used are as listed (respectively):\n\nhttps://share.substance3d.com/libraries/420\n\nhttps://share.substance3d.com/libraries/5128",
+    "description": "Done by first year student Ray Pe\u00f1a (me) of AIE in Lafayette, Louisana. Model was created for my 3D Modeling/Texuring assessment. Programs used are as listed:\n\nAdobe Photoshop 2021\nMaya\nSubstance Painter\nZBrush\n\nSource of \"Old Brass\" and \"Greek Stone\" smart materials used are as listed (respectively):\n\nhttps://share.substance3d.com/libraries/420\n\nhttps://share.substance3d.com/libraries/5128",
     "tags": [
       "clouds",
       "sunmoon",
@@ -10004,7 +10011,7 @@
       "space"
     ],
     "primary_domain": "sky_weather",
-    "faiss_text": "Ancient Solar Temples | Done by first year student Ray Peña (me) of AIE in Lafayette, Louisana. Model was created for my 3D Modeling/Texuring assessment. Programs used are as listed:\n\nAdobe Photoshop 2021\nMaya\nSubstance Painter\nZBrush\n\nSource of \"Old Brass\" and \"Greek Stone\" smart materials used are as listed (respectively):\n\nhttps://share.substance3d.com/libraries/420\n\nhttps://share.substance3d.com/libraries/5128 | clouds sunmoon studentproject studentwork cloudscape | art-abstract | sky_weather architecture art_sculpture space",
+    "faiss_text": "Ancient Solar Temples | Done by first year student Ray Pe\u00f1a (me) of AIE in Lafayette, Louisana. Model was created for my 3D Modeling/Texuring assessment. Programs used are as listed:\n\nAdobe Photoshop 2021\nMaya\nSubstance Painter\nZBrush\n\nSource of \"Old Brass\" and \"Greek Stone\" smart materials used are as listed (respectively):\n\nhttps://share.substance3d.com/libraries/420\n\nhttps://share.substance3d.com/libraries/5128 | clouds sunmoon studentproject studentwork cloudscape | art-abstract | sky_weather architecture art_sculpture space",
     "author": "penara",
     "license": "by",
     "view_count": 156,
@@ -10018,7 +10025,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:41.799705Z",
-    "embed_text": "Ancient Solar Temples. Done by first year student Ray Peña (me) of AIE in Lafayette, Louisana. Model was created for my 3D Modeling/Texuring assessment. Programs used are as listed:\n\nAdobe Photoshop 2021\nMaya\nSubstance Painter\nZBrush\n\nSource of \"Old Brass\" and \"Greek Stone\" smart materials used are ",
+    "embed_text": "Ancient Solar Temples. Done by first year student Ray Pe\u00f1a (me) of AIE in Lafayette, Louisana. Model was created for my 3D Modeling/Texuring assessment. Programs used are as listed:\n\nAdobe Photoshop 2021\nMaya\nSubstance Painter\nZBrush\n\nSource of \"Old Brass\" and \"Greek Stone\" smart materials used are ",
     "source_file": "objaverse_astro",
     "original_index": 38
   },
@@ -10069,11 +10076,11 @@
   },
   {
     "uid": "afbe931eec694885b8121adb30eddf2b",
-    "name": "Négresse au plateau",
+    "name": "N\u00e9gresse au plateau",
     "embed_url": "https://sketchfab.com/models/afbe931eec694885b8121adb30eddf2b/embed",
     "page_url": "https://sketchfab.com/3d-models/afbe931eec694885b8121adb30eddf2b",
     "thumbnail_url": "https://media.sketchfab.com/models/afbe931eec694885b8121adb30eddf2b/thumbnails/3be6a5ac334241369becc72cab7f8455/52d1bae0685946dda88f5a7f9cb75a96.jpeg",
-    "description": "Art africain. Oeuvre en acier d'environ 1.70 m de hauteur, trouvée dans le parc du château de Petit Leez à Grand Leez en Belgique. Aucun nom d'auteur",
+    "description": "Art africain. Oeuvre en acier d'environ 1.70 m de hauteur, trouv\u00e9e dans le parc du ch\u00e2teau de Petit Leez \u00e0 Grand Leez en Belgique. Aucun nom d'auteur",
     "tags": [],
     "categories": [
       "cultural-heritage-history"
@@ -10083,7 +10090,7 @@
       "terrain"
     ],
     "primary_domain": "terrain",
-    "faiss_text": "Négresse au plateau | Art africain. Oeuvre en acier d'environ 1.70 m de hauteur, trouvée dans le parc du château de Petit Leez à Grand Leez en Belgique. Aucun nom d'auteur | cultural-heritage-history | terrain",
+    "faiss_text": "N\u00e9gresse au plateau | Art africain. Oeuvre en acier d'environ 1.70 m de hauteur, trouv\u00e9e dans le parc du ch\u00e2teau de Petit Leez \u00e0 Grand Leez en Belgique. Aucun nom d'auteur | cultural-heritage-history | terrain",
     "author": "pattarrian",
     "license": "by",
     "view_count": 371,
@@ -10097,7 +10104,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:41.815360Z",
-    "embed_text": "Négresse au plateau. Art africain. Oeuvre en acier d'environ 1.70 m de hauteur, trouvée dans le parc du château de Petit Leez à Grand Leez en Belgique. Aucun nom d'auteur.",
+    "embed_text": "N\u00e9gresse au plateau. Art africain. Oeuvre en acier d'environ 1.70 m de hauteur, trouv\u00e9e dans le parc du ch\u00e2teau de Petit Leez \u00e0 Grand Leez en Belgique. Aucun nom d'auteur.",
     "source_file": "objaverse_astro",
     "original_index": 40
   },
@@ -10218,7 +10225,7 @@
     "embed_url": "https://sketchfab.com/models/5155f5ba463f490da086cfc44339c70c/embed",
     "page_url": "https://sketchfab.com/3d-models/5155f5ba463f490da086cfc44339c70c",
     "thumbnail_url": "https://media.sketchfab.com/models/5155f5ba463f490da086cfc44339c70c/thumbnails/bd47ae1fb77b4541a5f77cbc0599e63e/3c449f3496af44ea86fc219022f9b5f4.jpeg",
-    "description": "The wall of a residential complex shelled by russian V army.\n\n\n📍 [Ирпень, Киевская область](https://scaniver.se/L50.54301,30.26516)",
+    "description": "The wall of a residential complex shelled by russian V army.\n\n\n\ud83d\udccd [\u0418\u0440\u043f\u0435\u043d\u044c, \u041a\u0438\u0435\u0432\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c](https://scaniver.se/L50.54301,30.26516)",
     "tags": [
       "lidar",
       "destroyed",
@@ -10242,7 +10249,7 @@
       "electronics"
     ],
     "primary_domain": "sky_weather",
-    "faiss_text": "Shelled wall 02 | The wall of a residential complex shelled by russian V army.\n\n\n📍 [Ирпень, Киевская область](https://scaniver.se/L50.54301,30.26516) | lidar destroyed ukraine russian-army residential-building photogrammetry war shelled iphone12promax scaniverse | architecture news-politics | sky_weather architecture electronics",
+    "faiss_text": "Shelled wall 02 | The wall of a residential complex shelled by russian V army.\n\n\n\ud83d\udccd [\u0418\u0440\u043f\u0435\u043d\u044c, \u041a\u0438\u0435\u0432\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c](https://scaniver.se/L50.54301,30.26516) | lidar destroyed ukraine russian-army residential-building photogrammetry war shelled iphone12promax scaniverse | architecture news-politics | sky_weather architecture electronics",
     "author": "yaro.pro",
     "license": "by-nc-sa",
     "view_count": 113,
@@ -10256,7 +10263,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:41.831490Z",
-    "embed_text": "Shelled wall 02. The wall of a residential complex shelled by russian V army.\n\n\n📍 [Ирпень, Киевская область](https://scaniver.se/L50.54301,30.26516). lidar destroyed ukraine russian-army residential-building photogrammetry war shelled iphone12promax scaniverse",
+    "embed_text": "Shelled wall 02. The wall of a residential complex shelled by russian V army.\n\n\n\ud83d\udccd [\u0418\u0440\u043f\u0435\u043d\u044c, \u041a\u0438\u0435\u0432\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c](https://scaniver.se/L50.54301,30.26516). lidar destroyed ukraine russian-army residential-building photogrammetry war shelled iphone12promax scaniverse",
     "source_file": "objaverse_astro",
     "original_index": 44
   },
@@ -10266,7 +10273,7 @@
     "embed_url": "https://sketchfab.com/models/c6ce94cda83940d7baadfb2e9274443d/embed",
     "page_url": "https://sketchfab.com/3d-models/c6ce94cda83940d7baadfb2e9274443d",
     "thumbnail_url": "https://media.sketchfab.com/models/c6ce94cda83940d7baadfb2e9274443d/thumbnails/2956b3aa07d34ac789e04e15dff79900/f9e042959bd74e2c99ab77d83aa392f8.jpeg",
-    "description": "Logo: Nearly the same as the final Fox Searchlight Pictures logo, except “FOX” has been removed from the top of the structure and the words are slightly taller and larger, a la the final Fox Interactive logo. The Los Angeles cityscape is more realistic and bigger with greater depth, the skyline is much different, the mountains in the background are more layered, and darker-colored searchlights aside from their beams. Also, the Hollywood sign is pushed up to resemble the one in real life.\n\nFX/SFX",
+    "description": "Logo: Nearly the same as the final Fox Searchlight Pictures logo, except \u201cFOX\u201d has been removed from the top of the structure and the words are slightly taller and larger, a la the final Fox Interactive logo. The Los Angeles cityscape is more realistic and bigger with greater depth, the skyline is much different, the mountains in the background are more layered, and darker-colored searchlights aside from their beams. Also, the Hollywood sign is pushed up to resemble the one in real life.\n\nFX/SFX",
     "tags": [
       "2020",
       "fsp"
@@ -10282,7 +10289,7 @@
       "art_sculpture"
     ],
     "primary_domain": "water",
-    "faiss_text": "Searchlight Pictures (2020) | Logo: Nearly the same as the final Fox Searchlight Pictures logo, except “FOX” has been removed from the top of the structure and the words are slightly taller and larger, a la the final Fox Interactive logo. The Los Angeles cityscape is more realistic and bigger with greater depth, the skyline is much different, the mountains in the background are more layered, and darker-colored searchlights aside from their beams. Also, the Hollywood sign is pushed up to resemble the one in real life.\n\nFX/SFX | 2020 fsp | architecture art-abstract | water architecture art_sculpture",
+    "faiss_text": "Searchlight Pictures (2020) | Logo: Nearly the same as the final Fox Searchlight Pictures logo, except \u201cFOX\u201d has been removed from the top of the structure and the words are slightly taller and larger, a la the final Fox Interactive logo. The Los Angeles cityscape is more realistic and bigger with greater depth, the skyline is much different, the mountains in the background are more layered, and darker-colored searchlights aside from their beams. Also, the Hollywood sign is pushed up to resemble the one in real life.\n\nFX/SFX | 2020 fsp | architecture art-abstract | water architecture art_sculpture",
     "author": "BlueTheTCFandFSPandTCSFan2022",
     "license": "by",
     "view_count": 7661,
@@ -10296,7 +10303,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:41.831490Z",
-    "embed_text": "Searchlight Pictures (2020). Logo: Nearly the same as the final Fox Searchlight Pictures logo, except “FOX” has been removed from the top of the structure and the words are slightly taller and larger, a la the final Fox Interactive logo. The Los Angeles cityscape is more realistic and bigger with gr",
+    "embed_text": "Searchlight Pictures (2020). Logo: Nearly the same as the final Fox Searchlight Pictures logo, except \u201cFOX\u201d has been removed from the top of the structure and the words are slightly taller and larger, a la the final Fox Interactive logo. The Los Angeles cityscape is more realistic and bigger with gr",
     "source_file": "objaverse_astro",
     "original_index": 45
   },
@@ -10518,7 +10525,7 @@
     "embed_url": "https://sketchfab.com/models/1584461f3e6d48939cfb6bc7bebfa561/embed",
     "page_url": "https://sketchfab.com/3d-models/1584461f3e6d48939cfb6bc7bebfa561",
     "thumbnail_url": "https://media.sketchfab.com/models/1584461f3e6d48939cfb6bc7bebfa561/thumbnails/7a0dc9b1aa5742a3b3baebc1c409e652/1024x576.jpeg",
-    "description": "This is a low-poly model of a stone sword from Minecraft™. This sword was build using several large rectangular figures, clipped to fit the proper way. The model also uses a custom UVW Map for the textures, allowing you to change the colors, i.e. add a higher-quality, better-constructed texture to the model, or change the sword entirely! This model is the same model being used in my Skycraft mod for Skyrim",
+    "description": "This is a low-poly model of a stone sword from Minecraft\u2122. This sword was build using several large rectangular figures, clipped to fit the proper way. The model also uses a custom UVW Map for the textures, allowing you to change the colors, i.e. add a higher-quality, better-constructed texture to the model, or change the sword entirely! This model is the same model being used in my Skycraft mod for Skyrim",
     "tags": [
       "minecraft",
       "3dsmax",
@@ -10534,7 +10541,7 @@
       "weapon"
     ],
     "primary_domain": "terrain",
-    "faiss_text": "Minecraft Stone Sword | This is a low-poly model of a stone sword from Minecraft™. This sword was build using several large rectangular figures, clipped to fit the proper way. The model also uses a custom UVW Map for the textures, allowing you to change the colors, i.e. add a higher-quality, better-constructed texture to the model, or change the sword entirely! This model is the same model being used in my Skycraft mod for Skyrim | minecraft 3dsmax 3dsmaxpublisher stone free sword | terrain weapon",
+    "faiss_text": "Minecraft Stone Sword | This is a low-poly model of a stone sword from Minecraft\u2122. This sword was build using several large rectangular figures, clipped to fit the proper way. The model also uses a custom UVW Map for the textures, allowing you to change the colors, i.e. add a higher-quality, better-constructed texture to the model, or change the sword entirely! This model is the same model being used in my Skycraft mod for Skyrim | minecraft 3dsmax 3dsmaxpublisher stone free sword | terrain weapon",
     "author": "EnvyMe2010",
     "license": "by",
     "view_count": 543,
@@ -10548,7 +10555,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:41.847254Z",
-    "embed_text": "Minecraft Stone Sword. This is a low-poly model of a stone sword from Minecraft™. This sword was build using several large rectangular figures, clipped to fit the proper way. The model also uses a custom UVW Map for the textures, allowing you to change the colors, i.e. add a higher-quality, better-c",
+    "embed_text": "Minecraft Stone Sword. This is a low-poly model of a stone sword from Minecraft\u2122. This sword was build using several large rectangular figures, clipped to fit the proper way. The model also uses a custom UVW Map for the textures, allowing you to change the colors, i.e. add a higher-quality, better-c",
     "source_file": "objaverse_astro",
     "original_index": 51
   },
@@ -10858,7 +10865,7 @@
     ],
     "primary_domain": "water",
     "faiss_text": "Saint-Denys | laserscanning museum ship boat | cultural-heritage-history | water vehicle_water",
-    "author": "Port-Musée",
+    "author": "Port-Mus\u00e9e",
     "license": "by-nc",
     "view_count": 27,
     "like_count": 1,
@@ -11288,11 +11295,11 @@
   },
   {
     "uid": "a06b84c81b5e489fb98a78ee985ca9d4",
-    "name": "Voxel Viaduct in Telgárt summer",
+    "name": "Voxel Viaduct in Telg\u00e1rt summer",
     "embed_url": "https://sketchfab.com/models/a06b84c81b5e489fb98a78ee985ca9d4/embed",
     "page_url": "https://sketchfab.com/3d-models/a06b84c81b5e489fb98a78ee985ca9d4",
     "thumbnail_url": "https://media.sketchfab.com/models/a06b84c81b5e489fb98a78ee985ca9d4/thumbnails/847af7ee8f0a46c2af80e299803f9377/fe92a068ba974c83aca0bf4d47908565.jpeg",
-    "description": "https://www.ciernediery.sk/telgartska-slucka/\n\nThe Telgárt loop is part of the Červená Skala - Margecany railway line and is one of our most demanding railway technical works in Slovakia.\n\nLooking at the beautiful countryside around the track today, it is easy to forget what complications have accompanied its construction in times of deep economic crisis.\n\nbuild in 1931-1936",
+    "description": "https://www.ciernediery.sk/telgartska-slucka/\n\nThe Telg\u00e1rt loop is part of the \u010cerven\u00e1 Skala - Margecany railway line and is one of our most demanding railway technical works in Slovakia.\n\nLooking at the beautiful countryside around the track today, it is easy to forget what complications have accompanied its construction in times of deep economic crisis.\n\nbuild in 1931-1936",
     "tags": [
       "train",
       "slovakia",
@@ -11327,8 +11334,8 @@
       "game_asset"
     ],
     "primary_domain": "sky_weather",
-    "faiss_text": "Voxel Viaduct in Telgárt summer | https://www.ciernediery.sk/telgartska-slucka/\n\nThe Telgárt loop is part of the Červená Skala - Margecany railway line and is one of our most demanding railway technical works in Slovakia.\n\nLooking at the beautiful countryside around the track today, it is easy to forget what complications have accompanied its construction in times of deep economic crisis.\n\nbuild in 1931-1936 | train slovakia trains viaduct voxel-3d slovak train_track trainbuild bridge-lowpoly voxel voxelart magicavoxel bridge palavedcom slovakian ciernediery trainbridge telgart | art-abstract cultural-heritage-history | sky_weather architecture infrastructure vehicle_land art_sculpture game_asset",
-    "author": "pála vedcom",
+    "faiss_text": "Voxel Viaduct in Telg\u00e1rt summer | https://www.ciernediery.sk/telgartska-slucka/\n\nThe Telg\u00e1rt loop is part of the \u010cerven\u00e1 Skala - Margecany railway line and is one of our most demanding railway technical works in Slovakia.\n\nLooking at the beautiful countryside around the track today, it is easy to forget what complications have accompanied its construction in times of deep economic crisis.\n\nbuild in 1931-1936 | train slovakia trains viaduct voxel-3d slovak train_track trainbuild bridge-lowpoly voxel voxelart magicavoxel bridge palavedcom slovakian ciernediery trainbridge telgart | art-abstract cultural-heritage-history | sky_weather architecture infrastructure vehicle_land art_sculpture game_asset",
+    "author": "p\u00e1la vedcom",
     "license": "by",
     "view_count": 173,
     "like_count": 6,
@@ -11341,7 +11348,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:41.894189Z",
-    "embed_text": "Voxel Viaduct in Telgárt summer. https://www.ciernediery.sk/telgartska-slucka/\n\nThe Telgárt loop is part of the Červená Skala - Margecany railway line and is one of our most demanding railway technical works in Slovakia.\n\nLooking at the beautiful countryside around the track today, it is easy to for",
+    "embed_text": "Voxel Viaduct in Telg\u00e1rt summer. https://www.ciernediery.sk/telgartska-slucka/\n\nThe Telg\u00e1rt loop is part of the \u010cerven\u00e1 Skala - Margecany railway line and is one of our most demanding railway technical works in Slovakia.\n\nLooking at the beautiful countryside around the track today, it is easy to for",
     "source_file": "objaverse_astro",
     "original_index": 72
   },
@@ -11734,11 +11741,11 @@
   },
   {
     "uid": "2750dada3637424c847456bc3903364d",
-    "name": "Reastvere linnamägi (Estonia)",
+    "name": "Reastvere linnam\u00e4gi (Estonia)",
     "embed_url": "https://sketchfab.com/models/2750dada3637424c847456bc3903364d/embed",
     "page_url": "https://sketchfab.com/3d-models/2750dada3637424c847456bc3903364d",
     "thumbnail_url": "https://media.sketchfab.com/models/2750dada3637424c847456bc3903364d/thumbnails/8aa1c97ac99547bd9f60ed396860d1ef/5865db7b75dc4aa6b5f454bf6d4e0bb0.jpeg",
-    "description": "Reastvere linnamägi 3D model. Coordinates: 58.88422, 26.56645",
+    "description": "Reastvere linnam\u00e4gi 3D model. Coordinates: 58.88422, 26.56645",
     "tags": [
       "lidar",
       "hillfort",
@@ -11754,7 +11761,7 @@
       "electronics"
     ],
     "primary_domain": "terrain",
-    "faiss_text": "Reastvere linnamägi (Estonia) | Reastvere linnamägi 3D model. Coordinates: 58.88422, 26.56645 | lidar hillfort pilskalns | cultural-heritage-history places-travel | terrain electronics",
+    "faiss_text": "Reastvere linnam\u00e4gi (Estonia) | Reastvere linnam\u00e4gi 3D model. Coordinates: 58.88422, 26.56645 | lidar hillfort pilskalns | cultural-heritage-history places-travel | terrain electronics",
     "author": "Hillforts and ancient sites | hillforts.eu",
     "license": "by",
     "view_count": 4,
@@ -11768,7 +11775,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:41.958502Z",
-    "embed_text": "Reastvere linnamägi (Estonia). Reastvere linnamägi 3D model. Coordinates: 58.88422, 26.56645. lidar hillfort pilskalns",
+    "embed_text": "Reastvere linnam\u00e4gi (Estonia). Reastvere linnam\u00e4gi 3D model. Coordinates: 58.88422, 26.56645. lidar hillfort pilskalns",
     "source_file": "objaverse_astro",
     "original_index": 83
   },
@@ -11812,7 +11819,7 @@
     "embed_url": "https://sketchfab.com/models/31c1e72049624583b4a4f8cd9eef7619/embed",
     "page_url": "https://sketchfab.com/3d-models/31c1e72049624583b4a4f8cd9eef7619",
     "thumbnail_url": "https://media.sketchfab.com/models/31c1e72049624583b4a4f8cd9eef7619/thumbnails/d25c873ddb374dfda5a283a1241215b6/af55e134fd604587b4395fd86d37f854.jpeg",
-    "description": "Decorative various banisters made of ‘’Travertine’‘ natural stone, designed by Alimoğlu.",
+    "description": "Decorative various banisters made of \u2018\u2019Travertine\u2019\u2018 natural stone, designed by Alimo\u011flu.",
     "tags": [
       "marble",
       "railing",
@@ -11838,8 +11845,8 @@
       "art_sculpture"
     ],
     "primary_domain": "terrain",
-    "faiss_text": "Travertine Banisters | Decorative various banisters made of ‘’Travertine’‘ natural stone, designed by Alimoğlu. | marble railing handrail travertine railing-component railing-parts banisters naturalstone decoration interior banister | architecture furniture-home | terrain architecture infrastructure art_sculpture",
-    "author": "Alimoğlu - Marble & Granite",
+    "faiss_text": "Travertine Banisters | Decorative various banisters made of \u2018\u2019Travertine\u2019\u2018 natural stone, designed by Alimo\u011flu. | marble railing handrail travertine railing-component railing-parts banisters naturalstone decoration interior banister | architecture furniture-home | terrain architecture infrastructure art_sculpture",
+    "author": "Alimo\u011flu - Marble & Granite",
     "license": "by-nc",
     "view_count": 339,
     "like_count": 11,
@@ -11852,7 +11859,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:41.964533Z",
-    "embed_text": "Travertine Banisters. Decorative various banisters made of ‘’Travertine’‘ natural stone, designed by Alimoğlu.. marble railing handrail travertine railing-component railing-parts banisters naturalstone decoration interior banister",
+    "embed_text": "Travertine Banisters. Decorative various banisters made of \u2018\u2019Travertine\u2019\u2018 natural stone, designed by Alimo\u011flu.. marble railing handrail travertine railing-component railing-parts banisters naturalstone decoration interior banister",
     "source_file": "objaverse_astro",
     "original_index": 85
   },
@@ -12136,7 +12143,7 @@
     "embed_url": "https://sketchfab.com/models/8f97456846734f71a061b98171e8bc4d/embed",
     "page_url": "https://sketchfab.com/3d-models/8f97456846734f71a061b98171e8bc4d",
     "thumbnail_url": "https://media.sketchfab.com/models/8f97456846734f71a061b98171e8bc4d/thumbnails/a8dc711930f34a6a8fbff853835765c4/75137b3d6d3b4d45981d1cae29f4595c.jpeg",
-    "description": "Armoriated tombstone of the cleric of St. John Evangelist order Lopo de Negreiros dated of 1622. This piece is part of the collection of the museum of São Domingos, in Montemor-o-Novo.\n\nPhotos from Canon 5D Mk IV (35mm lens). Completely processed (aligned, scaled, modeled, cleaned, simplified, unwrapped, textured, meshed) in Reality Capture.",
+    "description": "Armoriated tombstone of the cleric of St. John Evangelist order Lopo de Negreiros dated of 1622. This piece is part of the collection of the museum of S\u00e3o Domingos, in Montemor-o-Novo.\n\nPhotos from Canon 5D Mk IV (35mm lens). Completely processed (aligned, scaled, modeled, cleaned, simplified, unwrapped, textured, meshed) in Reality Capture.",
     "tags": [
       "portugal",
       "tombstone",
@@ -12159,7 +12166,7 @@
       "weapon"
     ],
     "primary_domain": "terrain",
-    "faiss_text": "Tombstone (Montemor-o-Novo) | Armoriated tombstone of the cleric of St. John Evangelist order Lopo de Negreiros dated of 1622. This piece is part of the collection of the museum of São Domingos, in Montemor-o-Novo.\n\nPhotos from Canon 5D Mk IV (35mm lens). Completely processed (aligned, scaled, modeled, cleaned, simplified, unwrapped, textured, meshed) in Reality Capture. | portugal tombstone museum alentejo gdh realitycapture photogrammetry stone globaldigitalheritage armoriated | cultural-heritage-history | terrain infrastructure weapon",
+    "faiss_text": "Tombstone (Montemor-o-Novo) | Armoriated tombstone of the cleric of St. John Evangelist order Lopo de Negreiros dated of 1622. This piece is part of the collection of the museum of S\u00e3o Domingos, in Montemor-o-Novo.\n\nPhotos from Canon 5D Mk IV (35mm lens). Completely processed (aligned, scaled, modeled, cleaned, simplified, unwrapped, textured, meshed) in Reality Capture. | portugal tombstone museum alentejo gdh realitycapture photogrammetry stone globaldigitalheritage armoriated | cultural-heritage-history | terrain infrastructure weapon",
     "author": "Global Digital Heritage",
     "license": "by-nc",
     "view_count": 117,
@@ -12173,7 +12180,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:41.972575Z",
-    "embed_text": "Tombstone (Montemor-o-Novo). Armoriated tombstone of the cleric of St. John Evangelist order Lopo de Negreiros dated of 1622. This piece is part of the collection of the museum of São Domingos, in Montemor-o-Novo.\n\nPhotos from Canon 5D Mk IV (35mm lens). Completely processed (aligned, scaled, modele",
+    "embed_text": "Tombstone (Montemor-o-Novo). Armoriated tombstone of the cleric of St. John Evangelist order Lopo de Negreiros dated of 1622. This piece is part of the collection of the museum of S\u00e3o Domingos, in Montemor-o-Novo.\n\nPhotos from Canon 5D Mk IV (35mm lens). Completely processed (aligned, scaled, modele",
     "source_file": "objaverse_astro",
     "original_index": 93
   },
@@ -12535,7 +12542,7 @@
     "embed_url": "https://sketchfab.com/models/46ea9a98a37843bdb7ab36c471fd91bd/embed",
     "page_url": "https://sketchfab.com/3d-models/46ea9a98a37843bdb7ab36c471fd91bd",
     "thumbnail_url": "https://media.sketchfab.com/models/46ea9a98a37843bdb7ab36c471fd91bd/thumbnails/ac47a394a2b24827955d4ab02c0d93fa/84b466d7ee8445348b29d9e1b789b639.jpeg",
-    "description": "📍 [東京ディズニーランド, 浦安市, 千葉県](https://scaniver.se/L35.62659,139.88386)",
+    "description": "\ud83d\udccd [\u6771\u4eac\u30c7\u30a3\u30ba\u30cb\u30fc\u30e9\u30f3\u30c9, \u6d66\u5b89\u5e02, \u5343\u8449\u770c](https://scaniver.se/L35.62659,139.88386)",
     "tags": [
       "tdr",
       "photogrammetry",
@@ -12552,7 +12559,7 @@
       "architecture"
     ],
     "primary_domain": "water",
-    "faiss_text": "Refreshment station | 📍 [東京ディズニーランド, 浦安市, 千葉県](https://scaniver.se/L35.62659,139.88386) | tdr photogrammetry scaniverse tokyodisneysea | architecture places-travel | water architecture",
+    "faiss_text": "Refreshment station | \ud83d\udccd [\u6771\u4eac\u30c7\u30a3\u30ba\u30cb\u30fc\u30e9\u30f3\u30c9, \u6d66\u5b89\u5e02, \u5343\u8449\u770c](https://scaniver.se/L35.62659,139.88386) | tdr photogrammetry scaniverse tokyodisneysea | architecture places-travel | water architecture",
     "author": "makotofalcon",
     "license": "by-nc-sa",
     "view_count": 10,
@@ -12566,7 +12573,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:42.005970Z",
-    "embed_text": "Refreshment station. 📍 [東京ディズニーランド, 浦安市, 千葉県](https://scaniver.se/L35.62659,139.88386). tdr photogrammetry scaniverse tokyodisneysea",
+    "embed_text": "Refreshment station. \ud83d\udccd [\u6771\u4eac\u30c7\u30a3\u30ba\u30cb\u30fc\u30e9\u30f3\u30c9, \u6d66\u5b89\u5e02, \u5343\u8449\u770c](https://scaniver.se/L35.62659,139.88386). tdr photogrammetry scaniverse tokyodisneysea",
     "source_file": "objaverse_astro",
     "original_index": 104
   },
@@ -12608,7 +12615,7 @@
     "embed_url": "https://sketchfab.com/models/05756fa89b014a26a1db9f5631f11aeb/embed",
     "page_url": "https://sketchfab.com/3d-models/05756fa89b014a26a1db9f5631f11aeb",
     "thumbnail_url": "https://media.sketchfab.com/models/05756fa89b014a26a1db9f5631f11aeb/thumbnails/1c32e1d3d1a041039e642e49cd8bbaf5/ae38d2dd45024c1fb139ae1a97eecbb5.jpeg",
-    "description": "Todos Crédito Vai xXNeoJadenXx Modelo",
+    "description": "Todos Cr\u00e9dito Vai xXNeoJadenXx Modelo",
     "tags": [],
     "categories": [
       "architecture",
@@ -12621,7 +12628,7 @@
       "art_sculpture"
     ],
     "primary_domain": "water",
-    "faiss_text": "Fox Searchlight Pictures 1997 Prototype Remake | Todos Crédito Vai xXNeoJadenXx Modelo | architecture art-abstract | water architecture art_sculpture",
+    "faiss_text": "Fox Searchlight Pictures 1997 Prototype Remake | Todos Cr\u00e9dito Vai xXNeoJadenXx Modelo | architecture art-abstract | water architecture art_sculpture",
     "author": "rique.matiasjunior",
     "license": "by",
     "view_count": 55,
@@ -12635,7 +12642,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:42.005970Z",
-    "embed_text": "Fox Searchlight Pictures 1997 Prototype Remake. Todos Crédito Vai xXNeoJadenXx Modelo.",
+    "embed_text": "Fox Searchlight Pictures 1997 Prototype Remake. Todos Cr\u00e9dito Vai xXNeoJadenXx Modelo.",
     "source_file": "objaverse_astro",
     "original_index": 106
   },
@@ -13081,7 +13088,7 @@
   },
   {
     "uid": "36c582dae0594acdb0fa7daedd439561",
-    "name": "Sovutinske Iron Age Hillfort — pit No. 3 / 2020",
+    "name": "Sovutinske Iron Age Hillfort \u2014 pit No. 3 / 2020",
     "embed_url": "https://sketchfab.com/models/36c582dae0594acdb0fa7daedd439561/embed",
     "page_url": "https://sketchfab.com/3d-models/36c582dae0594acdb0fa7daedd439561",
     "thumbnail_url": "https://media.sketchfab.com/models/36c582dae0594acdb0fa7daedd439561/thumbnails/5446ba15a2ea433c99771dc9b168947b/9bacd538f84b4579b4482a778bc32778.jpeg",
@@ -13098,8 +13105,8 @@
       "terrain"
     ],
     "primary_domain": "terrain",
-    "faiss_text": "Sovutinske Iron Age Hillfort — pit No. 3 / 2020 | The pit discovered during the excavations of Sovitinske Iron Age Scythian Hillfort in 2020. The shape of a pit was reconstructed using SfM-photogrammetry (81 images) for further volume calculation. The images reference has been made using a shape of standart A4 sheet of paper as a reference contour. An estimated volume of the pit is 513 litres. | metashape agisoft | cultural-heritage-history | terrain",
-    "author": "Archaїc",
+    "faiss_text": "Sovutinske Iron Age Hillfort \u2014 pit No. 3 / 2020 | The pit discovered during the excavations of Sovitinske Iron Age Scythian Hillfort in 2020. The shape of a pit was reconstructed using SfM-photogrammetry (81 images) for further volume calculation. The images reference has been made using a shape of standart A4 sheet of paper as a reference contour. An estimated volume of the pit is 513 litres. | metashape agisoft | cultural-heritage-history | terrain",
+    "author": "Archa\u0457c",
     "license": "by",
     "view_count": 10,
     "like_count": 0,
@@ -13112,7 +13119,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:42.039838Z",
-    "embed_text": "Sovutinske Iron Age Hillfort — pit No. 3 / 2020. The pit discovered during the excavations of Sovitinske Iron Age Scythian Hillfort in 2020. The shape of a pit was reconstructed using SfM-photogrammetry (81 images) for further volume calculation. The images reference has been made using a shape of s",
+    "embed_text": "Sovutinske Iron Age Hillfort \u2014 pit No. 3 / 2020. The pit discovered during the excavations of Sovitinske Iron Age Scythian Hillfort in 2020. The shape of a pit was reconstructed using SfM-photogrammetry (81 images) for further volume calculation. The images reference has been made using a shape of s",
     "source_file": "objaverse_astro",
     "original_index": 117
   },
@@ -13616,7 +13623,7 @@
   },
   {
     "uid": "8f1046c40c9d41b38e18094079a46f72",
-    "name": "Romerée House 1 [Belgium]",
+    "name": "Romer\u00e9e House 1 [Belgium]",
     "embed_url": "https://sketchfab.com/models/8f1046c40c9d41b38e18094079a46f72/embed",
     "page_url": "https://sketchfab.com/3d-models/8f1046c40c9d41b38e18094079a46f72",
     "thumbnail_url": "https://media.sketchfab.com/models/8f1046c40c9d41b38e18094079a46f72/thumbnails/cb5da122e27c4286a4b385ef23ba8576/199c9367b61a4c129a59ca59e23fef57.jpeg",
@@ -13639,7 +13646,7 @@
       "game_asset"
     ],
     "primary_domain": "sky_weather",
-    "faiss_text": "Romerée House 1 [Belgium] | Custom low-poly asset made with Blender and Gimp for the Cities: Skylines video game. Available on the Steam Workshop here: https://steamcommunity.com/sharedfiles/filedetails/?id=951743655 | farmhouse belgium game-ready citiesskylines house cities-skylines | architecture | sky_weather architecture game_asset",
+    "faiss_text": "Romer\u00e9e House 1 [Belgium] | Custom low-poly asset made with Blender and Gimp for the Cities: Skylines video game. Available on the Steam Workshop here: https://steamcommunity.com/sharedfiles/filedetails/?id=951743655 | farmhouse belgium game-ready citiesskylines house cities-skylines | architecture | sky_weather architecture game_asset",
     "author": "Lost Gecko",
     "license": "by",
     "view_count": 558,
@@ -13653,7 +13660,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:42.101130Z",
-    "embed_text": "Romerée House 1 [Belgium]. Custom low-poly asset made with Blender and Gimp for the Cities: Skylines video game. Available on the Steam Workshop here: https://steamcommunity.com/sharedfiles/filedetails/?id=951743655. farmhouse belgium game-ready citiesskylines house cities-skylines",
+    "embed_text": "Romer\u00e9e House 1 [Belgium]. Custom low-poly asset made with Blender and Gimp for the Cities: Skylines video game. Available on the Steam Workshop here: https://steamcommunity.com/sharedfiles/filedetails/?id=951743655. farmhouse belgium game-ready citiesskylines house cities-skylines",
     "source_file": "objaverse_astro",
     "original_index": 131
   },
@@ -13818,7 +13825,7 @@
     ],
     "primary_domain": "water",
     "faiss_text": "Deep Sea Cyscout | PUBG | SKIN| Blend | NEW rig | DONE BY LEVIN X GAMING NO CLICKBAIT   SO PLEASE SUBSCRIBE TO MY CHANNEL LINK https://youtube.com/channel/UC4OENn18rGbmHCc1nWRLY3A | levin | water",
-    "author": "ᄂΣVIП X GΛMIПG",
+    "author": "\u1102\u03a3VI\u041f X G\u039bMI\u041fG",
     "license": "by",
     "view_count": 135,
     "like_count": 8,
@@ -14195,7 +14202,7 @@
     "embed_url": "https://sketchfab.com/models/df1abba1e00345c493bf20152ab183c8/embed",
     "page_url": "https://sketchfab.com/3d-models/df1abba1e00345c493bf20152ab183c8",
     "thumbnail_url": "https://media.sketchfab.com/models/df1abba1e00345c493bf20152ab183c8/thumbnails/db5725840e6c4337b58939017b7ccbf9/42319907d650449e9e4a0740b2ac1b3e.jpeg",
-    "description": "Sebastián Millán Ordóñez\nCESUR Sevilla \n\nBLOG - https://sebastianmillanordonez.blogspot.com/",
+    "description": "Sebasti\u00e1n Mill\u00e1n Ord\u00f3\u00f1ez\nCESUR Sevilla \n\nBLOG - https://sebastianmillanordonez.blogspot.com/",
     "tags": [
       "skylines",
       "lowpolymodel",
@@ -14224,7 +14231,7 @@
       "game_asset"
     ],
     "primary_domain": "sky_weather",
-    "faiss_text": "CITY SKYLINE LOW POLY | Sebastián Millán Ordóñez\nCESUR Sevilla \n\nBLOG - https://sebastianmillanordonez.blogspot.com/ | skylines lowpolymodel skyscrapers modularbuilding freemodel lowpolycity freemodeling lowpoly city free building modular-design modularlowpolybuilding | architecture places-travel | sky_weather architecture urban symbol_logo game_asset",
+    "faiss_text": "CITY SKYLINE LOW POLY | Sebasti\u00e1n Mill\u00e1n Ord\u00f3\u00f1ez\nCESUR Sevilla \n\nBLOG - https://sebastianmillanordonez.blogspot.com/ | skylines lowpolymodel skyscrapers modularbuilding freemodel lowpolycity freemodeling lowpoly city free building modular-design modularlowpolybuilding | architecture places-travel | sky_weather architecture urban symbol_logo game_asset",
     "author": "Sebas",
     "license": "by",
     "view_count": 3215,
@@ -14238,7 +14245,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:42.166894Z",
-    "embed_text": "CITY SKYLINE LOW POLY. Sebastián Millán Ordóñez\nCESUR Sevilla \n\nBLOG - https://sebastianmillanordonez.blogspot.com/. skylines lowpolymodel skyscrapers modularbuilding freemodel lowpolycity freemodeling lowpoly city free building modular-design modularlowpolybuilding",
+    "embed_text": "CITY SKYLINE LOW POLY. Sebasti\u00e1n Mill\u00e1n Ord\u00f3\u00f1ez\nCESUR Sevilla \n\nBLOG - https://sebastianmillanordonez.blogspot.com/. skylines lowpolymodel skyscrapers modularbuilding freemodel lowpolycity freemodeling lowpoly city free building modular-design modularlowpolybuilding",
     "source_file": "objaverse_astro",
     "original_index": 145
   },
@@ -14676,7 +14683,7 @@
     "embed_url": "https://sketchfab.com/models/0068a53f561d4dccbaef45841107a42d/embed",
     "page_url": "https://sketchfab.com/3d-models/0068a53f561d4dccbaef45841107a42d",
     "thumbnail_url": "https://media.sketchfab.com/models/0068a53f561d4dccbaef45841107a42d/thumbnails/59bf20e235004eef92ffcdcebf8ef238/c60efb92e6454e65861516b84b8f5072.jpeg",
-    "description": "Ejemplar del Área de Zoología Invertebrados del Museo Nacional de Historia Natural - Ericusa sowerbyi 1025",
+    "description": "Ejemplar del \u00c1rea de Zoolog\u00eda Invertebrados del Museo Nacional de Historia Natural - Ericusa sowerbyi 1025",
     "tags": [
       "museum",
       "chile",
@@ -14694,7 +14701,7 @@
       "water"
     ],
     "primary_domain": "water",
-    "faiss_text": "Ericusa sowerbyi 1025 | Ejemplar del Área de Zoología Invertebrados del Museo Nacional de Historia Natural - Ericusa sowerbyi 1025 | museum chile chilean invertebrate invertebrates | cultural-heritage-history | water",
+    "faiss_text": "Ericusa sowerbyi 1025 | Ejemplar del \u00c1rea de Zoolog\u00eda Invertebrados del Museo Nacional de Historia Natural - Ericusa sowerbyi 1025 | museum chile chilean invertebrate invertebrates | cultural-heritage-history | water",
     "author": "Museo Nacional de Historia Natural de Chile",
     "license": "cc0",
     "view_count": 308,
@@ -14708,7 +14715,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:42.180464Z",
-    "embed_text": "Ericusa sowerbyi 1025. Ejemplar del Área de Zoología Invertebrados del Museo Nacional de Historia Natural - Ericusa sowerbyi 1025. museum chile chilean invertebrate invertebrates",
+    "embed_text": "Ericusa sowerbyi 1025. Ejemplar del \u00c1rea de Zoolog\u00eda Invertebrados del Museo Nacional de Historia Natural - Ericusa sowerbyi 1025. museum chile chilean invertebrate invertebrates",
     "source_file": "objaverse_astro",
     "original_index": 157
   },
@@ -14748,11 +14755,11 @@
   },
   {
     "uid": "048507fa2f1641c58d9a699c1d2cf972",
-    "name": "DFH5 Diesel Locomotive 东方红5型内燃调车机车",
+    "name": "DFH5 Diesel Locomotive \u4e1c\u65b9\u7ea25\u578b\u5185\u71c3\u8c03\u8f66\u673a\u8f66",
     "embed_url": "https://sketchfab.com/models/048507fa2f1641c58d9a699c1d2cf972/embed",
     "page_url": "https://sketchfab.com/3d-models/048507fa2f1641c58d9a699c1d2cf972",
     "thumbnail_url": "https://media.sketchfab.com/models/048507fa2f1641c58d9a699c1d2cf972/thumbnails/b965631fd37e4706b8ae70b2b125c236/ca9ad26bfd97499391ce53d288200f0e.jpeg",
-    "description": "更多信息请访问 www.chinarailstory.com\n收藏于中国铁道博物馆",
+    "description": "\u66f4\u591a\u4fe1\u606f\u8bf7\u8bbf\u95ee www.chinarailstory.com\n\u6536\u85cf\u4e8e\u4e2d\u56fd\u94c1\u9053\u535a\u7269\u9986",
     "tags": [
       "china",
       "railway",
@@ -14772,7 +14779,7 @@
       "vehicle_land"
     ],
     "primary_domain": "sky_weather",
-    "faiss_text": "DFH5 Diesel Locomotive 东方红5型内燃调车机车 | 更多信息请访问 www.chinarailstory.com\n收藏于中国铁道博物馆 | china railway 3dscannerapp | cars-vehicles places-travel | sky_weather urban infrastructure vehicle_land",
+    "faiss_text": "DFH5 Diesel Locomotive \u4e1c\u65b9\u7ea25\u578b\u5185\u71c3\u8c03\u8f66\u673a\u8f66 | \u66f4\u591a\u4fe1\u606f\u8bf7\u8bbf\u95ee www.chinarailstory.com\n\u6536\u85cf\u4e8e\u4e2d\u56fd\u94c1\u9053\u535a\u7269\u9986 | china railway 3dscannerapp | cars-vehicles places-travel | sky_weather urban infrastructure vehicle_land",
     "author": "chinarailstory",
     "license": "by",
     "view_count": 6,
@@ -14786,7 +14793,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:42.180464Z",
-    "embed_text": "DFH5 Diesel Locomotive 东方红5型内燃调车机车. 更多信息请访问 www.chinarailstory.com\n收藏于中国铁道博物馆. china railway 3dscannerapp",
+    "embed_text": "DFH5 Diesel Locomotive \u4e1c\u65b9\u7ea25\u578b\u5185\u71c3\u8c03\u8f66\u673a\u8f66. \u66f4\u591a\u4fe1\u606f\u8bf7\u8bbf\u95ee www.chinarailstory.com\n\u6536\u85cf\u4e8e\u4e2d\u56fd\u94c1\u9053\u535a\u7269\u9986. china railway 3dscannerapp",
     "source_file": "objaverse_astro",
     "original_index": 159
   },
@@ -14872,11 +14879,11 @@
   },
   {
     "uid": "050d92eccdaf4832a50f843dda6b7c34",
-    "name": "Sofa:課後練習",
+    "name": "Sofa:\u8ab2\u5f8c\u7df4\u7fd2",
     "embed_url": "https://sketchfab.com/models/050d92eccdaf4832a50f843dda6b7c34/embed",
     "page_url": "https://sketchfab.com/3d-models/050d92eccdaf4832a50f843dda6b7c34",
     "thumbnail_url": "https://media.sketchfab.com/models/050d92eccdaf4832a50f843dda6b7c34/thumbnails/dd2be1bc6fc34307b5d583fc6d87fb31/894a3f61ef4149d08700b07c3f01bc18.jpeg",
-    "description": "老師我不知道為甚麼會這樣幫我看一下",
+    "description": "\u8001\u5e2b\u6211\u4e0d\u77e5\u9053\u70ba\u751a\u9ebc\u6703\u9019\u6a23\u5e6b\u6211\u770b\u4e00\u4e0b",
     "tags": [],
     "categories": [
       "furniture-home"
@@ -14889,7 +14896,7 @@
       "furniture"
     ],
     "primary_domain": "water",
-    "faiss_text": "Sofa:課後練習 | 老師我不知道為甚麼會這樣幫我看一下 | furniture-home | water furniture",
+    "faiss_text": "Sofa:\u8ab2\u5f8c\u7df4\u7fd2 | \u8001\u5e2b\u6211\u4e0d\u77e5\u9053\u70ba\u751a\u9ebc\u6703\u9019\u6a23\u5e6b\u6211\u770b\u4e00\u4e0b | furniture-home | water furniture",
     "author": "a109082017",
     "license": "by",
     "view_count": 4,
@@ -14903,7 +14910,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:42.196387Z",
-    "embed_text": "Sofa:課後練習. 老師我不知道為甚麼會這樣幫我看一下.",
+    "embed_text": "Sofa:\u8ab2\u5f8c\u7df4\u7fd2. \u8001\u5e2b\u6211\u4e0d\u77e5\u9053\u70ba\u751a\u9ebc\u6703\u9019\u6a23\u5e6b\u6211\u770b\u4e00\u4e0b.",
     "source_file": "objaverse_astro",
     "original_index": 162
   },
@@ -14998,7 +15005,7 @@
     "embed_url": "https://sketchfab.com/models/01922143cd9a477d8f5ea5f805637691/embed",
     "page_url": "https://sketchfab.com/3d-models/01922143cd9a477d8f5ea5f805637691",
     "thumbnail_url": "https://media.sketchfab.com/models/01922143cd9a477d8f5ea5f805637691/thumbnails/d6c34adc5c9245e29a148e89a8292958/6e5776a1dc24433182fc0afb66a3da49.jpeg",
-    "description": "Photogrammetrie 3D - 120 photos - Collection paléontologie Université Paul Sabatier",
+    "description": "Photogrammetrie 3D - 120 photos - Collection pal\u00e9ontologie Universit\u00e9 Paul Sabatier",
     "tags": [
       "fossils",
       "ammonite",
@@ -15013,7 +15020,7 @@
       "water"
     ],
     "primary_domain": "water",
-    "faiss_text": "Ammonite - Douvilleiceras | Photogrammetrie 3D - 120 photos - Collection paléontologie Université Paul Sabatier | fossils ammonite agisoft photoscan | water",
+    "faiss_text": "Ammonite - Douvilleiceras | Photogrammetrie 3D - 120 photos - Collection pal\u00e9ontologie Universit\u00e9 Paul Sabatier | fossils ammonite agisoft photoscan | water",
     "author": "Marc de RAFELIS",
     "license": "by",
     "view_count": 24,
@@ -15027,7 +15034,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:42.196387Z",
-    "embed_text": "Ammonite - Douvilleiceras. Photogrammetrie 3D - 120 photos - Collection paléontologie Université Paul Sabatier. fossils ammonite agisoft photoscan",
+    "embed_text": "Ammonite - Douvilleiceras. Photogrammetrie 3D - 120 photos - Collection pal\u00e9ontologie Universit\u00e9 Paul Sabatier. fossils ammonite agisoft photoscan",
     "source_file": "objaverse_astro",
     "original_index": 165
   },
@@ -15037,7 +15044,7 @@
     "embed_url": "https://sketchfab.com/models/011da7a0ee4e4a04b264d755f1edd04d/embed",
     "page_url": "https://sketchfab.com/3d-models/011da7a0ee4e4a04b264d755f1edd04d",
     "thumbnail_url": "https://media.sketchfab.com/models/011da7a0ee4e4a04b264d755f1edd04d/thumbnails/7c1b572e53cf49218cd4e8c2957b3cca/588b085736394779af6868963c0a84ed.jpeg",
-    "description": "Dvojice - Couple statue, public art sculpture statue object\n\nSculpture artist: Michael Bílek, 1980s\n@ Ústí nad Labem CZ, City council • https://goo.gl/maps/p5vjfMTiKwMRQHR6A Nov 25 2019\n\nphotogrammetry scan (24MP, 100+ photos)  • https://pavelmatousek.cz",
+    "description": "Dvojice - Couple statue, public art sculpture statue object\n\nSculpture artist: Michael B\u00edlek, 1980s\n@ \u00dast\u00ed nad Labem CZ, City council \u2022 https://goo.gl/maps/p5vjfMTiKwMRQHR6A Nov 25 2019\n\nphotogrammetry scan (24MP, 100+ photos)  \u2022 https://pavelmatousek.cz",
     "tags": [
       "3d-scan",
       "group",
@@ -15079,7 +15086,7 @@
       "art_sculpture"
     ],
     "primary_domain": "terrain",
-    "faiss_text": "The Couple | Dvojice - Couple statue, public art sculpture statue object\n\nSculpture artist: Michael Bílek, 1980s\n@ Ústí nad Labem CZ, City council • https://goo.gl/maps/p5vjfMTiKwMRQHR6A Nov 25 2019\n\nphotogrammetry scan (24MP, 100+ photos)  • https://pavelmatousek.cz | 3d-scan group urban heritage family 80s public statue sandstone realism brutalism social lovers socialist usti labem czechia nad photoscan realitycapture photogrammetry art dvojice volavky vetrelci | art-abstract cultural-heritage-history | terrain architecture urban art_sculpture",
+    "faiss_text": "The Couple | Dvojice - Couple statue, public art sculpture statue object\n\nSculpture artist: Michael B\u00edlek, 1980s\n@ \u00dast\u00ed nad Labem CZ, City council \u2022 https://goo.gl/maps/p5vjfMTiKwMRQHR6A Nov 25 2019\n\nphotogrammetry scan (24MP, 100+ photos)  \u2022 https://pavelmatousek.cz | 3d-scan group urban heritage family 80s public statue sandstone realism brutalism social lovers socialist usti labem czechia nad photoscan realitycapture photogrammetry art dvojice volavky vetrelci | art-abstract cultural-heritage-history | terrain architecture urban art_sculpture",
     "author": "matousekfoto",
     "license": "by",
     "view_count": 199,
@@ -15093,7 +15100,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:42.196387Z",
-    "embed_text": "The Couple. Dvojice - Couple statue, public art sculpture statue object\n\nSculpture artist: Michael Bílek, 1980s\n@ Ústí nad Labem CZ, City council • https://goo.gl/maps/p5vjfMTiKwMRQHR6A Nov 25 2019\n\nphotogrammetry scan (24MP, 100+ photos)  • https://pavelmatousek.cz. 3d-scan group urban heritage fam",
+    "embed_text": "The Couple. Dvojice - Couple statue, public art sculpture statue object\n\nSculpture artist: Michael B\u00edlek, 1980s\n@ \u00dast\u00ed nad Labem CZ, City council \u2022 https://goo.gl/maps/p5vjfMTiKwMRQHR6A Nov 25 2019\n\nphotogrammetry scan (24MP, 100+ photos)  \u2022 https://pavelmatousek.cz. 3d-scan group urban heritage fam",
     "source_file": "objaverse_astro",
     "original_index": 166
   },
@@ -15103,7 +15110,7 @@
     "embed_url": "https://sketchfab.com/models/02ca62d3440b416c967f33c883b61b65/embed",
     "page_url": "https://sketchfab.com/3d-models/02ca62d3440b416c967f33c883b61b65",
     "thumbnail_url": "https://media.sketchfab.com/models/02ca62d3440b416c967f33c883b61b65/thumbnails/5e5b6ed47f0b4c35a61b9e92ad14b684/cf1eb2398f66410c8d983e50dd03e652.jpeg",
-    "description": "Especie: Perisphinctes sp.\nEdad: Cretácico Superior, Campaniense (80 Millones de años) Localidad: Tulear (Madagascar) \nColección Museo de la Universita de València de Historia Natural.\nEjemplar preservado en forma de resto directo con la concha original preservada.\nModelo generado con el escáner de luz estructurada Shining 3D Einscan-Pro",
+    "description": "Especie: Perisphinctes sp.\nEdad: Cret\u00e1cico Superior, Campaniense (80 Millones de a\u00f1os) Localidad: Tulear (Madagascar) \nColecci\u00f3n Museo de la Universita de Val\u00e8ncia de Historia Natural.\nEjemplar preservado en forma de resto directo con la concha original preservada.\nModelo generado con el esc\u00e1ner de luz estructurada Shining 3D Einscan-Pro",
     "tags": [],
     "categories": [],
     "lvis_categories": [
@@ -15113,7 +15120,7 @@
       "water"
     ],
     "primary_domain": "water",
-    "faiss_text": "Perisphinctes sp. 3 | Especie: Perisphinctes sp.\nEdad: Cretácico Superior, Campaniense (80 Millones de años) Localidad: Tulear (Madagascar) \nColección Museo de la Universita de València de Historia Natural.\nEjemplar preservado en forma de resto directo con la concha original preservada.\nModelo generado con el escáner de luz estructurada Shining 3D Einscan-Pro | water",
+    "faiss_text": "Perisphinctes sp. 3 | Especie: Perisphinctes sp.\nEdad: Cret\u00e1cico Superior, Campaniense (80 Millones de a\u00f1os) Localidad: Tulear (Madagascar) \nColecci\u00f3n Museo de la Universita de Val\u00e8ncia de Historia Natural.\nEjemplar preservado en forma de resto directo con la concha original preservada.\nModelo generado con el esc\u00e1ner de luz estructurada Shining 3D Einscan-Pro | water",
     "author": "Paleo3d",
     "license": "by",
     "view_count": 17,
@@ -15127,7 +15134,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:42.228102Z",
-    "embed_text": "Perisphinctes sp. 3. Especie: Perisphinctes sp.\nEdad: Cretácico Superior, Campaniense (80 Millones de años) Localidad: Tulear (Madagascar) \nColección Museo de la Universita de València de Historia Natural.\nEjemplar preservado en forma de resto directo con la concha original preservada.\nModelo genera",
+    "embed_text": "Perisphinctes sp. 3. Especie: Perisphinctes sp.\nEdad: Cret\u00e1cico Superior, Campaniense (80 Millones de a\u00f1os) Localidad: Tulear (Madagascar) \nColecci\u00f3n Museo de la Universita de Val\u00e8ncia de Historia Natural.\nEjemplar preservado en forma de resto directo con la concha original preservada.\nModelo genera",
     "source_file": "objaverse_astro",
     "original_index": 167
   },
@@ -15239,11 +15246,11 @@
   },
   {
     "uid": "0039218299e647d788844de8e1ef7cc2",
-    "name": "Ehavere linnamägi (Estonia)",
+    "name": "Ehavere linnam\u00e4gi (Estonia)",
     "embed_url": "https://sketchfab.com/models/0039218299e647d788844de8e1ef7cc2/embed",
     "page_url": "https://sketchfab.com/3d-models/0039218299e647d788844de8e1ef7cc2",
     "thumbnail_url": "https://media.sketchfab.com/models/0039218299e647d788844de8e1ef7cc2/thumbnails/7e576ffc647141b2b4095a061c652b20/70719d7e4ebd4ba3b9926360b430c0b3.jpeg",
-    "description": "Ehavere linnamägi 3D model with ortophoto. Coordinates: 58.6406, 26.62159",
+    "description": "Ehavere linnam\u00e4gi 3D model with ortophoto. Coordinates: 58.6406, 26.62159",
     "tags": [
       "lidar",
       "hillfort",
@@ -15260,7 +15267,7 @@
       "terrain"
     ],
     "primary_domain": "terrain",
-    "faiss_text": "Ehavere linnamägi (Estonia) | Ehavere linnamägi 3D model with ortophoto. Coordinates: 58.6406, 26.62159 | lidar hillfort pilskalns | cultural-heritage-history places-travel | terrain",
+    "faiss_text": "Ehavere linnam\u00e4gi (Estonia) | Ehavere linnam\u00e4gi 3D model with ortophoto. Coordinates: 58.6406, 26.62159 | lidar hillfort pilskalns | cultural-heritage-history places-travel | terrain",
     "author": "Hillforts and ancient sites | hillforts.eu",
     "license": "by",
     "view_count": 7,
@@ -15274,7 +15281,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:42.228102Z",
-    "embed_text": "Ehavere linnamägi (Estonia). Ehavere linnamägi 3D model with ortophoto. Coordinates: 58.6406, 26.62159. lidar hillfort pilskalns",
+    "embed_text": "Ehavere linnam\u00e4gi (Estonia). Ehavere linnam\u00e4gi 3D model with ortophoto. Coordinates: 58.6406, 26.62159. lidar hillfort pilskalns",
     "source_file": "objaverse_astro",
     "original_index": 171
   },
@@ -15526,7 +15533,7 @@
   },
   {
     "uid": "0509a0fbccae4cc59fe3643d8735846a",
-    "name": "Буран ( тренировка покраски)",
+    "name": "\u0411\u0443\u0440\u0430\u043d ( \u0442\u0440\u0435\u043d\u0438\u0440\u043e\u0432\u043a\u0430 \u043f\u043e\u043a\u0440\u0430\u0441\u043a\u0438)",
     "embed_url": "https://sketchfab.com/models/0509a0fbccae4cc59fe3643d8735846a/embed",
     "page_url": "https://sketchfab.com/3d-models/0509a0fbccae4cc59fe3643d8735846a",
     "thumbnail_url": "https://media.sketchfab.com/models/0509a0fbccae4cc59fe3643d8735846a/thumbnails/b26ba5223e3a404183a77212eef785ff/2d1a8600cbbc453eb602b23e4c5999fb.jpeg",
@@ -15541,7 +15548,7 @@
       "space"
     ],
     "primary_domain": "vehicle_air",
-    "faiss_text": "Буран ( тренировка покраски) | vehicle_air space",
+    "faiss_text": "\u0411\u0443\u0440\u0430\u043d ( \u0442\u0440\u0435\u043d\u0438\u0440\u043e\u0432\u043a\u0430 \u043f\u043e\u043a\u0440\u0430\u0441\u043a\u0438) | vehicle_air space",
     "author": "seem03",
     "license": "by",
     "view_count": 54,
@@ -15555,7 +15562,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:42.259767Z",
-    "embed_text": "Буран ( тренировка покраски). .",
+    "embed_text": "\u0411\u0443\u0440\u0430\u043d ( \u0442\u0440\u0435\u043d\u0438\u0440\u043e\u0432\u043a\u0430 \u043f\u043e\u043a\u0440\u0430\u0441\u043a\u0438). .",
     "source_file": "objaverse_astro",
     "original_index": 178
   },
@@ -15788,11 +15795,11 @@
   },
   {
     "uid": "0150994cb47042628dc086db126926cd",
-    "name": "Sühnekreuz Steinbach Jöhstadt",
+    "name": "S\u00fchnekreuz Steinbach J\u00f6hstadt",
     "embed_url": "https://sketchfab.com/models/0150994cb47042628dc086db126926cd/embed",
     "page_url": "https://sketchfab.com/3d-models/0150994cb47042628dc086db126926cd",
     "thumbnail_url": "https://media.sketchfab.com/models/0150994cb47042628dc086db126926cd/thumbnails/d2f9e36f0b08449fb2aea4474b3b4072/ff345bc216a7409f89faf13225cd9dc9.jpeg",
-    "description": "Beschreibung Tafel vor Ort:\n\"Steinkreuz - Es handelt sich hierbei vermutlich um ein Sühnekreuz aus der Gründungszeit des Ortes die Inschrift 1813 - kann die Darstellung einer schwertähnlichen Waffe auf der linken Seite, entstanden vermutlich später. Der Standort befand sich früher oben am Weg.\"\nBeschreibung Bodendenkmale im Bezirk - Karl - Marx - Stadt\n\"Steinkreuz. Kein eigentliches Kopfstück, auf NW-Seite Doppellinien sowie Jahreszahl 1813, auf nö Schmalseite messer oder schwertähnliche Waffe e",
+    "description": "Beschreibung Tafel vor Ort:\n\"Steinkreuz - Es handelt sich hierbei vermutlich um ein S\u00fchnekreuz aus der Gr\u00fcndungszeit des Ortes die Inschrift 1813 - kann die Darstellung einer schwert\u00e4hnlichen Waffe auf der linken Seite, entstanden vermutlich sp\u00e4ter. Der Standort befand sich fr\u00fcher oben am Weg.\"\nBeschreibung Bodendenkmale im Bezirk - Karl - Marx - Stadt\n\"Steinkreuz. Kein eigentliches Kopfst\u00fcck, auf NW-Seite Doppellinien sowie Jahreszahl 1813, auf n\u00f6 Schmalseite messer oder schwert\u00e4hnliche Waffe e",
     "tags": [
       "erzgebirge",
       "suhnekreuz",
@@ -15809,7 +15816,7 @@
       "terrain"
     ],
     "primary_domain": "terrain",
-    "faiss_text": "Sühnekreuz Steinbach Jöhstadt | Beschreibung Tafel vor Ort:\n\"Steinkreuz - Es handelt sich hierbei vermutlich um ein Sühnekreuz aus der Gründungszeit des Ortes die Inschrift 1813 - kann die Darstellung einer schwertähnlichen Waffe auf der linken Seite, entstanden vermutlich später. Der Standort befand sich früher oben am Weg.\"\nBeschreibung Bodendenkmale im Bezirk - Karl - Marx - Stadt\n\"Steinkreuz. Kein eigentliches Kopfstück, auf NW-Seite Doppellinien sowie Jahreszahl 1813, auf nö Schmalseite messer oder schwertähnliche Waffe e | erzgebirge suhnekreuz steinbach johstadt | cultural-heritage-history | terrain",
+    "faiss_text": "S\u00fchnekreuz Steinbach J\u00f6hstadt | Beschreibung Tafel vor Ort:\n\"Steinkreuz - Es handelt sich hierbei vermutlich um ein S\u00fchnekreuz aus der Gr\u00fcndungszeit des Ortes die Inschrift 1813 - kann die Darstellung einer schwert\u00e4hnlichen Waffe auf der linken Seite, entstanden vermutlich sp\u00e4ter. Der Standort befand sich fr\u00fcher oben am Weg.\"\nBeschreibung Bodendenkmale im Bezirk - Karl - Marx - Stadt\n\"Steinkreuz. Kein eigentliches Kopfst\u00fcck, auf NW-Seite Doppellinien sowie Jahreszahl 1813, auf n\u00f6 Schmalseite messer oder schwert\u00e4hnliche Waffe e | erzgebirge suhnekreuz steinbach johstadt | cultural-heritage-history | terrain",
     "author": "Michel Hilbert",
     "license": "by",
     "view_count": 9,
@@ -15823,7 +15830,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:42.259767Z",
-    "embed_text": "Sühnekreuz Steinbach Jöhstadt. Beschreibung Tafel vor Ort:\n\"Steinkreuz - Es handelt sich hierbei vermutlich um ein Sühnekreuz aus der Gründungszeit des Ortes die Inschrift 1813 - kann die Darstellung einer schwertähnlichen Waffe auf der linken Seite, entstanden vermutlich später. Der Standort befand",
+    "embed_text": "S\u00fchnekreuz Steinbach J\u00f6hstadt. Beschreibung Tafel vor Ort:\n\"Steinkreuz - Es handelt sich hierbei vermutlich um ein S\u00fchnekreuz aus der Gr\u00fcndungszeit des Ortes die Inschrift 1813 - kann die Darstellung einer schwert\u00e4hnlichen Waffe auf der linken Seite, entstanden vermutlich sp\u00e4ter. Der Standort befand",
     "source_file": "objaverse_astro",
     "original_index": 184
   },
@@ -15868,7 +15875,7 @@
     "embed_url": "https://sketchfab.com/models/015f736a3c6b4daf83a7eaa49b351c45/embed",
     "page_url": "https://sketchfab.com/3d-models/015f736a3c6b4daf83a7eaa49b351c45",
     "thumbnail_url": "https://media.sketchfab.com/models/015f736a3c6b4daf83a7eaa49b351c45/thumbnails/3ce101441dc84b30a91c75fb0f036eb0/c768cd88b25646fb8de3beef1dea18d4.jpeg",
-    "description": "The corset is made of French broached silk with Rococo floral patterns. It is lined with homespun canvas. It is made of three pieces: one at the back and two at the front. Six large inserts were sewn at the bottom, and metal rings along the cut, through which the ribbon used for tying was threaded. The corset was purchased in Dzianisz between 1887 and 1893 by Maria and Bronisław Dembowski, collectors of Podhale folk art, and in 1922 it was donated to the collection of the Tatra Museum under the",
+    "description": "The corset is made of French broached silk with Rococo floral patterns. It is lined with homespun canvas. It is made of three pieces: one at the back and two at the front. Six large inserts were sewn at the bottom, and metal rings along the cut, through which the ribbon used for tying was threaded. The corset was purchased in Dzianisz between 1887 and 1893 by Maria and Bronis\u0142aw Dembowski, collectors of Podhale folk art, and in 1922 it was donated to the collection of the Tatra Museum under the",
     "tags": [
       "poland",
       "ornament",
@@ -15894,8 +15901,8 @@
       "vehicle_space"
     ],
     "primary_domain": "terrain",
-    "faiss_text": "Corset | The corset is made of French broached silk with Rococo floral patterns. It is lined with homespun canvas. It is made of three pieces: one at the back and two at the front. Six large inserts were sewn at the bottom, and metal rings along the cut, through which the ribbon used for tying was threaded. The corset was purchased in Dzianisz between 1887 and 1893 by Maria and Bronisław Dembowski, collectors of Podhale folk art, and in 1922 it was donated to the collection of the Tatra Museum under the | poland ornament silk mountains tatra 19th-century highlanders rural-area everyday_life clothing podhale | cultural-heritage-history fashion-style | terrain vehicle_space",
-    "author": "Virtual Museums of Małopolska",
+    "faiss_text": "Corset | The corset is made of French broached silk with Rococo floral patterns. It is lined with homespun canvas. It is made of three pieces: one at the back and two at the front. Six large inserts were sewn at the bottom, and metal rings along the cut, through which the ribbon used for tying was threaded. The corset was purchased in Dzianisz between 1887 and 1893 by Maria and Bronis\u0142aw Dembowski, collectors of Podhale folk art, and in 1922 it was donated to the collection of the Tatra Museum under the | poland ornament silk mountains tatra 19th-century highlanders rural-area everyday_life clothing podhale | cultural-heritage-history fashion-style | terrain vehicle_space",
+    "author": "Virtual Museums of Ma\u0142opolska",
     "license": "cc0",
     "view_count": 2113,
     "like_count": 126,
@@ -16007,7 +16014,7 @@
     "embed_url": "https://sketchfab.com/models/025e9a205a3f4ba08ea3e1c12cfdfdd9/embed",
     "page_url": "https://sketchfab.com/3d-models/025e9a205a3f4ba08ea3e1c12cfdfdd9",
     "thumbnail_url": "https://media.sketchfab.com/models/025e9a205a3f4ba08ea3e1c12cfdfdd9/thumbnails/fefe051d44314317bdf57831b509b513/720x405.jpeg",
-    "description": "piccolo sandolo da passeggio in  compensato\n(seconda versione migliorata)\nla barca è lunga circa 6m ma è leggerissima (credo meno di 100kg)\nLe ordinate sono costruite all'opposto del consueto con i sanconi dalla parte della maestra.",
+    "description": "piccolo sandolo da passeggio in  compensato\n(seconda versione migliorata)\nla barca \u00e8 lunga circa 6m ma \u00e8 leggerissima (credo meno di 100kg)\nLe ordinate sono costruite all'opposto del consueto con i sanconi dalla parte della maestra.",
     "tags": [
       "venice",
       "traditional",
@@ -16024,7 +16031,7 @@
       "vehicle_water"
     ],
     "primary_domain": "terrain",
-    "faiss_text": "sandoletto leggero | piccolo sandolo da passeggio in  compensato\n(seconda versione migliorata)\nla barca è lunga circa 6m ma è leggerissima (credo meno di 100kg)\nLe ordinate sono costruite all'opposto del consueto con i sanconi dalla parte della maestra. | venice traditional agisoft photoscan boat | terrain vehicle_water",
+    "faiss_text": "sandoletto leggero | piccolo sandolo da passeggio in  compensato\n(seconda versione migliorata)\nla barca \u00e8 lunga circa 6m ma \u00e8 leggerissima (credo meno di 100kg)\nLe ordinate sono costruite all'opposto del consueto con i sanconi dalla parte della maestra. | venice traditional agisoft photoscan boat | terrain vehicle_water",
     "author": "nicolozen",
     "license": "by",
     "view_count": 155,
@@ -16038,7 +16045,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:42.280471Z",
-    "embed_text": "sandoletto leggero. piccolo sandolo da passeggio in  compensato\n(seconda versione migliorata)\nla barca è lunga circa 6m ma è leggerissima (credo meno di 100kg)\nLe ordinate sono costruite all'opposto del consueto con i sanconi dalla parte della maestra.. venice traditional agisoft photoscan boat",
+    "embed_text": "sandoletto leggero. piccolo sandolo da passeggio in  compensato\n(seconda versione migliorata)\nla barca \u00e8 lunga circa 6m ma \u00e8 leggerissima (credo meno di 100kg)\nLe ordinate sono costruite all'opposto del consueto con i sanconi dalla parte della maestra.. venice traditional agisoft photoscan boat",
     "source_file": "objaverse_astro",
     "original_index": 189
   },
@@ -16048,7 +16055,7 @@
     "embed_url": "https://sketchfab.com/models/0555e3e0c1be4080a2ba6731b801f8da/embed",
     "page_url": "https://sketchfab.com/3d-models/0555e3e0c1be4080a2ba6731b801f8da",
     "thumbnail_url": "https://media.sketchfab.com/models/0555e3e0c1be4080a2ba6731b801f8da/thumbnails/35dd80f0717c4ac7ab4a5d1303b260a9/9fca5bfd06d64983b61569ef10280ff2.jpeg",
-    "description": "This is a 3D model of a creation that I built in “Stormworks: Build and Rescue”.\n\nHere is a link to the boat’s main page:\nhttps://steamcommunity.com/sharedfiles/filedetails/?id=2606471768&tscn=1632081692",
+    "description": "This is a 3D model of a creation that I built in \u201cStormworks: Build and Rescue\u201d.\n\nHere is a link to the boat\u2019s main page:\nhttps://steamcommunity.com/sharedfiles/filedetails/?id=2606471768&tscn=1632081692",
     "tags": [
       "vessel",
       "tug",
@@ -16070,7 +16077,7 @@
       "vehicle_water"
     ],
     "primary_domain": "sky_weather",
-    "faiss_text": "40ft Tugboat | This is a 3D model of a creation that I built in “Stormworks: Build and Rescue”.\n\nHere is a link to the boat’s main page:\nhttps://steamcommunity.com/sharedfiles/filedetails/?id=2606471768&tscn=1632081692 | vessel tug tugboat harbor stormworks boat | cars-vehicles | sky_weather infrastructure vehicle_land vehicle_water",
+    "faiss_text": "40ft Tugboat | This is a 3D model of a creation that I built in \u201cStormworks: Build and Rescue\u201d.\n\nHere is a link to the boat\u2019s main page:\nhttps://steamcommunity.com/sharedfiles/filedetails/?id=2606471768&tscn=1632081692 | vessel tug tugboat harbor stormworks boat | cars-vehicles | sky_weather infrastructure vehicle_land vehicle_water",
     "author": "Potater_King",
     "license": "by",
     "view_count": 744,
@@ -16084,7 +16091,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:42.280471Z",
-    "embed_text": "40ft Tugboat. This is a 3D model of a creation that I built in “Stormworks: Build and Rescue”.\n\nHere is a link to the boat’s main page:\nhttps://steamcommunity.com/sharedfiles/filedetails/?id=2606471768&tscn=1632081692. vessel tug tugboat harbor stormworks boat",
+    "embed_text": "40ft Tugboat. This is a 3D model of a creation that I built in \u201cStormworks: Build and Rescue\u201d.\n\nHere is a link to the boat\u2019s main page:\nhttps://steamcommunity.com/sharedfiles/filedetails/?id=2606471768&tscn=1632081692. vessel tug tugboat harbor stormworks boat",
     "source_file": "objaverse_astro",
     "original_index": 190
   },
@@ -16134,7 +16141,7 @@
     "embed_url": "https://sketchfab.com/models/03e6f9553e6b4b59811cadbbc38b046a/embed",
     "page_url": "https://sketchfab.com/3d-models/03e6f9553e6b4b59811cadbbc38b046a",
     "thumbnail_url": "https://media.sketchfab.com/models/03e6f9553e6b4b59811cadbbc38b046a/thumbnails/8872b7db59c14bd48ac39fb686702a19/e327ddb3002944e6ac64de530c51fc1a.jpeg",
-    "description": "En el mundo del 3D siempre es necesario... una mesa minimalista.,bueno si eres alguien que diseña casas y no dragones de la mitología china...",
+    "description": "En el mundo del 3D siempre es necesario... una mesa minimalista.,bueno si eres alguien que dise\u00f1a casas y no dragones de la mitolog\u00eda china...",
     "tags": [],
     "categories": [
       "furniture-home"
@@ -16147,7 +16154,7 @@
       "furniture"
     ],
     "primary_domain": "terrain",
-    "faiss_text": "Mesa minimalista | En el mundo del 3D siempre es necesario... una mesa minimalista.,bueno si eres alguien que diseña casas y no dragones de la mitología china... | furniture-home | terrain furniture",
+    "faiss_text": "Mesa minimalista | En el mundo del 3D siempre es necesario... una mesa minimalista.,bueno si eres alguien que dise\u00f1a casas y no dragones de la mitolog\u00eda china... | furniture-home | terrain furniture",
     "author": "Martinogelati113",
     "license": "by",
     "view_count": 18,
@@ -16161,7 +16168,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:42.280471Z",
-    "embed_text": "Mesa minimalista. En el mundo del 3D siempre es necesario... una mesa minimalista.,bueno si eres alguien que diseña casas y no dragones de la mitología china....",
+    "embed_text": "Mesa minimalista. En el mundo del 3D siempre es necesario... una mesa minimalista.,bueno si eres alguien que dise\u00f1a casas y no dragones de la mitolog\u00eda china....",
     "source_file": "objaverse_astro",
     "original_index": 192
   },
@@ -16303,7 +16310,7 @@
   },
   {
     "uid": "01fd75058b974750a799ed5a9069527b",
-    "name": "Старинные часы",
+    "name": "\u0421\u0442\u0430\u0440\u0438\u043d\u043d\u044b\u0435 \u0447\u0430\u0441\u044b",
     "embed_url": "https://sketchfab.com/models/01fd75058b974750a799ed5a9069527b/embed",
     "page_url": "https://sketchfab.com/3d-models/01fd75058b974750a799ed5a9069527b",
     "thumbnail_url": "https://media.sketchfab.com/models/01fd75058b974750a799ed5a9069527b/thumbnails/b618b90768ae4aab93f07dfc4ecd0659/9b87f071a1bc442fa7c127ba97e20fbb.jpeg",
@@ -16325,7 +16332,7 @@
       "space"
     ],
     "primary_domain": "space",
-    "faiss_text": "Старинные часы | vr ar arvr chasy starinnyi | cultural-heritage-history | space",
+    "faiss_text": "\u0421\u0442\u0430\u0440\u0438\u043d\u043d\u044b\u0435 \u0447\u0430\u0441\u044b | vr ar arvr chasy starinnyi | cultural-heritage-history | space",
     "author": "KhoRaINt",
     "license": "by",
     "view_count": 31,
@@ -16339,7 +16346,7 @@
     "source_url": "https://objaverse.allenai.org/",
     "hf_dataset": "allenai/objaverse",
     "scraped_at": "2026-03-09T17:38:42.291562Z",
-    "embed_text": "Старинные часы. . vr ar arvr chasy starinnyi",
+    "embed_text": "\u0421\u0442\u0430\u0440\u0438\u043d\u043d\u044b\u0435 \u0447\u0430\u0441\u044b. . vr ar arvr chasy starinnyi",
     "source_file": "objaverse_astro",
     "original_index": 196
   },
@@ -16375,7 +16382,7 @@
     ],
     "primary_domain": "terrain",
     "faiss_text": "Stylized Sand Bricks Material | This material was made in a open source free software called TextureLab (Link)\n\n4K resolution\nPNG format (albedo, normal, roughness, height, AO)\nTileable/seamless\nI setup and tested this material in Blender 2.92 in Cycles (experimental) with adaptive subdovision for the optimal display. The textures are embeded in the blend file.\n\nYou can also download the textures from [ArtStation](https://www.artstation.com/mrazi/store?tab=products)!\n\nEnjoy! | sand bricks 4k maya blender texture free stylized material texturelab | architecture | terrain architecture symbol_logo",
-    "author": "Blaž Mraz",
+    "author": "Bla\u017e Mraz",
     "license": "by",
     "view_count": 177,
     "like_count": 7,

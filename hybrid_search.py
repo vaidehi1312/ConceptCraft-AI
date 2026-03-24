@@ -332,8 +332,8 @@ def hybrid_search(
             "_latency_ms":       round((time.time() - t0) * 1000),
         }
 
-    # ── Stage 2: CrossEncoder rerank (original query) ─────────────────────────
-    reranked = stage2_cross_encoder_rerank(query, candidates)
+    # ── Stage 2: CrossEncoder rerank (expanded query) ─────────────────────────
+    reranked = stage2_cross_encoder_rerank(expanded_query, candidates)
     
     filtered = [c for c in reranked if c.get("clip_score", 0) >= 0.15]
     if not filtered:
