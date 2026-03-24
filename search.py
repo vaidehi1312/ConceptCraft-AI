@@ -40,8 +40,8 @@ from sentence_transformers.cross_encoder import CrossEncoder
 INDEXES_DIR          = Path("indexes")
 MINILM_MODEL         = "all-MiniLM-L6-v2"
 CROSS_ENCODER_MODEL  = "cross-encoder/ms-marco-MiniLM-L-6-v2"
-TOP_K                = 10
-TOP_K_PER_DOMAIN     = 5
+TOP_K                = 6
+TOP_K_PER_DOMAIN     = 3
 CONFIDENCE_THRESHOLD = 0.30      # only reject genuinely irrelevant matches
 TOP_N_RESULTS        = 3         # return top 3 matches for frontend alternatives
 DOMAINS              = ["biological", "physical", "chemical", "astronomical"]

@@ -14,7 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
 
-from search import search_with_confidence, indexes, CONFIDENCE_THRESHOLD
+from hybrid_search import hybrid_search, indexes, CONFIDENCE_THRESHOLD
 
 # ── App ───────────────────────────────────────────────────────────────────────
 app = FastAPI(
@@ -159,7 +159,7 @@ def query(req: QueryRequest):
     domain = classify_domain(req.query)
     print(f"[query] '{req.query}' → domain: '{domain}'")
 
-    result = search_with_confidence(req.query, domain, req.top_k)
+    result = hybrid_search(req.query, domain, req.top_k)
 
     return QueryResponse(
         query            = req.query,
@@ -188,7 +188,7 @@ def debug_search(req: DebugSearchRequest):
             detail=f"Domain '{domain}' not available. Choose from: {list(indexes.keys())}"
         )
 
-    result = search_with_confidence(req.query, domain, req.top_k)
+    result = hybrid_search(req.query, domain, req.top_k)
 
     return QueryResponse(
         query            = req.query,
