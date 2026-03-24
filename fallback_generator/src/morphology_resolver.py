@@ -449,10 +449,26 @@ LABEL_SHAPE_KEYWORDS = {
 
 # Valid resolved_shape values that Three.js createShape() accepts
 VALID_SHAPES = {
-    "sphere", "box", "cylinder", "cone", "torus", "hemisphere",
-    "icosphere", "oblate_sphere", "tapered_cylinder", "capsule",
-    "wireframe_cube", "branching_fork", "torus_section",
-    "octahedron", "tetrahedron"
+    "sphere",
+    "box",
+    "cylinder",
+    "cone",
+    "torus",
+    "hemisphere",
+    "icosphere",
+    "oblate_sphere",
+    "tapered_cylinder",
+    "capsule",
+    "torus_section",
+    "octahedron",
+    "tetrahedron",
+
+    # added higher-detail primitives
+    "rounded_box",
+    "tapered_cone",
+    "ellipsoid",
+    "double_cone",
+    "tube",
 }
 
 
@@ -471,6 +487,25 @@ def _infer_shape_from_label(comp: dict) -> str | None:
         if any(kw in text for kw in keywords):
             return shape
     return None
+import random
+
+def _add_shape_variation(shape: str) -> str:
+    """
+    Introduce subtle geometric variation so models look less blocky.
+    """
+    if shape == "sphere":
+        return random.choice(["sphere", "icosphere", "ellipsoid"])
+
+    if shape == "box":
+        return random.choice(["box", "rounded_box"])
+
+    if shape == "cylinder":
+        return random.choice(["cylinder", "tapered_cylinder", "tube"])
+
+    if shape == "cone":
+        return random.choice(["cone", "tapered_cone", "double_cone"])
+
+    return shape
 
 
 def _resolve_component_shape(comp: dict, vocab: dict) -> str:
@@ -625,7 +660,8 @@ def resolve_morphology(blueprint: dict, semantic_json: dict) -> dict:
 
     for comp in out_bp.get("geometric_components", []):
         # ── FIX: use priority-based shape resolution instead of unconditional overwrite
-        comp["resolved_shape"] = _resolve_component_shape(comp, vocab)
+        base_shape = _resolve_component_shape(comp, vocab)
+        comp["resolved_shape"] = _add_shape_variation(base_shape)
 
         # Calculate scale hint
         size_hint = comp.get("size_hint", "medium")

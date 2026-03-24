@@ -303,19 +303,32 @@ class BlueprintGate:
                 status = "repair"
                 issues.append(f"Repaired missing count to 1 for {cid}")
             
+            # ── Preserve visual fields from LLM blueprint ────────────────────
             resolved_shape = c.get("resolved_shape", "").lower().strip()
             if not resolved_shape or resolved_shape not in VALID_SHAPES:
-                    resolved_shape = shape  # fall back to shape if missing/invalid
+                resolved_shape = shape
 
-            color_hint = c.get("color_hint", "neutral")
+            color_hint  = c.get("color_hint", "neutral")
             layout_hint = c.get("layout_hint", "none")
+            color       = c.get("color", "")
+
+            # scale_override: list of 3 floats e.g. [4.0, 4.0, 4.0]
+            raw_so = c.get("scale_override", None)
+            scale_override = None
+            if isinstance(raw_so, (list, tuple)) and len(raw_so) == 3:
+                try:
+                    scale_override = [float(raw_so[0]), float(raw_so[1]), float(raw_so[2])]
+                except (ValueError, TypeError):
+                    scale_override = None
 
             normalized_components.append(ComponentInput(
                 id=cid, semantic_type=sem_type, label=label, shape=shape,
                 resolved_shape=resolved_shape,
                 role=role, count=count, size_hint=size,
                 vertical_relation=rel, importance=importance,
-                color_hint=color_hint, layout_hint=layout_hint
+                color_hint=color_hint, layout_hint=layout_hint,
+                color=color,
+                scale_override=scale_override
             ))
             
         # Context Component Pruning for Physical Objects

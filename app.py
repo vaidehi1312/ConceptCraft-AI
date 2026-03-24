@@ -22,13 +22,16 @@ app = FastAPI(
     description="Type anything — we find the 3D model.",
     version="4.3.0"
 )
+from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],      # allow everything — fine for local dev
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 
 # ── Schemas ───────────────────────────────────────────────────────────────────

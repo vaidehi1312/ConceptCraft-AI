@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color('#1a1a1a');
@@ -46,19 +47,6 @@ let htmlLabels = [];
 // When Gemini doesn't return resolved_shape (or returns null/undefined),
 // we infer the correct shape from the component label using keyword matching.
 const SHAPE_KEYWORDS = {
-    // IMPORTANT: more-specific entries MUST come before generic ones.
-    // e.g. "tetrahedron" before "box" so "triangular face" doesn't fall through to box.
-    tetrahedron: [
-        'triangular face','triangular_face','triangle face',
-        'lateral face','slanting face','sloped face','pyramidal face'
-    ],
-    cone: [
-        'capstone','cap stone','apex','pinnacle','spire','tip','peak',
-        'roof','funnel','volcano','spike','cone'
-    ],
-    hemisphere: [
-        'dome','half sphere','cupola','half-sphere'
-    ],
     sphere: [
         'sun','star','planet','moon','earth','mars','venus','jupiter','saturn',
         'mercury','uranus','neptune','pluto','nucleus','atom','cell','core',
@@ -72,13 +60,14 @@ const SHAPE_KEYWORDS = {
     ],
     cylinder: [
         'tube','pipe','channel','stem','trunk','column','pillar','rod',
-        'axon','dendrite','vessel','artery','vein','flagella','cilia',
-        'tower','minaret','obelisk','dna helix'
+        'axon','dendrite','vessel','artery','vein','flagella','cilia','dna helix'
+    ],
+    cone: [
+        'cone','pyramid','peak','tip','apex','funnel','volcano','spike'
     ],
     box: [
-        'square base','base','foundation','platform','floor',
-        'cube','block','brick','crystal','lattice','grid','square',
-        'module','chip','processor','cell wall','chloroplast','wall','side'
+        'cube','box','block','brick','crystal','lattice','grid','square',
+        'module','chip','processor','cell wall','chloroplast'
     ],
     icosphere: [
         'virus','capsid','geodesic','icosahedron','protein','fullerene','bacteriophage'
@@ -91,13 +80,6 @@ const SHAPE_KEYWORDS = {
     ]
 };
 
-// Stable string hash — same id always gets same palette index (no random blue glitch)
-function hashStr(s) {
-    let h = 0;
-    for (let i = 0; i < (s || '').length; i++) h = Math.imul(31, h) + s.charCodeAt(i) | 0;
-    return Math.abs(h) / 2147483648; // normalize to [0,1)
-}
-
 function inferShapeFromLabel(label, id) {
     const text = ((label || '') + ' ' + (id || '')).toLowerCase();
     for (const [shape, keywords] of Object.entries(SHAPE_KEYWORDS)) {
@@ -106,39 +88,6 @@ function inferShapeFromLabel(label, id) {
         }
     }
     return 'sphere'; // scientific default — most natural/astronomical things are spherical
-}
-
-// ── Shape Correction ─────────────────────────────────────────────────────────
-// Gemini sometimes returns a generic resolved_shape (e.g. "box" for a triangular face).
-// This function overrides the server-side resolved_shape when the label clearly
-// implies a specific shape — ensuring pyramid faces → tetrahedron, base → box, etc.
-const LABEL_OVERRIDES = [
-    // Check multi-word patterns FIRST (most specific)
-    { keywords: ['triangular face','triangular_face','triangle face','lateral face','slanted face','pyramidal face'], shape: 'tetrahedron' },
-    { keywords: ['capstone','cap stone','apex stone','pinnacle','tip stone'],                                         shape: 'cone' },
-    { keywords: ['square base','rectangular base','flat base'],                                                       shape: 'box' },
-    { keywords: ['dome','cupola','half sphere','half-sphere'],                                                        shape: 'hemisphere' },
-    { keywords: ['minaret','tower','obelisk','chimney','mast'],                                                       shape: 'cylinder' },
-    // Single-word overrides
-    { keywords: ['base','foundation','platform','floor','plinth'],                                                    shape: 'box' },
-    { keywords: ['apex','capstone','spire','pinnacle'],                                                               shape: 'cone' },
-];
-
-function correctShapeForLabel(resolvedShape, label, id) {
-    const text = ((label || '') + ' ' + (id || '')).toLowerCase();
-    for (const entry of LABEL_OVERRIDES) {
-        if (entry.keywords.some(kw => text.includes(kw))) {
-            return entry.shape;
-        }
-    }
-    // If resolved_shape is a valid known shape, trust it
-    const validShapes = new Set(['sphere','box','cylinder','cone','torus','hemisphere',
-        'icosphere','oblate_sphere','tapered_cylinder','capsule',
-        'wireframe_cube','branching_fork','torus_section','octahedron','tetrahedron']);
-    if (resolvedShape && validShapes.has(resolvedShape.toLowerCase())) {
-        return resolvedShape.toLowerCase();
-    }
-    return null; // fall through to inferShapeFromLabel
 }
 
 // ── Label Deduplication ───────────────────────────────────────────────────────
@@ -278,7 +227,7 @@ async function submitConcept() {
                 id: c.id,
                 resolved_shape: c.resolved_shape,
                 shape: c.shape,
-                willUse: correctShapeForLabel(c.resolved_shape, c.label, c.id) || inferShapeFromLabel(c.label, c.id)
+                willUse: c.resolved_shape || c.shape || inferShapeFromLabel(c.label, c.id)
             })));
         }
 
@@ -299,8 +248,58 @@ async function submitConcept() {
 btn.addEventListener('click', submitConcept);
 input.addEventListener('keydown', e => { if (e.key === 'Enter') submitConcept(); });
 
+// ── Mesh Render (Shap-E OBJ) ──────────────────────────────────────────────────
+function renderMesh(data) {
+    clearScene();
+    document.getElementById('ui-layer').style.display = 'block';
+    document.getElementById('title').innerText = data.scenario || "Generated 3D Model";
+    document.getElementById('pattern-badge').innerText = 'Shap-E Mesh';
+    document.getElementById('variant-badge').style.display = 'none';
+    document.getElementById('desc-intro').innerText = data.intro || "";
+    document.getElementById('desc-logic').innerText = data.layout_logic || "";
+
+    const objStr = atob(data.obj);
+    const loader = new OBJLoader();
+    const object = loader.parse(objStr);
+
+    const box = new THREE.Box3().setFromObject(object);
+    const center = box.getCenter(new THREE.Vector3());
+    const size = box.getSize(new THREE.Vector3());
+    const maxDim = Math.max(size.x, size.y, size.z);
+    const scale = 8 / maxDim;
+
+    object.position.sub(center.multiplyScalar(scale));
+    object.scale.setScalar(scale);
+
+    object.traverse(child => {
+        if (child.isMesh) {
+            child.material = new THREE.MeshStandardMaterial({
+                color: 0xdddddd,
+                roughness: 0.4,
+                metalness: 0.15,
+                side: THREE.DoubleSide
+            });
+        }
+    });
+
+    scene.add(object);
+    currentMeshes.push(object);
+    createHtmlLabel(data.scenario, new THREE.Vector3(0, 6, 0), "component-label");
+    camera.position.set(12, 8, 12);
+    controls.target.set(0, 0, 0);
+    controls.update();
+}
+
 // ── Core Render Function ──────────────────────────────────
 function renderData(data) {
+    if (data.render_mode === 'mesh' && data.obj) {
+        renderMesh(data);
+        return;
+    }
+    renderBlueprint(data);
+}
+
+function renderBlueprint(data) {
     clearScene();
 
     document.getElementById('ui-layer').style.display = 'block';
@@ -354,9 +353,9 @@ function renderData(data) {
 
         components.forEach((comp, idx) => {
             const isContainer = comp.original_component?.metadata?.variant === "container_head";
-            const shapeId = correctShapeForLabel(comp.resolved_shape, comp.label, comp.id) || inferShapeFromLabel(comp.label, comp.id);
+            const shapeId = comp.resolved_shape || comp.shape || inferShapeFromLabel(comp.label, comp.id);
             const geometry = createShape(shapeId);
-            const matIndex = Math.floor(Math.abs(Math.sin(hashStr(comp.original_id || comp.id)) * familyPalette.length));
+            const matIndex = Math.floor(Math.abs(Math.sin((comp.original_id || comp.id).length + idx) * familyPalette.length));
             const material = familyPalette[matIndex].clone();
             if (isContainer) {
                 material.transparent = true;
@@ -376,11 +375,11 @@ function renderData(data) {
     } else {
         components.forEach((comp, idx) => {
             // Shape resolution: server pipeline → raw shape field → label inference → sphere
-            const shapeId = correctShapeForLabel(comp.resolved_shape, comp.label, comp.id) || inferShapeFromLabel(comp.label, comp.id);
+            const shapeId = comp.resolved_shape || comp.shape || inferShapeFromLabel(comp.label, comp.id);
             console.log(`[shape] "${comp.label || comp.id}" → using "${shapeId}" (resolved_shape="${comp.resolved_shape}", shape="${comp.shape}")`);
 
             const geometry = createShape(shapeId);
-            const matIndex = Math.floor(Math.abs(Math.sin(hashStr(comp.original_id || comp.id)) * familyPalette.length));
+            const matIndex = Math.floor(Math.abs(Math.sin((comp.original_id || comp.id).length + idx) * familyPalette.length));
             let material = familyPalette[matIndex].clone();
 
             if (comp.color_hint === 'parent_dominant') {

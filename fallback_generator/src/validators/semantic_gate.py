@@ -83,18 +83,42 @@ class SemanticGate:
         except Exception as e:
             return {"status": "reject", "data": None, "issues": [f"Invalid JSON structure (Parsing crashed: {e})."]}
             
-        # Contract verification
-        validate_incoming(data, "SemanticGate", ["category", "dominant_pattern", "entities", "relations"])
+        # Contract verification — only check category exists, be lenient on new fields
+        if "category" not in data:
+            return {"status": "reject", "data": None, "issues": ["Missing required field: category"]}
             
-        # Step 1: Category validation
+        # Step 1: Category validation — accept new categories, repair unknown ones
         category = data.get("category", "")
-        if category not in VALID_CATEGORIES:
-            return {"status": "reject", "data": None, "issues": [f"Invalid category: {category}"]}
+        EXTENDED_VALID_CATEGORIES = VALID_CATEGORIES | {
+            "physical_phenomenon", "sequential"
+        }
+        if category not in EXTENDED_VALID_CATEGORIES:
+            issues.append(f"Repaired unknown category '{category}' → 'abstract_system'")
+            category = "abstract_system"
+            data["category"] = category
+            status = "repair"
             
-        # Step 2: Pattern validation
+        # Step 2: Pattern validation — repair unknown patterns instead of rejecting
         pattern = data.get("dominant_pattern", "")
-        if pattern not in VALID_PATTERNS:
-            return {"status": "reject", "data": None, "issues": [f"Invalid pattern: {pattern}"]}
+        EXTENDED_VALID_PATTERNS = VALID_PATTERNS | {
+            "sequential", "field", "physical_phenomenon", "central_peripheral"
+        }
+        if pattern not in EXTENDED_VALID_PATTERNS:
+            # Try to map common synonyms
+            pattern_map = {
+                "concentric": "radial",
+                "layered": "radial",
+                "circular": "radial",
+                "tree": "hierarchical",
+                "flow": "sequential",
+                "linear": "sequential",
+                "web": "network",
+                "graph": "network",
+            }
+            repaired = pattern_map.get(pattern.lower(), "central_peripheral")
+            issues.append(f"Repaired unknown pattern '{pattern}' → '{repaired}'")
+            pattern = repaired
+            status = "repair"
             
         # Step 3: Category-Pattern Consistency Check (Relaxed)
         # We no longer force patterns based on category. We trust the LLM's semantic intent 
@@ -146,7 +170,13 @@ class SemanticGate:
                     status = "repair"
                     issues.append(f"Repaired non-numeric count '{count}' to 1 for entity {eid}")
                     
-                cleaned_entities.append({"id": eid, "count": safe_count, "priority": priority}) 
+                cleaned_entities.append({"id": eid, "count": safe_count, "priority": priority})
+                # Preserve all rich Stage 1 fields
+                if isinstance(e, dict):
+                    for field in ["label", "size_class", "shape_description", "spatial_role",
+                                  "position_hint", "color_hex", "color_name", "contains", "educational_note"]:
+                        if field in e:
+                            cleaned_entities[-1][field] = e[field]
                 
         # Priority Pruning
         def _get_priority_score(entity):
@@ -266,4 +296,9 @@ class SemanticGate:
             issues.append(f"Pruned relations to absolute max {max_rels} for {category}")
             
         data["relations"] = cleaned_relations
+        # Preserve top-level Stage 1 rich fields for Stage 2
+        for field in ["concept_description", "spatial_logic", "scene_notes"]:
+            if field not in data:
+                data[field] = ""
+
         return {"status": status, "data": data, "issues": issues}

@@ -25,7 +25,7 @@ from prompts import (
 )
 
 # ── Paste your ngrok URL here when Kaggle notebook is running ──────────────
-# Example: "https://abc123.ngrok-free.app"
+KAGGLE_LLM_URL = "https://impressional-kristy-nonalined.ngrok-free.dev"
 KAGGLE_LLM_URL = os.getenv("KAGGLE_LLM_URL", "")
 # ──────────────────────────────────────────────────────────────────────────
 

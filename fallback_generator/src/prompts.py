@@ -1,190 +1,262 @@
 """
 LLM Prompts Module
 ------------------
-RESPONSIBILITY:
 Two-step pipeline:
-  Step 1 — Spatial Analyst: describes concept with physical/spatial relationships
-  Step 2 — Blueprint Compiler: converts rich description into 3D JSON blueprint
+  Stage 1 — Spatial Artist Brief: describes concept like briefing a 3D modeler
+  Stage 2 — Blueprint Compiler: translates that brief into precise 3D JSON
 """
 
-STAGE_1_PROMPT = """You are a spatial analysis engine for a 3D educational visualization system.
+# ==============================================================================
+# STAGE 1 — SPATIAL ARTIST BRIEF
+# ==============================================================================
+STAGE_1_PROMPT = """You are briefing a 3D modeler who has never seen this concept before.
+They need enough detail to build a clean, educational 3D model without looking anything up.
 
-Your job is to analyze any concept and decompose it into its essential spatial structure.
+YOUR OUTPUT IS ONLY JSON. NO PROSE. NO MARKDOWN FENCES.
 
 ==================================================
-YOUR ONLY OUTPUT IS JSON. NO PROSE. NO MARKDOWN.
+EDUCATIONAL SIMPLIFICATION RULE
 ==================================================
+Always simplify for visual clarity:
+- Atom: show 3 electrons max, not actual electron count
+- Cell: show 5-6 key organelles, not all 20+
+- Solar system: show sun + 4-5 planets, not all 8
+- DNA: show one full twist (10 base pairs), not millions
+- Crystal: show a 3x3 unit cell, not full lattice
+The goal is RECOGNITION, not scientific completeness.
 
-STEP 1 — CLASSIFY THE CONCEPT
-==============================
-Choose exactly one category:
+==================================================
+STEP 1 — CLASSIFY
+==================================================
+category (choose one):
   physical_object, biological_structure, chemical_structure,
   process, abstract_system, physical_phenomenon
 
-Choose exactly one dominant spatial pattern:
-  radial         — things radiating from a center (sun, atom, cell)
-  hierarchical   — things stacked or ranked (pyramid, food chain, tree)
-  network        — things connected as peers (ecosystem, neural net, molecule bonds)
-  central_peripheral — one dominant center with surrounding parts (castle, nucleus+organelles)
-  field          — distributed across space (galaxy, gas cloud, magnetic field)
+dominant_pattern (choose one):
+  radial        — physical center radiating outward (atom, sun, hurricane)
+  hierarchical  — stacked levels top-to-bottom (pyramid, food chain, org chart)
+  network       — peer nodes, NO dominant center (ecosystem, molecule bonds)
+  central_peripheral — one dominant center + surrounding parts (cell, castle)
+  sequential    — ordered steps in a flow (water cycle, digestion, circuit)
+  field         — distributed in space (galaxy, magnetic field, gas cloud)
 
-CRITICAL PATTERN RULES:
-- radial = has a physical CENTER that other parts surround concentrically
-- hierarchical = has a TOP and BOTTOM with ranked levels between them
-- network = peer nodes connected by edges, NO dominant center
-- A pyramid → hierarchical (NOT network)
-- An atom → radial (nucleus at center, electrons orbit outward)
-- A cell → central_peripheral (nucleus dominant, organelles surrounding)
-- An ecosystem → network
-- NEVER use network for objects with a clear physical center
+PATTERN DECISION RULES:
+- Has a physical center others surround concentrically? → radial
+- Has clear top-to-bottom ranking? → hierarchical  
+- All parts are peers, no center dominates? → network
+- One dominant hub + distinct surrounding parts? → central_peripheral
+- Ordered process with direction? → sequential
+- Pyramid, building, tree → hierarchical (NEVER network or radial)
+- Atom, sun, cell nucleus → radial or central_peripheral
+- Ecosystem, food web → network
 
-STEP 2 — EXTRACT SPATIAL ENTITIES
-===================================
-Extract the minimum set of entities that make the concept visually recognizable.
+==================================================
+STEP 2 — DESCRIBE EACH COMPONENT AS A 3D ARTIST WOULD
+==================================================
+For each component specify:
 
-RULES:
-- Maximum 5 entities for physical objects
-- Maximum 6 for biological/chemical structures
-- Maximum 7 for processes/systems
-- Each entity MUST have a spatial role
-- Use EXACT counts (4 minarets, not "several minarets")
+SIZE: Give as fraction of total concept size
+  "nucleus takes up 1/10 of atom diameter"
+  "pyramid base is as wide as it is tall"
+  "sun is 10x larger than any planet shown"
 
-Entity priority levels:
-  identity_core     — remove this and concept is unrecognizable
-  support_core      — important but concept still recognizable without it
-  context_optional  — adds richness but not essential
+POSITION: Give exact spatial relationship
+  "nucleus sits dead center at origin"
+  "electrons orbit at 3x the nucleus radius"
+  "apex sits directly above the base center"
 
-STEP 3 — DEFINE SPATIAL RELATIONS
-===================================
-For LAYERED/CONCENTRIC structures (sun, earth, atom, cell, onion):
-  MANDATORY: use "contains" relations chaining from outermost to innermost.
-  Example: convective_zone contains radiative_zone contains core
-  NEVER leave relations empty for layered objects.
+SHAPE: Be specific
+  "nucleus = solid dense sphere"
+  "pyramid = perfect cone shape"
+  "DNA backbone = twisted cylinder"
+  "crystal unit = cube lattice"
 
-For HIERARCHICAL structures (pyramid, building, tree):
-  Use "stacked_above" relations from top to bottom.
+COLOR (scientifically accurate where known):
+  Sun/stars         → bright yellow-orange (#FFA500)
+  Nucleus (atom)    → bright red-orange (#FF4500)
+  Electrons         → electric blue (#00BFFF)
+  Protons           → red (#FF0000)
+  Neutrons          → gray (#888888)
+  Mitochondria      → dark red (#8B0000)
+  Cell nucleus      → purple (#800080)
+  Cell membrane     → translucent green (#00FF7F at 50% opacity)
+  Chloroplast       → green (#228B22)
+  Water             → blue (#1E90FF)
+  Bone/skeleton     → ivory (#FFFAF0)
+  DNA strand A      → blue (#0000FF)
+  DNA strand B      → orange (#FF8C00)
+  For unknowns      → use visually distinct contrasting colors
 
-For FLOW structures (water cycle, blood circulation):
-  Use "flows_to" relations.
+EDUCATIONAL COUNT (simplified):
+  Show minimum count for visual recognition
+  "3 electrons shown (simplified from actual count)"
+  "4 planets shown (inner solar system)"
 
-Allowed relation types:
-  contains, stacked_above, flows_to, attached_to, supports,
-  surrounds, depends_on, produces, regulates
+==================================================
+STEP 3 — SPATIAL RELATIONS
+==================================================
+CONCENTRIC/LAYERED structures (sun, atom, earth, onion):
+  MUST use "contains" chaining from outermost to innermost.
+  outer_layer contains middle_layer contains inner_core
 
-STEP 4 — DEFINE SIZE RELATIONSHIPS
-=====================================
-For every entity, assign a size_class:
-  dominant   — the largest/most massive component
-  large      — clearly bigger than average
-  medium     — average sized
-  small      — clearly smaller than average
-  tiny       — very small relative to dominant (electrons vs nucleus)
+HIERARCHICAL structures (pyramid, tree, food chain):
+  Use "stacked_above": apex stacked_above middle stacked_above base
 
-SIZE RULES:
-- In a radial structure: innermost = dominant, outer layers get progressively smaller
-- In a hierarchical structure: base/foundation = dominant, apex = small
-- In a network: size reflects importance/energy level
+FLOW structures (water cycle, digestion):
+  Use "flows_to" in sequence order
 
-STEP 5 — OUTPUT EXACTLY THIS JSON
-===================================
+NEVER leave relations empty for layered or hierarchical concepts.
+
+==================================================
+STEP 4 — SIZE CLASS (for scale mapping)
+==================================================
+Assign size_class based on actual relative size:
+  dominant  → largest element (nucleus in atom, base in pyramid, sun in solar system)
+  large     → clearly bigger than average
+  medium    → average
+  small     → clearly smaller
+  tiny      → very small relative to dominant (electron vs nucleus)
+
+RADIAL RULE: innermost = dominant, each outer layer gets smaller size_class
+HIERARCHICAL RULE: base/foundation = dominant, apex = small or tiny
+
+==================================================
+OUTPUT JSON SCHEMA — RETURN EXACTLY THIS
+==================================================
 {
   "category": "",
   "dominant_pattern": "",
-  "hybrid_needed": false,
-  "concept_description": "1-2 sentences describing what this concept IS physically",
-  "spatial_logic": "1 sentence explaining the spatial arrangement rule",
+  "concept_description": "2 sentences: what it is + what makes it visually distinctive",
+  "spatial_logic": "1 sentence: why components are arranged this way",
   "entities": [
     {
-      "id": "snake_case_name",
-      "label": "Human Readable Name",
+      "id": "snake_case_id",
+      "label": "Human Readable Label",
       "count": 1,
-      "priority": "identity_core",
-      "size_class": "dominant",
-      "spatial_role": "center|layer|orbit|branch|node|apex|base",
-      "contains": ["id_of_entity_it_encloses"],
-      "position_hint": "center|above|below|surrounding|orbiting|branching"
+      "priority": "identity_core|support_core|context_optional",
+      "size_class": "dominant|large|medium|small|tiny",
+      "shape_description": "exact shape name: sphere|box|cone|cylinder|torus|hemisphere|icosphere",
+      "spatial_role": "center|layer|orbit|apex|base|branch|node",
+      "position_hint": "center|above_center|below_center|surrounding|orbiting|corner|sequential",
+      "color_hex": "#RRGGBB",
+      "color_name": "descriptive color name",
+      "contains": ["id_of_entity_enclosed_by_this"],
+      "educational_note": "why simplified (e.g. 3 electrons shown for clarity)"
     }
   ],
   "relations": [
     {
       "source": "entity_id",
       "target": "entity_id",
-      "type": "contains"
+      "type": "contains|stacked_above|flows_to|attached_to|orbits|supports"
     }
-  ]
+  ],
+  "scene_notes": "brief description of overall scene composition for the modeler"
 }
 
 ==================================================
-STRICT OUTPUT RULES
-====================
-- Return ONLY valid JSON
-- No prose, no markdown, no explanation
-- Every entity MUST have size_class set
-- Relations MUST NOT be empty for layered/concentric concepts
-- dominant_pattern MUST reflect physical structure, not conceptual domain
+STRICT RULES
+==================================================
+- Return ONLY valid JSON — no prose, no markdown, no backticks
+- Every entity MUST have color_hex and shape_description set
+- Relations MUST be non-empty for layered, hierarchical, and flow concepts
+- size_class MUST follow the RADIAL RULE and HIERARCHICAL RULE above
+- dominant_pattern MUST reflect physical structure not conceptual domain
+- Simplify counts for visual clarity
 """
 
 def generate_stage_1_user_prompt(concept: str) -> str:
-    return f"Concept: {concept}\n\nAnalyze the spatial structure and output strictly the JSON."
+    return (
+        f"Concept to visualize: \"{concept}\"\n\n"
+        f"Brief a 3D modeler to build this. Output ONLY the JSON."
+    )
 
 
-STAGE_2_PROMPT = """You are a 3D blueprint compiler for an educational visualization system.
+# ==============================================================================
+# STAGE 2 — BLUEPRINT COMPILER
+# ==============================================================================
+STAGE_2_PROMPT = """You are a 3D blueprint compiler for a Three.js educational visualization system.
 
-You receive a spatial analysis JSON and must compile it into a precise 3D blueprint.
+You receive a spatial artist brief (JSON) and compile it into a precise 3D blueprint.
+The blueprint feeds directly into a Three.js renderer — every field you set affects what the user sees.
+
+YOUR OUTPUT IS ONLY JSON. NO PROSE. NO MARKDOWN FENCES.
 
 ==================================================
-YOUR ONLY OUTPUT IS JSON. NO PROSE. NO MARKDOWN.
+SHAPE MAPPING — MANDATORY
 ==================================================
+Use shape_description from input. Map to these exact values:
+  sphere      → sphere       (planets, nuclei, cells, atoms, electrons, stars)
+  box         → box          (buildings, crystals, bases, platforms, blocks)
+  cone        → cone         (pyramid body, apex, tip, funnel, mountain)
+  cylinder    → cylinder     (pillars, tubes, DNA backbone, stems, columns)
+  torus       → torus        (rings, orbits, loops, belts, donuts)
+  hemisphere  → hemisphere   (domes, caps, bowls, half-spheres)
+  icosphere   → icosphere    (viruses, geodesic structures, rough spheres)
 
-SHAPE SELECTION RULES — MANDATORY
-===================================
-Astronomical / spherical: sun, star, planet, moon, nucleus, atom, core, layer, zone, electron, proton, neutron → sphere
-Architectural mass: building, wall, block, base, platform, cube, foundation, square base → box
-Tower / pillar: tower, minaret, column, pillar, rod, stem → cylinder
-Dome / cap: dome, cap, roof, crown → hemisphere
-Apex / tip: capstone, apex, tip, peak, spire, pinnacle → cone
-Pyramid face: triangular face, lateral face, slanted face → tetrahedron
-Ring / orbit: ring, orbit, belt, loop, orbital → torus
-Biological organelles: mitochondria, chloroplast, vacuole → sphere
-Viral / geodesic: virus, capsid → icosphere
-Chemical bonds: bond, link, bridge → cylinder
-Geometric vertex: vertex, corner, point → sphere
-Set BOTH "shape" and "resolved_shape" to the same value. NEVER leave resolved_shape empty.
-For a PYRAMID: base→box, triangular faces→tetrahedron, apex/capstone→cone. DO NOT use cone for triangular faces.
+Set BOTH "shape" AND "resolved_shape" to the SAME value.
+resolved_shape MUST NEVER be empty, null, or missing.
 
-SCALE RULES — MANDATORY
-========================
-Translate size_class to scale values:
+PYRAMID RULE: A pyramid = ONE large cone for the body + ONE flat box for the base.
+NEVER use cylinder for any part of a pyramid.
+
+==================================================
+SCALE MAPPING — MANDATORY
+==================================================
+Translate size_class from input to scale_override:
   dominant  → [4.0, 4.0, 4.0]
   large     → [2.5, 2.5, 2.5]
   medium    → [1.5, 1.5, 1.5]
   small     → [0.8, 0.8, 0.8]
   tiny      → [0.3, 0.3, 0.3]
 
-For RADIAL patterns: innermost entity = dominant scale [4.0,4.0,4.0], each outer layer smaller.
-For HIERARCHICAL patterns: base = dominant, apex = small.
+Special overrides:
+  cone (pyramid body)    → [3.0, 4.0, 3.0]   (wide base, tall)
+  box (pyramid base)     → [4.5, 0.4, 4.5]   (wide flat platform)
+  cylinder (pillar/tube) → [s, s*2.5, s]      (taller than wide)
+  torus (orbit ring)     → [3.0, 0.2, 3.0]   (wide flat ring)
 
-LAYOUT_HINT RULES
-==================
-  center       → place at origin
-  surrounding  → place in a ring around center
-  orbiting     → place on orbital ring around center
-  above        → place above parent
-  below        → place below parent
-  corner       → place at geometric corner
+RADIAL SCALE RULE:
+  Innermost entity = dominant [4.0,4.0,4.0]
+  Each outer layer or orbit = progressively smaller
+  Electrons/outermost particles = tiny [0.3,0.3,0.3]
 
-COLOR_HINT RULES
-=================
-  neutral, gradient_hot, gradient_cool, accent_bright, contrast_pair, parent_dominant, warning_red
+==================================================
+LAYOUT HINT MAPPING
+==================================================
+Use position_hint from input:
+  center         → layout_hint: "center"       (place at origin 0,0,0)
+  surrounding    → layout_hint: "surrounding"  (ring around center)
+  orbiting       → layout_hint: "orbiting"     (orbital ring)
+  above_center   → layout_hint: "above"
+  below_center   → layout_hint: "below"
+  corner         → layout_hint: "corner"
+  sequential     → layout_hint: "none"         (engine handles order)
 
+==================================================
+COLOR MAPPING
+==================================================
+Use color_hex from input. Map to closest color_hint:
+  Reds/oranges/yellows  → "gradient_hot"
+  Blues/cyans/purples   → "gradient_cool"
+  Single bright accent  → "accent_bright"
+  Neutral grays/whites  → "neutral"
+  Paired components     → "contrast_pair"
+  Greens (biology)      → "accent_bright"
+  Warning/danger        → "warning_red"
+
+Also pass color_hex directly in the component as "color" field.
+
+==================================================
 EXPLANATIONS — MANDATORY
-=========================
-Use concept_description from input for intro.
-Use spatial_logic from input for layout_logic.
-Both MUST be non-empty strings.
+==================================================
+  intro:        Use concept_description from input verbatim or lightly expanded
+  layout_logic: Use spatial_logic from input verbatim or lightly expanded
+  Both MUST be non-empty strings of at least 1 sentence each.
 
-OUTPUT SCHEMA
-=============
+==================================================
+OUTPUT SCHEMA — RETURN EXACTLY THIS
+==================================================
 {
   "pattern": "",
   "explanations": {
@@ -194,17 +266,18 @@ OUTPUT SCHEMA
   "geometric_components": [
     {
       "id": "",
-      "semantic_type": "structure|organ|layer|node|resource|force",
+      "semantic_type": "structure|organ|layer|node|resource|force|particle",
       "label": "",
       "shape": "",
       "resolved_shape": "",
-      "role": "central|peripheral|node|source|sink|anchor|cap",
+      "color": "#RRGGBB",
+      "color_hint": "neutral|gradient_hot|gradient_cool|accent_bright|contrast_pair|warning_red",
+      "role": "central|peripheral|node|source|sink|anchor|cap|layer",
       "count": 1,
       "size_hint": "extra_large|large|medium|small|tiny",
       "scale_override": [1.0, 1.0, 1.0],
       "vertical_relation": "none|above|below|adjacent|inside|container",
       "importance": "high|medium|low",
-      "color_hint": "neutral",
       "layout_hint": "none|center|surrounding|orbiting|above|below|corner"
     }
   ],
@@ -212,7 +285,7 @@ OUTPUT SCHEMA
     {
       "from_id": "",
       "to_id": "",
-      "relation_type": "contains|flows_to|attached_to|supports|stacked_above",
+      "relation_type": "contains|flows_to|attached_to|supports|stacked_above|orbits",
       "connector": "arrow|line|dashed_line",
       "label": "",
       "strength": "weak|medium|strong"
@@ -230,53 +303,59 @@ OUTPUT SCHEMA
   }
 }
 
-STRICT OUTPUT RULES
-====================
-- Return ONLY valid JSON
-- resolved_shape MUST be set for every component
-- scale_override MUST reflect size_class from input
+==================================================
+STRICT RULES
+==================================================
+- Return ONLY valid JSON — no prose, no markdown, no backticks
+- resolved_shape MUST equal shape, NEVER empty
+- scale_override MUST be set for every component
+- color MUST be set to the color_hex from input
 - explanations.intro and explanations.layout_logic MUST be non-empty
-- Do NOT invent entities not in the input
+- Do NOT invent components not in the input
+- Do NOT reduce multiple input entities into one component
 """
 
 def generate_stage_2_user_prompt(stage_1_json: str) -> str:
-    return f"Spatial Analysis Input:\n{stage_1_json}\n\nCompile into 3D blueprint. Return ONLY JSON."
+    return (
+        f"Spatial Artist Brief (input):\n{stage_1_json}\n\n"
+        f"Compile into 3D blueprint. Return ONLY JSON."
+    )
 
 
+# ==============================================================================
+# PROVIDER-SPECIFIC SUFFIXES
+# ==============================================================================
 GEMINI_STAGE_1_SUFFIX = """
----
-GEMINI RULES:
-- Return minimum spatial decomposition only
-- For layered objects: relations MUST use "contains" chaining outside-in
-- For physical solids (pyramid, cube): use "hierarchical", NEVER "radial"
-- Radial ONLY for objects with a physical center radiating outward
-- Every entity MUST have size_class set"""
+GEMINI ADDITIONAL RULES:
+- color_hex MUST be set for every entity — use scientifically accurate colors
+- For radial patterns: innermost entity size_class = dominant, outer = progressively smaller
+- For hierarchical: base = dominant, apex = small
+- relations MUST be non-empty for layered or hierarchical concepts
+- shape_description MUST be one of: sphere, box, cone, cylinder, torus, hemisphere, icosphere"""
 
 GEMINI_STAGE_2_SUFFIX = """
----
-GEMINI RULES:
-- Every component MUST have resolved_shape set to a valid shape string
-- scale_override MUST be set based on size_class (dominant=4.0, large=2.5, medium=1.5, small=0.8, tiny=0.3)
-- For radial patterns: innermost entity = [4.0,4.0,4.0], scale decreases outward
-- For pyramid: base→box [4,4,4], triangular faces→tetrahedron [2,2,2], capstone→cone [1,1,1]
-- Triangular face MUST use resolved_shape="tetrahedron", NEVER "box" or "cone"
+GEMINI ADDITIONAL RULES:
+- resolved_shape MUST equal shape, never empty
+- scale_override: dominant=[4.0,4.0,4.0], large=[2.5,2.5,2.5], medium=[1.5,1.5,1.5], small=[0.8,0.8,0.8], tiny=[0.3,0.3,0.3]
+- color field MUST be set from input color_hex
+- pyramid body = cone [3.0,4.0,3.0], pyramid base = box [4.5,0.4,4.5]
 - explanations.intro and explanations.layout_logic MUST be non-empty"""
 
 OLLAMA_STAGE_1_SUFFIX = """
----
-OLLAMA RULES:
-- Preserve ALL essential spatial entities
-- Every identity_core entity MUST be in the output
-- For repeated structures: include exact numeric count
-- Every entity MUST have size_class set
-- For layered/nested objects: relations MUST chain contains from outside-in"""
+OLLAMA ADDITIONAL RULES:
+- color_hex MUST be set for every entity using scientifically accurate colors
+- Every identity_core entity MUST appear in output
+- For radial: innermost = dominant size_class, outer layers get smaller
+- For hierarchical: base = dominant, apex = small
+- relations MUST be non-empty for layered/hierarchical/concentric concepts
+- shape_description must be exact: sphere, box, cone, cylinder, torus, hemisphere, or icosphere"""
 
 OLLAMA_STAGE_2_SUFFIX = """
----
-OLLAMA RULES:
-- Every semantic entity from Stage 1 MUST appear in geometric_components
-- NEVER omit identity_core entities
-- MANDATORY: Every component must have resolved_shape set (same value as shape)
-- MANDATORY: scale_override must reflect size_class (dominant=[4.0,4.0,4.0], large=[2.5,2.5,2.5], medium=[1.5,1.5,1.5], small=[0.8,0.8,0.8], tiny=[0.3,0.3,0.3])
-- MANDATORY: For radial patterns, innermost entity gets largest scale
-- MANDATORY: explanations.intro and explanations.layout_logic must be non-empty strings"""
+OLLAMA ADDITIONAL RULES:
+- Every entity from input MUST appear as a geometric_component
+- resolved_shape MUST equal shape — NEVER leave empty
+- scale_override MUST be set: dominant=[4.0,4.0,4.0], large=[2.5,2.5,2.5], medium=[1.5,1.5,1.5], small=[0.8,0.8,0.8], tiny=[0.3,0.3,0.3]
+- color MUST be set from input color_hex
+- For radial patterns: innermost component gets largest scale, outermost gets smallest
+- Pyramid: cone body [3.0,4.0,3.0] + flat box base [4.5,0.4,4.5]
+- explanations.intro and explanations.layout_logic MUST be non-empty strings"""
