@@ -4,9 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ConceptCraftAI — Sands & Sage</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
+  <title>ConceptCraftAI — Sands &amp; Sage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
@@ -26,342 +25,184 @@
     }
   </script>
   <style>
-    :root {
-      --base-font: 16px;
-    }
-
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background: #FFF8F0;
       color: #1A1C1A;
-      font-size: var(--base-font);
       transition: background 0.3s, color 0.3s;
     }
-
-    .page {
-      display: none;
-    }
-
-    .page.active {
-      display: flex;
-      flex-direction: column;
-      min-height: calc(100vh - 64px);
-    }
-
-    .flex-1 {
-      flex: 1;
-    }
-
-    .nav-link {
-      position: relative;
-      cursor: pointer;
-    }
-
+    .page { display: none; }
+    .page.active { display: flex; flex-direction: column; min-height: calc(100vh - 64px); }
+    .nav-link { position: relative; cursor: pointer; }
     .nav-link.active::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: #8C5A3C;
-      border-radius: 1px;
+      content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+      height: 2px; background: #8C5A3C; border-radius: 1px;
     }
-
-    .tier-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      display: inline-block;
-    }
-
-    .tier-dot.high {
-      background: #16a34a;
-    }
-
-    .tier-dot.medium {
-      background: #2563eb;
-    }
-
-    .tier-dot.low {
-      background: #f59e0b;
-    }
-
-    .tier-dot.fallback {
-      background: #ef4444;
-    }
-
-    .score-bar {
-      height: 6px;
-      border-radius: 3px;
-      background: #e5e5e5;
-      overflow: hidden;
-    }
-
-    .score-fill {
-      height: 100%;
-      border-radius: 3px;
-      transition: width 0.5s ease;
-    }
-
+    .score-bar { height: 6px; border-radius: 3px; background: #e5e5e5; overflow: hidden; }
+    .score-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
     .viewer-canvas {
-      width: 100%;
-      height: 100%;
-      min-height: 420px;
-      background: #1a1a2e;
-      border-radius: 16px;
-      position: relative;
-      overflow: hidden;
+      width: 100%; height: 100%; min-height: 420px; background: #1a1a2e;
+      border-radius: 16px; position: relative; overflow: hidden;
     }
-
-    .viewer-canvas canvas {
-      width: 100% !important;
-      height: 100% !important;
-      border-radius: 16px;
-      display: block;
-    }
-
-    .viewer-canvas iframe {
-      width: 100%;
-      height: 100%;
-      min-height: 420px;
-      border: none;
-      border-radius: 16px;
-    }
-
-    .glass-card {
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(0, 0, 0, 0.06);
-    }
-
+    .viewer-canvas canvas { width: 100% !important; height: 100% !important; border-radius: 16px; display: block; }
+    .viewer-canvas iframe { width: 100%; height: 100%; min-height: 420px; border: none; border-radius: 16px; }
+    .glass-card { background: rgba(255,255,255,0.75); backdrop-filter: blur(16px); border: 1px solid rgba(0,0,0,0.06); }
     .letter-avatar-warm {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
+      width: 80px; height: 80px; border-radius: 50%;
       background: linear-gradient(135deg, #C08552, #8C5A3C);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 36px;
-      font-weight: 800;
-      color: #fff;
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px; font-weight: 800; color: #fff; flex-shrink: 0;
     }
-
-    .letter-avatar-sm {
-      width: 36px;
-      height: 36px;
-      font-size: 16px;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(12px)
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0)
-      }
-    }
-
-    .fade-in {
-      animation: fadeIn 0.4s ease forwards;
-    }
-
-    .spinner {
-      width: 20px;
-      height: 20px;
-      border: 2px solid #e5e5e5;
-      border-top-color: #8C5A3C;
-      border-radius: 50%;
-      animation: spin 0.6s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .viewer-toolbar {
-      position: absolute;
-      bottom: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 20;
-      display: flex;
-      gap: 6px;
-    }
-
+    .letter-avatar-sm { width: 36px; height: 36px; font-size: 16px; }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(12px) } to { opacity:1; transform:translateY(0) } }
+    .fade-in { animation: fadeIn 0.4s ease forwards; }
+    .spinner { width:20px; height:20px; border:2px solid #e5e5e5; border-top-color:#8C5A3C; border-radius:50%; animation:spin 0.6s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .viewer-toolbar { position:absolute; bottom:12px; left:50%; transform:translateX(-50%); z-index:20; display:flex; gap:6px; }
     .vtool-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.55);
-      backdrop-filter: blur(8px);
-      border: none;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: 0.2s;
-      font-size: 16px;
+      width:40px; height:40px; border-radius:50%; background:rgba(0,0,0,0.55);
+      backdrop-filter:blur(8px); border:none; color:#fff;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; transition:0.2s; font-size:16px;
     }
+    .vtool-btn:hover { background:rgba(0,0,0,0.75); }
+    .vtool-btn.active { background:#8C5A3C; }
+    .vtool-btn:disabled { opacity:0.35; cursor:not-allowed; }
+    .vtool-btn:disabled:hover { background:rgba(0,0,0,0.55); }
 
-    .vtool-btn:hover {
-      background: rgba(0, 0, 0, 0.75);
-    }
-
-    .vtool-btn.active {
-      background: #8C5A3C;
-    }
-
-    /* High contrast mode */
-    body.high-contrast {
-      background: #fff !important;
-      color: #000 !important;
-    }
-
-    body.high-contrast * {
-      border-color: #000 !important;
-    }
-
+    /* ── High Contrast ── */
+    body.high-contrast { background: #fff !important; color: #000 !important; }
     body.high-contrast .bg-white,
     body.high-contrast .bg-brand-surface,
-    body.high-contrast .bg-brand-background {
-      background: #fff !important;
+    body.high-contrast .bg-brand-background,
+    body.high-contrast .bg-brand-primary\/20,
+    body.high-contrast .glass-card { background: #fff !important; }
+    /* Black borders on everything that has a border */
+    body.high-contrast *[class*="border"],
+    body.high-contrast *[class*="rounded"] {
+      border-color: #000 !important;
     }
-
-    /* Reduced motion */
-    body.reduced-motion *,
-    body.reduced-motion *::before,
-    body.reduced-motion *::after {
-      animation-duration: 0s !important;
-      transition-duration: 0s !important;
+    /* Ensure cards, inputs, panels all get visible borders */
+    body.high-contrast div[class*="rounded"],
+    body.high-contrast aside,
+    body.high-contrast nav,
+    body.high-contrast footer,
+    body.high-contrast input,
+    body.high-contrast button:not(.vtool-btn):not(.a11y-toggle) {
+      border: 1px solid #000 !important;
     }
+    /* Text colors forced to black */
+    body.high-contrast p, body.high-contrast span, body.high-contrast div,
+    body.high-contrast h1, body.high-contrast h2, body.high-contrast h3,
+    body.high-contrast label, body.high-contrast a {
+      color: #000 !important;
+    }
+    /* Dimmed text still readable */
+    body.high-contrast .text-slate-400, body.high-contrast .text-slate-500,
+    body.high-contrast .text-slate-300, body.high-contrast .text-brand-accent {
+      color: #333 !important;
+    }
+    /* Colored backgrounds stay but get stronger borders */
+    body.high-contrast .bg-brand-secondary {
+      border: 2px solid #000 !important;
+    }
+    body.high-contrast .bg-brand-secondary *,
+    body.high-contrast .bg-brand-secondary p,
+    body.high-contrast .bg-brand-secondary span,
+    body.high-contrast .bg-brand-secondary div {
+      color: #fff !important;
+    }
+    /* Score bars visible */
+    body.high-contrast .score-bar { background: #ccc !important; border: 1px solid #000 !important; }
+    /* Badges and pills */
+    body.high-contrast span[class*="rounded-full"] { border: 1px solid #000 !important; }
+    /* Search input */
+    body.high-contrast input { background: #fff !important; color: #000 !important; }
+    /* Buttons stay clickable-looking */
+    body.high-contrast .bg-brand-secondary:not(.a11y-toggle) {
+      background: #000 !important; color: #fff !important;
+    }
+    /* Keep a11y toggle buttons VISIBLE in high contrast */
+    body.high-contrast .a11y-toggle {
+      background: #e5e5e5 !important;
+      border: 2px solid #000 !important;
+      color: #000 !important;
+    }
+    body.high-contrast .a11y-toggle.a11y-on {
+      background: #000 !important;
+      color: #fff !important;
+    }
+    /* Pipeline fallback card */
+    body.high-contrast .bg-red-50 { background: #fff !important; border: 2px solid #c00 !important; }
 
+    /* ── Reduced Motion ── */
+    body.reduced-motion *, body.reduced-motion *::before, body.reduced-motion *::after {
+      animation-duration: 0s !important; transition-duration: 0s !important;
+    }
     @media (prefers-reduced-motion: reduce) {
-
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0s !important;
-        transition-duration: 0s !important;
-      }
+      *, *::before, *::after { animation-duration: 0s !important; transition-duration: 0s !important; }
     }
 
-    /* Font Scaling */
-    .text-scale-small p,
-    .text-scale-small span,
-    .text-scale-small div,
-    .text-scale-small button,
-    .text-scale-small a,
-    .text-scale-small h1,
-    .text-scale-small h2,
-    .text-scale-small h3 {
-      font-size: 0.9em !important;
+    /* ── A11y toggle buttons (normal state) ── */
+    .a11y-toggle {
+      transition: background 0.2s, color 0.2s;
+    }
+    .a11y-toggle.a11y-on {
+      background: #8C5A3C !important;
+      color: #fff !important;
     }
 
-    .text-scale-large p,
-    .text-scale-large span,
-    .text-scale-large div,
-    .text-scale-large button,
-    .text-scale-large a,
-    .text-scale-large h1,
-    .text-scale-large h2,
-    .text-scale-large h3 {
-      font-size: 1.15em !important;
-    }
+    /* ── Pipeline step connector lines ── */
+    .pipeline-connector { width: 2px; height: 24px; background: #8C5A3C; margin: 0 auto; }
+    .pipeline-step { position: relative; }
   </style>
 </head>
 
 <body class="font-jakarta antialiased min-h-screen">
 
-  <!-- NAV -->
+  <!-- ═══ NAV ═══ -->
   <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-black/5">
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <div class="text-lg font-extrabold tracking-tight text-slate-950">ConceptCraft<span
-          class="text-brand-accent">AI</span></div>
+      <div class="text-lg font-extrabold tracking-tight text-slate-950">ConceptCraft<span class="text-brand-accent">AI</span></div>
       <div class="flex items-center gap-8">
-        <span class="nav-link active text-sm font-medium text-slate-950" data-page="explore"
-          onclick="showPage('explore')">Explore</span>
-        <span class="nav-link text-sm font-medium text-slate-400" data-page="workspace"
-          onclick="showPage('workspace')">Workspace</span>
-        <span class="nav-link text-sm font-medium text-slate-400" data-page="analysis" onclick="showPage('analysis')">AI
-          Analysis</span>
-        <span class="nav-link text-sm font-medium text-slate-400" data-page="library" onclick="showPage('library')">My
-          Library</span>
+        <span class="nav-link active text-sm font-medium text-slate-950" data-page="explore" onclick="showPage('explore')">Explore</span>
+        <span class="nav-link text-sm font-medium text-slate-400" data-page="workspace" onclick="showPage('workspace')">Workspace</span>
+        <span class="nav-link text-sm font-medium text-slate-400" data-page="analysis" onclick="showPage('analysis')">AI Analysis</span>
+        <span class="nav-link text-sm font-medium text-slate-400" data-page="library" onclick="showPage('library')">My Library</span>
       </div>
       <div class="flex items-center gap-2">
-        <div class="flex items-center bg-brand-surface rounded-full px-1 py-0.5 gap-0.5" role="group"
-          aria-label="Font size controls">
-          <button onclick="changeFontSize(-1)" aria-label="Small text"
-            class="text-[10px] font-bold w-7 h-7 rounded-full flex items-center justify-center hover:bg-white transition font-size-btn">A-</button>
-          <button onclick="fontSizeIndex=1; changeFontSize(0)" aria-label="Normal text"
-            class="text-xs font-bold w-7 h-7 rounded-full flex items-center justify-center bg-white shadow-sm font-size-btn">A</button>
-          <button onclick="changeFontSize(1)" aria-label="Large text"
-            class="text-sm font-bold w-7 h-7 rounded-full flex items-center justify-center hover:bg-white transition font-size-btn">A+</button>
-        </div>
-        <button onclick="toggleReducedMotion()" aria-label="Toggle reduced motion" title="Reduced motion"
-          class="w-9 h-9 rounded-full bg-brand-surface flex items-center justify-center text-slate-500 hover:text-brand-secondary transition"><span
-            class="material-symbols-outlined text-[18px]">motion_photos_pause</span></button>
-        <button onclick="toggleHighContrast()" aria-label="Toggle high contrast" title="High contrast"
-          class="w-9 h-9 rounded-full bg-brand-surface flex items-center justify-center text-slate-500 hover:text-brand-secondary transition">◑</button>
-        <button aria-label="Notifications"
-          class="w-9 h-9 rounded-full bg-brand-surface flex items-center justify-center text-slate-500 hover:text-brand-secondary transition"><span
-            class="material-symbols-outlined text-[18px]">notifications</span></button>
-        <button aria-label="User profile"
-          class="w-9 h-9 rounded-full bg-brand-secondary text-white flex items-center justify-center text-sm font-bold">C</button>
+        <button id="reducedMotionBtn" onclick="toggleReducedMotion()" aria-label="Toggle reduced motion" title="Reduced motion"
+          class="a11y-toggle w-9 h-9 rounded-full bg-brand-surface flex items-center justify-center text-slate-500"><span class="material-symbols-outlined text-[18px]">motion_photos_pause</span></button>
+        <button id="highContrastBtn" onclick="toggleHighContrast()" aria-label="Toggle high contrast" title="High contrast"
+          class="a11y-toggle w-9 h-9 rounded-full bg-brand-surface flex items-center justify-center text-slate-500 font-bold">◑</button>
+        <button aria-label="Notifications" class="w-9 h-9 rounded-full bg-brand-surface flex items-center justify-center text-slate-500"><span class="material-symbols-outlined text-[18px]">notifications</span></button>
+        <button aria-label="User profile" class="w-9 h-9 rounded-full bg-brand-secondary text-white flex items-center justify-center text-sm font-bold">C</button>
       </div>
     </div>
   </nav>
 
-  <!-- EXPLORE PAGE -->
+  <!-- ═══ EXPLORE ═══ -->
   <div id="page-explore" class="page active pt-16">
     <div class="flex-1">
       <div class="max-w-5xl mx-auto px-6 pt-16 pb-6">
-        <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-accent mb-4 fade-in">Editorial
-          Curation</p>
-        <h1 class="text-5xl md:text-6xl font-extrabold tracking-tighter leading-[1.05] mb-5 fade-in"
-          style="animation-delay:0.1s">The Future<br>of <em class="not-italic text-brand-secondary">Learning.</em></h1>
-        <p class="text-slate-500 text-base max-w-md mb-10 fade-in" style="animation-delay:0.2s">Immerse yourself in
-          high-fidelity 3D educational assets. Designed for precision, curated for beauty.</p>
+        <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-accent mb-4 fade-in">Editorial Curation</p>
+        <h1 class="text-5xl md:text-6xl font-extrabold tracking-tighter leading-[1.05] mb-5 fade-in" style="animation-delay:0.1s">The Future<br>of <em class="not-italic text-brand-secondary">Learning.</em></h1>
+        <p class="text-slate-500 text-base max-w-md mb-10 fade-in" style="animation-delay:0.2s">Immerse yourself in high-fidelity 3D educational assets. Designed for precision, curated for beauty.</p>
       </div>
-
-      <!-- Search -->
       <div class="max-w-2xl mx-auto px-6 mb-6 fade-in" style="animation-delay:0.25s">
-        <div
-          class="flex items-center bg-white rounded-full border border-black/10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] pl-5 pr-2 py-1 gap-3">
+        <div class="flex items-center bg-white rounded-full border border-black/10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] pl-5 pr-2 py-1 gap-3">
           <span class="material-symbols-outlined text-slate-400 text-xl">search</span>
-          <input id="searchInput" type="text" placeholder="Search any scientific concept..."
-            aria-label="Search scientific concepts" title="Press Enter to search"
-            class="flex-1 bg-transparent outline-none text-sm py-3 text-slate-800 placeholder:text-slate-400"
-            onkeydown="if(event.key==='Enter')doSearch()">
-          <button id="searchBtn" onclick="doSearch()"
-            class="bg-brand-secondary text-white rounded-full px-6 py-2.5 text-xs font-bold uppercase tracking-wider hover:opacity-90 transition">Search</button>
+          <input id="searchInput" type="text" placeholder="Search any scientific concept..." aria-label="Search scientific concepts" class="flex-1 bg-transparent outline-none text-sm py-3 text-slate-800 placeholder:text-slate-400" onkeydown="if(event.key==='Enter')doSearch()">
+          <button id="searchBtn" onclick="doSearch()" class="bg-brand-secondary text-white rounded-full px-6 py-2.5 text-xs font-bold uppercase tracking-wider hover:opacity-90 transition">Search</button>
         </div>
-        <div id="exampleChips" class="flex flex-wrap gap-2 justify-center mt-4">
-          <button onclick="quickSearch('human heart')"
-            class="text-xs px-4 py-1.5 rounded-full border border-black/10 text-slate-500 hover:border-brand-secondary hover:text-brand-secondary transition">Human
-            Heart</button>
-          <button onclick="quickSearch('DNA double helix')"
-            class="text-xs px-4 py-1.5 rounded-full border border-black/10 text-slate-500 hover:border-brand-secondary hover:text-brand-secondary transition">DNA
-            Helix</button>
-          <button onclick="quickSearch('solar system')"
-            class="text-xs px-4 py-1.5 rounded-full border border-black/10 text-slate-500 hover:border-brand-secondary hover:text-brand-secondary transition">Solar
-            System</button>
-          <button onclick="quickSearch('glucose molecule')"
-            class="text-xs px-4 py-1.5 rounded-full border border-black/10 text-slate-500 hover:border-brand-secondary hover:text-brand-secondary transition">Glucose</button>
-          <button onclick="quickSearch('mitochondria')"
-            class="text-xs px-4 py-1.5 rounded-full border border-black/10 text-slate-500 hover:border-brand-secondary hover:text-brand-secondary transition">Mitochondria</button>
+        <div class="flex flex-wrap gap-2 justify-center mt-4">
+          <button onclick="quickSearch('human heart')" class="text-xs px-4 py-1.5 rounded-full border border-black/10 text-slate-500 hover:border-brand-secondary hover:text-brand-secondary transition">Human Heart</button>
+          <button onclick="quickSearch('DNA double helix')" class="text-xs px-4 py-1.5 rounded-full border border-black/10 text-slate-500 hover:border-brand-secondary hover:text-brand-secondary transition">DNA Helix</button>
+          <button onclick="quickSearch('solar system')" class="text-xs px-4 py-1.5 rounded-full border border-black/10 text-slate-500 hover:border-brand-secondary hover:text-brand-secondary transition">Solar System</button>
+          <button onclick="quickSearch('water cycle')" class="text-xs px-4 py-1.5 rounded-full border border-black/10 text-slate-500 hover:border-brand-secondary hover:text-brand-secondary transition">Water Cycle</button>
+          <button onclick="quickSearch('mitochondria')" class="text-xs px-4 py-1.5 rounded-full border border-black/10 text-slate-500 hover:border-brand-secondary hover:text-brand-secondary transition">Mitochondria</button>
         </div>
       </div>
-
-      <!-- Status -->
       <div id="statusBar" class="hidden max-w-2xl mx-auto px-6 mb-6">
         <div class="flex items-center gap-3 bg-white rounded-2xl border border-black/5 px-5 py-3 shadow-sm">
           <div id="statusDot" class="w-2 h-2 rounded-full bg-green-500"></div>
@@ -369,869 +210,465 @@
           <span id="statusBadge"></span>
         </div>
       </div>
-
-      <!-- Results Section -->
       <div id="resultsSection" class="hidden max-w-5xl mx-auto px-6 pb-20 fade-in">
         <div id="bestMatchArea" class="mb-10"></div>
         <div id="topResultsArea"></div>
       </div>
-
-      <!-- Empty state -->
       <div id="emptyState" class="hidden max-w-md mx-auto px-6 py-20 text-center">
         <div class="text-5xl mb-4 opacity-30">◎</div>
-        <p class="text-sm text-slate-400">No results found. Try a different concept or the system will generate a 3D
-          model via TripoSR.</p>
+        <p class="text-sm text-slate-400">No results found. Try a different concept.</p>
       </div>
     </div>
-
     <footer class="bg-white border-t border-black/5 py-8 text-center mt-auto">
-      <div class="font-extrabold text-sm tracking-tight mb-2">ConceptCraft<span class="text-brand-accent">AI</span>
-      </div>
-      <div class="flex justify-center gap-5 text-xs text-slate-400 mb-2"><span>Terms of Service</span><span>Privacy
-          Policy</span><span>API Docs</span></div>
-      <p class="text-[10px] text-slate-300">© 2024 ConceptCraftAI. Designed for the Tactile Digital Gallery.</p>
+      <div class="font-extrabold text-sm tracking-tight mb-2">ConceptCraft<span class="text-brand-accent">AI</span></div>
+      <p class="text-[10px] text-slate-300">&copy; 2026 ConceptCraftAI. Designed for the Tactile Digital Gallery.</p>
     </footer>
   </div>
 
-  <!-- WORKSPACE PAGE -->
+  <!-- ═══ WORKSPACE ═══ -->
   <div id="page-workspace" class="page pt-16">
     <div class="flex min-h-[calc(100vh-64px)]">
       <aside class="w-56 bg-white border-r border-black/5 p-5 flex flex-col gap-2 shrink-0">
         <div class="flex items-center gap-3 mb-6">
-          <div class="w-9 h-9 rounded-xl bg-brand-surface flex items-center justify-center"><span
-              class="material-symbols-outlined text-brand-secondary text-lg">hub</span></div>
-          <div>
-            <div class="text-sm font-bold">Project Alpha</div>
-            <div class="text-[10px] uppercase tracking-widest text-slate-400">3D Retrieval Hub</div>
-          </div>
+          <div class="w-9 h-9 rounded-xl bg-brand-surface flex items-center justify-center"><span class="material-symbols-outlined text-brand-secondary text-lg">hub</span></div>
+          <div><div class="text-sm font-bold">Project Alpha</div><div class="text-[10px] uppercase tracking-widest text-slate-400">3D Retrieval Hub</div></div>
         </div>
-        <button id="wsVisModeBtn"
-          class="flex items-center gap-3 px-4 py-2.5 rounded-full bg-brand-secondary text-white text-xs font-semibold"><span
-            class="material-symbols-outlined text-sm">visibility</span>Visualization</button>
-        <button onclick="toggleSpeechWs()"
-          class="flex items-center gap-3 px-4 py-2.5 rounded-full hover:bg-brand-surface text-xs text-slate-600 transition"><span
-            class="material-symbols-outlined text-sm">accessibility_new</span>Accessibility</button>
-        <button
-          class="flex items-center gap-3 px-4 py-2.5 rounded-full hover:bg-brand-surface text-xs text-slate-600 transition"><span
-            class="material-symbols-outlined text-sm">folder</span>Assets</button>
-        <button onclick="showPage('library')"
-          class="flex items-center gap-3 px-4 py-2.5 rounded-full hover:bg-brand-surface text-xs text-slate-600 transition"><span
-            class="material-symbols-outlined text-sm">history</span>History</button>
-        <div class="mt-auto flex flex-col gap-1">
-          <button onclick="doSearch()"
-            class="w-full bg-brand-primary text-white rounded-full py-2.5 text-xs font-bold uppercase tracking-wider">New
-            Validation</button>
-          <div class="flex items-center gap-2 px-2 pt-3 text-[11px] text-slate-400"><span
-              class="material-symbols-outlined text-sm">settings</span>Settings</div>
-        </div>
+        <button class="flex items-center gap-3 px-4 py-2.5 rounded-full bg-brand-secondary text-white text-xs font-semibold"><span class="material-symbols-outlined text-sm">visibility</span>Visualization</button>
+        <button onclick="toggleSpeechWs()" class="flex items-center gap-3 px-4 py-2.5 rounded-full hover:bg-brand-surface text-xs text-slate-600 transition"><span class="material-symbols-outlined text-sm">accessibility_new</span>Accessibility</button>
+        <button class="flex items-center gap-3 px-4 py-2.5 rounded-full hover:bg-brand-surface text-xs text-slate-600 transition"><span class="material-symbols-outlined text-sm">folder</span>Assets</button>
+        <button onclick="showPage('library')" class="flex items-center gap-3 px-4 py-2.5 rounded-full hover:bg-brand-surface text-xs text-slate-600 transition"><span class="material-symbols-outlined text-sm">history</span>History</button>
+        <div class="mt-auto"><button onclick="showPage('explore')" class="w-full bg-brand-primary text-white rounded-full py-2.5 text-xs font-bold uppercase tracking-wider">New Search</button></div>
       </aside>
-
       <main class="flex-1 p-6 overflow-y-auto">
         <div id="wsViewerContainer" class="viewer-canvas mb-4" role="region" aria-label="3D model viewer">
-          <div id="wsViewerBadge"
-            class="hidden absolute top-4 left-4 z-10 bg-green-500/90 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>Live Render Engine
-          </div>
-          <div id="wsLoading"
-            class="absolute inset-0 flex flex-col items-center justify-center text-slate-400 text-sm gap-3 z-10"><span
-              class="material-symbols-outlined text-4xl opacity-30">view_in_ar</span>Search a concept to begin
-            visualization</div>
-          <button id="wsContrastBtn" onclick="toggleHighContrast()" aria-label="Toggle high contrast"
-            title="High contrast"
-            class="absolute top-4 right-4 z-10 bg-black/50 text-white text-sm font-bold px-3 py-1.5 rounded-full backdrop-blur-sm hover:bg-black/70 transition">◑</button>
-          <!-- Viewer toolbar — FIX #1: removed stray "..." from wsAudioBtn -->
+          <div id="wsViewerBadge" class="hidden absolute top-4 left-4 z-10 bg-green-500/90 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>Live Render Engine</div>
+          <div id="wsLoading" class="absolute inset-0 flex flex-col items-center justify-center text-slate-400 text-sm gap-3 z-10"><span class="material-symbols-outlined text-4xl opacity-30">view_in_ar</span>Search a concept to begin</div>
           <div class="viewer-toolbar" id="wsToolbar">
-            <button id="wsAudioBtn" onclick="handleWorkspaceSpeech()" aria-label="Audio description"
-              title="Audio description" class="vtool-btn">🔊</button>
-            <button id="wsWireframeBtn" onclick="toggleWireframe()" aria-label="Toggle wireframe rendering"
-              title="Wireframe" class="vtool-btn"><span
-                class="material-symbols-outlined text-lg">grid_on</span></button>
-            <button id="wsSimplifiedBtn" onclick="toggleSimplified()" aria-label="Toggle simplified geometry"
-              title="Simplified geometry" class="vtool-btn"><span
-                class="material-symbols-outlined text-lg">view_in_ar</span></button>
+            <button id="wsAudioBtn" onclick="handleWorkspaceSpeech()" aria-label="Audio description" title="Audio description" class="vtool-btn">🔊</button>
+            <button id="wsWireframeBtn" onclick="toggleWireframe()" aria-label="Toggle wireframe" title="Wireframe (GLB only)" class="vtool-btn" disabled><span class="material-symbols-outlined text-lg">grid_on</span></button>
+            <button id="wsSimplifiedBtn" onclick="toggleSimplified()" aria-label="Toggle simplified geometry" title="Simplified (GLB only)" class="vtool-btn" disabled><span class="material-symbols-outlined text-lg">view_in_ar</span></button>
           </div>
         </div>
         <div id="wsSystemMsg" class="hidden glass-card rounded-2xl p-5 flex items-start gap-4">
-          <div class="w-9 h-9 rounded-xl bg-brand-surface flex items-center justify-center shrink-0"><span
-              class="material-symbols-outlined text-brand-accent text-lg">chat</span></div>
-          <div>
-            <div class="font-bold text-sm mb-1">System Message</div>
-            <p id="wsSystemText" class="text-xs text-slate-500 leading-relaxed">Ready for your first search.</p>
-          </div>
+          <div class="w-9 h-9 rounded-xl bg-brand-surface flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-brand-accent text-lg">chat</span></div>
+          <div><div class="font-bold text-sm mb-1">System Message</div><p id="wsSystemText" class="text-xs text-slate-500 leading-relaxed">Ready for your first search.</p></div>
         </div>
       </main>
-
       <aside class="w-72 bg-white border-l border-black/5 p-5 flex flex-col gap-5 shrink-0 overflow-y-auto">
-        <div id="wsConfidenceCard" class="bg-brand-surface rounded-3xl p-6">
+        <div class="bg-brand-surface rounded-3xl p-6">
           <p class="text-[10px] uppercase tracking-[0.15em] font-semibold text-brand-accent mb-2">AI Validation</p>
-          <div class="flex items-baseline gap-2 mb-2"><span id="wsConfScore"
-              class="text-5xl font-extrabold text-slate-950">—</span><span
-              class="text-sm text-slate-400">Confidence</span></div>
-          <div class="score-bar mb-3">
-            <div id="wsConfBar" class="score-fill bg-brand-secondary" style="width:0%"></div>
-          </div>
-          <p id="wsConfExplain" class="text-xs text-slate-500 leading-relaxed">Search a concept to see validation
-            results.</p>
+          <div class="flex items-baseline gap-2 mb-2"><span id="wsConfScore" class="text-5xl font-extrabold text-slate-950">—</span><span class="text-sm text-slate-400">Confidence</span></div>
+          <div class="score-bar mb-3"><div id="wsConfBar" class="score-fill bg-brand-secondary" style="width:0%"></div></div>
+          <p id="wsConfExplain" class="text-xs text-slate-500 leading-relaxed">Search a concept to see validation results.</p>
         </div>
-        <div id="wsScoresCard" class="bg-white rounded-3xl border border-black/5 p-5">
-          <div class="flex items-center justify-between mb-4"><span class="font-bold text-sm">Score
-              Breakdown</span><span class="material-symbols-outlined text-brand-accent text-lg">bar_chart</span></div>
-          <div class="space-y-3" id="wsScoreRows">
-            <div class="flex items-center justify-between text-xs text-slate-500"><span>Semantic</span><span
-                id="wsSemVal">—</span></div>
-            <div class="score-bar">
-              <div id="wsSemBar" class="score-fill bg-green-500" style="width:0%"></div>
-            </div>
-            <div class="flex items-center justify-between text-xs text-slate-500"><span>Relevance</span><span
-                id="wsRelVal">—</span></div>
-            <div class="score-bar">
-              <div id="wsRelBar" class="score-fill bg-blue-500" style="width:0%"></div>
-            </div>
-            <div class="flex items-center justify-between text-xs text-slate-500"><span>Structural</span><span
-                id="wsStrVal">—</span></div>
-            <div class="score-bar">
-              <div id="wsStrBar" class="score-fill bg-amber-500" style="width:0%"></div>
-            </div>
+        <div class="bg-white rounded-3xl border border-black/5 p-5">
+          <div class="flex items-center justify-between mb-4"><span class="font-bold text-sm">Score Breakdown</span><span class="material-symbols-outlined text-brand-accent text-lg">bar_chart</span></div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-xs text-slate-500"><span>Semantic</span><span id="wsSemVal">—</span></div>
+            <div class="score-bar"><div id="wsSemBar" class="score-fill bg-green-500" style="width:0%"></div></div>
+            <div class="flex items-center justify-between text-xs text-slate-500"><span>Relevance</span><span id="wsRelVal">—</span></div>
+            <div class="score-bar"><div id="wsRelBar" class="score-fill bg-blue-500" style="width:0%"></div></div>
+            <div class="flex items-center justify-between text-xs text-slate-500"><span>Structural</span><span id="wsStrVal">—</span></div>
+            <div class="score-bar"><div id="wsStrBar" class="score-fill bg-amber-500" style="width:0%"></div></div>
           </div>
         </div>
         <div id="wsMetaCard" class="hidden bg-white rounded-3xl border border-black/5 p-5">
-          <div class="flex items-center justify-between mb-3"><span class="font-bold text-sm">Model Info</span></div>
+          <div class="font-bold text-sm mb-3">Model Info</div>
           <div class="space-y-2 text-xs text-slate-500" id="wsMetaBody"></div>
         </div>
       </aside>
     </div>
   </div>
 
-  <!-- AI ANALYSIS PAGE -->
+  <!-- ═══ AI ANALYSIS — Full Pipeline Explainability ═══ -->
   <div id="page-analysis" class="page pt-16">
     <div class="flex-1">
       <div class="max-w-5xl mx-auto px-6 py-12">
-        <p class="text-[10px] uppercase tracking-[0.15em] text-brand-accent font-semibold mb-1">System Health: <span
-            id="analysisHealth" class="text-green-600">Optimal</span></p>
-        <h2 class="text-4xl font-extrabold tracking-tighter mb-2">Fallback Intelligence<br><span
-            class="text-brand-secondary">Logic & Analysis</span></h2>
-        <p class="text-sm text-slate-500 max-w-lg mb-10">A transparent window into ConceptCraftAI's decision-making
-          architecture. We prioritize local asset validation with multi-layered fallback triggers.</p>
+        <p class="text-[10px] uppercase tracking-[0.15em] text-brand-accent font-semibold mb-1">System Health: <span id="analysisHealth" class="text-green-600">Optimal</span></p>
+        <h2 class="text-4xl font-extrabold tracking-tighter mb-2">Retrieval Pipeline<br><span class="text-brand-secondary">Explainability &amp; Analysis</span></h2>
+        <p class="text-sm text-slate-500 max-w-lg mb-10">A transparent view into how ConceptCraftAI finds and validates 3D models. Every query flows through a multi-stage pipeline with dual-track retrieval.</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
-          <div class="bg-white rounded-3xl border border-black/5 p-6 shadow-[0_20px_40px_rgba(26,28,26,0.03)]">
-            <div class="text-sm font-bold mb-1">Global Search Logic</div>
-            <p class="text-xs text-slate-400 mb-4">Cross-repository indexing and neural retrieval</p>
-            <div class="flex items-baseline gap-2"><span id="analysisConfidence"
-                class="text-3xl font-extrabold text-slate-950">—</span><span
-                class="text-[10px] uppercase tracking-widest text-slate-400">confidence</span></div>
-            <div class="flex gap-3 mt-5" role="list" aria-label="Pipeline steps">
-              <div class="flex flex-col items-center gap-1 px-4 py-3 bg-brand-surface rounded-2xl" role="listitem"
-                aria-label="Step 1: Query entered into FAISS semantic search across 4 domains"><span
-                  class="material-symbols-outlined text-brand-secondary">database</span><span
-                  class="text-[10px] text-slate-500">Entry</span></div>
-              <div class="flex flex-col items-center gap-1 px-4 py-3 bg-brand-surface rounded-2xl" role="listitem"
-                aria-label="Step 2: CrossEncoder reranking and mapping"><span
-                  class="material-symbols-outlined text-brand-secondary">hub</span><span
-                  class="text-[10px] text-slate-500">Mapping</span></div>
-              <div class="flex flex-col items-center gap-1 px-4 py-3 bg-brand-surface rounded-2xl" role="listitem"
-                aria-label="Step 3: Confidence scoring and sync"><span
-                  class="material-symbols-outlined text-brand-secondary">sync</span><span
-                  class="text-[10px] text-slate-500">Sync</span></div>
-            </div>
-          </div>
-          <div class="bg-brand-secondary rounded-3xl p-6 text-white"
-            aria-label="Step 4: Asset validation and confidence scoring">
-            <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mb-4"><span
-                class="material-symbols-outlined text-lg">verified</span></div>
-            <div class="text-sm font-bold mb-1">Asset Validation</div>
-            <p class="text-xs text-white/70 mb-3">Rigorous geometric consistency checks performed every 400ms during
-              live retrieval.</p>
-            <div class="flex items-center justify-between text-[10px] uppercase tracking-wider"><span
-                class="text-white/50">Integrity</span><span id="analysisIntegrity" class="font-bold">—</span></div>
-            <div class="flex items-center justify-between text-[10px] uppercase tracking-wider mt-1"><span
-                class="text-white/50">Latency</span><span id="analysisLatency" class="font-bold">—</span></div>
-          </div>
-          <div class="bg-white rounded-3xl border border-black/5 p-6" aria-label="Step 5: Render or fallback decision">
-            <p class="text-[10px] uppercase tracking-widest text-slate-400 mb-1">Auto-Generation</p>
-            <div class="text-xl font-extrabold mb-2" id="analysisFallbackStatus">Standby</div>
-            <p class="text-xs text-slate-500">Triggered when repository assets fall below 60% relevance score.</p>
-          </div>
-        </div>
-
+        <!-- Pipeline Visualization -->
         <div class="mb-12">
-          <h3 class="text-2xl font-extrabold tracking-tight mb-6">Neural Network<br>Reference Mapping</h3>
-          <div class="grid md:grid-cols-2 gap-5">
-            <div class="space-y-4">
-              <div class="flex items-start gap-4 p-5 bg-white rounded-2xl border border-black/5">
-                <div class="w-9 h-9 rounded-full bg-brand-surface flex items-center justify-center shrink-0"><span
-                    class="material-symbols-outlined text-brand-accent text-sm">neurology</span></div>
-                <div>
-                  <div class="text-sm font-bold">Synaptic Weighting</div>
-                  <p class="text-xs text-slate-500">AI weighs metadata tags against historical retrieval success rates
-                    to minimize future fallbacks.</p>
-                </div>
-              </div>
-              <div class="flex items-start gap-4 p-5 bg-white rounded-2xl border border-black/5">
-                <div class="w-9 h-9 rounded-full bg-brand-surface flex items-center justify-center shrink-0"><span
-                    class="material-symbols-outlined text-brand-accent text-sm">grain</span></div>
-                <div>
-                  <div class="text-sm font-bold">Clustered Topology</div>
-                  <p class="text-xs text-slate-500">Assets are visually clustered based on geometric similarity rather
-                    than simple naming conventions.</p>
-                </div>
-              </div>
-            </div>
-            <div
-              class="bg-gradient-to-br from-brand-surface to-brand-primary/20 rounded-3xl p-6 flex items-center justify-center">
-              <div class="text-center"><span
-                  class="material-symbols-outlined text-5xl text-brand-secondary/40 mb-3">hub</span>
-                <div
-                  class="bg-brand-secondary/80 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full inline-block mt-2">
-                  Active Reasoning</div>
-              </div>
-            </div>
-          </div>
-        </div>
+          <h3 class="text-xl font-extrabold tracking-tight mb-6">How Models Are Retrieved</h3>
+          <div class="grid md:grid-cols-2 gap-8">
 
-        <div id="analysisSummary" class="bg-brand-surface rounded-3xl p-8 flex items-center justify-between">
-          <div>
-            <p class="text-[10px] uppercase tracking-[0.15em] text-brand-accent font-semibold mb-1">Execution Summary
-            </p>
-            <p id="analysisSummaryText" class="text-lg font-extrabold tracking-tight max-w-md">Run a search to see
-              pipeline execution details.</p>
+            <!-- Left: Pipeline Steps -->
+            <div class="space-y-0">
+              <!-- Step 0 -->
+              <div class="flex items-start gap-4 p-4 bg-white rounded-2xl border border-black/5">
+                <div class="w-8 h-8 rounded-full bg-brand-surface flex items-center justify-center shrink-0 text-xs font-bold text-brand-accent">0</div>
+                <div>
+                  <div class="text-sm font-bold">Query Expansion</div>
+                  <p class="text-xs text-slate-500">Short queries like "heart" or "saturn" are expanded locally with domain context (e.g. "human heart cardiac anatomy organ") to improve recall. No API calls.</p>
+                </div>
+              </div>
+              <div class="pipeline-connector"></div>
+
+              <!-- Step 1 -->
+              <div class="flex items-start gap-4 p-4 bg-white rounded-2xl border border-black/5">
+                <div class="w-8 h-8 rounded-full bg-brand-surface flex items-center justify-center shrink-0 text-xs font-bold text-brand-accent">1</div>
+                <div>
+                  <div class="text-sm font-bold">Dual-Track Retrieval</div>
+                  <p class="text-xs text-slate-500 mb-2">Two sources searched in parallel:</p>
+                  <div class="flex gap-2">
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-50 text-blue-600 font-bold">FAISS</span>
+                    <span class="text-xs text-slate-400">Semantic search across 4 local vector databases (biological, physical, chemical, astronomical)</span>
+                  </div>
+                  <div class="flex gap-2 mt-1">
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-red-50 text-red-500 font-bold">Sketchfab</span>
+                    <span class="text-xs text-slate-400">Live API search for high-quality embeddable 3D models</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pipeline-connector"></div>
+
+              <!-- Step 2 -->
+              <div class="flex items-start gap-4 p-4 bg-white rounded-2xl border border-black/5">
+                <div class="w-8 h-8 rounded-full bg-brand-surface flex items-center justify-center shrink-0 text-xs font-bold text-brand-accent">2</div>
+                <div>
+                  <div class="text-sm font-bold">CrossEncoder Reranking</div>
+                  <p class="text-xs text-slate-500">Each track is independently rescored using a CrossEncoder (ms-marco-MiniLM-L-6-v2) against the original query for precision.</p>
+                </div>
+              </div>
+              <div class="pipeline-connector"></div>
+
+              <!-- Step 3 -->
+              <div class="flex items-start gap-4 p-4 bg-white rounded-2xl border border-black/5">
+                <div class="w-8 h-8 rounded-full bg-brand-surface flex items-center justify-center shrink-0 text-xs font-bold text-brand-accent">3</div>
+                <div>
+                  <div class="text-sm font-bold">Scoring &amp; Name-Match Boost</div>
+                  <p class="text-xs text-slate-500">Final score = CE relevance (55%) + structural richness (20%) + name-match boost (25%). Models whose name contains the query get boosted.</p>
+                </div>
+              </div>
+              <div class="pipeline-connector"></div>
+
+              <!-- Step 4 -->
+              <div class="flex items-start gap-4 p-4 bg-white rounded-2xl border border-black/5">
+                <div class="w-8 h-8 rounded-full bg-brand-surface flex items-center justify-center shrink-0 text-xs font-bold text-brand-accent">4</div>
+                <div>
+                  <div class="text-sm font-bold">Display-Priority Ordering</div>
+                  <p class="text-xs text-slate-500">Sketchfab results always appear first (interactive embeds), then FAISS inline-renderable results, then external-link-only results at the bottom.</p>
+                </div>
+              </div>
+              <div class="pipeline-connector"></div>
+
+              <!-- Fallback -->
+              <div class="flex items-start gap-4 p-4 bg-red-50 rounded-2xl border border-red-200">
+                <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-red-500 text-sm">bolt</span></div>
+                <div>
+                  <div class="text-sm font-bold text-red-700">Fallback: TripoSR Generation</div>
+                  <p class="text-xs text-red-600/70">Triggered only when both Sketchfab and FAISS return no usable results. Generates a 3D model from a Wikipedia image of the concept using TripoSR. Since this uses a single reference image, the generated model may be less accurate or incomplete compared to curated models.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Live Stats -->
+            <div class="space-y-5">
+              <div class="bg-white rounded-3xl border border-black/5 p-6">
+                <div class="text-sm font-bold mb-1">Last Query Confidence</div>
+                <p class="text-xs text-slate-400 mb-4">Cross-repository score after full pipeline</p>
+                <div class="flex items-baseline gap-2"><span id="analysisConfidence" class="text-3xl font-extrabold text-slate-950">—</span><span class="text-[10px] uppercase tracking-widest text-slate-400">score</span></div>
+              </div>
+
+              <div class="bg-brand-secondary rounded-3xl p-6 text-white">
+                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mb-4"><span class="material-symbols-outlined text-lg">verified</span></div>
+                <div class="text-sm font-bold mb-1">Asset Validation</div>
+                <p class="text-xs text-white/70 mb-3">Geometric consistency and format checks.</p>
+                <div class="flex items-center justify-between text-[10px] uppercase tracking-wider"><span class="text-white/50">Integrity</span><span id="analysisIntegrity" class="font-bold">—</span></div>
+                <div class="flex items-center justify-between text-[10px] uppercase tracking-wider mt-1"><span class="text-white/50">Latency</span><span id="analysisLatency" class="font-bold">—</span></div>
+              </div>
+
+              <div class="bg-white rounded-3xl border border-black/5 p-6">
+                <p class="text-[10px] uppercase tracking-widest text-slate-400 mb-1">Fallback Status</p>
+                <div class="text-xl font-extrabold mb-2" id="analysisFallbackStatus">Standby</div>
+                <p class="text-xs text-slate-500">TripoSR generation activates when no Sketchfab or FAISS results are available.</p>
+              </div>
+
+              <div class="bg-brand-surface rounded-3xl p-6">
+                <p class="text-[10px] uppercase tracking-[0.15em] text-brand-accent font-semibold mb-1">Execution Summary</p>
+                <p id="analysisSummaryText" class="text-sm font-bold tracking-tight">Run a search to see pipeline execution details.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
     <footer class="bg-white border-t border-black/5 py-8 text-center mt-auto">
-      <div class="font-extrabold text-sm tracking-tight mb-2">ConceptCraft<span class="text-brand-accent">AI</span>
-      </div>
-      <div class="flex justify-center gap-5 text-xs text-slate-400 mb-2"><span>Terms of Service</span><span>Privacy
-          Policy</span><span>API Docs</span></div>
-      <p class="text-[10px] text-slate-300">© 2024 ConceptCraftAI. Designed for the Tactile Digital Gallery.</p>
+      <div class="font-extrabold text-sm tracking-tight mb-2">ConceptCraft<span class="text-brand-accent">AI</span></div>
+      <p class="text-[10px] text-slate-300">&copy; 2026 ConceptCraftAI.</p>
     </footer>
   </div>
 
-  <!-- MY LIBRARY PAGE -->
+  <!-- ═══ LIBRARY ═══ -->
   <div id="page-library" class="page pt-16">
     <div class="flex-1">
       <div class="max-w-5xl mx-auto px-6 py-12">
-        <div class="flex items-center justify-between mb-8">
-          <div class="flex items-center gap-4">
-            <h2 class="text-3xl font-extrabold tracking-tighter">Stored Concepts</h2>
-          </div>
-        </div>
+        <h2 class="text-3xl font-extrabold tracking-tighter mb-8">Stored Concepts</h2>
         <div id="libraryGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          <div class="col-span-full text-center py-16 text-slate-400 text-sm">No concepts saved yet. Search for
-            something to get started.<br><button onclick="showPage('explore')"
-              class="mt-4 px-6 py-2 rounded-full bg-brand-secondary text-white font-bold text-xs uppercase">Explore</button>
-          </div>
+          <div class="col-span-full text-center py-16 text-slate-400 text-sm">No concepts saved yet.<br><button onclick="showPage('explore')" class="mt-4 px-6 py-2 rounded-full bg-brand-secondary text-white font-bold text-xs uppercase">Explore</button></div>
         </div>
       </div>
     </div>
-
     <footer class="bg-white border-t border-black/5 py-8 text-center mt-auto">
-      <div class="font-extrabold text-sm tracking-tight mb-2">ConceptCraft<span class="text-brand-accent">AI</span>
-      </div>
-      <div class="flex justify-center gap-5 text-xs text-slate-400 mb-2"><span>Terms of Service</span><span>Privacy
-          Policy</span><span>API Docs</span></div>
-      <p class="text-[10px] text-slate-300">© 2024 ConceptCraftAI. Designed for the Tactile Digital Gallery.</p>
+      <div class="font-extrabold text-sm tracking-tight mb-2">ConceptCraft<span class="text-brand-accent">AI</span></div>
+      <p class="text-[10px] text-slate-300">&copy; 2026 ConceptCraftAI.</p>
     </footer>
   </div>
 
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
   <script>
-    // ── State ──
-    const API_URL = 'http://localhost:8000';
+    var API_URL = 'http://localhost:8000';
     window.currentScene = null;
     window.currentControls = null;
-    let isSpeaking = false;
-    let wireframeOn = false;
-    let highContrast = false;
-    let reducedMotion = false;
-    let fontSizeIndex = 1;
-    let simplified = false;
+    window.currentRenderer = null;
     window.allResults = [];
-    let currentData = null;
+    var currentData = null;
+    var wireframeOn = false;
+    var highContrast = false;
+    var reducedMotion = false;
+    var simplified = false;
+    var activeViewerType = 'none';
 
-    const TIER = { high: { icon: '✦', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-200', fill: 'bg-green-500' }, medium: { icon: '◆', color: 'text-blue-600', bg: 'bg-blue-50', border: 'border-blue-200', fill: 'bg-blue-500' }, low: { icon: '▲', color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-200', fill: 'bg-amber-500' }, fallback: { icon: '⟳', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200', fill: 'bg-red-500' } };
+    var TIER = {
+      high:     { icon:'✦', color:'text-green-600', bg:'bg-green-50', border:'border-green-200' },
+      medium:   { icon:'◆', color:'text-blue-600',  bg:'bg-blue-50',  border:'border-blue-200' },
+      low:      { icon:'▲', color:'text-amber-600', bg:'bg-amber-50', border:'border-amber-200' },
+      fallback: { icon:'⟳', color:'text-red-600',   bg:'bg-red-50',   border:'border-red-200' }
+    };
 
-    const fontSizes = ['small', 'medium', 'large'];
-    function changeFontSize(direction) {
-      fontSizeIndex = Math.max(0, Math.min(2, fontSizeIndex + direction));
-      document.body.classList.remove('text-scale-small', 'text-scale-large');
-      if (fontSizeIndex === 1) { updateFontSizeButtons(); return; }
-      document.body.classList.add('text-scale-' + fontSizes[fontSizeIndex]);
-      updateFontSizeButtons();
-    }
-
-    function updateFontSizeButtons() {
-      document.querySelectorAll('.font-size-btn').forEach(function (b, i) {
-        if (i === fontSizeIndex) {
-          b.classList.add('bg-white', 'shadow-sm');
-          b.classList.remove('hover:bg-white');
-        } else {
-          b.classList.remove('bg-white', 'shadow-sm');
-          b.classList.add('hover:bg-white');
-        }
-      });
-    }
-
+    // ── HIGH CONTRAST ──
     function toggleHighContrast() {
       highContrast = !highContrast;
-      var root = document.documentElement;
-      if (highContrast) {
-        root.style.setProperty('--bg', '#ffffff');
-        root.style.setProperty('--text', '#000000');
-        root.style.setProperty('--surface', '#ffffff');
-        root.style.setProperty('--border', '#000000');
-        root.style.setProperty('--text-dim', '#333333');
-        document.body.classList.add('high-contrast');
-        var cbtn = document.getElementById('wsContrastBtn');
-        if (cbtn) cbtn.classList.add('active');
-      } else {
-        root.style.setProperty('--bg', '#FFF8F0');
-        root.style.setProperty('--text', '#1A1C1A');
-        root.style.setProperty('--surface', '#FFF8F0');
-        root.style.setProperty('--border', '#e5e7eb');
-        root.style.setProperty('--text-dim', '#6b7280');
-        document.body.classList.remove('high-contrast');
-        var cbtn = document.getElementById('wsContrastBtn');
-        if (cbtn) cbtn.classList.remove('active');
-      }
+      document.body.classList.toggle('high-contrast', highContrast);
+      document.getElementById('highContrastBtn').classList.toggle('a11y-on', highContrast);
     }
 
+    // ── REDUCED MOTION ──
     function toggleReducedMotion() {
       reducedMotion = !reducedMotion;
-      if (reducedMotion) {
-        if (window.currentControls) window.currentControls.autoRotate = false;
-        var style = document.createElement('style');
-        style.id = 'reduced-motion-style';
-        style.textContent = '* { animation: none !important; transition: none !important; }';
-        document.head.appendChild(style);
-      } else {
-        if (window.currentControls) window.currentControls.autoRotate = true;
-        var existing = document.getElementById('reduced-motion-style');
-        if (existing) existing.remove();
-      }
+      document.body.classList.toggle('reduced-motion', reducedMotion);
+      document.getElementById('reducedMotionBtn').classList.toggle('a11y-on', reducedMotion);
+      if (window.currentControls) window.currentControls.autoRotate = !reducedMotion;
     }
 
-    function toggleSimplified() {
-      simplified = !simplified;
-      if (window.currentScene) {
-        window.currentScene.traverse(function (obj) {
-          if (obj.isMesh) {
-            if (Array.isArray(obj.material)) {
-              obj.material.forEach(function (m) { m.flatShading = simplified; m.needsUpdate = true; });
-            } else {
-              obj.material.flatShading = simplified;
-              obj.material.needsUpdate = true;
-            }
-          }
-        });
-      }
-      var wbtn = document.getElementById('wsSimplifiedBtn');
-      if (wbtn) {
-        wbtn.classList.toggle('active', simplified);
-        wbtn.title = simplified ? 'Detailed' : 'Simplified';
-      }
-    }
-
-    // ── Speech synthesis: persistent ref + voice-loading + Chrome workarounds ──
-    // Chrome bug: utterance gets garbage-collected if no global reference exists,
-    // causing speak() to silently produce no audio. We keep a global ref.
-    window._currentUtterance = null;
-    window._speechResumeInterval = null;
-
-    // Pre-load voices (Chrome loads them asynchronously)
-    if (window.speechSynthesis) {
-      window.speechSynthesis.getVoices();
-      if (window.speechSynthesis.onvoiceschanged !== undefined) {
-        window.speechSynthesis.onvoiceschanged = function () {
-          console.log('TTS voices loaded:', window.speechSynthesis.getVoices().length);
-        };
-      }
-    }
-
-    function resetSpeechBtn(btn) {
-      if (!btn) return;
-      btn.classList.remove('playing');
-      btn.textContent = '🔊';
-    }
-
-    function stopAllSpeech() {
-      window.speechSynthesis.cancel();
-      window._currentUtterance = null;
-      if (window._speechResumeInterval) {
-        clearInterval(window._speechResumeInterval);
-        window._speechResumeInterval = null;
-      }
-      document.querySelectorAll('.audio-desc-btn, .vtool-btn').forEach(function (b) {
-        if (b.classList.contains('audio-desc-btn') || b.id === 'wsAudioBtn') {
-          resetSpeechBtn(b);
-        }
-      });
-    }
-
-    function toggleSpeech(btn, name, desc, tier, score, source) {
-      if (!window.speechSynthesis) {
-        console.warn('Speech synthesis not supported in this browser.');
-        return;
-      }
-
-      // If this button is already playing, stop it
-      if (btn.classList.contains('playing')) {
-        stopAllSpeech();
-        return;
-      }
-
-      // Stop anything currently playing
-      stopAllSpeech();
-
-      var cleanDesc = (desc || 'No description available.').replace(/<[^>]*>/g, '');
-      var scorePct = Math.round((score || 0) * 100);
-      var text = '3D model of ' + name + '. ' + cleanDesc + '. Source: ' + (source || 'Unknown') + '. Confidence: ' + tier + '. Match score: ' + scorePct + ' percent.';
-
-      function doSpeak() {
-        // Create utterance and keep a GLOBAL reference (prevents Chrome GC bug)
-        var utterance = new SpeechSynthesisUtterance(text);
-        window._currentUtterance = utterance;
-
-        // Try to pick a voice explicitly (Chrome sometimes needs this)
-        var voices = window.speechSynthesis.getVoices();
-        if (voices.length > 0) {
-          // Prefer an English voice
-          var englishVoice = voices.find(function (v) { return v.lang.startsWith('en'); });
-          if (englishVoice) utterance.voice = englishVoice;
-        }
-
-        utterance.rate = 1.0;
-        utterance.pitch = 1.0;
-        utterance.volume = 1.0;
-
-        utterance.onstart = function () {
-          console.log('TTS started');
-        };
-
-        utterance.onend = function () {
-          console.log('TTS ended');
-          resetSpeechBtn(btn);
-          window._currentUtterance = null;
-          if (window._speechResumeInterval) {
-            clearInterval(window._speechResumeInterval);
-            window._speechResumeInterval = null;
-          }
-        };
-
-        utterance.onerror = function (e) {
-          console.error('TTS error:', e.error, e);
-          resetSpeechBtn(btn);
-          window._currentUtterance = null;
-          if (window._speechResumeInterval) {
-            clearInterval(window._speechResumeInterval);
-            window._speechResumeInterval = null;
-          }
-        };
-
-        // Mark button as playing
-        btn.classList.add('playing');
-        btn.textContent = '⏹';
-
-        window.speechSynthesis.speak(utterance);
-
-        // Chrome bug: long utterances pause after ~15s and never resume.
-        // Workaround: periodically call pause/resume to keep it alive.
-        window._speechResumeInterval = setInterval(function () {
-          if (!window.speechSynthesis.speaking) {
-            clearInterval(window._speechResumeInterval);
-            window._speechResumeInterval = null;
-            return;
-          }
-          window.speechSynthesis.pause();
-          window.speechSynthesis.resume();
-        }, 10000);
-      }
-
-      // Chrome loads voices asynchronously. If no voices yet, wait for them.
-      var voices = window.speechSynthesis.getVoices();
-      if (voices.length === 0) {
-        console.log('TTS: waiting for voices to load...');
-        btn.classList.add('playing');
-        btn.textContent = '⏹';
-        // Give Chrome up to 2 seconds to load voices
-        var waitCount = 0;
-        var voiceWait = setInterval(function () {
-          waitCount++;
-          var v = window.speechSynthesis.getVoices();
-          if (v.length > 0 || waitCount > 20) {
-            clearInterval(voiceWait);
-            if (v.length > 0) {
-              doSpeak();
-            } else {
-              // No voices available at all — try speaking anyway (some browsers work without explicit voices)
-              console.warn('TTS: no voices found, attempting speak anyway');
-              doSpeak();
-            }
-          }
-        }, 100);
-      } else {
-        // Voices already loaded — small delay after cancel() to avoid Chrome race condition
-        setTimeout(doSpeak, 50);
-      }
-    }
-
+    // ── WIREFRAME (GLB only) ──
     function toggleWireframe() {
+      if (activeViewerType !== 'glb' || !window.currentScene) return;
       wireframeOn = !wireframeOn;
-      if (window.currentScene) {
-        window.currentScene.traverse(function (obj) {
-          if (obj.isMesh) {
-            if (Array.isArray(obj.material)) {
-              obj.material.forEach(function (m) { m.wireframe = wireframeOn; });
-            } else {
-              obj.material.wireframe = wireframeOn;
-            }
-          }
-        });
-      }
-      var ebtn = document.getElementById('exploreWireframeBtn');
-      if (ebtn) ebtn.textContent = wireframeOn ? 'Solid' : 'Wireframe';
-      var wbtn = document.getElementById('wsWireframeBtn');
-      if (wbtn) {
-        wbtn.classList.toggle('active', wireframeOn);
-        wbtn.title = wireframeOn ? 'Solid' : 'Wireframe';
-      }
-    }
-
-    function handleWorkspaceSpeech() {
-      if (!currentData) return;
-      var m = currentData.all_results && currentData.all_results[0] ? currentData.all_results[0] : {};
-      toggleSpeech(
-        document.getElementById('wsAudioBtn'),
-        currentData.name || 'Untitled',
-        currentData.explanation || '',
-        currentData.confidence_tier || 'medium',
-        currentData.best_score || 0,
-        m.source || m.api_source || 'unknown'
-      );
-    }
-    function toggleSpeechWs() { handleWorkspaceSpeech(); }
-
-    // ── Navigation ──
-    function showPage(name) {
-      document.querySelectorAll('.page').forEach(function (p) { p.classList.remove('active'); });
-      document.getElementById('page-' + name).classList.add('active');
-      document.querySelectorAll('.nav-link').forEach(function (l) {
-        l.classList.remove('active'); l.classList.add('text-slate-400'); l.classList.remove('text-slate-950');
+      window.currentScene.traverse(function(o) {
+        if (o.isMesh) (Array.isArray(o.material)?o.material:[o.material]).forEach(function(m){m.wireframe=wireframeOn;});
       });
-      var link = document.querySelector('.nav-link[data-page="' + name + '"]');
-      if (link) { link.classList.add('active', 'text-slate-950'); link.classList.remove('text-slate-400'); }
-      if (name === 'library') renderLibrary();
-      if (name === 'workspace' && currentData) populateWorkspace(currentData);
-      if (name === 'analysis' && currentData) populateAnalysis(currentData);
+      var b = document.getElementById('wsWireframeBtn'); if(b) b.classList.toggle('active',wireframeOn);
+      var e = document.getElementById('exploreWireframeBtn'); if(e) e.textContent = wireframeOn?'Solid':'Wireframe';
     }
 
-    function escapeHtml(s) { return s ? String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') : ''; }
-    function avatarHtml(name, thumb, sm) {
-      var ch = (name || '?')[0].toUpperCase(), cls = sm ? 'letter-avatar-warm letter-avatar-sm' : 'letter-avatar-warm';
-      var altText = (name || 'Unknown') + ' 3D model';
-      if (!thumb) return '<div class="' + cls + '" role="img" aria-label="' + escapeHtml(altText) + '">' + ch + '</div>';
-      return '<div style="position:relative;display:inline-flex"><img src="' + thumb + '" alt="' + escapeHtml(altText) + '" class="' + (sm ? 'w-9 h-9 rounded-lg object-cover' : 'w-20 h-20 rounded-2xl object-cover') + '" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"/><div class="' + cls + '" role="img" aria-label="' + escapeHtml(altText) + '" style="display:none">' + ch + '</div></div>';
+    // ── SIMPLIFIED (GLB only) ──
+    function toggleSimplified() {
+      if (activeViewerType !== 'glb' || !window.currentScene) return;
+      simplified = !simplified;
+      window.currentScene.traverse(function(o) {
+        if (o.isMesh) (Array.isArray(o.material)?o.material:[o.material]).forEach(function(m){m.flatShading=simplified;m.needsUpdate=true;});
+      });
+      var b = document.getElementById('wsSimplifiedBtn'); if(b) b.classList.toggle('active',simplified);
     }
 
-    // ── Search ──
-    function quickSearch(q) { document.getElementById('searchInput').value = q; if (q) doSearch(); else document.getElementById('searchInput').focus(); }
-    async function doSearch() {
-      var query = document.getElementById('searchInput').value.trim();
-      if (!query) return;
-      var btn = document.getElementById('searchBtn');
-      btn.disabled = true; btn.innerHTML = '<div class="spinner mx-auto"></div>';
-      var sb = document.getElementById('statusBar'); sb.classList.remove('hidden'); sb.classList.add('flex');
-      var dot = document.getElementById('statusDot'), txt = document.getElementById('statusText'), badge = document.getElementById('statusBadge');
-      dot.className = 'w-2 h-2 rounded-full bg-green-500 animate-pulse'; txt.textContent = 'Searching vector database...'; badge.innerHTML = '';
-      document.getElementById('resultsSection').classList.add('hidden');
-      document.getElementById('emptyState').classList.add('hidden');
-      var fallbackTimeout = setTimeout(function () { txt.textContent = 'Generating fallback via TripoSR (~30-60s)...'; dot.className = 'w-2 h-2 rounded-full bg-red-500 animate-pulse'; }, 7000);
-      try {
-        var res = await fetch(API_URL + '/query', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query: query, top_k: 10 }) });
-        clearTimeout(fallbackTimeout);
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        var data = await res.json();
-        currentData = data;
-        window.allResults = data.all_results || [];
-        var tier = data.confidence_tier || 'medium', tc = TIER[tier] || TIER.medium;
-        dot.className = 'w-2 h-2 rounded-full ' + (data.mode === 'fallback' ? 'bg-red-500' : 'bg-green-500');
-        txt.textContent = data.mode === 'fallback' ? 'Generated TripoSR model in ' + (data.latency_ms || 0) + 'ms' : 'Best match found across 4 domains in ' + (data.latency_ms || 0) + 'ms';
-        badge.innerHTML = '<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ' + tc.bg + ' ' + tc.color + ' ' + tc.border + ' border">' + tc.icon + ' ' + tier + '</span>';
-        if (!data.name && data.mode !== 'fallback') { document.getElementById('emptyState').classList.remove('hidden'); return; }
-        renderBestMatch(data); renderTopResults(data.all_results || [], tier);
+    function updateToolbarState(type) {
+      activeViewerType = type;
+      var isGlb = type==='glb';
+      var wf = document.getElementById('wsWireframeBtn');
+      var sm = document.getElementById('wsSimplifiedBtn');
+      if (wf) { wf.disabled=!isGlb; wf.title=isGlb?'Wireframe':'Wireframe (GLB only)'; }
+      if (sm) { sm.disabled=!isGlb; sm.title=isGlb?'Simplified':'Simplified (GLB only)'; }
+    }
+
+    // ── SPEECH ──
+    window._currentUtterance=null; window._speechResumeInterval=null;
+    if(window.speechSynthesis){window.speechSynthesis.getVoices();if(window.speechSynthesis.onvoiceschanged!==undefined)window.speechSynthesis.onvoiceschanged=function(){};}
+    function resetSpeechBtn(b){if(!b)return;b.classList.remove('playing');b.textContent='🔊';}
+    function stopAllSpeech(){if(!window.speechSynthesis)return;window.speechSynthesis.cancel();window._currentUtterance=null;if(window._speechResumeInterval){clearInterval(window._speechResumeInterval);window._speechResumeInterval=null;}document.querySelectorAll('.audio-desc-btn,#wsAudioBtn').forEach(function(b){resetSpeechBtn(b);});}
+    function toggleSpeech(btn,name,desc,tier,score,source){
+      if(!window.speechSynthesis)return;
+      if(btn.classList.contains('playing')){stopAllSpeech();return;}
+      stopAllSpeech();
+      var text='3D model of '+name+'. '+(desc||'No description.').replace(/<[^>]*>/g,'')+'. Source: '+(source||'Unknown')+'. Confidence: '+tier+'. Score: '+Math.round((score||0)*100)+' percent.';
+      function doSpeak(){
+        var u=new SpeechSynthesisUtterance(text);window._currentUtterance=u;
+        var v=window.speechSynthesis.getVoices();if(v.length>0){var ev=v.find(function(x){return x.lang.startsWith('en');});if(ev)u.voice=ev;}
+        u.onend=function(){resetSpeechBtn(btn);};u.onerror=function(){resetSpeechBtn(btn);};
+        btn.classList.add('playing');btn.textContent='⏹';
+        window.speechSynthesis.speak(u);
+        window._speechResumeInterval=setInterval(function(){if(!window.speechSynthesis.speaking){clearInterval(window._speechResumeInterval);return;}window.speechSynthesis.pause();window.speechSynthesis.resume();},10000);
+      }
+      var v=window.speechSynthesis.getVoices();
+      if(v.length===0){btn.classList.add('playing');btn.textContent='⏹';var wc=0;var wi=setInterval(function(){wc++;if(window.speechSynthesis.getVoices().length>0||wc>20){clearInterval(wi);doSpeak();}},100);}
+      else setTimeout(doSpeak,50);
+    }
+    function handleWorkspaceSpeech(){if(!currentData)return;var m=currentData.all_results&&currentData.all_results[0]?currentData.all_results[0]:{};toggleSpeech(document.getElementById('wsAudioBtn'),currentData.name||'Untitled',currentData.explanation||'',currentData.confidence_tier||'medium',currentData.best_score||0,m.source||m.api_source||'unknown');}
+    function toggleSpeechWs(){handleWorkspaceSpeech();}
+
+    // ── NAV ──
+    function showPage(n){document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});document.getElementById('page-'+n).classList.add('active');document.querySelectorAll('.nav-link').forEach(function(l){l.classList.remove('active');l.classList.add('text-slate-400');l.classList.remove('text-slate-950');});var lk=document.querySelector('.nav-link[data-page="'+n+'"]');if(lk){lk.classList.add('active','text-slate-950');lk.classList.remove('text-slate-400');}if(n==='library')renderLibrary();if(n==='workspace'&&currentData)populateWorkspace(currentData);if(n==='analysis'&&currentData)populateAnalysis(currentData);}
+    function escapeHtml(s){return s?String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'):'';}
+    function avatarHtml(name,thumb,sm){var ch=(name||'?')[0].toUpperCase(),cls=sm?'letter-avatar-warm letter-avatar-sm':'letter-avatar-warm',alt=escapeHtml((name||'Unknown')+' 3D model');if(!thumb)return'<div class="'+cls+'" role="img" aria-label="'+alt+'">'+ch+'</div>';return'<div style="position:relative;display:inline-flex"><img src="'+thumb+'" alt="'+alt+'" class="'+(sm?'w-9 h-9 rounded-lg object-cover':'w-20 h-20 rounded-2xl object-cover')+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"/><div class="'+cls+'" role="img" aria-label="'+alt+'" style="display:none">'+ch+'</div></div>';}
+
+    // ── SEARCH ──
+    function quickSearch(q){document.getElementById('searchInput').value=q;if(q)doSearch();}
+    async function doSearch(){
+      var q=document.getElementById('searchInput').value.trim();if(!q)return;
+      var btn=document.getElementById('searchBtn');btn.disabled=true;btn.innerHTML='<div class="spinner mx-auto"></div>';
+      var sb=document.getElementById('statusBar');sb.classList.remove('hidden');sb.classList.add('flex');
+      var dot=document.getElementById('statusDot'),txt=document.getElementById('statusText'),badge=document.getElementById('statusBadge');
+      dot.className='w-2 h-2 rounded-full bg-green-500 animate-pulse';txt.textContent='Searching...';badge.innerHTML='';
+      document.getElementById('resultsSection').classList.add('hidden');document.getElementById('emptyState').classList.add('hidden');
+      var ft=setTimeout(function(){txt.textContent='Generating fallback (~30-60s)...';dot.className='w-2 h-2 rounded-full bg-red-500 animate-pulse';},7000);
+      try{
+        var res=await fetch(API_URL+'/query',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query:q,top_k:10})});
+        clearTimeout(ft);if(!res.ok)throw new Error('HTTP '+res.status);
+        var data=await res.json();currentData=data;window.allResults=data.all_results||[];
+        var tier=data.confidence_tier||'medium',tc=TIER[tier]||TIER.medium;
+        dot.className='w-2 h-2 rounded-full '+(data.mode==='fallback'?'bg-red-500':'bg-green-500');
+        txt.textContent=data.mode==='fallback'?'Generated in '+(data.latency_ms||0)+'ms':'Found in '+(data.latency_ms||0)+'ms';
+        badge.innerHTML='<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full '+tc.bg+' '+tc.color+' '+tc.border+' border">'+tc.icon+' '+tier+'</span>';
+        if(!data.name&&data.mode!=='fallback'){document.getElementById('emptyState').classList.remove('hidden');return;}
+        renderBestMatch(data);renderTopResults(data.all_results||[],tier);
         document.getElementById('resultsSection').classList.remove('hidden');
-        saveToLibrary(query, data);
-        populateWorkspace(data); populateAnalysis(data);
-      } catch (e) { clearTimeout(fallbackTimeout); dot.className = 'w-2 h-2 rounded-full bg-red-500'; txt.textContent = 'Error: ' + e.message; }
-      finally { btn.disabled = false; btn.textContent = 'Search'; }
+        saveToLibrary(q,data);populateWorkspace(data);populateAnalysis(data);
+      }catch(e){clearTimeout(ft);dot.className='w-2 h-2 rounded-full bg-red-500';txt.textContent='Error: '+e.message;}
+      finally{btn.disabled=false;btn.textContent='Search';}
     }
 
-    // ── Render Best Match ──
-    function renderBestMatch(data) {
-      var area = document.getElementById('bestMatchArea');
-      var m = data.all_results && data.all_results.length > 0 ? data.all_results[0] : {};
-      var tier = data.confidence_tier || 'medium', tc = TIER[tier] || TIER.medium;
-      var isFb = data.mode === 'fallback';
-      var viewerHtml = '';
-      if (data.render_type === 'glb' && data.model_url) {
-        viewerHtml = '<div class="viewer-canvas" id="threejs-container"><div id="threejs-badge" class="absolute top-4 left-4 z-10 ' + (isFb ? 'bg-red-500/90' : 'bg-green-500/90') + ' text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>' + (isFb ? 'TripoSR Live' : 'Live Render') + '</div><div id="threejs-loading" class="absolute inset-0 flex items-center justify-center text-slate-400 text-sm z-10">Loading GLB...</div><button onclick="toggleWireframe()" id="exploreWireframeBtn" class="absolute top-4 right-4 z-10 bg-black/50 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full backdrop-blur-sm hover:bg-black/70 transition">Wireframe</button></div>';
-      } else if ((data.render_type === 'sketchfab_embed' || data.render_type === 'molecule_viewer') && data.embed_url) {
-        viewerHtml = '<div class="viewer-canvas"><div class="absolute top-4 left-4 z-10 bg-green-500/90 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>Interactive 3D</div><iframe src="' + data.embed_url + '?autostart=0&ui_theme=dark" allowfullscreen loading="lazy"></iframe></div>';
-      } else {
-        var thumb = m.thumbnail || m.thumbnail_url || '';
-        viewerHtml = '<div class="bg-brand-surface rounded-3xl p-10 flex flex-col items-center justify-center min-h-[300px] gap-4">' + avatarHtml(data.name, thumb) + '<span class="text-[10px] uppercase tracking-widest text-brand-accent font-semibold">Reference Card</span></div>';
+    // ── BEST MATCH ──
+    function renderBestMatch(data){
+      var area=document.getElementById('bestMatchArea');
+      var m=data.all_results&&data.all_results.length>0?data.all_results[0]:{};
+      var tier=data.confidence_tier||'medium',tc=TIER[tier]||TIER.medium,isFb=data.mode==='fallback';
+      var vh='';
+      if(data.render_type==='glb'&&data.model_url){
+        vh='<div class="viewer-canvas" id="threejs-container"><div id="threejs-badge" class="absolute top-4 left-4 z-10 '+(isFb?'bg-red-500/90':'bg-green-500/90')+' text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>'+(isFb?'TripoSR':'Live Render')+'</div><div id="threejs-loading" class="absolute inset-0 flex items-center justify-center text-slate-400 text-sm z-10">Loading GLB...</div><button onclick="toggleWireframe()" id="exploreWireframeBtn" class="absolute top-4 right-4 z-10 bg-black/50 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full backdrop-blur-sm hover:bg-black/70 transition">Wireframe</button></div>';
+      }else if((data.render_type==='sketchfab_embed'||data.render_type==='molecule_viewer')&&data.embed_url){
+        vh='<div class="viewer-canvas"><div class="absolute top-4 left-4 z-10 bg-green-500/90 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>Interactive 3D</div><iframe src="'+data.embed_url+'?autostart=0&ui_theme=dark" allowfullscreen loading="lazy"></iframe></div>';
+      }else{
+        vh='<div class="bg-brand-surface rounded-3xl p-10 flex flex-col items-center justify-center min-h-[300px] gap-4">'+avatarHtml(data.name,m.thumbnail||m.thumbnail_url)+'<span class="text-[10px] uppercase tracking-widest text-brand-accent font-semibold">Reference Card</span></div>';
       }
-      var linkUrl = data.model_page_url || data.embed_url || data.model_url || '';
-      var linkBtn = linkUrl ? '<a href="' + (linkUrl.startsWith('http') ? linkUrl : API_URL + linkUrl) + '" target="_blank" class="inline-flex items-center gap-1 px-4 py-2 rounded-full bg-brand-secondary text-white text-xs font-bold hover:opacity-90 transition">↗ View Source</a>' : '';
-      area.innerHTML = '<div class="grid md:grid-cols-2 gap-0 bg-white rounded-[2rem] border border-black/5 shadow-[0_20px_40px_rgba(26,28,26,0.05)] overflow-hidden fade-in">' +
-        '<div class="relative">' + viewerHtml + '</div>' +
-        '<div class="p-8 flex flex-col justify-between">' +
-        '<div>' +
-        (isFb ? '<div class="flex items-center gap-2 mb-3"><span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span><span class="text-[10px] uppercase tracking-widest text-red-500 font-bold">TripoSR GPU Generation</span></div>' : '') +
-        '<p class="text-[10px] uppercase tracking-widest text-slate-400 mb-1">' + escapeHtml(m.source || m.api_source || 'database') + '</p>' +
-        '<div class="flex items-center gap-3 mb-3">' +
-        '<h3 class="text-xl font-extrabold tracking-tight">' + escapeHtml(data.name || 'Untitled') + '</h3>' +
-        '<button class="audio-desc-btn w-7 h-7 rounded-full border border-black/10 flex items-center justify-center text-sm hover:border-brand-secondary transition"' +
-        ' data-name="' + escapeHtml(data.name || 'Untitled') + '"' +
-        ' data-desc="' + escapeHtml((m.description || data.explanation || '').substring(0, 200)) + '"' +
-        ' data-tier="' + tier + '"' +
-        ' data-score="' + (data.best_score || 0) + '"' +
-        ' data-source="' + escapeHtml(m.source || m.api_source || 'database') + '">🔊</button>' +
-        '</div>' +
-        (data.explanation ? '<p class="text-xs text-slate-500 leading-relaxed mb-4">' + escapeHtml(data.explanation) + '</p>' : '') +
-        '<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ' + tc.bg + ' ' + tc.color + ' ' + tc.border + ' border mb-4">' + tc.icon + ' ' + tier + ' confidence</span>' +
-        '</div>' +
-        '<div>' +
-        '<div class="space-y-2 mb-4">' +
-        '<div class="flex items-center gap-2 text-xs text-slate-500"><span class="w-14">Semantic</span><div class="flex-1 score-bar"><div class="score-fill bg-green-500" style="width:' + Math.min((m.faiss_score || 0) * 100, 100) + '%"></div></div><span class="w-8 text-right">' + (m.faiss_score || 0).toFixed(2) + '</span></div>' +
-        '<div class="flex items-center gap-2 text-xs text-slate-500"><span class="w-14">Relevance</span><div class="flex-1 score-bar"><div class="score-fill bg-blue-500" style="width:' + Math.min((m.clip_score || 0) * 100, 100) + '%"></div></div><span class="w-8 text-right">' + (m.clip_score || 0).toFixed(2) + '</span></div>' +
-        '<div class="flex items-center gap-2 text-xs text-slate-500"><span class="w-14">Structural</span><div class="flex-1 score-bar"><div class="score-fill bg-amber-500" style="width:' + Math.min((m.structural_score || 0) * 100, 100) + '%"></div></div><span class="w-8 text-right">' + (m.structural_score || 0).toFixed(2) + '</span></div>' +
-        '</div>' +
-        linkBtn +
-        '</div>' +
-        '</div>' +
-        '</div>';
-      if (data.render_type === 'glb' && data.model_url) {
-        var mu = String(data.model_url), url = mu.startsWith('http') ? mu : API_URL + mu;
-        initThreeJS(url, 'threejs-container', 'threejs-loading');
-      }
+      var lu=data.model_page_url||data.embed_url||data.model_url||'';
+      var lb=lu?'<a href="'+(lu.startsWith('http')?lu:API_URL+lu)+'" target="_blank" class="inline-flex items-center gap-1 px-4 py-2 rounded-full bg-brand-secondary text-white text-xs font-bold hover:opacity-90 transition">↗ View Source</a>':'';
+      area.innerHTML='<div class="grid md:grid-cols-2 gap-0 bg-white rounded-[2rem] border border-black/5 shadow-[0_20px_40px_rgba(26,28,26,0.05)] overflow-hidden fade-in"><div class="relative">'+vh+'</div><div class="p-8 flex flex-col justify-between"><div>'+(isFb?'<div class="flex items-center gap-2 mb-3"><span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span><span class="text-[10px] uppercase tracking-widest text-red-500 font-bold">TripoSR Generation</span></div>':'')+'<p class="text-[10px] uppercase tracking-widest text-slate-400 mb-1">'+escapeHtml(m.source||m.api_source||'database')+'</p><div class="flex items-center gap-3 mb-3"><h3 class="text-xl font-extrabold tracking-tight">'+escapeHtml(data.name||'Untitled')+'</h3><button class="audio-desc-btn w-7 h-7 rounded-full border border-black/10 flex items-center justify-center text-sm hover:border-brand-secondary transition" data-name="'+escapeHtml(data.name||'Untitled')+'" data-desc="'+escapeHtml((m.description||data.explanation||'').substring(0,200))+'" data-tier="'+tier+'" data-score="'+(data.best_score||0)+'" data-source="'+escapeHtml(m.source||m.api_source||'database')+'">🔊</button></div>'+(data.explanation?'<p class="text-xs text-slate-500 leading-relaxed mb-4">'+escapeHtml(data.explanation)+'</p>':'')+'<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider '+tc.bg+' '+tc.color+' '+tc.border+' border mb-4">'+tc.icon+' '+tier+' confidence</span></div><div><div class="space-y-2 mb-4"><div class="flex items-center gap-2 text-xs text-slate-500"><span class="w-14">Semantic</span><div class="flex-1 score-bar"><div class="score-fill bg-green-500" style="width:'+Math.min((m.faiss_score||0)*100,100)+'%"></div></div><span class="w-8 text-right">'+(m.faiss_score||0).toFixed(2)+'</span></div><div class="flex items-center gap-2 text-xs text-slate-500"><span class="w-14">Relevance</span><div class="flex-1 score-bar"><div class="score-fill bg-blue-500" style="width:'+Math.min((m.clip_score||0)*100,100)+'%"></div></div><span class="w-8 text-right">'+(m.clip_score||0).toFixed(2)+'</span></div><div class="flex items-center gap-2 text-xs text-slate-500"><span class="w-14">Structural</span><div class="flex-1 score-bar"><div class="score-fill bg-amber-500" style="width:'+Math.min((m.structural_score||0)*100,100)+'%"></div></div><span class="w-8 text-right">'+(m.structural_score||0).toFixed(2)+'</span></div></div>'+lb+'</div></div></div>';
+      if(data.render_type==='glb'&&data.model_url){var mu=String(data.model_url),url=mu.startsWith('http')?mu:API_URL+mu;initThreeJS(url,'threejs-container','threejs-loading');}
     }
 
-    // ── Top Results ──
-    function renderTopResults(results, tierCtx) {
-      var area = document.getElementById('topResultsArea');
-      if (!results || results.length < 2) { area.innerHTML = ''; return; }
-      var items = results.slice(0, 5);
-      var html = '<p class="text-[10px] uppercase tracking-[0.15em] text-brand-accent font-semibold mb-4">Top ' + items.length + ' Candidates</p><div class="space-y-3">';
-      items.forEach(function (r, i) {
-        var isSf = r.api_source === 'sketchfab';
-        var pageUrl = r.model_page_url || r.embed_url || '';
-        html += '<div class="bg-white rounded-2xl border border-black/5 p-4 hover:border-brand-primary/40 transition cursor-pointer group result-card" onclick="renderResult(' + i + ')">' +
-          '<div class="flex items-center gap-3">' +
-          '<span class="text-xs font-bold text-brand-secondary w-6">#' + (i + 1) + '</span>' +
-          avatarHtml(r.name, r.thumbnail, true) +
-          '<div class="flex-1 min-w-0"><div class="text-sm font-bold truncate">' + escapeHtml(r.name || 'Untitled') + '</div><div class="text-[10px] text-slate-400">' + escapeHtml(r.source || 'unknown') + '</div></div>' +
-          '<span class="text-[10px] px-2 py-0.5 rounded-full font-bold ' + (isSf ? 'bg-red-50 text-red-500' : 'bg-blue-50 text-blue-500') + '">' + (isSf ? 'Sketchfab' : 'FAISS') + '</span>' +
-          '<button class="audio-desc-btn w-6 h-6 rounded-full border border-black/10 flex items-center justify-center text-xs hover:border-brand-secondary transition"' +
-          ' data-name="' + escapeHtml(r.name || 'Untitled') + '"' +
-          ' data-desc="' + escapeHtml((r.description || '').substring(0, 200)) + '"' +
-          ' data-tier="medium"' +
-          ' data-score="' + (r.faiss_score || r.clip_score || 0) + '"' +
-          ' data-source="' + escapeHtml(r.source || 'unknown') + '">🔊</button>' +
-          '</div>' +
-          '<div class="flex gap-3 mt-3">' +
-          '<div class="flex items-center gap-1 text-[10px] text-slate-400 flex-1"><span>Sem</span><div class="flex-1 score-bar"><div class="score-fill bg-green-500" style="width:' + Math.min((r.faiss_score || 0) * 100, 100) + '%"></div></div><span>' + (r.faiss_score || 0).toFixed(2) + '</span></div>' +
-          '<div class="flex items-center gap-1 text-[10px] text-slate-400 flex-1"><span>Rel</span><div class="flex-1 score-bar"><div class="score-fill bg-blue-500" style="width:' + Math.min((r.clip_score || 0) * 100, 100) + '%"></div></div><span>' + (r.clip_score || 0).toFixed(2) + '</span></div>' +
-          '<div class="flex items-center gap-1 text-[10px] text-slate-400 flex-1"><span>Str</span><div class="flex-1 score-bar"><div class="score-fill bg-amber-500" style="width:' + Math.min((r.structural_score || 0) * 100, 100) + '%"></div></div><span>' + (r.structural_score || 0).toFixed(2) + '</span></div>' +
-          '</div>' +
-          '<div class="exp-panel hidden mt-3 pt-3 border-t border-black/5">' +
-          (r.description ? '<p class="text-xs text-slate-500 mb-2">' + escapeHtml(r.description) + '</p>' : '') +
-          (pageUrl ? '<a href="' + pageUrl + '" target="_blank" class="text-xs text-brand-secondary font-semibold hover:underline">↗ Open details</a>' : '') +
-          '</div>' +
-          '</div>';
+    // ── TOP RESULTS ──
+    function renderTopResults(results,tierCtx){
+      var area=document.getElementById('topResultsArea');if(!results||results.length<2){area.innerHTML='';return;}
+      var items=results.slice(0,5),html='<p class="text-[10px] uppercase tracking-[0.15em] text-brand-accent font-semibold mb-4">Top '+items.length+' Candidates</p><div class="space-y-3">';
+      items.forEach(function(r,i){
+        var isSf=r.api_source==='sketchfab';
+        html+='<div class="bg-white rounded-2xl border border-black/5 p-4 hover:border-brand-primary/40 transition cursor-pointer result-card" onclick="renderResult('+i+')"><div class="flex items-center gap-3"><span class="text-xs font-bold text-brand-secondary w-6">#'+(i+1)+'</span>'+avatarHtml(r.name,r.thumbnail,true)+'<div class="flex-1 min-w-0"><div class="text-sm font-bold truncate">'+escapeHtml(r.name||'Untitled')+'</div><div class="text-[10px] text-slate-400">'+escapeHtml(r.source||'unknown')+'</div></div><span class="text-[10px] px-2 py-0.5 rounded-full font-bold '+(isSf?'bg-red-50 text-red-500':'bg-blue-50 text-blue-500')+'">'+(isSf?'Sketchfab':'FAISS')+'</span><button class="audio-desc-btn w-6 h-6 rounded-full border border-black/10 flex items-center justify-center text-xs hover:border-brand-secondary transition" data-name="'+escapeHtml(r.name||'Untitled')+'" data-desc="'+escapeHtml((r.description||'').substring(0,200))+'" data-tier="medium" data-score="'+(r.faiss_score||r.clip_score||0)+'" data-source="'+escapeHtml(r.source||'unknown')+'">🔊</button></div><div class="flex gap-3 mt-3"><div class="flex items-center gap-1 text-[10px] text-slate-400 flex-1"><span>Sem</span><div class="flex-1 score-bar"><div class="score-fill bg-green-500" style="width:'+Math.min((r.faiss_score||0)*100,100)+'%"></div></div><span>'+(r.faiss_score||0).toFixed(2)+'</span></div><div class="flex items-center gap-1 text-[10px] text-slate-400 flex-1"><span>Rel</span><div class="flex-1 score-bar"><div class="score-fill bg-blue-500" style="width:'+Math.min((r.clip_score||0)*100,100)+'%"></div></div><span>'+(r.clip_score||0).toFixed(2)+'</span></div><div class="flex items-center gap-1 text-[10px] text-slate-400 flex-1"><span>Str</span><div class="flex-1 score-bar"><div class="score-fill bg-amber-500" style="width:'+Math.min((r.structural_score||0)*100,100)+'%"></div></div><span>'+(r.structural_score||0).toFixed(2)+'</span></div></div></div>';
       });
-      html += '</div>';
-      area.innerHTML = html;
+      html+='</div>';area.innerHTML=html;
     }
 
-    // ── Render Specific Result ──
-    function renderResult(index) {
-      if (!window.allResults || !window.allResults[index]) return;
-      var r = window.allResults[index];
-      document.querySelectorAll('.result-card').forEach(function (el, i) {
-        if (i === index) el.classList.add('ring-2', 'ring-brand-secondary');
-        else el.classList.remove('ring-2', 'ring-brand-secondary');
-      });
+    // ── RENDER RESULT ──
+    function renderResult(i){
+      if(!window.allResults||!window.allResults[i])return;var r=window.allResults[i];
+      document.querySelectorAll('.result-card').forEach(function(el,j){if(j===i)el.classList.add('ring-2','ring-brand-secondary');else el.classList.remove('ring-2','ring-brand-secondary');});
+      var rType=r.render_type||'info_card';if(!r.render_type){if(r.api_source==='sketchfab')rType='sketchfab_embed';else if(r.model_url&&r.model_url.endsWith('.glb'))rType='glb';}
+      var rEmbed=r.embed_url||'';if(!rEmbed&&rType==='sketchfab_embed'&&r.model_page_url)rEmbed=r.model_page_url+'/embed';
+      var md=Object.assign({},currentData,{name:r.name,render_type:rType,model_url:r.model_url||'',embed_url:rEmbed,explanation:r.description||currentData.explanation,best_score:r.faiss_score||r.clip_score||currentData.best_score||0,all_results:[r].concat(window.allResults.filter(function(_,j){return j!==i;}))});
+      renderBestMatch(md);populateWorkspace(md);
+    }
 
-      var rType = 'info_card';
-      if (r.render_type) {
-        rType = r.render_type;
-      } else if (r.api_source === 'sketchfab' || (r.source && r.source.toLowerCase().includes('sketchfab')) || (r.model_page_url && r.model_page_url.includes('sketchfab'))) {
-        rType = 'sketchfab_embed';
-      } else if (r.api_source === 'pubchem' || (r.source && r.source.toLowerCase().includes('pubchem')) || (r.model_page_url && r.model_page_url.includes('pubchem'))) {
-        rType = 'molecule_viewer';
-      } else if (r.model_url && r.model_url.endsWith('.glb')) {
-        rType = 'glb';
+    // ── THREE.JS ──
+    function initThreeJS(glbUrl,cid,lid){
+      if(!window.THREE||!window.THREE.GLTFLoader){document.getElementById(lid).textContent='Three.js not loaded';return;}
+      var c=document.getElementById(cid),l=document.getElementById(lid);
+      if(window.currentRenderer){window.currentRenderer.dispose();window.currentRenderer=null;}
+      var scene=new THREE.Scene();window.currentScene=scene;scene.background=new THREE.Color(0x1a1a2e);
+      scene.add(new THREE.AmbientLight(0xffffff,2.5));
+      var d1=new THREE.DirectionalLight(0xffffff,3);d1.position.set(5,5,5);scene.add(d1);
+      var d2=new THREE.DirectionalLight(0xffffff,1.5);d2.position.set(-5,-3,-5);scene.add(d2);
+      var d3=new THREE.DirectionalLight(0xffffff,2);d3.position.set(0,0,10);scene.add(d3);
+      var w=c.clientWidth||400,h=c.clientHeight||420;
+      var cam=new THREE.PerspectiveCamera(45,w/h,0.1,100);cam.position.set(0,1.5,3);
+      var ren=new THREE.WebGLRenderer({antialias:true,alpha:true});ren.setSize(w,h);ren.setPixelRatio(window.devicePixelRatio);
+      ren.domElement.style.cssText='width:100%;height:100%;display:block;border-radius:16px;';
+      c.appendChild(ren.domElement);window.currentRenderer=ren;
+      var ctrl=window.THREE.OrbitControls?new window.THREE.OrbitControls(cam,ren.domElement):null;
+      if(ctrl){ctrl.enableDamping=true;ctrl.dampingFactor=0.05;ctrl.autoRotate=!reducedMotion;ctrl.autoRotateSpeed=2;window.currentControls=ctrl;}
+      new window.THREE.GLTFLoader().load(glbUrl,function(gltf){
+        var model=gltf.scene,box=new THREE.Box3().setFromObject(model),center=box.getCenter(new THREE.Vector3()),size=box.getSize(new THREE.Vector3());
+        var s=2/(Math.max(size.x,size.y,size.z)||1);model.scale.set(s,s,s);model.position.sub(center.multiplyScalar(s));
+        scene.add(model);if(l)l.style.display='none';
+        if(wireframeOn||simplified){scene.traverse(function(o){if(o.isMesh){var ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(function(m){if(wireframeOn)m.wireframe=true;if(simplified){m.flatShading=true;m.needsUpdate=true;}});}});}
+        updateToolbarState('glb');
+      },undefined,function(err){if(l)l.innerHTML='<span class="text-red-400 text-xs">Error loading GLB</span>';});
+      (function anim(){requestAnimationFrame(anim);if(ctrl)ctrl.update();ren.render(scene,cam);})();
+      new ResizeObserver(function(){var nw=c.clientWidth,nh=c.clientHeight;if(nw&&nh){cam.aspect=nw/nh;cam.updateProjectionMatrix();ren.setSize(nw,nh);}}).observe(c);
+    }
+
+    // ── WORKSPACE ──
+    function populateWorkspace(data){
+      var m=data.all_results&&data.all_results.length>0?data.all_results[0]:{};
+      var score=Math.round((data.best_score||0)*100);
+      document.getElementById('wsConfScore').textContent=score+'%';
+      document.getElementById('wsConfBar').style.width=score+'%';
+      document.getElementById('wsConfExplain').textContent=data.explanation||'No explanation available.';
+      document.getElementById('wsSemVal').textContent=(m.faiss_score||0).toFixed(2);document.getElementById('wsSemBar').style.width=Math.min((m.faiss_score||0)*100,100)+'%';
+      document.getElementById('wsRelVal').textContent=(m.clip_score||0).toFixed(2);document.getElementById('wsRelBar').style.width=Math.min((m.clip_score||0)*100,100)+'%';
+      document.getElementById('wsStrVal').textContent=(m.structural_score||0).toFixed(2);document.getElementById('wsStrBar').style.width=Math.min((m.structural_score||0)*100,100)+'%';
+      var mc=document.getElementById('wsMetaCard'),mb=document.getElementById('wsMetaBody');mc.classList.remove('hidden');
+      mb.innerHTML='<div class="flex justify-between"><span>Name</span><span class="font-bold text-slate-800">'+escapeHtml(data.name||'')+'</span></div><div class="flex justify-between"><span>Source</span><span class="font-bold text-slate-800">'+escapeHtml(m.source||m.api_source||'unknown')+'</span></div><div class="flex justify-between"><span>Render</span><span class="font-bold text-slate-800">'+(data.render_type||'—')+'</span></div><div class="flex justify-between"><span>Mode</span><span class="font-bold text-slate-800">'+(data.mode||'—')+'</span></div>';
+      var vc=document.getElementById('wsViewerContainer'),wl=document.getElementById('wsLoading'),wb=document.getElementById('wsViewerBadge');
+      vc.querySelectorAll('canvas,iframe').forEach(function(e){e.remove();});wl.style.display='flex';wb.classList.add('hidden');
+      var isFb=data.mode==='fallback';
+      if(data.render_type==='glb'&&data.model_url){
+        wb.classList.remove('hidden');wb.innerHTML='<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>'+(isFb?'TripoSR':'Live Render');
+        var mu=String(data.model_url),url=mu.startsWith('http')?mu:API_URL+mu;initThreeJS(url,'wsViewerContainer','wsLoading');
+      }else if((data.render_type==='sketchfab_embed'||data.render_type==='molecule_viewer')&&data.embed_url){
+        wb.classList.remove('hidden');wb.innerHTML='<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>Interactive 3D';
+        var ifr=document.createElement('iframe');ifr.src=data.embed_url+'?autostart=0&ui_theme=dark';ifr.allowFullscreen=true;ifr.loading='lazy';
+        ifr.style.cssText='width:100%;height:100%;min-height:420px;border:none;border-radius:16px;';vc.appendChild(ifr);wl.style.display='none';
+        updateToolbarState('iframe');
+      }else{
+        wl.innerHTML='<div class="flex flex-col items-center gap-3">'+avatarHtml(data.name,m.thumbnail||m.thumbnail_url)+'<span class="text-[10px] uppercase tracking-widest text-slate-400 font-semibold">Reference Card</span></div>';
+        updateToolbarState('none');
       }
-
-      var rEmbed = r.embed_url || '';
-      if (!rEmbed && rType === 'sketchfab_embed' && r.model_page_url) {
-        rEmbed = r.model_page_url + '/embed';
-      }
-
-      var mergedData = Object.assign({}, currentData, {
-        name: r.name,
-        render_type: rType,
-        model_url: r.model_url || '',
-        embed_url: rEmbed,
-        explanation: r.description || currentData.explanation,
-        best_score: r.faiss_score || r.clip_score || currentData.best_score || 0,
-        all_results: [r].concat(window.allResults.filter(function (_, i) { return i !== index; }))
-      });
-
-      renderBestMatch(mergedData);
-      populateWorkspace(mergedData);
+      var sm=document.getElementById('wsSystemMsg'),st=document.getElementById('wsSystemText');sm.classList.remove('hidden');
+      st.textContent=data.mode==='fallback'?'TripoSR generation complete for "'+data.name+'".':'Validation complete. "'+data.name+'" retrieved with '+(data.best_score*100).toFixed(0)+'% confidence.';
     }
 
-    // ── Three.js ──
-    function initThreeJS(glbUrl, containerId, loadingId) {
-      if (!window.THREE || !window.THREE.GLTFLoader) { document.getElementById(loadingId).textContent = 'Three.js not loaded'; return; }
-      var container = document.getElementById(containerId), loading = document.getElementById(loadingId);
-      var scene = new THREE.Scene(); window.currentScene = scene;
-      scene.background = new THREE.Color(0x1a1a2e);
-      scene.add(new THREE.AmbientLight(0xffffff, 2.5));
-      var d1 = new THREE.DirectionalLight(0xffffff, 3.0); d1.position.set(5, 5, 5); scene.add(d1);
-      var d2 = new THREE.DirectionalLight(0xffffff, 1.5); d2.position.set(-5, -3, -5); scene.add(d2);
-      var d3 = new THREE.DirectionalLight(0xffffff, 2.0); d3.position.set(0, 0, 10); scene.add(d3);
-      var w = container.clientWidth || 400, h = container.clientHeight || 420;
-      var camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100); camera.position.set(0, 1.5, 3);
-      var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); renderer.setSize(w, h); renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.domElement.style.cssText = 'width:100%;height:100%;display:block;border-radius:16px;';
-      container.appendChild(renderer.domElement);
-      var controls = window.THREE.OrbitControls ? new window.THREE.OrbitControls(camera, renderer.domElement) : null;
-      if (controls) {
-        controls.enableDamping = true; controls.dampingFactor = 0.05; controls.autoRotate = true; controls.autoRotateSpeed = 2.0; window.currentControls = controls;
-        if (reducedMotion) controls.autoRotate = false;
-      }
-      new window.THREE.GLTFLoader().load(glbUrl, function (gltf) {
-        var model = gltf.scene, box = new THREE.Box3().setFromObject(model), center = box.getCenter(new THREE.Vector3()), size = box.getSize(new THREE.Vector3());
-        var scale = 2.0 / (Math.max(size.x, size.y, size.z) || 1);
-        model.scale.set(scale, scale, scale); model.position.sub(center.multiplyScalar(scale));
-        scene.add(model); if (loading) loading.style.display = 'none';
-      }, undefined, function (err) { console.error(err); if (loading) loading.innerHTML = '<span class="text-red-400 text-xs">Error loading GLB</span>'; });
-      (function animate() { requestAnimationFrame(animate); if (controls) controls.update(); renderer.render(scene, camera); })();
-      new ResizeObserver(function () { var nw = container.clientWidth, nh = container.clientHeight; if (nw && nh) { camera.aspect = nw / nh; camera.updateProjectionMatrix(); renderer.setSize(nw, nh); } }).observe(container);
+    // ── ANALYSIS ──
+    function populateAnalysis(data){
+      var score=Math.round((data.best_score||0)*100);
+      document.getElementById('analysisConfidence').textContent=score+'%';
+      document.getElementById('analysisIntegrity').textContent=score>=60?'Passed':'Needs Review';
+      document.getElementById('analysisLatency').textContent=(data.latency_ms||0)+'ms';
+      document.getElementById('analysisFallbackStatus').textContent=data.mode==='fallback'?'Active — TripoSR':'Standby';
+      document.getElementById('analysisFallbackStatus').className=data.mode==='fallback'?'text-xl font-extrabold mb-2 text-red-600':'text-xl font-extrabold mb-2';
+      document.getElementById('analysisHealth').textContent=score>=60?'Optimal':'Degraded';
+      document.getElementById('analysisHealth').className=score>=60?'text-green-600':'text-amber-600';
+      var q=document.getElementById('searchInput').value;
+      var srcCount=(data.all_results||[]).reduce(function(a,r){if(r.api_source==='sketchfab')a.sf++;else a.fa++;return a;},{sf:0,fa:0});
+      document.getElementById('analysisSummaryText').textContent='Query "'+q+'" → '+srcCount.sf+' Sketchfab + '+srcCount.fa+' FAISS results → '+score+'% confidence → '+(data.latency_ms||0)+'ms. Mode: '+(data.mode||'retrieved')+'.';
     }
 
-    // ── Workspace Population ──
-    function populateWorkspace(data) {
-      var m = data.all_results && data.all_results.length > 0 ? data.all_results[0] : {};
-      var score = Math.round((data.best_score || 0) * 100);
-      document.getElementById('wsConfScore').textContent = score + '%';
-      document.getElementById('wsConfBar').style.width = score + '%';
-      document.getElementById('wsConfExplain').textContent = data.explanation || 'No explanation available.';
-      document.getElementById('wsSemVal').textContent = (m.faiss_score || 0).toFixed(2);
-      document.getElementById('wsSemBar').style.width = Math.min((m.faiss_score || 0) * 100, 100) + '%';
-      document.getElementById('wsRelVal').textContent = (m.clip_score || 0).toFixed(2);
-      document.getElementById('wsRelBar').style.width = Math.min((m.clip_score || 0) * 100, 100) + '%';
-      document.getElementById('wsStrVal').textContent = (m.structural_score || 0).toFixed(2);
-      document.getElementById('wsStrBar').style.width = Math.min((m.structural_score || 0) * 100, 100) + '%';
-      var metaCard = document.getElementById('wsMetaCard'), metaBody = document.getElementById('wsMetaBody');
-      metaCard.classList.remove('hidden');
-      metaBody.innerHTML = '<div class="flex justify-between"><span>Name</span><span class="font-bold text-slate-800">' + escapeHtml(data.name || '') + '</span></div>' +
-        '<div class="flex justify-between"><span>Source</span><span class="font-bold text-slate-800">' + escapeHtml(m.source || m.api_source || 'unknown') + '</span></div>' +
-        '<div class="flex justify-between"><span>Render</span><span class="font-bold text-slate-800">' + (data.render_type || '—') + '</span></div>' +
-        '<div class="flex justify-between"><span>Mode</span><span class="font-bold text-slate-800">' + (data.mode || '—') + '</span></div>';
-      var vc = document.getElementById('wsViewerContainer'), wl = document.getElementById('wsLoading'), wb = document.getElementById('wsViewerBadge');
-      vc.querySelectorAll('canvas, iframe').forEach(function (e) { e.remove(); });
-      wl.style.display = 'flex'; wb.classList.add('hidden');
-      var isFb = data.mode === 'fallback';
-      if (data.render_type === 'glb' && data.model_url) {
-        wb.classList.remove('hidden'); wb.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>' + (isFb ? 'TripoSR Live' : 'Live Render');
-        var mu = String(data.model_url), url = mu.startsWith('http') ? mu : API_URL + mu;
-        initThreeJS(url, 'wsViewerContainer', 'wsLoading');
-      } else if ((data.render_type === 'sketchfab_embed' || data.render_type === 'molecule_viewer') && data.embed_url) {
-        wb.classList.remove('hidden'); wb.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>Interactive 3D';
-        var iframe = document.createElement('iframe'); iframe.src = data.embed_url + '?autostart=0&ui_theme=dark'; iframe.allowFullscreen = true; iframe.loading = 'lazy';
-        iframe.style.cssText = 'width:100%;height:100%;min-height:420px;border:none;border-radius:16px;';
-        vc.appendChild(iframe); wl.style.display = 'none';
-      } else {
-        wl.innerHTML = '<div class="flex flex-col items-center gap-3">' + avatarHtml(data.name, m.thumbnail || m.thumbnail_url) + '<span class="text-[10px] uppercase tracking-widest text-slate-400 font-semibold">Reference Card</span></div>';
-      }
-      var sysMsg = document.getElementById('wsSystemMsg'), sysTxt = document.getElementById('wsSystemText');
-      sysMsg.classList.remove('hidden');
-      sysTxt.textContent = data.mode === 'fallback' ? 'TripoSR generation complete for "' + data.name + '". Model rendered in GLB format.' : 'Validation complete. "' + data.name + '" retrieved with ' + (data.best_score * 100).toFixed(0) + '% confidence.';
-    }
-
-    // ── Analysis Population ──
-    function populateAnalysis(data) {
-      var score = Math.round((data.best_score || 0) * 100);
-      document.getElementById('analysisConfidence').textContent = score + '%';
-      document.getElementById('analysisIntegrity').textContent = score >= 60 ? 'Passed' : 'Needs Review';
-      document.getElementById('analysisLatency').textContent = (data.latency_ms || 0) + 'ms avg';
-      document.getElementById('analysisFallbackStatus').textContent = data.mode === 'fallback' ? 'Active Fallback' : 'Standby';
-      document.getElementById('analysisFallbackStatus').className = data.mode === 'fallback' ? 'text-xl font-extrabold mb-2 text-red-600' : 'text-xl font-extrabold mb-2';
-      document.getElementById('analysisHealth').textContent = score >= 60 ? 'Optimal' : 'Degraded';
-      document.getElementById('analysisHealth').className = score >= 60 ? 'text-green-600' : 'text-amber-600';
-      document.getElementById('analysisSummaryText').textContent = 'Processed query "' + document.getElementById('searchInput').value + '" with ' + score + '% confidence and ' + (data.latency_ms || 0) + 'ms latency. Mode: ' + (data.mode || 'retrieved') + '.';
-    }
-
-    // ── Library ──
-    function getLibrary() { try { return JSON.parse(localStorage.getItem('ccai_library') || '[]'); } catch (e) { return []; } }
-    function saveToLibrary(query, data) {
-      var lib = getLibrary();
-      var exists = lib.find(function (l) { return l.query.toLowerCase() === query.toLowerCase(); });
-      if (exists) { Object.assign(exists, { data: data, timestamp: Date.now() }); }
-      else { lib.unshift({ query: query, data: data, timestamp: Date.now(), domain: data.all_results && data.all_results[0] ? data.all_results[0].source : 'unknown' }); }
-      if (lib.length > 30) lib.length = 30;
-      localStorage.setItem('ccai_library', JSON.stringify(lib));
-    }
-    function renderLibrary() {
-      var lib = getLibrary();
-      var grid = document.getElementById('libraryGrid');
-      if (lib.length === 0) { grid.innerHTML = '<div class="col-span-full text-center py-16 text-slate-400 text-sm">No concepts saved yet. Search for something to get started.<br><button onclick="showPage(\'explore\')" class="mt-4 px-6 py-2 rounded-full bg-brand-secondary text-white font-bold text-xs uppercase">Explore</button></div>'; return; }
-      grid.innerHTML = lib.map(function (item) {
-        var d = item.data, m = d.all_results && d.all_results[0] ? d.all_results[0] : {};
-        var thumb = m.thumbnail || m.thumbnail_url || '';
-        var tier = d.confidence_tier || 'medium';
-        var tc = TIER[tier] || TIER.medium;
-        return '<div class="bg-white rounded-3xl border border-black/5 overflow-hidden shadow-[0_20px_40px_rgba(26,28,26,0.03)] flex flex-col group">' +
-          '<div class="h-44 bg-brand-surface flex items-center justify-center overflow-hidden relative">' +
-          (thumb ? '<img src="' + thumb + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.outerHTML=\'<div class=letter-avatar-warm>' + (item.query || '?')[0].toUpperCase() + '</div>\'"/>' : '<div class="letter-avatar-warm">' + (item.query || '?')[0].toUpperCase() + '</div>') +
-          '<div class="absolute top-3 left-3 px-2 py-0.5 rounded-full ' + tc.bg + ' ' + tc.color + ' ' + tc.border + ' border text-[10px] font-bold uppercase tracking-wider backdrop-blur-md">' + tc.icon + ' ' + tier + '</div>' +
-          '</div>' +
-          '<div class="p-5 flex-1 flex flex-col">' +
-          '<div class="text-sm font-bold mb-1">' + escapeHtml(d.name || item.query) + '</div>' +
-          '<p class="text-[10px] text-slate-400 mb-3">' + escapeHtml(item.domain) + '</p>' +
-          '<div class="mt-auto">' +
-          '<button onclick="document.getElementById(\'searchInput\').value=\'' + escapeHtml(item.query).replace(/'/g, "\\'") + '\';showPage(\'explore\');doSearch();" class="w-full py-2.5 rounded-xl bg-brand-surface text-brand-secondary font-bold text-xs hover:bg-brand-secondary hover:text-white transition">View Again</button>' +
-          '</div>' +
-          '</div>' +
-          '</div>';
+    // ── LIBRARY ──
+    function getLibrary(){try{return JSON.parse(localStorage.getItem('ccai_library')||'[]');}catch(e){return[];}}
+    function saveToLibrary(q,data){var lib=getLibrary();var ex=lib.find(function(l){return l.query.toLowerCase()===q.toLowerCase();});if(ex)Object.assign(ex,{data:data,timestamp:Date.now()});else lib.unshift({query:q,data:data,timestamp:Date.now(),domain:data.all_results&&data.all_results[0]?data.all_results[0].source:'unknown'});if(lib.length>30)lib.length=30;localStorage.setItem('ccai_library',JSON.stringify(lib));}
+    function renderLibrary(){
+      var lib=getLibrary(),grid=document.getElementById('libraryGrid');
+      if(!lib.length){grid.innerHTML='<div class="col-span-full text-center py-16 text-slate-400 text-sm">No concepts saved yet.<br><button onclick="showPage(\'explore\')" class="mt-4 px-6 py-2 rounded-full bg-brand-secondary text-white font-bold text-xs uppercase">Explore</button></div>';return;}
+      grid.innerHTML=lib.map(function(item){
+        var d=item.data,m=d.all_results&&d.all_results[0]?d.all_results[0]:{};var thumb=m.thumbnail||m.thumbnail_url||'',tier=d.confidence_tier||'medium',tc=TIER[tier]||TIER.medium;
+        return'<div class="bg-white rounded-3xl border border-black/5 overflow-hidden shadow-[0_20px_40px_rgba(26,28,26,0.03)] flex flex-col group"><div class="h-44 bg-brand-surface flex items-center justify-center overflow-hidden relative">'+(thumb?'<img src="'+thumb+'" class="w-full h-full object-cover" onerror="this.outerHTML=\'<div class=letter-avatar-warm>'+(item.query||'?')[0].toUpperCase()+'</div>\'"/>':'<div class="letter-avatar-warm">'+(item.query||'?')[0].toUpperCase()+'</div>')+'<div class="absolute top-3 left-3 px-2 py-0.5 rounded-full '+tc.bg+' '+tc.color+' '+tc.border+' border text-[10px] font-bold uppercase tracking-wider">'+tc.icon+' '+tier+'</div></div><div class="p-5 flex-1 flex flex-col"><div class="text-sm font-bold mb-1">'+escapeHtml(d.name||item.query)+'</div><p class="text-[10px] text-slate-400 mb-3">'+escapeHtml(item.domain)+'</p><div class="mt-auto"><button onclick="document.getElementById(\'searchInput\').value=\''+escapeHtml(item.query).replace(/'/g,"\\'")+'\';showPage(\'explore\');doSearch();" class="w-full py-2.5 rounded-xl bg-brand-surface text-brand-secondary font-bold text-xs hover:bg-brand-secondary hover:text-white transition">View Again</button></div></div></div>';
       }).join('');
     }
 
-    // ── FIX #4: Delegated Audio — use document-level delegation so it works
-    //    even after innerHTML replacements destroy and recreate buttons ──
-    document.addEventListener('click', function (e) {
-      var btn = e.target.closest('.audio-desc-btn');
-      if (!btn) return;
+    // ── DELEGATED AUDIO ──
+    document.addEventListener('click',function(e){var btn=e.target.closest('.audio-desc-btn');if(!btn)return;e.stopPropagation();e.preventDefault();toggleSpeech(btn,btn.dataset.name||'',btn.dataset.desc||'',btn.dataset.tier||'medium',parseFloat(btn.dataset.score||0),btn.dataset.source||'');});
 
-      e.stopPropagation();
-      e.preventDefault();
-
-      toggleSpeech(
-        btn,
-        btn.dataset.name || '',
-        btn.dataset.desc || '',
-        btn.dataset.tier || 'medium',
-        parseFloat(btn.dataset.score || 0),
-        btn.dataset.source || ''
-      );
-    });
+    // ── SYSTEM REDUCED MOTION ──
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){reducedMotion=true;document.body.classList.add('reduced-motion');document.getElementById('reducedMotionBtn').classList.add('a11y-on');}
   </script>
-
 </body>
-
 </html>

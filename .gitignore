@@ -12,3 +12,4 @@ __pycache__/
 *.mtl
 datasets/
 indexes/git
+fallback/generator/

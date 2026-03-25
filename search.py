@@ -4,6 +4,7 @@ Stage 0: Query expansion (local, no API) → enriched query string
 Stage 1: MiniLM (all-MiniLM-L6-v2) → FAISS ALL domains → top 10 candidates
 Stage 2: CrossEncoder (ms-marco-MiniLM-L-6-v2) → text relevance rerank → top 1
 Stage 3: Structural score → format/richness signal
+Stage 3b: Name-match boost → rewards candidates whose name matches the query
 Stage 4: Confidence tier → high / medium / low / fallback
 
 KEY DESIGN DECISIONS:
@@ -26,6 +27,12 @@ KEY DESIGN DECISIONS:
        "fallback" (<0.30) → retrieval genuinely irrelevant, use generative fallback
 
   4. Top-N results returned — not just top 1, so frontend can show alternatives.
+
+  5. Name-match boost (Stage 3b) — short queries like "heart" or "saturn"
+     often retrieve models where the query word appears in tags but not in
+     the model name. This stage boosts candidates whose NAME contains the
+     core query words, so "Human Heart" beats "ATP Synthase" when user
+     types "heart".
 """
 
 import json
@@ -46,8 +53,9 @@ CONFIDENCE_THRESHOLD = 0.30      # only reject genuinely irrelevant matches
 TOP_N_RESULTS        = 3         # return top 3 matches for frontend alternatives
 DOMAINS              = ["biological", "physical", "chemical", "astronomical"]
 
-CE_WEIGHT         = 0.7
-STRUCTURAL_WEIGHT = 0.3
+CE_WEIGHT         = 0.55
+STRUCTURAL_WEIGHT = 0.20
+NAME_BOOST_WEIGHT = 0.25   # NEW: reward name matches
 
 # ── CE normalization ──────────────────────────────────────────────────────────
 def _normalize_ce_score(raw: float) -> float:
@@ -56,14 +64,6 @@ def _normalize_ce_score(raw: float) -> float:
 
 # ── Confidence tier ───────────────────────────────────────────────────────────
 def get_confidence_tier(score: float) -> str:
-    """
-    Translates a final score into a display tier for the frontend.
-
-    "high"     ≥ 0.65  — strong match, show confidently
-    "medium"   ≥ 0.45  — decent match, label as "closest match"
-    "low"      ≥ 0.30  — weak match, label as "nearest available — may not be exact"
-    "fallback" < 0.30  — retrieval is genuinely irrelevant, trigger generative fallback
-    """
     if score >= 0.65:
         return "high"
     elif score >= 0.45:
@@ -79,78 +79,209 @@ def get_confidence_tier(score: float) -> str:
 # ══════════════════════════════════════════════════════════════════════════════
 
 # Alias map: common shorthand → richer descriptive query
-# Add more as you discover gaps in your dataset coverage
 CONCEPT_EXPANSIONS = {
     # Biological
-    "heart": "human heart anatomy",
-    "brain": "human brain anatomy neuroscience",
-    "cell": "animal cell biology organelle",
-    "dna": "DNA double helix genetics",
-    "lung": "human lung respiratory anatomy",
-    "eye": "human eye optical anatomy",
-    "kidney": "human kidney renal anatomy",
-    "liver": "human liver organ anatomy",
-    "blood": "blood cell biology anatomy",
-    "bone": "human bone skeleton anatomy",
-    "muscle": "human muscle tissue anatomy",
-    "virus": "virus biology structure",
-    "bacteria": "bacteria biology microorganism",
-    "protein": "protein molecule biology",
-    "neuron": "neuron brain cell nervous system",
+    "heart":         "human heart anatomy",
+    "brain":         "human brain anatomy neuroscience cerebral",
+    "cell":          "animal cell biology organelle",
+    "dna":           "DNA double helix genetics molecular",
+    "lung":          "human lung respiratory anatomy",
+    "eye":           "human eye optical anatomy",
+    "kidney":        "human kidney renal anatomy organ",
+    "liver":         "human liver organ anatomy",
+    "blood":         "blood cell biology anatomy",
+    "bone":          "human bone skeleton anatomy",
+    "muscle":        "human muscle tissue anatomy",
+    "virus":         "virus biology structure pathogen",
+    "bacteria":      "bacteria biology microorganism",
+    "protein":       "protein molecule biology structure",
+    "neuron":        "neuron brain cell nervous system",
+    "mitochondria":  "mitochondria cell organelle biology",
+    "ribosome":      "ribosome cell protein synthesis",
+    "skull":         "human skull cranium anatomy",
+    "spine":         "human spine vertebral column anatomy",
+    "tooth":         "human tooth dental anatomy",
+    "stomach":       "human stomach digestive anatomy organ",
 
     # Astronomical
-    "earth": "planet earth",
-    "moon": "lunar moon satellite",
-    "sun": "solar sun star",
-    "mars": "planet mars astronomy",
-    "jupiter": "planet jupiter",
-    "saturn": "planet saturn",
-    "galaxy": "galaxy milky way cosmos",
-    "asteroid": "asteroid space rock",
-    "nebula": "nebula gas cloud space",
+    "earth":         "planet earth globe world",
+    "moon":          "lunar moon satellite astronomy",
+    "sun":           "solar sun star astronomy",
+    "mars":          "planet mars red planet astronomy",
+    "jupiter":       "planet jupiter gas giant astronomy",
+    "saturn":        "planet saturn rings astronomy",
+    "venus":         "planet venus astronomy",
+    "mercury":       "planet mercury astronomy",
+    "neptune":       "planet neptune astronomy",
+    "uranus":        "planet uranus astronomy",
+    "pluto":         "dwarf planet pluto astronomy",
+    "galaxy":        "galaxy milky way cosmos space",
+    "asteroid":      "asteroid space rock astronomy",
+    "nebula":        "nebula gas cloud space astronomy",
+    "black hole":    "black hole singularity astronomy",
+    "solar system":  "solar system planets sun astronomy",
+    "comet":         "comet space astronomy ice",
+    "star":          "star astronomy stellar",
+    "constellation": "constellation stars astronomy",
 
     # Chemical
-    "water": "water molecule H2O chemistry",
-    "glucose": "glucose sugar molecule",
-    "salt": "sodium chloride crystal",
-    "diamond": "diamond carbon crystal",
-    "oxygen": "oxygen molecule chemistry",
+    "water":         "water molecule H2O chemistry",
+    "water cycle":   "water cycle earth science",
+    "glucose":       "glucose sugar molecule chemistry",
+    "salt":          "sodium chloride crystal NaCl chemistry",
+    "diamond":       "diamond carbon crystal structure",
+    "oxygen":        "oxygen molecule O2 chemistry",
+    "caffeine":      "caffeine molecule chemistry",
+    "aspirin":       "aspirin molecule chemistry",
+    "ethanol":       "ethanol alcohol molecule chemistry",
+    "co2":           "carbon dioxide CO2 molecule chemistry",
+    "methane":       "methane CH4 molecule chemistry",
 
     # Physical
-    "atom": "atom nuclear structure electron",
-    "gear": "mechanical gear engineering",
-    "engine": "engine mechanical motor",
-    "crystal": "crystal structure lattice",
-    "circuit": "electronic circuit physics",
+    "atom":          "atom nuclear structure electron proton",
+    "gear":          "mechanical gear engineering cog",
+    "engine":        "engine mechanical motor combustion",
+    "crystal":       "crystal structure lattice solid",
+    "circuit":       "electronic circuit physics",
+    "pendulum":      "pendulum physics oscillation",
+    "magnet":        "magnet magnetic field physics",
+    "lens":          "lens optics physics refraction",
+    "turbine":       "turbine engineering mechanical",
+    "motor":         "electric motor engineering",
 
     # Structures
-    "pyramid": "pyramid ancient egypt monument",
-    "castle": "castle medieval architecture",
-    "temple": "temple ancient monument",
+    "pyramid":       "pyramid ancient egypt monument giza",
+    "castle":        "castle medieval architecture fortress",
+    "temple":        "temple ancient monument architecture",
+    "bridge":        "bridge engineering architecture structure",
+    "tower":         "tower architecture building structure",
 }
+
+# Words to STRIP from the original query before expansion lookup
+# (users type "planet earth" but the key is "earth")
+STRIP_PREFIXES = [
+    "human", "planet", "the", "a", "an", "show me", "find",
+    "search for", "3d model of", "model of", "3d", "molecule",
+]
+
+
+def _extract_core_query(query: str) -> str:
+    """
+    Strip common prefixes so "planet saturn" → "saturn",
+    "human heart" → "heart", "3d model of DNA" → "dna".
+    """
+    cleaned = query.lower().strip()
+    for prefix in sorted(STRIP_PREFIXES, key=len, reverse=True):
+        if cleaned.startswith(prefix + " "):
+            cleaned = cleaned[len(prefix):].strip()
+    return cleaned
+
 
 def expand_query(query: str) -> str:
     """
     Expand short or ambiguous queries with domain context.
-    Uses lookup table first, then falls back to existing logic.
+    
+    Strategy:
+    1. Try exact match on cleaned query
+    2. Try exact match after stripping common prefixes
+    3. Try partial match (key found inside query)
+    4. Return original if no expansion found
     """
     cleaned = query.lower().strip()
-    
-    # Direct lookup first
+
+    # 1. Direct lookup
     if cleaned in CONCEPT_EXPANSIONS:
         expanded = CONCEPT_EXPANSIONS[cleaned]
-        print(f"  [QueryExpansion] '{query}' → '{expanded}'")
+        print(f"  [QueryExpansion] '{query}' → '{expanded}' (direct)")
         return expanded
-    
-    # Check if any key is contained in the query
-    for key, expansion in CONCEPT_EXPANSIONS.items():
-        if key in cleaned and len(cleaned.split()) <= 2:
-            expanded = f"{query} {expansion}"
-            print(f"  [QueryExpansion] '{query}' → '{expanded}'")
-            return expanded
-    
-    # Fall back to existing expand_query logic
+
+    # 2. Strip prefixes and try again
+    core = _extract_core_query(query)
+    if core != cleaned and core in CONCEPT_EXPANSIONS:
+        expanded = CONCEPT_EXPANSIONS[core]
+        print(f"  [QueryExpansion] '{query}' → core '{core}' → '{expanded}' (prefix-stripped)")
+        return expanded
+
+    # 3. Check if any key is a substring of the query (for 2-3 word queries)
+    if len(cleaned.split()) <= 3:
+        for key, expansion in CONCEPT_EXPANSIONS.items():
+            if key in cleaned:
+                # Merge: keep original + add expansion context
+                expanded = f"{query} {expansion}"
+                print(f"  [QueryExpansion] '{query}' → '{expanded}' (partial)")
+                return expanded
+
+    # 4. No expansion found — return as-is
     return query
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# STAGE 3b — Name-match boost (NEW)
+# ══════════════════════════════════════════════════════════════════════════════
+
+def _compute_name_boost(original_query: str, model: dict) -> float:
+    """
+    Compute a 0.0–1.0 score based on how well the model's NAME matches
+    the user's ORIGINAL query (before expansion).
+
+    This fixes the core problem: FAISS finds candidates via tags/embed_text,
+    but a model named "ATP Synthase" tagged with "mitochondria" shouldn't
+    beat a model named "Mitochondria" when the user searches "mitochondria".
+
+    Scoring:
+      - Exact name match (case-insensitive)        → 1.0
+      - All query words appear in model name        → 0.85
+      - Core query word appears in model name       → 0.6
+      - Query word appears in tags but not name     → 0.2
+      - No match at all                             → 0.0
+    """
+    query_lower = original_query.lower().strip()
+    query_words = set(query_lower.split())
+    core_word = _extract_core_query(original_query)
+
+    model_name = (model.get("name") or "").lower().strip()
+    model_tags = [t.lower() for t in (model.get("tags") or [])]
+    model_desc = (model.get("description") or "").lower()
+
+    # Exact name match
+    if query_lower == model_name or core_word == model_name:
+        return 1.0
+
+    # Query is contained in name or name is contained in query
+    if query_lower in model_name or core_word in model_name:
+        return 0.9
+
+    # All query words in name
+    name_words = set(model_name.split())
+    if query_words and query_words.issubset(name_words):
+        return 0.85
+
+    # Core word in name
+    if core_word and core_word in model_name:
+        return 0.7
+
+    # Core word appears at start of name
+    if core_word and model_name.startswith(core_word):
+        return 0.75
+
+    # Any query word in name
+    overlap = query_words & name_words
+    if overlap:
+        return 0.4 + 0.2 * (len(overlap) / len(query_words))
+
+    # Core word in description (first 200 chars, weighted lower)
+    if core_word and core_word in model_desc[:200]:
+        return 0.3
+
+    # Core word in tags
+    if core_word and any(core_word in tag for tag in model_tags):
+        return 0.2
+
+    # Any query word in tags
+    if any(w in tag for w in query_words for tag in model_tags):
+        return 0.1
+
+    return 0.0
 
 
 # ── Load models ───────────────────────────────────────────────────────────────
@@ -286,17 +417,16 @@ def stage1_search_all_domains(expanded_query: str, top_k_per_domain: int = TOP_K
 # ══════════════════════════════════════════════════════════════════════════════
 # STAGE 2 — CrossEncoder reranking
 # ══════════════════════════════════════════════════════════════════════════════
-def stage2_cross_encoder_rerank(original_query: str, candidates: list[dict]) -> list[dict]:
+def stage2_cross_encoder_rerank(query: str, candidates: list[dict]) -> list[dict]:
     """
-    Use ORIGINAL query (not expanded) for cross-encoder pairs.
-    Expansion helps FAISS find candidates; cross-encoder judges them
-    against what the user actually typed.
+    Use the provided query for cross-encoder pairs.
+    The caller decides whether to pass original or expanded query.
     """
     if not candidates:
         return candidates
 
     pairs = [
-        (original_query, c["model"].get("embed_text") or c["model"].get("name") or "")
+        (query, c["model"].get("embed_text") or c["model"].get("name") or "")
         for c in candidates
     ]
 
@@ -346,20 +476,17 @@ def stage3_structural_score(query: str, model: dict) -> float:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# STAGE 4 — Confidence check
+# STAGE 4 — Confidence check (full pipeline)
 # ══════════════════════════════════════════════════════════════════════════════
 def search_with_confidence(query: str, domain: str = "all", top_k: int = TOP_K) -> dict:
     """
     Full pipeline:
-      Stage 0 → Query expansion          → enriched query for FAISS
-      Stage 1 → FAISS across all domains → top 10 merged
-      Stage 2 → CrossEncoder rerank      → scored with ORIGINAL query
-      Stage 3 → Structural score         → format/richness
-      Stage 4 → Confidence tier          → high / medium / low / fallback
-
-    ALWAYS returns the best retrieval result — never returns nothing.
-    The confidence_tier field tells the frontend how to present it.
-    Only tier=="fallback" should trigger the generative fallback pipeline.
+      Stage 0  → Query expansion          → enriched query for FAISS
+      Stage 1  → FAISS across all domains  → top candidates merged
+      Stage 2  → CrossEncoder rerank       → scored with ORIGINAL query
+      Stage 3  → Structural score          → format/richness
+      Stage 3b → Name-match boost          → rewards name relevance
+      Stage 4  → Confidence tier           → high / medium / low / fallback
     """
     # Stage 0 — expand query for FAISS only
     expanded_query = expand_query(query)
@@ -382,26 +509,41 @@ def search_with_confidence(query: str, domain: str = "all", top_k: int = TOP_K) 
             "fallback":          True,
         }
 
-    # Stage 2 — cross-encoder with EXPANDED query
-    reranked = stage2_cross_encoder_rerank(expanded_query, candidates)
+    # Stage 2 — cross-encoder with ORIGINAL query (not expanded!)
+    # This is critical: expanded query helps FAISS recall, but CE should
+    # judge relevance against what the user actually typed.
+    reranked = stage2_cross_encoder_rerank(query, candidates)
 
-    # Stage 3 — score all candidates
+    # Stage 3 + 3b — structural score + name-match boost
     for candidate in reranked:
-        structural_score              = stage3_structural_score(query, candidate["model"])
+        structural_score = stage3_structural_score(query, candidate["model"])
+        name_boost       = _compute_name_boost(query, candidate["model"])
+
         candidate["structural_score"] = structural_score
+        candidate["name_boost"]       = name_boost
         candidate["final_score"]      = round(
-            candidate["clip_score"] * CE_WEIGHT + structural_score * STRUCTURAL_WEIGHT, 4
+            candidate["clip_score"]  * CE_WEIGHT +
+            structural_score         * STRUCTURAL_WEIGHT +
+            name_boost               * NAME_BOOST_WEIGHT,
+            4
         )
 
-    # Stage 4 — confidence tier on best result
-    # Re-sort by final_score after structural scoring
+    # Re-sort by final_score
     reranked.sort(key=lambda x: x["final_score"], reverse=True)
+
+    # Debug: show top 3 scoring breakdown
+    for i, c in enumerate(reranked[:3]):
+        m = c["model"]
+        print(
+            f"  [Rank {i+1}] {m.get('name','?')[:40]:40s} | "
+            f"CE={c['clip_score']:.3f} Str={c['structural_score']:.3f} "
+            f"Name={c.get('name_boost',0):.3f} → Final={c['final_score']:.3f}"
+        )
 
     # Stage 4 — confidence tier on best result
     best = reranked[0]
     tier = get_confidence_tier(best["final_score"])
 
-    # Collect top N matches that are at least "low" tier (score ≥ 0.30)
     top_matches = [
         c for c in reranked
         if get_confidence_tier(c["final_score"]) != "fallback"
@@ -409,7 +551,7 @@ def search_with_confidence(query: str, domain: str = "all", top_k: int = TOP_K) 
 
     return {
         "accepted":          tier != "fallback",
-        "confidence_tier":   tier,                              # "high"/"medium"/"low"/"fallback"
+        "confidence_tier":   tier,
         "best_match":        best["model"],
         "top_matches":       [m["model"] for m in top_matches],
         "best_score":        best["final_score"],
@@ -426,31 +568,29 @@ def search_with_confidence(query: str, domain: str = "all", top_k: int = TOP_K) 
 if __name__ == "__main__":
     test_cases = [
         ("DNA double helix",  "biological"),
-        ("DNA",               "biological"),   # short form — should expand
+        ("DNA",               "biological"),
         ("mitochondria",      "biological"),
         ("black hole",        "astronomical"),
         ("Newton's cradle",   "physical"),
         ("glucose molecule",  "chemical"),
-        ("glucose",           "chemical"),     # short form — should expand
-        ("heart",             "biological"),   # vague — should expand
+        ("glucose",           "chemical"),
+        ("heart",             "biological"),
+        ("earth",             "astronomical"),
+        ("saturn",            "astronomical"),
+        ("planet saturn",     "astronomical"),
+        ("planet earth",      "astronomical"),
+        ("mars",              "astronomical"),
     ]
 
     for query, domain in test_cases:
-        print(f"Query : '{query}' | Hint domain: {domain}")
-        print("-" * 55)
+        print(f"\nQuery : '{query}' | Hint domain: {domain}")
+        print("-" * 60)
         r = search_with_confidence(query, domain)
-        print(f"FAISS score      : {r['faiss_score']:.4f}")
-        print(f"CE score (norm)  : {r['clip_score']:.4f}")
-        print(f"Structural score : {r['structural_score']:.4f}")
-        print(f"Final score      : {r['best_score']:.4f}  (threshold={CONFIDENCE_THRESHOLD})")
-        print(f"Confidence tier  : {r['confidence_tier']}")
-        print(f"Source domain    : {r['source_domain']}")
-        print(f"Accepted         : {r['accepted']}")
-        print(f"Fallback         : {r['fallback']}")
+        print(f"  Final score      : {r['best_score']:.4f}")
+        print(f"  Confidence tier  : {r['confidence_tier']}")
+        print(f"  Source domain    : {r['source_domain']}")
         if r["best_match"]:
             m = r["best_match"]
-            print(f"Top match        : {m.get('name', 'N/A')}")
-            print(f"Description      : {str(m.get('description', ''))[:100]}")
+            print(f"  Top match        : {m.get('name', 'N/A')}")
         if r["top_matches"]:
-            print(f"Alt matches      : {[m.get('name','?') for m in r['top_matches'][1:]]}")
-        print()
+            print(f"  Alt matches      : {[m.get('name','?') for m in r['top_matches'][1:]]}")
